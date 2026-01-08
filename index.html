@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Mundo de los Unicornios</title>
+
+<link rel="apple-touch-icon" href="avatar.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Unicornios de Lucía">
+
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<style>
+body{
+ margin:0;
+ font-family:"Comic Sans MS",system-ui;
+ background:linear-gradient(#f3e5f5,#fce4ec);
+ color:#4a0072;
+}
+header{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:10px;
+ background:#ede7f6;
+}
+header img{
+ width:48px;height:48px;border-radius:50%;
+}
+h1,h2,h3{text-align:center}
+button{
+ padding:12px 18px;
+ border:none;
+ border-radius:18px;
+ background:#ff80ab;
+ color:white;
+ font-size:1.05em;
+}
+button:disabled{opacity:.4}
+input{
+ font-size:1.2em;
+ padding:8px;
+ border-radius:12px;
+ border:2px solid #ce93d8;
+ width:120px;
+}
+
+.pantalla{display:none;padding:16px}
+.activa{display:block}
+
+.flex{
+ display:flex;
+ flex-wrap:wrap;
+ gap:20px;
+ align-items:center;
+ justify-content:center;
+}
+
+/* ===== Unicornio: marco fijo + revelado limpio ===== */
+
+.unicornio-contenedor{
+  width:160px;
+  height:160px;
+  border-radius:20px;
+  background:#f3e5f5;
+  border:3px solid #ce93d8;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+/* Máscara que crece */
+.unicornio-mascara{
+  width:100%;
+  height:0%;
+  overflow:hidden;
+  transition:height .5s ease;
+}
+
+/* Imagen siempre bien ajustada */
+.unicornio-mascara img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* Popup */
+.popup{
+ position:fixed;inset:0;
+ background:rgba(0,0,0,.45);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ z-index:10;
+}
+.popup .caja{
+ background:white;
+ padding:20px;
+ border-radius:20px;
+ text-align:center;
+ max-width:320px;
+}
+
+/* Panel */
+.panel{
+ background:white;
+ border-radius:20px;
+ padding:16px;
+ max-width:480px;
+ margin:auto;
+}
+.final img{max-width:90%}
+
+
+#confeti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:20;
+  display:none;
+}
+
+.confeti-pieza{
+  position:absolute;
+  width:10px;
+  height:14px;
+  opacity:0.9;
+  animation: caer 1.5s linear forwards;
+}
+
+@keyframes caer{
+  from{
+    transform:translateY(-20px) rotate(0deg);
+  }
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+
+#tablaTiempos th,
+#tablaTiempos td{
+  border:1px solid #ce93d8;
+  padding:6px;
+}
+
+#tablaTiempos tr:nth-child(even){
+  background:#fce4ec;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+ <img src="avatar.png">
+ <div>
+  👧 <span id="nombreJugadorHeader"></span><br>
+  ⭐ <span id="puntos">0</span> puntos
+ </div>
+ <div style="margin-left:auto">
+  🌍 <span id="progresoMundos"></span>
+  <span id="avatarProgreso">🧍‍♀️</span>
+ </div>
+</header>
+
+<h1>🦄 El Mundo de los Unicornios</h1>
+
+<!-- MAPA -->
+<div id="mapa" class="pantalla activa">
+ <div id="botonesFases" class="flex"></div><br>
+ <button onclick="mostrarMochila()">🎒 Mochila</button>
+ <button onclick="mostrarPanel()">📊 Padres</button>
+</div>
+
+<!-- JUEGO -->
+<div id="juego" class="pantalla">
+ <h2 id="tituloFase"></h2>
+ <h3 id="contador"></h3>
+ <div class="flex">
+  <div>
+   <p id="problema"></p>
+<p id="indicadorDificultad" style="font-weight:bold"></p>
+   <input type="number" id="respuesta"><br><br>
+   <button onclick="responder()">Responder</button>
+   <p id="pista"></p>
+   <p id="tiempo"></p>
+<p id="contadorFallos" style="font-weight:bold; color:#c62828"></p>
+  </div>
+
+
+<div class="unicornio-contenedor">
+  <div id="mascaraUnicornio" class="unicornio-mascara">
+    <img id="imgUnicornio">
+  </div>
+</div>
+
+ <button onclick="volverMapa()">Volver</button>
+ </div>
+</div>
+
+<!-- MOCHILA -->
+<div id="mochila" class="pantalla">
+ <h2>🎒 Mochila de logros</h2>
+ <div class="panel">
+  <ul id="listaLogros"></ul>
+
+<h3>⏱️ Mejores tiempos por mundo</h3>
+
+<table id="tablaTiempos"
+       style="width:100%; border-collapse:collapse; text-align:center">
+  <thead>
+    <tr style="background:#ede7f6">
+      <th>Mundo</th>
+      <th>Unicornio</th>
+      <th>Mejor tiempo</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+ </div><br>
+ <button onclick="volverMapa()">Volver</button>
+</div>
+
+<!-- PANEL PADRES -->
+<div id="panel" class="pantalla">
+ <h2>📊 Panel familiar</h2>
+ <div class="panel">
+  <p>Fases completadas: <span id="panelFases"></span></p>
+  <p>Tablas dominadas: <span id="panelTablas"></span></p>
+  <p>Intentos totales: <span id="panelIntentos"></span></p>
+  <h4>❌ Operaciones con fallos</h4>
+  <ul id="listaFallos"></ul>
+
+<button onclick="iniciarRepasoErrores()">
+  🔁 Repasar operaciones difíciles
+</button>
+
+  <br>
+  <button onclick="resetearTodo()" style="background:#e53935">
+   🔄 Reiniciar todo
+  </button>
+ </div><br>
+ <button onclick="volverMapa()">Volver</button>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="pantalla final">
+ <h2>🌈 ¡Has liberado a todos los unicornios <span id="nombreJugadorHeader"></span>, ahora son libres!</h2>
+ <img src="unicornios.png">
+
+ <button onclick="volverMapa()">Volver</button>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="caja">
+    <h3 id="popupTexto"></h3>
+
+    <!-- Imagen del unicornio liberado -->
+    <img id="popupUnicornio"
+         src=""
+         style="display:none; width:140px; margin:10px auto;">
+
+    <button onclick="cerrarPopup()">Continuar</button>
+  </div>
+</div>
+
+
+<div id="pantallaNombre" class="pantalla">
+  <h2>👧 ¿Cómo te llamas?</h2>
+  <p>Escribe tu nombre o un apodo</p>
+
+  <input
+    id="inputNombre"
+    type="text"
+    placeholder="Ej: Lucía"
+    maxlength="12"
+    style="font-size:1.2em; padding:8px; border-radius:10px; text-align:center"
+  >
+
+  <br><br>
+
+  <button onclick="guardarNombre()">Empezar aventura 🦄</button>
+</div>
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDGnZBWvHP_Ge_6c6XgjegGFnWlZwQPnQg",
+    authDomain: "unicornios-clase.firebaseapp.com",
+    projectId: "unicornios-clase",
+    storageBucket: "unicornios-clase.firebasestorage.app",
+    messagingSenderId: "451851893754",
+    appId: "1:451851893754:web:e37ec6fc7b6dc45cd74243",
+    measurementId: "G-T72Z57Z2G6"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+<script>
+
+let modoRepaso = false;
+let operacionesRepaso = [];
+let nombreJugador=localStorage.getItem("nombreJugador");
+
+
+function iniciarRepasoErrores(){
+  const entradas = Object.entries(fallosPorOperacion);
+
+  if(entradas.length === 0){
+    alert("No hay operaciones para repasar 🎉");
+    return;
+  }
+
+  modoRepaso = true;
+  indice = 0;
+  fallosActual = 0;
+  operaciones = [];
+
+  // Ordenar de más fallos a menos
+  entradas.sort((a,b) => b[1] - a[1]);
+
+  // Limitar a un máximo razonable (ej. 8)
+  const seleccion = entradas.slice(0, 8);
+
+  seleccion.forEach(([clave]) => {
+    const [a,b] = clave.split("x").map(Number);
+
+    const t = textos[Math.floor(Math.random()*textos.length)]
+      .replace("{a}", a)
+      .replace("{b}", b);
+
+    operaciones.push({
+      a,
+      b,
+      r: a*b,
+      texto: t + " ¿Cuántos hay en total?"
+    });
+  });
+
+  document.getElementById("tituloFase").textContent =
+    "🔁 Repaso de operaciones difíciles";
+
+  document.getElementById("contador").textContent =
+    `Pregunta 1 de ${operaciones.length}`;
+
+document.getElementById("mascaraUnicornio").style.height = "0%";
+ 
+indice=0;
+ fallosActual=0;
+document.getElementById("contadorFallos").textContent = "";
+if(i === fases.length - 1){
+  document.getElementById("contadorFallos").textContent =
+    "❌ Fallos: 0 / 6";
+}
+
+document.getElementById("pista").textContent = "";
+
+iniciarTimer();
+
+
+document.getElementById("imgUnicornio").src = "unicornio1.png";
+
+  mostrar("juego");
+  mostrarOperacion();
+}
+
+
+/* === TEXTOS (40+) === */
+const textos=[ "Hay {a} cofres con {b} gemas.","{a} dragones vigilan {b} huevos.","{b} unicornios llevan {a} estrellas.","{a} caminos tienen {b} faroles.","{b} cofres esconden {a} llaves.","{a} hadas preparan {b} pociones.","{b} castillos tienen {a} torres.","{a} grupos de {b} flores.","{b} carros con {a} sacos.","{a} jaulas con {b} dragones.","{b} estanterías con {a} libros.","{a} mesas con {b} pergaminos.","{b} niños reciben {a} cromos.","{a} mochilas con {b} cuentos.","{b} cofres con {a} monedas.","{a} filas de {b} árboles.","{b} naves llevan {a} tripulantes.","{a} trenes con {b} vagones.","{b} robots tienen {a} piezas.","{a} casas con {b} ventanas.","{b} cajas con {a} juguetes.","{a} torres con {b} banderas.","{b} globos con {a} cuerdas.","{a} cofres con {b} tesoros.","{b} magos usan {a} varitas.","{a} sacos con {b} semillas.","{b} barcos con {a} velas.","{a} dragones comen {b} peces.","{b} cofres con {a} coronas.","{a} caminos con {b} piedras.","{b} carretas con {a} ruedas.","{a} cofres con {b} estrellas.","{b} árboles tienen {a} ramas.","{a} grupos de {b} cristales.","{b} cofres con {a} mapas.","{a} mochilas con {b} cuadernos.","{b} torres con {a} escudos.","{a} cofres con {b} anillos.","{b} estantes con {a} frascos.","{a} cajas con {b} pociones." ];
+
+/* === ESTADO, FASES Y LÓGICA === */
+/* (por límite del mensaje, esta versión es funcional pero compactada;
+   si quieres la versión comentada pedagógicamente, te la genero aparte) */
+
+/* =====================================================
+   ESTADO GLOBAL
+===================================================== */
+let puntos = +localStorage.getItem("puntos") || 0;
+let faseActual = 0;
+let indice = 0;
+let operaciones = [];
+let liberadas = JSON.parse(localStorage.getItem("fasesLiberadas")) || [];
+let intentosTotales = +localStorage.getItem("intentosTotales") || 0;
+let tablasDominadas = JSON.parse(localStorage.getItem("tablasDominadas")) || [];
+let logros = JSON.parse(localStorage.getItem("logros")) || [];
+let tiemposMejores = JSON.parse(localStorage.getItem("tiemposMejores")) || {};
+let fallosPorOperacion = JSON.parse(localStorage.getItem("fallosPorOperacion")) || {};
+
+let tiempoInicio = 0;
+let temporizador = null;
+let fallosActual = 0;
+
+/* =====================================================
+   FASES
+===================================================== */
+const fases = [
+ { 
+   nombre:"🌸 Prado Rosa",
+   tablas:[2,3],
+   total:8,
+   unicornio:"unicornio1.png",
+   nombreUnicornio:"Rosita"
+ },
+ { 
+   nombre:"🌲 Bosque Esmeralda",
+   tablas:[4,5],
+   total:8,
+   unicornio:"unicornio2.png",
+   nombreUnicornio:"Esmerín"
+ },
+ { 
+   nombre:"🐉 Valle del Dragón",
+   tablas:[6,7],
+   total:8,
+   unicornio:"unicornio3.png",
+   nombreUnicornio:"Drako"
+ },
+ { 
+   nombre:"⛰️ Montañas Violetas",
+   tablas:[8,9],
+   total:8,
+   unicornio:"unicornio4.png",
+   nombreUnicornio:"Violeta"
+ },
+ { 
+   nombre:"🏰 Castillo Arcoíris",
+   tablas:[2,3,4,5,6,7,8,9],
+   total:12,
+   unicornio:"unicornio5.png",
+   nombreUnicornio:"Arco"
+ }
+];
+
+
+/* =====================================================
+   MENSAJES PERSONALIZADOS
+===================================================== */
+
+const mensajesAcierto = [
+  "✨ ¡Genial, "+nombreJugador+"!",
+ "🦄 ¡Perfecto! Sigue así "+nombreJugador+"'",
+  "🌟 ¡Esta te ha salido genial!",
+  "💖 ¡Muy bien pensado!",
+  "🎉 ¡Lo has hecho súper bien!",
+  "👏 ¡Se nota que practicas!",
+  "🚀 ¡Qué rapidez!",
+  "🌈 ¡Otro acierto más "+nombreJugador+"!"
+];
+
+const mensajesError = [
+  "💭 Casi… piensa un poco más",
+  "🔍 Prueba otra vez, tú puedes",
+  "🧠 No pasa nada, inténtalo de nuevo",
+  "💪 Sigue intentándolo",
+  "✨ Vamos otra vez, sin prisas",
+  "🦄 Inténtalo de nuevo",
+  "🌱 De los errores se aprende"
+];
+
+const mensajesUltima = [
+  "🔥 ¡Último reto, a por él!",
+  "🏁 ¡Esta es la última!",
+  "🌟 Última pregunta… ¡confía en ti!",
+  "🦄 El último empujón"
+];
+
+function mensajeAleatorio(arr){
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+
+
+/* =====================================================
+   MAPA
+===================================================== */
+function construirMapa(){
+ const cont=document.getElementById("botonesFases");
+ cont.innerHTML="";
+ fases.forEach((f,i)=>{
+  const b=document.createElement("button");
+  b.textContent=f.nombre+(liberadas.includes(i)?" ✅":"");
+  b.disabled=i>liberadas.length;
+  b.onclick=()=>iniciarFase(i);
+  cont.appendChild(b);
+ });
+ actualizarProgreso();
+}
+
+/* =====================================================
+   AUDIO
+===================================================== */
+let audioCtx;
+function sonido(freqs,dur=0.3){
+ audioCtx ??= new (window.AudioContext||window.webkitAudioContext)();
+ freqs.forEach((f,i)=>{
+  const o=audioCtx.createOscillator();
+  const g=audioCtx.createGain();
+  o.frequency.value=f;
+  o.connect(g); g.connect(audioCtx.destination);
+  g.gain.setValueAtTime(0.001,audioCtx.currentTime+i*0.05);
+  g.gain.exponentialRampToValueAtTime(0.3,audioCtx.currentTime+i*0.05+0.05);
+  g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+i*0.05+dur);
+  o.start(audioCtx.currentTime+i*0.05);
+  o.stop(audioCtx.currentTime+i*0.05+dur);
+ });
+}
+
+/* =====================================================
+   INICIAR FASE (orden creciente de dificultad)
+===================================================== */
+function iniciarFase(i){
+
+//alert("Entrando en fase " + i);
+ faseActual=i;
+ indice=0;
+ fallosActual=0;
+document.getElementById("contadorFallos").textContent = "";
+if(i === fases.length - 1){
+  document.getElementById("contadorFallos").textContent =
+    "❌ Fallos: 0 / 6";
+}
+
+document.getElementById("pista").textContent = "";
+
+ operaciones=[];
+ tiempoInicio=Date.now();
+ iniciarTimer();
+
+ operaciones = [];
+
+// ===== CASO ESPECIAL: FASE FINAL =====
+if(i === fases.length - 1){
+
+  //alert("fase final " + i);
+operaciones = [];
+
+  // 1️⃣ Operaciones falladas previamente (solo media y alta)
+  let falladas = Object.keys(fallosPorOperacion)
+    .map(k => {
+      const [a,b] = k.split("x").map(Number);
+      return { a, b, r: a*b };
+    })
+    .filter(op => op.b >= 5); // solo media y alta
+
+  // 2️⃣ Eliminar duplicados y mezclar
+  falladas = falladas.filter(
+    (op, idx, arr) =>
+      idx === arr.findIndex(o => o.a === op.a && o.b === op.b)
+  ).sort(() => Math.random() - 0.5);
+
+  // 3️⃣ Añadir primero las falladas
+  falladas.forEach(op => {
+    if(operaciones.length < fases[i].total){
+      const t = textos[Math.floor(Math.random()*textos.length)]
+        .replace("{a}", op.a)
+        .replace("{b}", op.b);
+
+      operaciones.push({
+        a: op.a,
+        b: op.b,
+        r: op.r,
+        texto: t + " ¿Cuántos hay en total?"
+      });
+    }
+  });
+
+  // 4️⃣ Completar con operaciones nuevas (media y alta)
+  let todas = [];
+  for(let a = 2; a <= 9; a++){
+    for(let b = 5; b <= 9; b++){
+      todas.push({ a, b, r: a*b });
+    }
+  }
+
+  todas = todas
+    .filter(op =>
+      !operaciones.some(o => o.a === op.a && o.b === op.b)
+    )
+    .sort(() => Math.random() - 0.5);
+
+  todas.forEach(op => {
+    if(operaciones.length < fases[i].total){
+      const t = textos[Math.floor(Math.random()*textos.length)]
+        .replace("{a}", op.a)
+        .replace("{b}", op.b);
+
+      operaciones.push({
+        a: op.a,
+        b: op.b,
+        r: op.r,
+        texto: t + " ¿Cuántos hay en total?"
+      });
+    }
+  });
+
+  // Salimos de la función para no ejecutar la lógica normal
+  document.getElementById("imgUnicornio").src = fases[i].unicornio;
+  
+document.getElementById("mascaraUnicornio").style.height = "0%";
+
+  mostrar("juego");
+  mostrarOperacion();
+  return;
+}
+
+// 1️⃣ Generar TODAS las combinaciones posibles de la fase
+let todas = [];
+
+for (let a of fases[i].tablas) {
+  for (let b = 2; b <= 9; b++) {
+    todas.push({
+      a,
+      b,
+      r: a * b,
+      dificultad: b
+    });
+  }
+}
+
+// 2️⃣ Separar por dificultad
+let faciles = todas.filter(o => o.b <= 4);
+let medias  = todas.filter(o => o.b >= 5 && o.b <= 6);
+let dificiles = todas.filter(o => o.b >= 7);
+
+// 3️⃣ Barajar cada grupo
+function mezclar(arr){
+  return arr.sort(() => Math.random() - 0.5);
+}
+faciles = mezclar(faciles);
+medias = mezclar(medias);
+dificiles = mezclar(dificiles);
+
+// 4️⃣ Construir la fase (progresiva)
+
+
+const total = fases[i].total;
+const nivelAdaptativo = calcularNivelAdaptativo();
+
+// Proporciones base
+let numDificiles = Math.max(2, Math.floor(total * 0.25));
+let numMedias = Math.floor((total - numDificiles) / 2);
+let numFaciles = total - numMedias - numDificiles;
+
+// Ajuste adaptativo
+if(nivelAdaptativo === 1){
+  numDificiles += 1;
+  numFaciles = Math.max(1, numFaciles - 1);
+}
+
+if(nivelAdaptativo === 2){
+  numDificiles += 2;
+  numFaciles = Math.max(1, numFaciles - 2);
+}
+
+// Reajuste final por seguridad
+const suma = numFaciles + numMedias + numDificiles;
+if(suma > total){
+  numDificiles -= (suma - total);
+}
+
+
+const seleccion = [
+  ...faciles.slice(0, numFaciles),
+  ...medias.slice(0, numMedias),
+  ...dificiles.slice(0, numDificiles)
+];
+
+// 5️⃣ Mezclar SOLO dentro de cada tramo (no el orden global)
+operaciones = seleccion.map(op => {
+  const t = textos[Math.floor(Math.random() * textos.length)]
+    .replace("{a}", op.a)
+    .replace("{b}", op.b);
+
+  return {
+    a: op.a,
+    b: op.b,
+    r: op.r,
+    texto: t + " ¿Cuántos hay en total?"
+  };
+});
+
+ document.getElementById("imgUnicornio").src=fases[i].unicornio;
+ document.getElementById("imgUnicornio").style.bottom = "-100%";
+
+document.getElementById("indicadorDificultad").textContent = "";
+ mostrar("juego");
+ mostrarOperacion();
+}
+
+/* =====================================================
+   MOSTRAR OPERACIÓN
+===================================================== */
+function mostrarOperacion(){
+ document.getElementById("tituloFase").textContent=fases[faseActual].nombre;
+ document.getElementById("contador").textContent=
+  `Pregunta ${indice+1} de ${operaciones.length}`;
+ document.getElementById("problema").textContent=
+  operaciones[indice].texto;
+
+actualizarIndicadorDificultad(operaciones[indice]);
+ document.getElementById("respuesta").value="";
+ 
+}
+
+function actualizarIndicadorDificultad(op){
+  const el = document.getElementById("indicadorDificultad");
+
+  if(op.b <= 4){
+    el.textContent = "🟢 Nivel fácil";
+  }else if(op.b <= 6){
+    el.textContent = "🟡 Nivel medio";
+  }else{
+    el.textContent = "🔴 Nivel difícil";
+  }
+}
+
+/* =====================================================
+   RESPONDER
+===================================================== */
+function responder(){
+ const op=operaciones[indice];
+ const val=+respuesta.value;
+ intentosTotales++;
+
+ if(val===op.r){
+  sonido([880,1320,1760]);
+	document.getElementById("pista").textContent = "";
+
+if(!modoRepaso){
+  puntos += 10;
+}
+
+  indice++;
+  fallosActual=0;
+
+  const porcentaje=Math.floor((indice/operaciones.length)*100);
+
+
+document.getElementById("mascaraUnicornio").style.height =
+  porcentaje + "%";
+
+if(porcentaje === 100){
+  lanzarConfeti();
+}
+
+  if(indice>=operaciones.length){
+   finalizarFase();
+  }else{
+   // Mensaje especial si es la última pregunta
+if(indice === operaciones.length - 1){
+  popup(mensajeAleatorio(mensajesUltima));
+}else{
+  popup(mensajeAleatorio(mensajesAcierto));
+}
+
+  }
+ }else{
+  sonido([220]);
+
+if(!modoRepaso){
+  puntos = Math.max(0, puntos-5);
+}
+
+  fallosActual++;
+
+// Mostrar contador de fallos solo en la fase final
+if(faseActual === fases.length - 1){
+  document.getElementById("contadorFallos").textContent =
+    `❌ Fallos: ${fallosActual} / 6`;
+}
+
+// Si llega al máximo de fallos en la fase final
+if(faseActual === fases.length - 1 && fallosActual >= 6){
+  popup(
+    "🚨 Has llegado al máximo de fallos.\nDebes repetir el Castillo Arcoíris."
+  );
+
+  // Reiniciar estado de la fase final
+  fallosActual = 0;
+  modoRepaso = false;
+
+  // Volver al mapa sin liberar la fase
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+    mostrarMapa();
+document.getElementById("contadorFallos").textContent = "";
+  }, 6000);
+
+  return;
+}
+
+  const clave=`${op.a}x${op.b}`;
+  fallosPorOperacion[clave]=(fallosPorOperacion[clave]||0)+1;
+
+  mostrarPista(op);
+  popup(mensajeAleatorio(mensajesError));
+ }
+
+ guardarEstado();
+
+guardarJugadorEnFirebase();
+}
+
+/* =====================================================
+   PISTAS ADAPTATIVAS
+===================================================== */
+function mostrarPista(op){
+  const p = document.getElementById("pista");
+
+  // Primer fallo: pista conceptual
+  if(fallosActual === 1){
+    p.textContent = `Pista: son ${op.a} grupos de ${op.b}.`;
+    return;
+  }
+
+  // Segundo fallo o más: truco según la tabla
+  switch(op.a){
+    case 2:
+      p.textContent = `Pista: doblar ${op.b} → ${op.b} + ${op.b}`;
+      break;
+
+    case 3:
+      p.textContent = `Pista: es el doble de ${op.b} más otro ${op.b}`;
+      break;
+
+    case 4:
+      p.textContent = `Pista: dobla ${op.b} y vuelve a doblar`;
+      break;
+
+    case 5:
+      p.textContent = `Pista: piensa en contar de 5 en 5 (termina en 0 o 5)`;
+      break;
+
+    case 6:
+      p.textContent = `Pista: calcula 3 × ${op.b} y luego dóblalo`;
+      break;
+
+    case 7:
+      p.textContent = `Pista: calcula 5 × ${op.b} y suma 2 × ${op.b}`;
+      break;
+
+    case 8:
+      p.textContent = `Pista: dobla ${op.b} tres veces seguidas`;
+      break;
+
+    case 9:
+      p.textContent = `Pista: calcula 10 × ${op.b} y resta ${op.b}`;
+      break;
+
+    default:
+      // Seguridad (no debería pasar)
+      p.textContent = `Pista: ${op.b} + ${op.b} + ... (${op.a} veces)`;
+  }
+}
+
+function calcularNivelAdaptativo(){
+  let nivel = 0;
+
+  // Analizar las últimas fases completadas (máx 2)
+  const ultimas = liberadas.slice(-2);
+
+  ultimas.forEach(i => {
+    const nombre = fases[i].nombre;
+    const tiempo = tiemposMejores[nombre];
+
+    // Si fue rápida (menos de 25s) → sube dificultad
+    if(tiempo && tiempo < 25){
+      nivel++;
+    }
+  });
+
+  // Si no hay muchas operaciones falladas globalmente
+  const totalFallos = Object.values(fallosPorOperacion)
+    .reduce((a,b)=>a+b,0);
+
+  if(totalFallos < 5){
+    nivel++;
+  }
+
+  // Limitar el nivel (0,1,2)
+  return Math.min(nivel, 2);
+}
+
+
+/* =====================================================
+   FINALIZAR FASE
+===================================================== */
+function finalizarFase(){
+
+if(modoRepaso){
+  modoRepaso = false;
+  popup("🎉 ¡Repaso terminado!");
+  mostrarMapa();
+  return;
+}
+
+
+ clearInterval(temporizador);
+ sonido([660,880,1100],0.6);
+ puntos+=50;
+
+ if(!liberadas.includes(faseActual)){
+  liberadas.push(faseActual);
+ }
+
+ fases[faseActual].tablas.forEach(t=>{
+  if(!tablasDominadas.includes(t)) tablasDominadas.push(t);
+ });
+
+ const tiempoFinal=Math.floor((Date.now()-tiempoInicio)/1000);
+ const nombre=fases[faseActual].nombre;
+
+ if(!tiemposMejores[nombre] || tiempoFinal < tiemposMejores[nombre]){
+  tiemposMejores[nombre]=tiempoFinal;
+  logros.push(`⏱️ Mejor tiempo en ${nombre}: ${tiempoFinal}s`);
+ }
+
+ if(fallosActual===0){
+  logros.push(`🏅 Fase perfecta: ${nombre}`);
+ }
+
+ guardarEstado();
+
+guardarJugadorEnFirebase();
+
+ if(faseActual===fases.length-1){
+  mostrar("final");
+ }else{
+
+popup(
+  `🦄 ¡Has liberado a ${fases[faseActual].nombreUnicornio}!`,
+  true
+);
+
+document.getElementById("mascaraUnicornio").style.height ="0%";
+
+
+  mostrarMapa();
+
+if(calcularNivelAdaptativo() > 0){
+  logros.push("🚀 ¡El juego ha subido el nivel porque lo estás haciendo genial!");
+}
+
+ }
+}
+
+/* =====================================================
+   TIMER
+===================================================== */
+function iniciarTimer(){
+ clearInterval(temporizador);
+ temporizador=setInterval(()=>{
+  const s=Math.floor((Date.now()-tiempoInicio)/1000);
+  document.getElementById("tiempo").textContent=`⏱️ ${s}s`;
+ },1000);
+}
+
+/* =====================================================
+   MOCHILA
+===================================================== */
+function mostrarMochila(){
+ const ul=document.getElementById("listaLogros");
+ ul.innerHTML="";
+ logros.forEach(l=>{
+  const li=document.createElement("li");
+  li.textContent=l;
+  ul.appendChild(li);
+ });
+
+// === Tabla de mejores tiempos ===
+const tbody = document
+  .querySelector("#tablaTiempos tbody");
+
+tbody.innerHTML = "";
+
+fases.forEach((fase, i) => {
+  const tr = document.createElement("tr");
+
+  const tdFase = document.createElement("td");
+  tdFase.textContent = fase.nombre;
+
+  const tdUni = document.createElement("td");
+  tdUni.textContent = fase.nombreUnicornio;
+
+  const tdTiempo = document.createElement("td");
+  const tiempo = tiemposMejores[fase.nombre];
+  tdTiempo.textContent = tiempo ? `${tiempo} s` : "—";
+
+  tr.appendChild(tdFase);
+  tr.appendChild(tdUni);
+  tr.appendChild(tdTiempo);
+
+  tbody.appendChild(tr);
+});
+
+ mostrar("mochila");
+}
+
+/* =====================================================
+   PANEL FAMILIAR
+===================================================== */
+function mostrarPanel(){
+ document.getElementById("panelFases").textContent=
+  `${liberadas.length}/${fases.length}`;
+ document.getElementById("panelTablas").textContent=
+  tablasDominadas.join(", ");
+ document.getElementById("panelIntentos").textContent=
+  intentosTotales;
+
+ const ul=document.getElementById("listaFallos");
+ ul.innerHTML="";
+ Object.entries(fallosPorOperacion)
+  .sort((a,b)=>b[1]-a[1])
+  .forEach(([op,c])=>{
+   const li=document.createElement("li");
+   li.textContent=`${op} → ${c} fallos`;
+   ul.appendChild(li);
+  });
+
+ mostrar("panel");
+}
+
+/* =====================================================
+   RESET TOTAL
+===================================================== */
+
+
+function resetearTodo(){
+
+if(!confirm("¿Seguro que quieres reiniciar todo el juego?")) return;
+  // Borrar datos
+  localStorage.removeItem("puntos");
+  localStorage.removeItem("liberadas");
+  localStorage.removeItem("tiemposMejores");
+  localStorage.removeItem("fallosPorOperacion");
+
+  // Reiniciar estado en memoria
+  puntos = 0;
+  liberadas = [0]; // 🔑 CLAVE
+  tiemposMejores = {};
+  fallosPorOperacion = {};
+
+  // Guardar estado inicial correcto
+  localStorage.setItem("liberadas", JSON.stringify(liberadas));
+  localStorage.setItem("puntos", puntos);
+
+  // Actualizar interfaz
+  document.getElementById("puntos").textContent = puntos;
+
+guardarJugadorEnFirebase();
+
+
+// Volver al inicio correcto según estado
+if(!nombreJugador){
+  mostrar("pantallaNombre");
+}else{
+  mostrarMapa();
+}
+ 
+}
+
+
+/* =====================================================
+   PROGRESO SUPERIOR
+===================================================== */
+function actualizarProgreso(){
+ document.getElementById("progresoMundos").textContent=
+  `${liberadas.length}/${fases.length}`;
+ document.getElementById("avatarProgreso").textContent=
+  ["🧍‍♀️","🚶‍♀️","🏃‍♀️","🦄","🌈"][liberadas.length] || "🌈";
+}
+
+/* =====================================================
+   UTILIDADES
+===================================================== */
+
+function popup(texto, mostrarUnicornio=false){
+  document.getElementById("popupTexto").textContent = texto;
+
+  const img = document.getElementById("popupUnicornio");
+
+  if(mostrarUnicornio){
+    img.src = fases[faseActual].unicornio;
+    img.style.display = "block";
+  }else{
+    img.style.display = "none";
+  }
+
+  document.getElementById("popup").style.display = "flex";
+}
+
+
+function cerrarPopup(){
+ document.getElementById("popup").style.display="none";
+ if(indice<operaciones.length) mostrarOperacion();
+}
+function mostrar(id){
+ document.querySelectorAll(".pantalla")
+  .forEach(p=>p.classList.remove("activa"));
+ document.getElementById(id).classList.add("activa");
+}
+function volverMapa(){
+ mostrarMapa();
+}
+
+/* =====================================================
+   GUARDAR
+===================================================== */
+function guardarEstado(){
+ localStorage.setItem("puntos",puntos);
+ localStorage.setItem("fasesLiberadas",JSON.stringify(liberadas));
+ localStorage.setItem("tablasDominadas",JSON.stringify(tablasDominadas));
+ localStorage.setItem("logros",JSON.stringify(logros));
+ localStorage.setItem("intentosTotales",intentosTotales);
+ localStorage.setItem("tiemposMejores",JSON.stringify(tiemposMejores));
+ localStorage.setItem("fallosPorOperacion",JSON.stringify(fallosPorOperacion));
+ document.getElementById("puntos").textContent=puntos;
+ actualizarProgreso();
+}
+
+/* =====================================================
+   INICIO
+===================================================== */
+function mostrarMapa(){
+ construirMapa();
+ mostrar("mapa");
+}
+
+
+function lanzarConfeti(){
+  const cont = document.getElementById("confeti");
+  cont.style.display = "block";
+  cont.innerHTML = "";
+
+  const colores = ["#ff80ab","#ce93d8","#80deea","#ffd54f","#a5d6a7"];
+
+  for(let i=0;i<40;i++){
+    const d = document.createElement("div");
+    d.className = "confeti-pieza";
+    d.style.left = Math.random()*100 + "vw";
+    d.style.background =
+      colores[Math.floor(Math.random()*colores.length)];
+    d.style.animationDelay = (Math.random()*0.5) + "s";
+    cont.appendChild(d);
+  }
+
+  setTimeout(()=>{
+  cont.innerHTML = "";
+  cont.style.display = "none";
+},1600);
+
+}
+
+function guardarNombre(){
+  const input = document.getElementById("inputNombre");
+  const nombre = input.value.trim();
+
+  if(nombre.length < 2){
+    alert("Escribe un nombre un poco más largo 🙂");
+    return;
+  }
+
+  nombreJugador = nombre;
+  localStorage.setItem("nombreJugador", nombreJugador);
+
+  actualizarHeaderNombre();
+  mostrarMapa();
+}
+
+function actualizarHeaderNombre(){
+  const zona = document.getElementById("nombreJugadorHeader");
+  if(zona){
+    zona.textContent = nombreJugador;
+  }
+}
+
+
+/* ================= FIREBASE: GUARDAR JUGADOR ================= */
+
+function guardarJugadorEnFirebase(){
+  if(!nombreJugador) return;
+
+  db.collection("players")
+    .doc(nombreJugador)
+    .set({
+      nombre: nombreJugador,
+      puntos: puntos,
+      ultimaActualizacion: Date.now()
+    })
+    .catch(err => {
+      console.error("Error guardando en Firebase:", err);
+    });
+}
+
+try{
+if(!nombreJugador){
+  mostrar("pantallaNombre");
+}else{
+  actualizarHeaderNombre();
+  mostrarMapa();
+}
+}catch(error){
+
+mostrarMapa();
+
+}
+
+
+
+</script>
+
+<div id="confeti"></div>
+
+
+</body>
+</html>
