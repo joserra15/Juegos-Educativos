@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El Mundo de los Unicornios</title>
+<link rel="icon" type="image/png" href="avatar.png">
 
 <link rel="apple-touch-icon" href="avatar.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Unicornios de Lucía">
+<meta name="apple-mobile-web-app-title" content="Mundos mágicos">
 
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -15,18 +16,37 @@
 
 <style>
 body{
- margin:0;
- font-family:"Comic Sans MS",system-ui;
- background:linear-gradient(#f3e5f5,#fce4ec);
- color:#4a0072;
+  margin:0;
+  font-family:"Comic Sans MS", system-ui;
+  color:#3a0066;
+
+  background-color:#f3e5f5;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.55)
+    ),
+    url("fondo-magico.jpg");
+
+  background-size:cover;
+  background-position:center;
+	background-repeat:no-repeat;
+	min-height:100vh;
 }
+
+
 header{
  display:flex;
  align-items:center;
  gap:12px;
  padding:10px;
  background:#ede7f6;
+	position:relative;
+  z-index:20;
 }
+
+
 header img{
  width:48px;height:48px;border-radius:50%;
 }
@@ -46,6 +66,14 @@ input{
  border-radius:12px;
  border:2px solid #ce93d8;
  width:120px;
+}
+
+.tarjeta{
+  background:rgba(255,255,255,0.92);
+  border-radius:20px;
+  padding:16px;
+  max-width:900px;
+  margin:16px auto;
 }
 
 .pantalla{display:none;padding:16px}
@@ -143,6 +171,14 @@ input{
 }
 
 
+.jugador-actual{
+  background:#fff3cd;
+  border-radius:10px;
+  padding:4px 8px;
+  font-weight:bold;
+  color:#6a1b9a;
+}
+
 #tablaTiempos th,
 #tablaTiempos td{
   border:1px solid #ce93d8;
@@ -151,6 +187,160 @@ input{
 
 #tablaTiempos tr:nth-child(even){
   background:#fce4ec;
+}
+
+
+.pantalla.activa{
+  animation: entradaPantalla 0.35s ease;
+}
+
+@keyframes entradaPantalla{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===== SOMBRAS SUAVES TIPO APP ===== */
+
+.tarjeta{
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.06);
+}
+
+
+/* ===== ANIMACIÓN DE BOTONES ===== */
+
+button{
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+
+button:active{
+  transform:scale(0.96);
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  filter:brightness(0.95);
+}
+
+
+/* ===== FEEDBACK VISUAL DE PUNTOS ===== */
+
+#puntos{
+  display:inline-block;
+  transition:transform 0.2s ease;
+}
+
+#puntos.subiendo{
+  animation: puntosSuben 0.6s ease;
+  color:#ff4081;
+  text-shadow:0 0 8px rgba(255,64,129,0.6);
+}
+
+@keyframes puntosSuben{
+  0%{
+    transform:scale(1);
+  }
+  30%{
+    transform:scale(1.4);
+  }
+  60%{
+    transform:scale(1.1);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+
+.bloque-clase{
+  margin-bottom:20px;
+}
+
+.dato-grande{
+  font-size:2em;
+  font-weight:bold;
+  color:#6a1b9a;
+}
+
+.mensaje-clase{
+  font-size:0.95em;
+  opacity:0.85;
+}
+
+.barra-objetivo{
+  background:#e0e0e0;
+  border-radius:12px;
+  overflow:hidden;
+  height:18px;
+  margin:10px 0;
+}
+
+.barra-objetivo > div{
+  height:100%;
+  background:linear-gradient(90deg,#ba68c8,#f06292);
+  width:0%;
+  transition:width .4s ease;
+}
+
+.tabla-clase{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.tabla-clase th,
+.tabla-clase td{
+  padding:6px;
+  text-align:left;
+}
+
+.tarjeta-clase{
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+
+  border-radius:24px;
+  padding:20px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08),
+    inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+.tarjeta-clase .dato-grande{
+  color:#7b1fa2;
+  font-weight:700;
+}
+
+.tarjeta-clase .bloque-clase{
+  margin-bottom:14px;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+
+.pie{
+  margin-top:40px;
+  padding:16px 10px;
+  text-align:center;
+  font-size:0.85em;
+  color:#5e3a7a;
+  opacity:0.85;
+}
+
+.pie a{
+  color:#6a1b9a;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.pie a:hover{
+  text-decoration:underline;
 }
 
 </style>
@@ -176,6 +366,9 @@ input{
 <div id="mapa" class="pantalla activa">
  <div id="botonesFases" class="flex"></div><br>
  <button onclick="mostrarMochila()">🎒 Mochila</button>
+
+<button onclick="mostrarRanking()">🏆 Ranking</button>
+
  <button onclick="mostrarPanel()">📊 Padres</button>
 </div>
 
@@ -209,6 +402,12 @@ input{
 <div id="mochila" class="pantalla">
  <h2>🎒 Mochila de logros</h2>
  <div class="panel">
+
+<p>
+  🔐 <strong>Tu PIN secreto:</strong>
+  <span id="pinJugadorUI"></span>
+</p>
+
   <ul id="listaLogros"></ul>
 
 <h3>⏱️ Mejores tiempos por mundo</h3>
@@ -231,7 +430,7 @@ input{
 
 <!-- PANEL PADRES -->
 <div id="panel" class="pantalla">
- <h2>📊 Panel familiar</h2>
+ <h2>📊 Estadísticas</h2>
  <div class="panel">
   <p>Fases completadas: <span id="panelFases"></span></p>
   <p>Tablas dominadas: <span id="panelTablas"></span></p>
@@ -239,11 +438,17 @@ input{
   <h4>❌ Operaciones con fallos</h4>
   <ul id="listaFallos"></ul>
 
+<button onclick="mostrar('ayuda')">❓ Ayuda</button>
+
+<br>
+<br>
+
 <button onclick="iniciarRepasoErrores()">
   🔁 Repasar operaciones difíciles
 </button>
 
   <br>
+<br>
   <button onclick="resetearTodo()" style="background:#e53935">
    🔄 Reiniciar todo
   </button>
@@ -289,19 +494,213 @@ input{
 
   <br><br>
 
+<p id="errorNombre"
+   style="color:#d32f2f; display:none; font-weight:bold">
+</p>
+
   <button onclick="guardarNombre()">Empezar aventura 🦄</button>
 </div>
 
+<div id="ranking" class="pantalla">
+  <h2>🏆 Ranking de puntos</h2>
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  <ol id="listaRanking"
+      style="font-size:1.2em; line-height:1.6"></ol>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  <br>
+
+<h3>⚡ Los más rápidos de cada mundo</h3>
+
+<table id="tablaRapidos"
+       style="width:100%; border-collapse:collapse; margin-top:10px">
+  <thead>
+    <tr>
+      <th>Mundo</th>
+      <th>🥇 Más rápido</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<br>
+
+<div class="tarjeta tarjeta-clase">
+  <h2>🏫 Panel de la clase</h2>
+
+  <!-- Puntos de la clase -->
+  <div class="bloque-clase">
+    <h3>⭐ Puntos de toda la clase</h3>
+    <p id="puntosClase" class="dato-grande">—</p>
+    <p class="mensaje-clase">
+      Cada punto cuenta. ¡Tu esfuerzo ayuda a todo el grupo!
+    </p>
+  </div>
+
+  <!-- Unicornios liberados -->
+  <div class="bloque-clase">
+    <h3>🦄 Unicornios liberados</h3>
+    <p id="unicorniosClase" class="dato-grande">—</p>
+    <p class="mensaje-clase">
+      Cada unicornio liberado devuelve la magia a los Mundos Mágicos.
+    </p>
+  </div>
+
+  <!-- Progreso colectivo -->
+  <div class="bloque-clase">
+    <h3>🌈 Objetivo colectivo: 20.000 puntos</h3>
+
+    <div class="barra-objetivo">
+      <div id="barraClase"></div>
+    </div>
+
+    <p id="textoObjetivo" class="mensaje-clase"></p>
+  </div>
+
+  <!-- Tiempo medio -->
+  <div class="bloque-clase">
+    <h3>⏱️ Tiempo medio de la clase</h3>
+
+    <table class="tabla-clase">
+      <thead>
+        <tr>
+          <th>Mundo</th>
+          <th>Tiempo medio</th>
+        </tr>
+      </thead>
+      <tbody id="tablaTiemposClase"></tbody>
+    </table>
+
+    <p class="mensaje-clase">
+      Mejora tu tiempo y ayudarás a mejorar el tiempo de toda la clase.
+    </p>
+  </div>
+</div>
+
+<br>
+
+  <button onclick="mostrarMapa()">⬅ Volver</button>
+</div>
+
+
+<div id="historia" class="pantalla">
+  <div class="tarjeta">
+    <h2>🌈 Mundos Mágicos</h2>
+
+    <p>
+      🦄 Hace mucho tiempo, los unicornios vivían libres y felices en sus mundos,
+      pero un hechizo los ha atrapado 😢
+    </p>
+
+    <p>
+      ✨ Solo alguien valiente y con buena cabeza para los números puede liberarlos.
+      Cada mundo es un reto y cada reto te acerca a salvar a un unicornio.
+    </p>
+
+    <p>
+      🏆 Podrás comparar tus avances con tus compañeros de clase
+      y repetir las fases para mejorar tu tiempo y batir récords.
+    </p>
+
+    <p>
+      💫 ¿Nos ayudas a devolver la magia a todos los mundos?
+    </p>
+
+    <button onclick="cerrarHistoria()">🦄 ¡Empezar la aventura!</button>
+  </div>
+</div>
+
+
+<div id="ayuda" class="pantalla">
+  <div class="tarjeta">
+    <h2>👨‍👩‍👧 Ayuda para familias</h2>
+
+    <p>
+      <strong>Mundos Mágicos</strong> es un juego educativo para practicar
+      las tablas de multiplicar a través de retos, mundos y una historia de unicornios.
+    </p>
+
+    <h3>🎮 ¿Cómo se juega?</h3>
+    <ul>
+      <li>Cada mundo contiene varios retos matemáticos.</li>
+      <li>Al resolverlos correctamente se liberan unicornios.</li>
+      <li>Las fases se pueden repetir para mejorar el tiempo y los puntos.</li>
+    </ul>
+
+    <h3>🏆 Ranking y superación</h3>
+    <p>
+      El juego incluye un ranking para comparar avances de forma sana.
+      El objetivo principal es mejorar las propias marcas.
+    </p>
+
+    <h3>🔐 Nombre y PIN secreto</h3>
+    <ul>
+      <li>Cada jugador elige un apodo.</li>
+      <li>El juego genera un <strong>PIN secreto</strong> visible en la 🎒 Mochila.</li>
+      <li>
+        Si se juega desde otro dispositivo o navegador,
+        será necesario introducir el mismo nombre y PIN.
+      </li>
+    </ul>
+
+    <h3>📱 Dispositivos</h3>
+    <p>
+      Se puede jugar desde móvil, tablet u ordenador usando la misma dirección web.
+
+
+      El progreso se sincroniza automáticamente cuando hay conexión.
+    </p>
+
+    <h3>🛡️ Privacidad</h3>
+    <p>
+      No se guardan datos personales. Solo se almacena el apodo
+      y el avance en el juego. No se usan correos electrónicos ni contraseñas.
+    </p>
+
+    <h3>♻️ Aprender es repetir</h3>
+    <p>
+      Repetir las fases forma parte del aprendizaje.
+      El objetivo es mejorar poco a poco y disfrutar del proceso.
+    </p>
+
+    <button onclick="mostrarPanel()">⬅ Volver</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<script>
+  
+function cerrarHistoria(){
+  localStorage.setItem("historiaVista", "true");
+  mostrarMapa();
+}
+
+
+const mundos = [
+  "🌸 Prado Rosa",
+  "🌲 Bosque Esmeralda",
+  "⛰️ Montañas Violetas",
+  "🐉 Valle del Dragón",
+  "🏰 Castillo Arcoíris"
+];
+
+
+
+const puntosPorMundo = {
+  "🌸 Prado Rosa": 10,
+  "🌲 Bosque Esmeralda": 12,
+  "⛰️ Montañas Violetas": 15,
+  "🐉 Valle del Dragón": 18,
+  "🏰 Castillo Arcoíris": 25
+};
+
   const firebaseConfig = {
     apiKey: "AIzaSyDGnZBWvHP_Ge_6c6XgjegGFnWlZwQPnQg",
     authDomain: "unicornios-clase.firebaseapp.com",
@@ -313,11 +712,19 @@ input{
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
 
-<script>
+let db = null;
+
+try{
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.firestore(); // 👈 SIN const
+  console.log("Firebase inicializado ✅");
+}catch(e){
+  console.log("JA 😂 Firebase no disponible");
+  console.error(e);
+}
+
+
 
 let modoRepaso = false;
 let operacionesRepaso = [];
@@ -325,6 +732,8 @@ let nombreJugador=localStorage.getItem("nombreJugador");
 
 
 function iniciarRepasoErrores(){
+
+try{
   const entradas = Object.entries(fallosPorOperacion);
 
   if(entradas.length === 0){
@@ -369,13 +778,11 @@ document.getElementById("mascaraUnicornio").style.height = "0%";
 indice=0;
  fallosActual=0;
 document.getElementById("contadorFallos").textContent = "";
-if(i === fases.length - 1){
-  document.getElementById("contadorFallos").textContent =
-    "❌ Fallos: 0 / 6";
-}
+
 
 document.getElementById("pista").textContent = "";
 
+tiempoInicio=Date.now();
 iniciarTimer();
 
 
@@ -383,6 +790,10 @@ document.getElementById("imgUnicornio").src = "unicornio1.png";
 
   mostrar("juego");
   mostrarOperacion();
+
+}catch(err){
+ alert(err);
+}
 }
 
 
@@ -457,15 +868,20 @@ const fases = [
    MENSAJES PERSONALIZADOS
 ===================================================== */
 
+function conNombre(texto){
+  return texto.replace("{nombre}", nombreJugador || "");
+}
+
+
 const mensajesAcierto = [
-  "✨ ¡Genial, "+nombreJugador+"!",
- "🦄 ¡Perfecto! Sigue así "+nombreJugador+"'",
+  "✨ ¡Genial, {nombre}!",
+ "🦄 ¡Perfecto! Sigue así {nombre}",
   "🌟 ¡Esta te ha salido genial!",
   "💖 ¡Muy bien pensado!",
   "🎉 ¡Lo has hecho súper bien!",
   "👏 ¡Se nota que practicas!",
   "🚀 ¡Qué rapidez!",
-  "🌈 ¡Otro acierto más "+nombreJugador+"!"
+  "🌈 ¡Otro acierto más {nombre}!"
 ];
 
 const mensajesError = [
@@ -748,7 +1164,11 @@ function responder(){
 	document.getElementById("pista").textContent = "";
 
 if(!modoRepaso){
-  puntos += 10;
+
+
+	const puntosGanados = 				puntosDelMundoActual();
+	puntos += puntosGanados;
+
 }
 
   indice++;
@@ -769,17 +1189,22 @@ if(porcentaje === 100){
   }else{
    // Mensaje especial si es la última pregunta
 if(indice === operaciones.length - 1){
-  popup(mensajeAleatorio(mensajesUltima));
+  popup(conNombre(mensajeAleatorio(mensajesUltima)));
 }else{
-  popup(mensajeAleatorio(mensajesAcierto));
+  popup(conNombre(mensajeAleatorio(mensajesAcierto)));
 }
 
   }
  }else{
-  sonido([220]);
+  sonido([1720,1320,800]);
 
 if(!modoRepaso){
-  puntos = Math.max(0, puntos-5);
+
+
+const penalizacion = Math.max(3, Math.floor(puntosDelMundoActual() / 2));
+puntos -= penalizacion;
+
+  //puntos = Math.max(0, puntos-5);
 }
 
   fallosActual++;
@@ -814,12 +1239,27 @@ document.getElementById("contadorFallos").textContent = "";
   fallosPorOperacion[clave]=(fallosPorOperacion[clave]||0)+1;
 
   mostrarPista(op);
-  popup(mensajeAleatorio(mensajesError));
+  popup(conNombre(mensajeAleatorio(mensajesError)));
  }
 
  guardarEstado();
 
-guardarJugadorEnFirebase();
+guardarProgreso();
+
+const puntosEl = document.getElementById("puntos");
+//puntosEl.textContent = puntos;
+puntosEl.classList.add("subiendo");
+
+setTimeout(() => {
+  puntosEl.classList.remove("subiendo");
+}, 600);
+
+}
+
+
+
+function generarPIN(){
+  return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
 /* =====================================================
@@ -918,7 +1358,11 @@ if(modoRepaso){
 
  clearInterval(temporizador);
  sonido([660,880,1100],0.6);
- puntos+=50;
+
+
+const puntosGanados = puntosDelMundoActual() * 4;
+puntos += puntosGanados;
+ //puntos+=50;
 
  if(!liberadas.includes(faseActual)){
   liberadas.push(faseActual);
@@ -942,10 +1386,13 @@ if(modoRepaso){
 
  guardarEstado();
 
-guardarJugadorEnFirebase();
+guardarProgreso();
+
 
  if(faseActual===fases.length-1){
   mostrar("final");
+  sonidoFinalMagico();
+
  }else{
 
 popup(
@@ -955,6 +1402,7 @@ popup(
 
 document.getElementById("mascaraUnicornio").style.height ="0%";
 
+actualizarPuntosUI();
 
   mostrarMapa();
 
@@ -1014,6 +1462,11 @@ fases.forEach((fase, i) => {
   tbody.appendChild(tr);
 });
 
+const pin = localStorage.getItem("pinJugador");
+document.getElementById("pinJugadorUI").textContent =
+  pin ? pin : "—";
+
+
  mostrar("mochila");
 }
 
@@ -1055,6 +1508,8 @@ if(!confirm("¿Seguro que quieres reiniciar todo el juego?")) return;
   localStorage.removeItem("tiemposMejores");
   localStorage.removeItem("fallosPorOperacion");
 
+localStorage.removeItem("historiaVista");
+
   // Reiniciar estado en memoria
   puntos = 0;
   liberadas = [0]; // 🔑 CLAVE
@@ -1068,7 +1523,8 @@ if(!confirm("¿Seguro que quieres reiniciar todo el juego?")) return;
   // Actualizar interfaz
   document.getElementById("puntos").textContent = puntos;
 
-guardarJugadorEnFirebase();
+
+guardarProgreso();
 
 
 // Volver al inicio correcto según estado
@@ -1119,10 +1575,31 @@ function mostrar(id){
  document.querySelectorAll(".pantalla")
   .forEach(p=>p.classList.remove("activa"));
  document.getElementById(id).classList.add("activa");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
 }
+
+
 function volverMapa(){
  mostrarMapa();
 }
+
+function actualizarPuntosUI(){
+
+const puntosEl = document.getElementById("puntos");
+puntosEl.textContent = puntos;
+puntosEl.classList.add("subiendo");
+
+setTimeout(() => {
+  puntosEl.classList.remove("subiendo");
+}, 600);
+
+}
+
 
 /* =====================================================
    GUARDAR
@@ -1144,7 +1621,9 @@ function guardarEstado(){
 ===================================================== */
 function mostrarMapa(){
  construirMapa();
+actualizarPuntosUI();
  mostrar("mapa");
+
 }
 
 
@@ -1172,21 +1651,111 @@ function lanzarConfeti(){
 
 }
 
+
 function guardarNombre(){
   const input = document.getElementById("inputNombre");
+  const error = document.getElementById("errorNombre");
+
   const nombre = input.value.trim();
+const id = nombre.toLowerCase();
+
+  error.style.display = "none";
 
   if(nombre.length < 2){
-    alert("Escribe un nombre un poco más largo 🙂");
+    error.textContent = "Escribe un nombre un poco más largo 🙂";
+    error.style.display = "block";
     return;
   }
 
-  nombreJugador = nombre;
-  localStorage.setItem("nombreJugador", nombreJugador);
+  // Si Firebase no está disponible, dejamos pasar
+  if(!db){
+    nombreJugador = nombre;
+    localStorage.setItem("nombreJugador", nombreJugador);
+    actualizarHeaderNombre();
+    mostrarMapa();
+    return;
+  }
 
-  actualizarHeaderNombre();
-  mostrarMapa();
+  // Comprobar si el nombre ya existe en Firebase
+  db.collection("players")
+    .doc(nombre)
+    .get()
+    .then(doc => {
+      if(doc.exists){
+        
+			if(doc.exists){
+  const pinGuardado = doc.data().pin;
+  const pinIntroducido = prompt(
+    "Este jugador ya existe.\nIntroduce tu PIN secreto. Lo tienes en la mochila de la partida anterior:"
+  );
+
+  if(pinIntroducido === pinGuardado){
+    // PIN correcto → cargar datos
+    const data = doc.data();
+
+    nombreJugador = nombre;
+    cargarProgresoDesdeFirebase();
+
+    localStorage.setItem("nombreJugador", nombreJugador);
+    localStorage.setItem("puntos", puntos);
+    localStorage.setItem("pinJugador", pinGuardado);
+
+    actualizarHeaderNombre();
+    actualizarPuntosUI();
+    mostrarMapa();
+  }else{
+    error.textContent =
+      "PIN incorrecto ❌ Prueba con otro nombre";
+    error.style.display = "block";
+  }
 }
+
+
+			
+
+      }else{
+        // Nombre libre → continuar
+        
+
+// Nombre libre → crear jugador nuevo
+const pin = generarPIN();
+
+nombreJugador = nombre;
+puntos = 0;
+
+localStorage.setItem("nombreJugador", nombreJugador);
+localStorage.setItem("puntos", puntos);
+localStorage.setItem("pinJugador", pin);
+
+db.collection("players")
+  .doc(nombreJugador)
+  .set({
+    nombre: nombreJugador,
+    pin: pin,
+    puntos: puntos,
+    ultimaActualizacion: Date.now()
+  });
+
+actualizarHeaderNombre();
+actualizarPuntosUI();
+mostrarMapa();
+
+
+      }
+    })
+    .catch(err => {
+      console.log("JA 😂 Error comprobando nombre");
+      console.error(err);
+
+      // En caso de error, dejamos continuar
+      nombreJugador = nombre;
+      localStorage.setItem("nombreJugador", nombreJugador);
+      actualizarHeaderNombre();
+      mostrarMapa();
+    });
+}
+
+
 
 function actualizarHeaderNombre(){
   const zona = document.getElementById("nombreJugadorHeader");
@@ -1199,7 +1768,17 @@ function actualizarHeaderNombre(){
 /* ================= FIREBASE: GUARDAR JUGADOR ================= */
 
 function guardarJugadorEnFirebase(){
-  if(!nombreJugador) return;
+
+try{
+  if(!db){
+    console.log("JA 😂 db no existe, no se guarda");
+    return;
+  }
+
+  if(!nombreJugador){
+    console.log("JA 😂 no hay nombreJugador");
+    return;
+  }
 
   db.collection("players")
     .doc(nombreJugador)
@@ -1208,17 +1787,89 @@ function guardarJugadorEnFirebase(){
       puntos: puntos,
       ultimaActualizacion: Date.now()
     })
+    .then(() => {
+      console.log("Firebase OK ✅");
+    })
     .catch(err => {
-      console.error("Error guardando en Firebase:", err);
+      console.log("JA 😂 Error al guardar en Firebase");
+      console.error(err);
+    });
+
+
+}catch(error){
+ console.error("Error guardando en Firebase:", error);
+}
+
+}
+
+
+function mostrarRanking(){
+  mostrar("ranking");
+
+mostrarRankingRapidos();
+cargarPanelClase();
+
+  const lista = document.getElementById("listaRanking");
+  lista.innerHTML = "<li>Cargando ranking…</li>";
+
+  if(!db){
+    lista.innerHTML =
+      "<li>Ranking no disponible sin conexión</li>";
+    return;
+  }
+
+  db.collection("players")
+    .orderBy("puntos", "desc")
+    .limit(20)
+    .get()
+    .then(snapshot => {
+      lista.innerHTML = "";
+
+      if(snapshot.empty){
+        lista.innerHTML = "<li>Aún no hay datos</li>";
+        return;
+      }
+
+      let puesto = 1;
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        const li = document.createElement("li");
+
+const esJugadorActual = data.nombre === nombreJugador;
+
+li.textContent = esJugadorActual
+  ? `👉 ${puesto}. ${data.nombre} — ${data.puntos} ⭐`
+  : `${puesto}. ${data.nombre} — ${data.puntos} ⭐`;
+
+if(esJugadorActual){
+  li.classList.add("jugador-actual");
+}
+
+lista.appendChild(li);
+puesto++;
+      });
+    })
+    .catch(err => {
+      console.log("JA 😂 Error leyendo ranking");
+      console.error(err);
+      lista.innerHTML =
+        "<li>Error cargando ranking</li>";
     });
 }
+
 
 try{
 if(!nombreJugador){
   mostrar("pantallaNombre");
 }else{
   actualizarHeaderNombre();
+  if(!localStorage.getItem("historiaVista")){
+  mostrar("historia");
+}else{
   mostrarMapa();
+}
 }
 }catch(error){
 
@@ -1227,11 +1878,310 @@ mostrarMapa();
 }
 
 
+function guardarProgreso(){
+  // Guardar siempre en local
+  localStorage.setItem("puntos", puntos);
+  localStorage.setItem("liberadas", JSON.stringify(liberadas));
+  localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
+  localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
+
+  // Guardar también en Firebase si está disponible
+  if(!db || !nombreJugador) return;
+
+  db.collection("players")
+    .doc(nombreJugador)
+    .set({
+      nombre: nombreJugador,
+      pin: localStorage.getItem("pinJugador"),
+      puntos,
+      liberadas,
+      tiemposMejores,
+      fallosPorOperacion,
+      ultimaActualizacion: Date.now()
+    })
+    .catch(err => {
+      console.log("JA 😂 Error guardando progreso");
+      console.error(err);
+    });
+}
+
+function cargarProgresoDesdeFirebase(){
+  if(!db || !nombreJugador) return;
+
+  db.collection("players")
+    .doc(nombreJugador)
+    .get()
+    .then(doc => {
+      if(!doc.exists) return;
+
+      const data = doc.data();
+
+      // Cargar en memoria
+      puntos = data.puntos || 0;
+      liberadas = data.liberadas || [0];
+      tiemposMejores = data.tiemposMejores || {};
+      fallosPorOperacion = data.fallosPorOperacion || {};
+
+      // Sincronizar localStorage
+      localStorage.setItem("puntos", puntos);
+      localStorage.setItem("liberadas", JSON.stringify(liberadas));
+      localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
+      localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
+
+      actualizarPuntosUI();
+      mostrarMapa();
+    })
+    .catch(err => {
+      console.log("JA 😂 Error cargando progreso");
+      console.error(err);
+    });
+}
+
+
+function mostrarRankingRapidos(){
+  const tbody = document.querySelector("#tablaRapidos tbody");
+  tbody.innerHTML = "";
+
+  if(!db){
+    tbody.innerHTML =
+      "<tr><td colspan='2'>No disponible sin conexión</td></tr>";
+    return;
+  }
+
+  // Inicializamos estructura de mejores tiempos
+  const mejores = {};
+  mundos.forEach(mundo => {
+    mejores[mundo] = {
+      nombre: null,
+      tiempo: Infinity
+    };
+  });
+
+  db.collection("players").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const tiempos = data.tiemposMejores || {};
+
+        mundos.forEach(mundo => {
+          if(tiempos[mundo] !== undefined){
+            const tiempo = tiempos[mundo];
+
+            if(tiempo < mejores[mundo].tiempo){
+              mejores[mundo] = {
+                nombre: data.nombre,
+                tiempo: tiempo
+              };
+            }
+          }
+        });
+      });
+
+      // Pintar tabla
+      mundos.forEach(mundo => {
+        const tr = document.createElement("tr");
+
+        const tdMundo = document.createElement("td");
+        tdMundo.textContent = mundo;
+
+        const tdJugador = document.createElement("td");
+        const dato = mejores[mundo];
+
+        tdJugador.textContent = dato.nombre
+          ? `${dato.nombre} (${dato.tiempo} s)`
+          : "—";
+
+        tr.appendChild(tdMundo);
+        tr.appendChild(tdJugador);
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(err => {
+      console.log("JA 😂 Error ranking rápidos");
+      console.error(err);
+    });
+}
+
+
+function reproducirMelodia(notas){
+  iniciarAudio();
+
+  let tiempo = audioCtx.currentTime;
+
+  notas.forEach(nota => {
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+
+    o.type = "sine";
+    o.frequency.value = nota.freq;
+
+    o.connect(g);
+    g.connect(audioCtx.destination);
+
+    g.gain.setValueAtTime(0.0001, tiempo);
+    g.gain.exponentialRampToValueAtTime(0.3, tiempo + 0.02);
+    g.gain.exponentialRampToValueAtTime(
+      0.0001,
+      tiempo + nota.duracion
+    );
+
+    o.start(tiempo);
+    o.stop(tiempo + nota.duracion);
+
+    tiempo += nota.duracion;
+  });
+}
+
+function sonidoFinalMagico(){
+  reproducirMelodia([
+    { freq: 523, duracion: 0.25 }, // Do
+    { freq: 659, duracion: 0.25 }, // Mi
+    { freq: 784, duracion: 0.25 }, // Sol
+    { freq: 1046, duracion: 0.35 }, // Do alto
+    { freq: 988, duracion: 0.25 }, // Si
+    { freq: 1046, duracion: 0.6 }  // Do final largo
+  ]);
+}
+
+
+function puntosDelMundoActual(){
+  return puntosPorMundo[faseActual.nombre] || 10;
+}
+
+
+function cargarPanelClase(){
+  if(!db) return;
+
+  let puntosTotales = 0;
+  let unicornios = new Set();
+
+  const tiemposPorMundo = {};
+  const conteosPorMundo = {};
+
+  db.collection("players").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        // Puntos
+        puntosTotales += data.puntos || 0;
+
+        // Unicornios liberados
+        (data.liberadas || []).forEach(m => unicornios.add(m));
+
+        // Tiempos
+        const tiempos = data.tiemposMejores || {};
+        Object.keys(tiempos).forEach(mundo => {
+          if(!tiemposPorMundo[mundo]){
+            tiemposPorMundo[mundo] = 0;
+            conteosPorMundo[mundo] = 0;
+          }
+          tiemposPorMundo[mundo] += tiempos[mundo];
+          conteosPorMundo[mundo]++;
+        });
+      });
+
+      // Mostrar puntos
+      document.getElementById("puntosClase").textContent =
+        puntosTotales.toLocaleString();
+
+      // Mostrar unicornios
+      document.getElementById("unicorniosClase").textContent =
+        unicornios.size;
+
+      // Barra de progreso
+      const objetivo = 20000;
+      const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
+
+      document.getElementById("barraClase").style.width = porcentaje + "%";
+
+      document.getElementById("textoObjetivo").textContent =
+        puntosTotales >= objetivo
+          ? "🎉 ¡Objetivo conseguido! La clase ha logrado una gran hazaña."
+          : `Faltan ${objetivo - puntosTotales} puntos para lograrlo.`;
+
+      // Tabla de tiempos medios
+      const tbody = document.getElementById("tablaTiemposClase");
+      tbody.innerHTML = "";
+
+      Object.keys(tiemposPorMundo).forEach(mundo => {
+        const media = Math.round(
+          tiemposPorMundo[mundo] / conteosPorMundo[mundo]
+        );
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${mundo}</td><td>${media} s</td>`;
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(err => {
+      console.error("Error cargando panel de clase", err);
+    });
+}
+
 
 </script>
 
 <div id="confeti"></div>
 
+
+<div id="avisoLegal" class="pantalla">
+  <div class="tarjeta tarjeta-clase">
+    <h2>⚖️ Aviso legal</h2>
+
+    <p><strong>Titular del sitio web</strong><br>
+    Mundos Mágicos Educativos<br>
+    📩 info@mundosmagicoseducativos.es</p>
+
+    <p><strong>Finalidad del sitio web</strong><br>
+    Este sitio web tiene una finalidad educativa, ofreciendo actividades
+    interactivas para el aprendizaje y refuerzo de las tablas de multiplicar
+    en un entorno lúdico y motivador.</p>
+
+    <p><strong>Uso del sitio</strong><br>
+    El uso de esta aplicación implica la aceptación del presente aviso legal.
+    El contenido está dirigido a un uso educativo, tanto en el ámbito familiar
+    como escolar.</p>
+
+    <p><strong>Datos personales y privacidad</strong><br>
+    Esta aplicación no solicita ni almacena datos personales identificativos.
+    Únicamente se guarda un apodo elegido por el jugador y el progreso dentro
+    del juego (puntos, tiempos y fases).</p>
+
+<p><strong>Uso de cookies</strong><br>
+Esta aplicación no utiliza cookies de seguimiento ni cookies publicitarias.
+Únicamente se emplea almacenamiento local del navegador para guardar el
+progreso del juego.</p>
+
+    <p><strong>Responsabilidad</strong><br>
+    Mundos Mágicos Educativos no se hace responsable del uso indebido de la
+    aplicación ni de posibles interrupciones del servicio por causas técnicas.</p>
+
+    <p><strong>Propiedad intelectual</strong><br>
+    Los contenidos, diseño, textos, imágenes y código de esta aplicación son
+    propiedad de Mundos Mágicos Educativos o se utilizan con fines educativos.
+    Queda prohibida su reproducción total o parcial con fines comerciales sin
+    autorización expresa.</p>
+
+    <button onclick="mostrar('mapa')">⬅ Volver</button>
+  </div>
+</div>
+
+
+
+<footer class="pie">
+  <p>
+    📩 Contacto:
+    <a href="mailto:info@mundosmagicoseducativos.es">
+      info@mundosmagicoseducativos.es
+    </a>
+    ·
+<br>
+    <a href="#" onclick="mostrar('avisoLegal')">
+      Aviso legal
+    </a>
+  </p>
+</footer>
 
 </body>
 </html>
