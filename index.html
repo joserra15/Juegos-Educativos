@@ -677,6 +677,53 @@ button:active{
 
 <script>
   
+const TIEMPO_SYNC = 24 * 60 * 60 * 1000; // 1 día en ms
+
+
+
+function necesitaSincronizar(){
+  const ultimaSync = Number(localStorage.getItem("ultimaSyncFirebase")) || 0;
+  return Date.now() - ultimaSync > TIEMPO_SYNC;
+}
+
+
+function sincronizarSiEsNecesario(){
+  if(!db || !nombreJugador) return;
+  if(!necesitaSincronizar()) return;
+
+  const ref = db.collection("players").doc(nombreJugador);
+
+  ref.get()
+    .then(doc => {
+      if(!doc.exists) return;
+
+      const remoto = doc.data();
+
+      // 🔑 Firebase manda si tiene más puntos
+      if((remoto.puntos || 0) > puntos){
+        puntos = remoto.puntos;
+        liberadas = remoto.liberadas || liberadas;
+        tiemposMejores = remoto.tiemposMejores || tiemposMejores;
+        fallosPorOperacion = remoto.fallosPorOperacion || fallosPorOperacion;
+
+        localStorage.setItem("puntos", puntos);
+        localStorage.setItem("liberadas", JSON.stringify(liberadas));
+        localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
+        localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
+
+        actualizarPuntosUI();
+      }
+
+      // 🕒 Marcar sincronización
+      localStorage.setItem("ultimaSyncFirebase", Date.now());
+    })
+    .catch(err => {
+      console.log("JA 😂 Error sincronizando");
+      console.error(err);
+    });
+}
+
+
 function cerrarHistoria(){
   localStorage.setItem("historiaVista", "true");
   mostrarMapa();
@@ -1581,6 +1628,8 @@ function mostrar(id){
     behavior: "smooth"
   });
 
+sincronizarSiEsNecesario();
+
 }
 
 
@@ -2120,6 +2169,40 @@ function cargarPanelClase(){
 }
 
 
+function sincronizarSiEsNecesario(){
+  if(!db || !nombreJugador) return;
+
+  const ref = db.collection("players").doc(nombreJugador);
+
+  ref.get()
+    .then(doc => {
+      if(!doc.exists) return;
+
+      const remoto = doc.data();
+
+      // 🔑 Si Firebase tiene más puntos, gana Firebase
+      if((remoto.puntos || 0) > puntos){
+        puntos = remoto.puntos;
+        liberadas = remoto.liberadas || liberadas;
+        tiemposMejores = remoto.tiemposMejores || tiemposMejores;
+        fallosPorOperacion = remoto.fallosPorOperacion || fallosPorOperacion;
+
+        // Sincronizar localStorage
+        localStorage.setItem("puntos", puntos);
+        localStorage.setItem("liberadas", JSON.stringify(liberadas));
+        localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
+        localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
+
+        actualizarPuntosUI();
+      }
+    })
+    .catch(err => {
+      console.log("JA 😂 Error sincronizando");
+      console.error(err);
+    });
+}
+
+
 </script>
 
 <div id="confeti"></div>
@@ -2180,6 +2263,9 @@ progreso del juego.</p>
     <a href="#" onclick="mostrar('avisoLegal')">
       Aviso legal
     </a>
+  </p>
+  <p>
+    v 1.0.1
   </p>
 </footer>
 
