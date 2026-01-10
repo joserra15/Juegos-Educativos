@@ -366,9 +366,7 @@ button:active{
 <div id="mapa" class="pantalla activa">
  <div id="botonesFases" class="flex"></div><br>
  <button onclick="mostrarMochila()">🎒 Mochila</button>
-
 <button onclick="mostrarRanking()">🏆 Ranking</button>
-
  <button onclick="mostrarPanel()">📊 Padres</button>
 </div>
 
@@ -536,7 +534,7 @@ button:active{
     </p>
   </div>
 
-  <!-- Unicornios liberados -->
+<!-- Unicornios liberados -->
   <div class="bloque-clase">
     <h3>🦄 Unicornios liberados</h3>
     <p id="unicorniosClase" class="dato-grande">—</p>
@@ -553,7 +551,7 @@ button:active{
       <div id="barraClase"></div>
     </div>
 
-    <p id="textoObjetivo" class="mensaje-clase"></p>
+    <p id="textoObjetivo" class="mensaje-clase">Si conseguis el objetivo comun apareceran nuevos retos en el juego. ¿Podreis conseguirlo?</p>
   </div>
 
   <!-- Tiempo medio -->
@@ -1787,7 +1785,8 @@ db.collection("players")
 
 actualizarHeaderNombre();
 actualizarPuntosUI();
-mostrarMapa();
+mostrar("historia");
+//mostrarMapa();
 
 
       }
@@ -1800,7 +1799,8 @@ mostrarMapa();
       nombreJugador = nombre;
       localStorage.setItem("nombreJugador", nombreJugador);
       actualizarHeaderNombre();
-      mostrarMapa();
+		mostrar("historia");
+      //mostrarMapa();
     });
 }
 
@@ -2102,7 +2102,8 @@ function cargarPanelClase(){
   if(!db) return;
 
   let puntosTotales = 0;
-  let unicornios = new Set();
+  //let unicornios = new Set();
+	let totalUnicornios = 0;
 
   const tiemposPorMundo = {};
   const conteosPorMundo = {};
@@ -2116,7 +2117,7 @@ function cargarPanelClase(){
         puntosTotales += data.puntos || 0;
 
         // Unicornios liberados
-        (data.liberadas || []).forEach(m => unicornios.add(m));
+        totalUnicornios += (data.liberadas || []).length;
 
         // Tiempos
         const tiempos = data.tiemposMejores || {};
@@ -2136,7 +2137,7 @@ function cargarPanelClase(){
 
       // Mostrar unicornios
       document.getElementById("unicorniosClase").textContent =
-        unicornios.size;
+        totalUnicornios;
 
       // Barra de progreso
       const objetivo = 20000;
@@ -2265,7 +2266,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.0.1
+    v 1.0.2
   </p>
 </footer>
 
