@@ -343,6 +343,19 @@ button:active{
   text-decoration:underline;
 }
 
+.boton-colectivo{
+  background: linear-gradient(135deg, #ffd54f, #ffb300);
+  color: #5d3b00;
+  border: 3px dashed #ff9800;
+  opacity: 1;
+}
+
+.boton-colectivo:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255,193,7,0.8);
+}
+
+
 </style>
 </head>
 
@@ -368,6 +381,7 @@ button:active{
  <button onclick="mostrarMochila()">🎒 Mochila</button>
 <button onclick="mostrarRanking()">🏆 Ranking</button>
  <button onclick="mostrarPanel()">📊 Padres</button>
+
 </div>
 
 <!-- JUEGO -->
@@ -677,6 +691,60 @@ button:active{
   
 const TIEMPO_SYNC = 60 * 60 * 1000; // 1 día en ms
 
+let puntosClase = 0;
+let datosClaseCargados = false;
+
+
+const bancoAvanzado = [
+  // ===== TABLA DEL 4 =====
+  { a: 4, b: 12, pista: "Haz 4 × 10 y suma 4 × 2" },
+  { a: 4, b: 15, pista: "Descompón 15 en 10 y 5" },
+  { a: 4, b: 18, pista: "Haz 4 × 20 y resta 4 × 2" },
+  { a: 4, b: 25, pista: "25 es 100 dividido entre 4" },
+  { a: 4, b: 30, pista: "Multiplica 4 × 3 y añade un cero" },
+
+  // ===== TABLA DEL 5 =====
+  { a: 5, b: 12, pista: "Haz 5 × 10 y suma 5 × 2" },
+  { a: 5, b: 14, pista: "Haz 5 × 10 y suma 5 × 4" },
+  { a: 5, b: 18, pista: "Haz 5 × 20 y resta 5 × 2" },
+  { a: 5, b: 25, pista: "Multiplica 100 y divide entre 4" },
+  { a: 5, b: 30, pista: "Multiplica 5 × 3 y añade un cero" },
+
+  // ===== TABLA DEL 6 =====
+  { a: 6, b: 12, pista: "Haz 6 × 10 y suma 6 × 2" },
+  { a: 6, b: 15, pista: "Descompón 15 en 10 y 5" },
+  { a: 6, b: 18, pista: "Haz 6 × 20 y resta 6 × 2" },
+  { a: 6, b: 25, pista: "25 es 100 dividido entre 4" },
+  { a: 6, b: 30, pista: "Multiplica 6 × 3 y añade un cero" },
+
+  // ===== TABLA DEL 7 =====
+  { a: 7, b: 12, pista: "Haz 7 × 10 y suma 7 × 2" },
+  { a: 7, b: 14, pista: "Haz 7 × 7 y duplica" },
+  { a: 7, b: 15, pista: "Descompón 15 en 10 y 5" },
+  { a: 7, b: 20, pista: "Multiplica 7 × 2 y añade un cero" },
+  { a: 7, b: 30, pista: "Multiplica 7 × 3 y añade un cero" },
+
+  // ===== TABLA DEL 8 =====
+  { a: 8, b: 12, pista: "Haz 8 × 10 y suma 8 × 2" },
+  { a: 8, b: 15, pista: "Descompón 15 en 10 y 5" },
+  { a: 8, b: 18, pista: "Haz 8 × 20 y resta 8 × 2" },
+  { a: 8, b: 25, pista: "Multiplica por 100 y divide entre 4" },
+  { a: 8, b: 30, pista: "Multiplica 8 × 3 y añade un cero" },
+
+  // ===== TABLA DEL 9 =====
+  { a: 9, b: 12, pista: "Haz 9 × 10 y suma 9 × 2" },
+  { a: 9, b: 14, pista: "Haz 9 × 10 y suma 9 × 4" },
+  { a: 9, b: 15, pista: "Haz 9 × 10 y suma 9 × 5" },
+  { a: 9, b: 18, pista: "Haz 9 × 20 y resta 9 × 2" },
+  { a: 9, b: 30, pista: "Multiplica 9 × 3 y añade un cero" },
+
+  // ===== RETOS CON CEROS =====
+  { a: 6, b: 40, pista: "Multiplica 6 × 4 y añade un cero" },
+  { a: 8, b: 40, pista: "Multiplica 8 × 4 y añade un cero" },
+  { a: 5, b: 40, pista: "Multiplica 5 × 4 y añade un cero" },
+  { a: 4, b: 40, pista: "Multiplica 4 × 4 y añade un cero" },
+  { a: 7, b: 40, pista: "Multiplica 7 × 4 y añade un cero" }
+];
 
 
 function necesitaSincronizar(){
@@ -705,7 +773,7 @@ function sincronizarSiEsNecesario(){
         fallosPorOperacion = remoto.fallosPorOperacion || fallosPorOperacion;
 
         localStorage.setItem("puntos", puntos);
-        localStorage.setItem("liberadas", JSON.stringify(liberadas));
+        localStorage.setItem("fasesLiberadas", JSON.stringify(liberadas));
         localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
         localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
 
@@ -728,13 +796,6 @@ function cerrarHistoria(){
 }
 
 
-const mundos = [
-  "🌸 Prado Rosa",
-  "🌲 Bosque Esmeralda",
-  "⛰️ Montañas Violetas",
-  "🐉 Valle del Dragón",
-  "🏰 Castillo Arcoíris"
-];
 
 
 
@@ -856,7 +917,7 @@ let puntos = +localStorage.getItem("puntos") || 0;
 let faseActual = 0;
 let indice = 0;
 let operaciones = [];
-let liberadas = JSON.parse(localStorage.getItem("fasesLiberadas")) || [];
+let liberadas = JSON.parse(localStorage.getItem("fasesLiberadas")) || [0];
 let intentosTotales = +localStorage.getItem("intentosTotales") || 0;
 let tablasDominadas = JSON.parse(localStorage.getItem("tablasDominadas")) || [];
 let logros = JSON.parse(localStorage.getItem("logros")) || [];
@@ -905,8 +966,20 @@ const fases = [
    total:12,
    unicornio:"unicornio5.png",
    nombreUnicornio:"Arco"
- }
+ },
+{
+  nombre: "🔮 Santuario del Cálculo",
+  total: 10,
+  unicornio: "unicornio6.png",
+  nombreUnicornio: "Sabio",
+  tipo: "avanzada"
+}
+
 ];
+
+
+
+const mundos = fases.map(f => f.nombre);
 
 
 /* =====================================================
@@ -961,7 +1034,34 @@ function construirMapa(){
  fases.forEach((f,i)=>{
   const b=document.createElement("button");
   b.textContent=f.nombre+(liberadas.includes(i)?" ✅":"");
-  b.disabled=i>liberadas.length;
+  if(fases[i].tipo === "avanzada"){
+
+
+  // Siempre visible y habilitado
+  b.disabled = false;
+
+  if(puntosClase >= 20000){
+    // Ya desbloqueado: comportamiento normal
+    b.onclick = () => iniciarFase(i);
+  }else{
+    // Aún no desbloqueado: modo informativo
+    b.classList.add("boton-colectivo");
+
+    b.onclick = () => {
+      popup(
+  `🌟 Reto de la clase 🌟\n\n` +
+  `Este mundo se desbloqueará al llegar a 20.000 puntos.\n\n` +
+  `¡Cada partida suma para toda la clase!`
+);
+    };
+  }
+
+  
+
+
+}else{
+  b.disabled = i > liberadas.length;
+}
   b.onclick=()=>iniciarFase(i);
   cont.appendChild(b);
  });
@@ -992,6 +1092,14 @@ function sonido(freqs,dur=0.3){
 ===================================================== */
 function iniciarFase(i){
 
+
+if(fases[i].tipo === "avanzada" && puntosClase < 20000){
+  popup("🔒 Este mundo se desbloqueará al llegar a 20.000 puntos.\n\n"+
+  "Progreso actual "+puntosClase+"/ 20000\n\n"+
+  "¡Cada partida suma para toda la clase!");
+  return;
+}
+
 //alert("Entrando en fase " + i);
  faseActual=i;
  indice=0;
@@ -1009,6 +1117,35 @@ document.getElementById("pista").textContent = "";
  iniciarTimer();
 
  operaciones = [];
+
+
+// ===== CASO ESPECIAL: FASE AVANZADA (FASE 6) =====
+if(fases[i].tipo === "avanzada"){
+
+// ===== FASE AVANZADA (MUNDO 6) ALEATORIA =====
+
+// Mezclar banco
+const mezcladas = bancoAvanzado
+  .sort(() => Math.random() - 0.5);
+
+// Seleccionar tantas como indique la fase
+operaciones = mezcladas
+  .slice(0, fases[i].total)
+  .map(op => ({
+    ...op,
+    r: op.a * op.b,
+    texto: `En el santuario hay ${op.a} filas de ${op.b} cristales mágicos. ¿Cuántos hay en total?`
+  }));
+
+document.getElementById("imgUnicornio").src = fases[i].unicornio;
+document.getElementById("mascaraUnicornio").style.height = "0%";
+
+mostrar("juego");
+mostrarOperacion();
+return;
+
+}
+
 
 // ===== CASO ESPECIAL: FASE FINAL =====
 if(i === fases.length - 1){
@@ -1211,7 +1348,10 @@ function responder(){
 if(!modoRepaso){
 
 
-	const puntosGanados = 				puntosDelMundoActual();
+	const puntosGanados =
+  fases[faseActual].tipo === "avanzada"
+    ? 30
+    : puntosDelMundoActual();
 	puntos += puntosGanados;
 
 }
@@ -1229,8 +1369,33 @@ if(porcentaje === 100){
   lanzarConfeti();
 }
 
+
+
   if(indice>=operaciones.length){
-   finalizarFase();
+//alert("LLAMANDO A FINALIZAR FASE");
+// 🔊 Sonido final (permitido porque viene de un click)
+  if (faseActual === fases.length - 1) {
+    sonidoFinalMagico();
+  }
+
+  
+   // Mostrar popup de final de fase
+popup(
+  fases[faseActual].tipo === "avanzada"
+    ? "🌟 ¡Has superado el Santuario del Cálculo!\nEste reto es solo para mentes expertas."
+    : `🦄 ¡Has liberado a ${fases[faseActual].nombreUnicornio}!`,
+  true
+);
+
+// 🔑 Dejar respirar al navegador para que pinte el popup
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    finalizarFase();
+  });
+});
+
+
+
   }else{
    // Mensaje especial si es la última pregunta
 if(indice === operaciones.length - 1){
@@ -1254,31 +1419,33 @@ puntos -= penalizacion;
 
   fallosActual++;
 
-// Mostrar contador de fallos solo en la fase final
-if(faseActual === fases.length - 1){
+// Mostrar contador de fallos desde la fase 5 en adelante
+if(!modoRepaso && faseActual >= 4){
   document.getElementById("contadorFallos").textContent =
     `❌ Fallos: ${fallosActual} / 6`;
 }
 
-// Si llega al máximo de fallos en la fase final
-if(faseActual === fases.length - 1 && fallosActual >= 6){
+// 🔑 SI LLEGA A 6 → CORTAR AQUÍ
+if(!modoRepaso && faseActual >= 4 && fallosActual === 6){
+
   popup(
-    "🚨 Has llegado al máximo de fallos.\nDebes repetir el Castillo Arcoíris."
+    "🚨 Has llegado al máximo de fallos permitidos.\nDebes repetir este reto."
   );
 
-  // Reiniciar estado de la fase final
+  // Reiniciar estado de la fase
   fallosActual = 0;
   modoRepaso = false;
 
-  // Volver al mapa sin liberar la fase
   setTimeout(() => {
     document.getElementById("popup").style.display = "none";
     mostrarMapa();
-document.getElementById("contadorFallos").textContent = "";
-  }, 6000);
+    document.getElementById("contadorFallos").textContent = "";
+  }, 4000);
 
-  return;
+  return; // ⛔ MUY IMPORTANTE
 }
+
+
 
   const clave=`${op.a}x${op.b}`;
   fallosPorOperacion[clave]=(fallosPorOperacion[clave]||0)+1;
@@ -1312,6 +1479,14 @@ function generarPIN(){
 ===================================================== */
 function mostrarPista(op){
   const p = document.getElementById("pista");
+
+
+if(fases[faseActual].tipo === "avanzada" && op.pista){
+  document.getElementById("pista").textContent =
+    "💡 " + op.pista;
+  return;
+}
+
 
   // Primer fallo: pista conceptual
   if(fallosActual === 1){
@@ -1393,6 +1568,8 @@ function calcularNivelAdaptativo(){
 ===================================================== */
 function finalizarFase(){
 
+try{
+
 if(modoRepaso){
   modoRepaso = false;
   popup("🎉 ¡Repaso terminado!");
@@ -1406,16 +1583,31 @@ if(modoRepaso){
 
 
 const puntosGanados = puntosDelMundoActual() * 4;
+
+if(fases[faseActual].tipo === "avanzada"){
+  puntos += 100;
+}
+
 puntos += puntosGanados;
  //puntos+=50;
 
- if(!liberadas.includes(faseActual)){
-  liberadas.push(faseActual);
- }
+if(fases[faseActual].tipo !== "avanzada"){
+  if(!liberadas.includes(faseActual)){
+    liberadas.push(faseActual);
+  }
+}
 
- fases[faseActual].tablas.forEach(t=>{
-  if(!tablasDominadas.includes(t)) tablasDominadas.push(t);
- });
+ if(fases[faseActual].tablas){
+  
+if (Array.isArray(fases[faseActual].tablas)) {
+  fases[faseActual].tablas.forEach(t => {
+    if (!tablasDominadas.includes(t)) {
+      tablasDominadas.push(t);
+    }
+  });
+}
+
+}
 
  const tiempoFinal=Math.floor((Date.now()-tiempoInicio)/1000);
  const nombre=fases[faseActual].nombre;
@@ -1433,29 +1625,48 @@ puntos += puntosGanados;
 
 guardarProgreso();
 
+// ===== POPUP DE FINALIZACIÓN DE FASE =====
 
- if(faseActual===fases.length-1){
-  mostrar("final");
-  sonidoFinalMagico();
+// Mostrar siempre el popup de logro
 
- }else{
 
-popup(
-  `🦄 ¡Has liberado a ${fases[faseActual].nombreUnicornio}!`,
-  true
-);
 
 document.getElementById("mascaraUnicornio").style.height ="0%";
-
 actualizarPuntosUI();
 
-  mostrarMapa();
 
-if(calcularNivelAdaptativo() > 0){
-  logros.push("🚀 ¡El juego ha subido el nivel porque lo estás haciendo genial!");
+
+// ===== TRANSICIÓN TRAS POPUP DE FINALIZACIÓN =====
+
+if(faseActual === fases.length - 1){
+
+  // Dejar visible el popup antes de ir al final
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+    mostrar("final");
+    sonidoFinalMagico();
+  }, 3500);
+
+}else{
+
+  // Dejar visible el popup antes de volver al mapa
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+    mostrarMapa();
+
+    if(calcularNivelAdaptativo() > 0){
+      logros.push("🚀 ¡El juego ha subido el nivel porque lo estás haciendo genial!");
+    }
+
+  }, 2500);
+}
+ 
+}catch(err){
+
+alert (err)
 }
 
- }
+
 }
 
 /* =====================================================
@@ -1549,7 +1760,7 @@ function resetearTodo(){
 if(!confirm("¿Seguro que quieres reiniciar todo el juego?")) return;
   // Borrar datos
   localStorage.removeItem("puntos");
-  localStorage.removeItem("liberadas");
+  localStorage.removeItem("fasesLiberadas");
   localStorage.removeItem("tiemposMejores");
   localStorage.removeItem("fallosPorOperacion");
 
@@ -1562,7 +1773,7 @@ localStorage.removeItem("historiaVista");
   fallosPorOperacion = {};
 
   // Guardar estado inicial correcto
-  localStorage.setItem("liberadas", JSON.stringify(liberadas));
+  localStorage.setItem("fasesLiberadas", JSON.stringify(liberadas));
   localStorage.setItem("puntos", puntos);
 
   // Actualizar interfaz
@@ -1667,6 +1878,8 @@ function guardarEstado(){
    INICIO
 ===================================================== */
 function mostrarMapa(){
+
+cargarPanelClase();
  construirMapa();
 actualizarPuntosUI();
  mostrar("mapa");
@@ -1930,7 +2143,7 @@ mostrarMapa();
 function guardarProgreso(){
   // Guardar siempre en local
   localStorage.setItem("puntos", puntos);
-  localStorage.setItem("liberadas", JSON.stringify(liberadas));
+  localStorage.setItem("fasesLiberadas", JSON.stringify(liberadas));
   localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
   localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
 
@@ -1973,7 +2186,7 @@ function cargarProgresoDesdeFirebase(){
 
       // Sincronizar localStorage
       localStorage.setItem("puntos", puntos);
-      localStorage.setItem("liberadas", JSON.stringify(liberadas));
+      localStorage.setItem("fasesLiberadas", JSON.stringify(liberadas));
       localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
       localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
 
@@ -2051,9 +2264,22 @@ function mostrarRankingRapidos(){
     });
 }
 
+function iniciarAudio(){
+  if(!audioCtx){
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  // 🔑 CLAVE: reanudar contexto si está suspendido
+  if(audioCtx.state === "suspended"){
+    audioCtx.resume();
+  }
+}
+
 
 function reproducirMelodia(notas){
   iniciarAudio();
+
+if(!audioCtx) return;
 
   let tiempo = audioCtx.currentTime;
 
@@ -2081,25 +2307,44 @@ function reproducirMelodia(notas){
   });
 }
 
+
+
 function sonidoFinalMagico(){
   reproducirMelodia([
+    // Ascenso mágico
     { freq: 523, duracion: 0.25 }, // Do
+    { freq: 587, duracion: 0.25 }, // Re
     { freq: 659, duracion: 0.25 }, // Mi
-    { freq: 784, duracion: 0.25 }, // Sol
-    { freq: 1046, duracion: 0.35 }, // Do alto
-    { freq: 988, duracion: 0.25 }, // Si
-    { freq: 1046, duracion: 0.6 }  // Do final largo
+    { freq: 784, duracion: 0.35 }, // Sol
+
+    // Pequeña pausa emocional
+    { freq: 659, duracion: 0.2 },  // Mi
+    { freq: 784, duracion: 0.3 },  // Sol
+    { freq: 880, duracion: 0.35 }, // La
+
+    // Clímax
+    { freq: 1046, duracion: 0.45 }, // Do alto
+    { freq: 988, duracion: 0.25 },  // Si
+    { freq: 1046, duracion: 0.6 },  // Do alto
+
+    // Resolución mágica final
+    { freq: 784, duracion: 0.4 },   // Sol
+    { freq: 659, duracion: 0.3 },   // Mi
+    { freq: 523, duracion: 0.9 }    // Do final largo
   ]);
 }
 
 
 function puntosDelMundoActual(){
-  return puntosPorMundo[faseActual.nombre] || 10;
+  const fase = fases[faseActual];
+  return puntosPorMundo[fase.nombre] || 10;
 }
 
 
 function cargarPanelClase(){
   if(!db) return;
+
+datosClaseCargados = true;
 
   let puntosTotales = 0;
   //let unicornios = new Set();
@@ -2115,6 +2360,9 @@ function cargarPanelClase(){
 
         // Puntos
         puntosTotales += data.puntos || 0;
+
+
+puntosClase += data.puntos || 0;
 
         // Unicornios liberados
         totalUnicornios += (data.liberadas || []).length;
@@ -2167,42 +2415,10 @@ function cargarPanelClase(){
     .catch(err => {
       console.error("Error cargando panel de clase", err);
     });
+
+construirMapa();
+
 }
-
-
-function sincronizarSiEsNecesario(){
-  if(!db || !nombreJugador) return;
-
-  const ref = db.collection("players").doc(nombreJugador);
-
-  ref.get()
-    .then(doc => {
-      if(!doc.exists) return;
-
-      const remoto = doc.data();
-
-      // 🔑 Si Firebase tiene más puntos, gana Firebase
-      if((remoto.puntos || 0) > puntos){
-        puntos = remoto.puntos;
-        liberadas = remoto.liberadas || liberadas;
-        tiemposMejores = remoto.tiemposMejores || tiemposMejores;
-        fallosPorOperacion = remoto.fallosPorOperacion || fallosPorOperacion;
-
-        // Sincronizar localStorage
-        localStorage.setItem("puntos", puntos);
-        localStorage.setItem("liberadas", JSON.stringify(liberadas));
-        localStorage.setItem("tiemposMejores", JSON.stringify(tiemposMejores));
-        localStorage.setItem("fallosPorOperacion", JSON.stringify(fallosPorOperacion));
-
-        actualizarPuntosUI();
-      }
-    })
-    .catch(err => {
-      console.log("JA 😂 Error sincronizando");
-      console.error(err);
-    });
-}
-
 
 </script>
 
@@ -2266,7 +2482,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.0.3
+    v 1.1.0
   </p>
 </footer>
 
