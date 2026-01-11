@@ -1029,43 +1029,46 @@ function mensajeAleatorio(arr){
    MAPA
 ===================================================== */
 function construirMapa(){
- const cont=document.getElementById("botonesFases");
- cont.innerHTML="";
- fases.forEach((f,i)=>{
-  const b=document.createElement("button");
-  b.textContent=f.nombre+(liberadas.includes(i)?" ✅":"");
-  if(fases[i].tipo === "avanzada"){
+  const cont = document.getElementById("botonesFases");
+  cont.innerHTML = "";
 
+  fases.forEach((f, i) => {
+    const b = document.createElement("button");
+    b.textContent = f.nombre + (liberadas.includes(i) ? " ✅" : "");
 
-  // Siempre visible y habilitado
-  b.disabled = false;
+    // ===== PRIORIDAD ABSOLUTA: FASE AVANZADA =====
+    if (f.tipo === "avanzada") {
 
-  if(puntosClase >= 20000){
-    // Ya desbloqueado: comportamiento normal
+      b.disabled = false;
+
+      if (puntosClase >= 20000) {
+        // Desbloqueada de verdad
+        b.classList.add("desbloqueado");
+        b.onclick = () => iniciarFase(i);
+      } else {
+        // Reto colectivo (informativo)
+        b.classList.add("boton-colectivo");
+        b.onclick = () => {
+          popup(
+            `🌟 Reto de la clase 🌟\n\n` +
+            `Este mundo se desbloqueará al llegar a 20.000 puntos.\n\n` +
+            `¡Cada partida suma para toda la clase!`
+          );
+        };
+      }
+
+      cont.appendChild(b);
+      return; // ⛔ NO seguir con la lógica normal
+    }
+
+    // ===== RESTO DE FASES =====
+    b.disabled = i > liberadas.length;
     b.onclick = () => iniciarFase(i);
-  }else{
-    // Aún no desbloqueado: modo informativo
-    b.classList.add("boton-colectivo");
 
-    b.onclick = () => {
-      popup(
-  `🌟 Reto de la clase 🌟\n\n` +
-  `Este mundo se desbloqueará al llegar a 20.000 puntos.\n\n` +
-  `¡Cada partida suma para toda la clase!`
-);
-    };
-  }
+    cont.appendChild(b);
+  });
 
-  
-
-
-}else{
-  b.disabled = i > liberadas.length;
-}
-  b.onclick=()=>iniciarFase(i);
-  cont.appendChild(b);
- });
- actualizarProgreso();
+  actualizarProgreso();
 }
 
 /* =====================================================
@@ -2482,7 +2485,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.1.0
+    v 1.1.1
   </p>
 </footer>
 
