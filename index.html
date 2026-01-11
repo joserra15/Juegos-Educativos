@@ -2364,9 +2364,6 @@ datosClaseCargados = true;
         // Puntos
         puntosTotales += data.puntos || 0;
 
-
-puntosClase += data.puntos || 0;
-
         // Unicornios liberados
         totalUnicornios += (data.liberadas || []).length;
 
@@ -2396,7 +2393,9 @@ puntosClase += data.puntos || 0;
 
       document.getElementById("barraClase").style.width = porcentaje + "%";
 
-      document.getElementById("textoObjetivo").textContent =
+puntosClase = puntosTotales;
+
+document.getElementById("textoObjetivo").textContent =
         puntosTotales >= objetivo
           ? "🎉 ¡Objetivo conseguido! La clase ha logrado una gran hazaña."
           : `Faltan ${objetivo - puntosTotales} puntos para lograrlo.`;
@@ -2485,7 +2484,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.1.1
+    v 1.1.2
   </p>
 </footer>
 
