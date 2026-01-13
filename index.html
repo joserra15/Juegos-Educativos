@@ -50,6 +50,52 @@ header{
 header img{
  width:48px;height:48px;border-radius:50%;
 }
+
+
+.app-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+
+
+.header-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.nombre-jugador{
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.puntos{
+  font-size: 0.9em;
+}
+
+.header-right{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+
 h1,h2,h3{text-align:center}
 button{
  padding:12px 18px;
@@ -325,7 +371,7 @@ button:active{
 /* ===== PIE DE PÁGINA ===== */
 
 .pie{
-  margin-top:40px;
+  margin-top:20px;
   padding:16px 10px;
   text-align:center;
   font-size:0.85em;
@@ -355,34 +401,153 @@ button:active{
   box-shadow: 0 0 12px rgba(255,193,7,0.8);
 }
 
+.bottom-nav{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 -2px 6px rgba(0,0,0,.15);
+}
+
+.bottom-nav button{
+  background: none;
+  border: none;
+  font-size: 1.6em;
+  cursor: pointer;
+  transition: transform .15s;
+}
+
+.bottom-nav button:active{
+  transform: scale(1.2);
+}
+
+.pantalla{
+  padding: 16px 16px 88px;
+}
+
+
+.app-header,
+.bottom-nav{
+  background:
+    linear-gradient(180deg, #f4f4f4, #e0e0e0),
+    radial-gradient(circle at top left, rgba(255,255,255,0.6), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(200,200,255,0.25), transparent 50%);
+}
+
+
+.app-header{
+  border-bottom: 1px solid #ddd;
+}
+
+.bottom-nav{
+  border-top: 1px solid #ddd;
+}
+
+body{
+  padding-top: 64px;
+}
+
+footer{
+  margin-top: 40px;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.app-header::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:20%;
+  right:20%;
+  height:2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(180,150,255,0.8),
+    transparent
+  );
+}
+
+.bottom-nav::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20%;
+  right:20%;
+  height:2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(180,150,255,0.8),
+    transparent
+  );
+}
+
+@keyframes brilloMagico{
+  0%,100%{opacity:0.2;}
+  50%{opacity:0.5;}
+}
+
+.app-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.3),
+    transparent 60%
+  );
+  animation: brilloMagico 6s infinite;
+  pointer-events:none;
+}
+
+.titulo-mapa{
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
 
 </style>
 </head>
 
 <body>
 
-<header>
- <img src="avatar.png">
- <div>
-  👧 <span id="nombreJugadorHeader"></span><br>
-  ⭐ <span id="puntos">0</span> puntos
- </div>
- <div style="margin-left:auto">
-  🌍 <span id="progresoMundos"></span>
-  <span id="avatarProgreso">🧍‍♀️</span>
- </div>
+<header class="app-header">
+  <div class="header-left">
+    <img src="avatar.png" class="avatar">
+    <div>
+      <div id="nombreJugadorHeader" class="nombre-jugador">Lucía</div>
+      <div class="puntos">⭐ <span id="puntos">0</span></div>
+    </div>
+  </div>
+
+  <div class="header-right">
+    🦄 <span id="progresoMundos">0 / 6</span>
+<span id="avatarProgreso">🧍‍♀️</span>
+  </div>
 </header>
 
-<h1>🦄 El Mundo de los Unicornios</h1>
 
-<!-- MAPA -->
 <div id="mapa" class="pantalla activa">
- <div id="botonesFases" class="flex"></div><br>
+  <h1 class="titulo-mapa">🦄 El Mundo de los Unicornios</h1>
+
+  <div id="botonesFases" class="flex"></div>
+</div>
+
+<!--
  <button onclick="mostrarMochila()">🎒 Mochila</button>
 <button onclick="mostrarRanking()">🏆 Ranking</button>
  <button onclick="mostrarPanel()">📊 Padres</button>
-
+-->
 </div>
+
 
 <!-- JUEGO -->
 <div id="juego" class="pantalla">
@@ -406,7 +571,7 @@ button:active{
   </div>
 </div>
 
- <button onclick="volverMapa()">Volver</button>
+ <button onclick="mostrarMapa()">Volver</button>
  </div>
 </div>
 
@@ -437,7 +602,7 @@ button:active{
 </table>
 
  </div><br>
- <button onclick="volverMapa()">Volver</button>
+ <button onclick="mostrarMapa()">Volver</button>
 </div>
 
 <!-- PANEL PADRES -->
@@ -465,7 +630,7 @@ button:active{
    🔄 Reiniciar todo
   </button>
  </div><br>
- <button onclick="volverMapa()">Volver</button>
+ <button onclick="mostrarMapa()">Volver</button>
 </div>
 
 <!-- FINAL -->
@@ -473,7 +638,7 @@ button:active{
  <h2>🌈 ¡Has liberado a todos los unicornios <span id="nombreJugadorHeader"></span>, ahora son libres!</h2>
  <img src="unicornios.png">
 
- <button onclick="volverMapa()">Volver</button>
+ <button onclick="mostrarMapa()">Volver</button>
 
 </div>
 
@@ -1845,10 +2010,6 @@ sincronizarSiEsNecesario();
 }
 
 
-function volverMapa(){
- mostrarMapa();
-}
-
 function actualizarPuntosUI(){
 
 const puntosEl = document.getElementById("puntos");
@@ -1881,11 +2042,14 @@ function guardarEstado(){
    INICIO
 ===================================================== */
 function mostrarMapa(){
-
-cargarPanelClase();
+try{
+ cargarPanelClase();
  construirMapa();
-actualizarPuntosUI();
+ actualizarPuntosUI();
  mostrar("mapa");
+}catch(err){
+	alert(err);
+}
 
 }
 
@@ -2469,8 +2633,6 @@ progreso del juego.</p>
   </div>
 </div>
 
-
-
 <footer class="pie">
   <p>
     📩 Contacto:
@@ -2484,9 +2646,21 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.1.3
+    v 1.2.0
   </p>
+<p><br></p>
 </footer>
+
+
+<nav class="bottom-nav">
+  <button onclick="mostrarMapa()" title="Mapa">🗺️</button>
+  <button onclick="mostrarMochila()" title="Mochila">🎒</button>
+  <button onclick="mostrarRanking()" title="Ranking">🏆</button>
+  <button onclick="mostrarPanel()" title="Familia">👨‍👩‍👧</button>
+</nav>
+
+
+
 
 </body>
 </html>
