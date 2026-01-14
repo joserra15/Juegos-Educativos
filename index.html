@@ -1211,7 +1211,7 @@ if (f.tipo === "avanzada") {
   const puntosSuficientes = puntosClase >= puntosNecesarios;
 
 
-  if (puntosClase && puntosSuficientes) {
+  if (faseAnteriorSuperada && puntosSuficientes) {
     // 🔓 Desbloqueada de verdad
     b.disabled = false;
     b.onclick = () => iniciarFase(i);
@@ -2702,7 +2702,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.3.0
+    v 1.3.1
   </p>
 <p><br></p>
 </footer>
