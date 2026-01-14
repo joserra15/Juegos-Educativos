@@ -969,7 +969,9 @@ const puntosPorMundo = {
   "🌲 Bosque Esmeralda": 12,
   "⛰️ Montañas Violetas": 15,
   "🐉 Valle del Dragón": 18,
-  "🏰 Castillo Arcoíris": 25
+  "🏰 Castillo Arcoíris": 25,
+  "🔮 Santuario del Cálculo": 35
+  
 };
 
   const firebaseConfig = {
@@ -1527,13 +1529,10 @@ function responder(){
 	document.getElementById("pista").textContent = "";
 
 if(!modoRepaso){
-
-
-	const puntosGanados =
-  fases[faseActual].tipo === "avanzada"
-    ? 30
-    : puntosDelMundoActual();
-	puntos += puntosGanados;
+	
+	// Sistema unificado de puntos por fase
+const puntosGanados = puntosDelMundoActual();
+puntos += puntosGanados;
 
 }
 
@@ -1765,17 +1764,15 @@ if(modoRepaso){
 
 const puntosGanados = puntosDelMundoActual() * 4;
 
-if(fases[faseActual].tipo === "avanzada"){
-  puntos += 100;
-}
+
 
 puntos += puntosGanados;
  //puntos+=50;
 
-if(fases[faseActual].tipo !== "avanzada"){
-  if(!liberadas.includes(faseActual)){
-    liberadas.push(faseActual);
-  }
+
+// ✅ Marcar fase como superada (todas, incluidas avanzadas)
+if(!liberadas.includes(faseActual)){
+  liberadas.push(faseActual);
 }
 
  if(fases[faseActual].tablas){
@@ -2702,7 +2699,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.3.1
+    v 1.3.2
   </p>
 <p><br></p>
 </footer>
