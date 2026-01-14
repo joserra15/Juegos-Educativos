@@ -1137,7 +1137,8 @@ const fases = [
   total: 15,
   unicornio: "unicornio6.png",
   nombreUnicornio: "Sabio",
-  tipo: "avanzada"
+  tipo: "avanzada",
+  desbloqueoClase: 20000
 }
 
 ];
@@ -1201,30 +1202,39 @@ function construirMapa(){
     const b = document.createElement("button");
     b.textContent = f.nombre + (liberadas.includes(i) ? " ✅" : "");
 
-    // ===== PRIORIDAD ABSOLUTA: FASE AVANZADA =====
-    if (f.tipo === "avanzada") {
 
-      b.disabled = false;
+// ===== FASES AVANZADAS (DESBLOQUEO COLECTIVO) =====
+if (f.tipo === "avanzada") {
 
-      if (puntosClase >= 20000) {
-        // Desbloqueada de verdad
-        b.classList.add("desbloqueado");
-        b.onclick = () => iniciarFase(i);
-      } else {
-        // Reto colectivo (informativo)
-        b.classList.add("boton-colectivo");
-        b.onclick = () => {
-          popup(
-            `🌟 Reto de la clase 🌟\n\n` +
-            `Este mundo se desbloqueará al llegar a 20.000 puntos.\n\n` +
-            `¡Cada partida suma para toda la clase!`
-          );
-        };
-      }
+  const faseAnteriorSuperada = liberadas.includes(i - 1);
+  const puntosNecesarios = f.desbloqueoClase || Infinity;
+  const puntosSuficientes = puntosClase >= puntosNecesarios;
 
-      cont.appendChild(b);
-      return; // ⛔ NO seguir con la lógica normal
-    }
+
+  if (puntosClase && puntosSuficientes) {
+    // 🔓 Desbloqueada de verdad
+    b.disabled = false;
+    b.onclick = () => iniciarFase(i);
+  } else {
+    // 🔒 Bloqueada (aunque visible)
+    b.disabled = true;
+    b.classList.add("boton-colectivo");
+
+    b.onclick = () => {
+      popup(
+        "🌟 Reto colectivo 🌟\n\n" +
+        "Este mundo se desbloquea cuando:\n" +
+        "✔️ completes el mundo anterior\n" +
+        `⭐ la clase llegue a ${puntosNecesarios.toLocaleString()} puntos\n\n` +
+        `Progreso actual: ${puntosClase.toLocaleString()} / ${puntosNecesarios.toLocaleString()}`
+      );
+    };
+  }
+
+  cont.appendChild(b);
+  return;
+}
+
 
     // ===== RESTO DE FASES =====
     b.disabled = i > liberadas.length;
@@ -1271,11 +1281,14 @@ if(fases[i].tipo === "avanzada" && puntosClase < 20000){
 //alert("Entrando en fase " + i);
  faseActual=i;
  indice=0;
- fallosActual=0;
-document.getElementById("contadorFallos").textContent = "";
-if(i === fases.length - 1){
+fallosActual = 0;
+
+// Mostrar contador de fallos en fases con límite (Castillo y Santuario)
+if(!modoRepaso && i >= 4){
   document.getElementById("contadorFallos").textContent =
     "❌ Fallos: 0 / 6";
+}else{
+  document.getElementById("contadorFallos").textContent = "";
 }
 
 document.getElementById("pista").textContent = "";
@@ -2043,10 +2056,14 @@ function guardarEstado(){
 ===================================================== */
 function mostrarMapa(){
 try{
- cargarPanelClase();
- construirMapa();
- actualizarPuntosUI();
- mostrar("mapa");
+
+cargarPuntosClase(() => {
+		//cargarPanelClase();
+      construirMapa();
+      actualizarPuntosUI();
+      mostrar("mapa");
+    });
+  
 }catch(err){
 	alert(err);
 }
@@ -2586,6 +2603,45 @@ construirMapa();
 
 }
 
+
+function cargarPuntosClase(callback){
+
+  if(!db){
+    if(callback) callback();
+    return;
+  }
+
+  // Si ya está cargado, no volver a pedirlo
+  if(datosClaseCargados){
+    if(callback) callback();
+    return;
+  }
+
+  datosClaseCargados = true;
+
+  db.collection("players").get()
+    .then(snapshot => {
+
+      let total = 0;
+
+      snapshot.forEach(doc => {
+        total += doc.data().puntos || 0;
+      });
+
+      puntosClase = total;
+
+      // 🔑 AVISAR DE QUE YA ESTÁ LISTO
+      if(callback) callback();
+
+    })
+    .catch(err => {
+      console.log("Error cargando puntos de la clase");
+      console.error(err);
+
+      if(callback) callback(); // para no bloquear la app
+    });
+}
+
 </script>
 
 <div id="confeti"></div>
@@ -2646,7 +2702,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.2.0
+    v 1.3.0
   </p>
 <p><br></p>
 </footer>
