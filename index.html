@@ -514,6 +514,88 @@ footer{
   margin-bottom: 20px;
 }
 
+
+.mural-mensajes{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mensaje-mural{
+  background: rgba(255,255,255,0.9);
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  font-size: 0.95em;
+}
+
+.mensaje-sistema{
+  border-left: 4px solid #9575cd;
+  background: #f3e5f5;
+}
+
+.mensaje-jugador{
+  border-left: 4px solid #81c784;
+}
+
+.texto-ayuda{
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.mural-botones{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mural-botones button{
+  font-size: 1.4em;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: none;
+  background: #ede7f6;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+
+.mural-botones button:active{
+  transform: scale(0.95);
+}
+
+.mensaje-con-like{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-btn{
+  background: transparent;
+  border: none;
+  font-size: 0.9em;
+  cursor: pointer;
+  color: #555;
+}
+
+.like-btn.like-activo{
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.like-btn:disabled{
+  cursor: default;
+  opacity: 0.6;
+}
+
+.fecha-mural{
+  font-size: 0.7em;
+  color: #777;
+  margin-bottom: 2px;
+}
+
 </style>
 </head>
 
@@ -724,7 +806,7 @@ footer{
 
   <!-- Progreso colectivo -->
   <div class="bloque-clase">
-    <h3>🌈 Objetivo colectivo: 20.000 puntos</h3>
+    <h3>🌈 Nuevo objetivo colectivo: 60.000 puntos</h3>
 
     <div class="barra-objetivo">
       <div id="barraClase"></div>
@@ -846,7 +928,21 @@ footer{
 
 
 
+<div id="mural" class="pantalla">
+  <h2 class="titulo-mapa">🌈 Mural Mágico de la Clase</h2>
 
+  <div id="muralBotones" class="mural-botones"></div>
+
+<p class="texto-ayuda" id="contadorMensajes">
+  💬 Mensajes disponibles hoy: <strong>0</strong>
+</p>
+
+  <p class="texto-ayuda">
+    Aquí aparecen los mensajes mágicos de la clase y los logros importantes.
+  </p>
+
+  <div id="muralMensajes" class="mural-mensajes"></div>
+</div>
 
 
 
@@ -1534,6 +1630,22 @@ if(!modoRepaso){
 const puntosGanados = puntosDelMundoActual();
 puntos += puntosGanados;
 
+
+  // 🎯 GANAR MENSAJES PARA EL MURAL
+  const totalGanados = Math.floor(puntos / CONFIG_MURAL.puntosPorMensaje);
+  const maxPermitidos = CONFIG_MURAL.maxMensajesDia;
+
+  mensajesDisponibles = Math.min(
+    totalGanados - mensajesUsadosHoy,
+    maxPermitidos - mensajesUsadosHoy
+  );
+
+  mensajesDisponibles = Math.max(0, mensajesDisponibles);
+
+  localStorage.setItem("mensajesDisponibles", mensajesDisponibles);
+
+actualizarContadorMensajes();
+
 }
 
   indice++;
@@ -1775,6 +1887,10 @@ if(!liberadas.includes(faseActual)){
   liberadas.push(faseActual);
 }
 
+agregarMensajeSistema(
+  `🦄 ${nombreJugador} ha liberado a ${fases[faseActual].nombreUnicornio}`
+);
+
  if(fases[faseActual].tablas){
   
 if (Array.isArray(fases[faseActual].tablas)) {
@@ -1793,10 +1909,21 @@ if (Array.isArray(fases[faseActual].tablas)) {
  if(!tiemposMejores[nombre] || tiempoFinal < tiemposMejores[nombre]){
   tiemposMejores[nombre]=tiempoFinal;
   logros.push(`⏱️ Mejor tiempo en ${nombre}: ${tiempoFinal}s`);
+
+agregarMensajeSistema(
+  `⏱️ ${nombreJugador} ha conseguido un nuevo récord en ${nombre}`
+);
+
+
  }
 
  if(fallosActual===0){
   logros.push(`🏅 Fase perfecta: ${nombre}`);
+
+agregarMensajeSistema(
+  `🏅 ${nombreJugador} ha hecho una fase perfecta`
+);
+
  }
 
  guardarEstado();
@@ -2111,6 +2238,10 @@ const id = nombre.toLowerCase();
   // Si Firebase no está disponible, dejamos pasar
   if(!db){
     nombreJugador = nombre;
+
+agregarMensajeSistema(
+  `✨ ${nombreJugador} se ha unido al Reino de los Unicornios`
+);
     localStorage.setItem("nombreJugador", nombreJugador);
     actualizarHeaderNombre();
     mostrarMapa();
@@ -2163,6 +2294,10 @@ const pin = generarPIN();
 
 nombreJugador = nombre;
 puntos = 0;
+
+agregarMensajeSistema(
+  `✨ ${nombreJugador} se ha unido al Reino de los Unicornios`
+);
 
 localStorage.setItem("nombreJugador", nombreJugador);
 localStorage.setItem("puntos", puntos);
@@ -2566,7 +2701,7 @@ datosClaseCargados = true;
         totalUnicornios;
 
       // Barra de progreso
-      const objetivo = 20000;
+      const objetivo = 60000;
       const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
 
       document.getElementById("barraClase").style.width = porcentaje + "%";
@@ -2576,7 +2711,7 @@ puntosClase = puntosTotales;
 document.getElementById("textoObjetivo").textContent =
         puntosTotales >= objetivo
           ? "🎉 ¡Objetivo conseguido! La clase ha logrado una gran hazaña."
-          : `Faltan ${objetivo - puntosTotales} puntos para lograrlo.`;
+          : `Faltan ${objetivo - puntosTotales} puntos para lograr el objetivo y desbloquear nuevos mundos. ¿Podreis consegurlo?`;
 
       // Tabla de tiempos medios
       const tbody = document.getElementById("tablaTiemposClase");
@@ -2639,6 +2774,337 @@ function cargarPuntosClase(callback){
     });
 }
 
+
+function mostrarMural(){
+try{
+  mostrar("mural");
+	pintarBotonesMural();
+	actualizarContadorMensajes();
+	escucharMural();
+	
+	}catch(err){
+	 alert(err);
+	}
+}
+
+
+
+function agregarMensajeSistema(texto){
+
+  // Pintar en pantalla (si estamos en el mural)
+  const cont = document.getElementById("muralMensajes");
+  if(cont){
+    const div = document.createElement("div");
+    div.className = "mensaje-mural mensaje-sistema";
+    div.textContent = texto;
+    cont.appendChild(div);
+    cont.scrollTop = cont.scrollHeight;
+  }
+
+  // Guardar en Firebase
+  if(!db) return;
+
+  db.collection("mural").add({
+    tipo: "sistema",
+    texto: texto,
+	 likes: {},
+    fecha: firebase.firestore.FieldValue.serverTimestamp()
+  }).catch(err => {
+    console.log("Error guardando mensaje del mural");
+    console.error(err);
+  });
+}
+
+
+function formatearFechaHora(timestamp){
+  if(!timestamp) return "";
+
+  const fecha = timestamp.toDate();
+  const dia = fecha.toLocaleDateString("es-ES", {
+    day: "2-digit",
+    month: "2-digit"
+  });
+  const hora = fecha.toLocaleTimeString("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
+  return `${dia} ${hora}`;
+}
+
+function escucharMural(){
+
+  if(!db) return;
+
+  db.collection("mural")
+    .orderBy("fecha", "desc")
+    .limit(30)
+    .onSnapshot(snapshot => {
+
+      const cont = document.getElementById("muralMensajes");
+      if(!cont) return;
+
+      cont.innerHTML = "";
+
+      snapshot.forEach(doc => {
+        const m = doc.data();
+        const div = document.createElement("div");
+        
+			div.className = 
+  m.tipo === "sistema"
+    ? "mensaje-mural mensaje-sistema"
+    : "mensaje-mural mensaje-jugador";
+
+
+        //div.textContent = m.texto;
+
+
+const haDadoLike = m.likes && m.likes[nombreJugador];
+const totalLikes = m.likes ? Object.keys(m.likes).length : 0;
+
+
+
+div.innerHTML = `
+  <div class="fecha-mural">
+    ${formatearFechaHora(m.fecha)}
+  </div>
+
+  <div class="mensaje-con-like">
+    <div class="texto-mural">${m.texto}</div>
+
+    <button
+      class="like-btn ${haDadoLike ? 'like-activo' : ''}"
+      onclick="toggleLike('${doc.id}')"
+      ${haDadoLike ? 'disabled' : ''}
+    >
+      👍 ${totalLikes}
+    </button>
+  </div>
+`;
+
+      
+
+        cont.appendChild(div);
+      });
+
+      cont.scrollTop = cont.scrollHeight;
+    });
+}
+
+//agregarMensajeSistema("✨ Bienvenidos al Mural Mágico de la Clase");
+
+
+const mensajesPredefinidos = {
+  animo: {
+    icono: "⭐",
+    texto: "¡Vamos equipo!"
+  },
+  logrado: {
+    icono: "🎉",
+    texto: "¡Reto superado!"
+  },
+  esfuerzo: {
+    icono: "💪",
+    texto: "Lo voy a intentar otra vez"
+  },
+  clase: {
+    icono: "🌈",
+    texto: "¡La clase va genial!"
+  },
+  cerca: {
+    icono: "🔮",
+    texto: "¡Estamos cerca del siguiente mundo!"
+  },
+  unicornio: {
+    icono: "🦄",
+    texto: "¡Los unicornios nos necesitan!"
+  },
+  estrellas: {
+    icono: "✨",
+    texto: "¡Buen trabajo!"
+  },
+  tiempo: {
+    icono: "⏱️",
+    texto: "¡Hemos mejorado el tiempo!"
+  },
+  ayuda: {
+    icono: "🤝",
+    texto: "¡Gracias por ayudar!"
+  },
+  magia: {
+    icono: "🌟",
+    texto: "¡La magia está funcionando!"
+  }
+};
+
+
+function toggleLike(idMensaje){
+  if(!db || !nombreJugador) return;
+
+  const ref = db.collection("mural").doc(idMensaje);
+
+  ref.get().then(doc => {
+    if(!doc.exists) return;
+
+    const data = doc.data();
+    const likes = data.likes || {};
+
+    if(likes[nombreJugador]) return; // ya reaccionó
+
+    ref.update({
+      [`likes.${nombreJugador}`]: true
+    });
+  }).catch(err => {
+    console.log("Error al dar like");
+    console.error(err);
+  });
+}
+
+let ultimoMensajeMural = 0;
+
+function enviarMensajePredefinido(idMensaje){
+
+
+comprobarResetDiarioMensajes();
+
+if(mensajesDisponibles <= 0){
+  popup(
+    "🔒 No tienes mensajes mágicos disponibles.\n\n" +
+    "Juega partidas para ganar más ✨"
+  );
+  return;
+}
+
+
+if (mensajesUsadosHoy === CONFIG_MURAL.maxMensajesDia){
+
+popup(
+    "🔒 Ya has enviado el maximo de mensajes permitido hoy ✨"
+  );
+  return;
+
+}
+
+  const texto = mensajesPredefinidos[idMensaje];
+  if(!texto) return;
+
+  const ahora = Date.now();
+  if(ahora - ultimoMensajeMural < 8000){
+    popup("⏳ Espera un poco antes de enviar otro mensaje");
+    return;
+  }
+  ultimoMensajeMural = ahora;
+
+
+mensajesUsadosHoy++;
+
+localStorage.setItem("mensajesDisponibles", mensajesDisponibles);
+localStorage.setItem("mensajesUsadosHoy", mensajesUsadosHoy);
+
+actualizarContadorMensajes();
+
+  // Guardar en Firebase
+  if(!db || !nombreJugador) return;
+
+  db.collection("mural").add({
+    tipo: "jugador",
+    texto: `${nombreJugador}: ${texto.texto}`,
+    fecha: firebase.firestore.FieldValue.serverTimestamp()
+  }).catch(err => {
+    console.log("Error enviando mensaje predefinido");
+    console.error(err);
+  });
+}
+
+
+const reaccionesDisponibles = ["👏", "❤️", "👍", "⭐"];
+
+
+
+function reaccionarMensaje(idMensaje, emoji){
+  if(!db) return;
+
+  const ref = db.collection("mural").doc(idMensaje);
+
+  ref.get().then(doc => {
+    if(!doc.exists) return;
+
+    const data = doc.data();
+    const reacciones = data.reacciones || {};
+
+    const valorActual = reacciones[emoji] || 0;
+
+    return ref.update({
+      [`reacciones.${emoji}`]: valorActual + 1
+    });
+  }).catch(err => {
+    console.log("Error al reaccionar al mensaje");
+    console.error(err);
+  });
+}
+
+
+
+function pintarBotonesMural(){
+  const cont = document.getElementById("muralBotones");
+  if(!cont) return;
+
+  cont.innerHTML = "";
+
+  Object.entries(mensajesPredefinidos).forEach(([id, texto]) => {
+    // El emoji será el botón (primer carácter del texto)
+    const emoji = texto.icono;
+
+    const btn = document.createElement("button");
+    btn.textContent = emoji;
+
+	btn.title = texto.texto;
+
+    
+    btn.onclick = () => enviarMensajePredefinido(id);
+
+    cont.appendChild(btn);
+  });
+}
+
+/* ===============================
+   CONFIGURACIÓN MURAL MÁGICO
+================================ */
+
+const CONFIG_MURAL = {
+  maxMensajesDia: 5,          // 🔧 Máximo de mensajes diarios
+  puntosPorMensaje: 150       // 🔧 Puntos necesarios para ganar 1 mensaje
+};
+
+let mensajesDisponibles = 0;
+let mensajesUsadosHoy = 0;
+let ultimoDiaMensajes = localStorage.getItem("ultimoDiaMensajes") || "";
+
+//ultimoDiaMensajes=null;
+
+
+function comprobarResetDiarioMensajes(){
+  const hoy = new Date().toISOString().slice(0,10);
+
+  if(ultimoDiaMensajes !== hoy){
+    mensajesDisponibles = 0;
+    mensajesUsadosHoy = 0;
+    ultimoDiaMensajes = hoy;
+
+    localStorage.setItem("ultimoDiaMensajes", hoy);
+    localStorage.setItem("mensajesDisponibles", mensajesDisponibles);
+    localStorage.setItem("mensajesUsadosHoy", mensajesUsadosHoy);
+  }
+}
+
+function actualizarContadorMensajes(){
+  const el = document.getElementById("contadorMensajes");
+  if(!el) return;
+
+  el.innerHTML =
+    `💬 Mensajes disponibles hoy: <strong>${mensajesDisponibles}</strong> / ${CONFIG_MURAL.maxMensajesDia}. Enviados ${mensajesUsadosHoy}`;
+}
+
 </script>
 
 <div id="confeti"></div>
@@ -2699,7 +3165,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.3.2
+    v 1.4.0
   </p>
 <p><br></p>
 </footer>
@@ -2708,6 +3174,8 @@ progreso del juego.</p>
 <nav class="bottom-nav">
   <button onclick="mostrarMapa()" title="Mapa">🗺️</button>
   <button onclick="mostrarMochila()" title="Mochila">🎒</button>
+	<button onclick="mostrarMural()" 
+title="Mural">🌈</button>
   <button onclick="mostrarRanking()" title="Ranking">🏆</button>
   <button onclick="mostrarPanel()" title="Familia">👨‍👩‍👧</button>
 </nav>
