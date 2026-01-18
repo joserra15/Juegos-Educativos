@@ -1067,7 +1067,8 @@ const puntosPorMundo = {
   "🐉 Valle del Dragón": 18,
   "🏰 Castillo Arcoíris": 25,
   "🔮 Santuario del Cálculo": 35,
-"🌀 Torre del Hechizo": 50
+"🌀 Torre del Hechizo": 40,
+"🧮 Forja de los Gigantes": 55
   
 };
 
@@ -1093,6 +1094,8 @@ try{
   console.log("JA 😂 Firebase no disponible");
   console.error(e);
 }
+
+
 
 
 
@@ -1247,6 +1250,14 @@ const fases = [
   tipo: "avanzada",
   desbloqueoClase: 0,
   siempreActiva: true
+},
+{
+  nombre: "🧮 Forja de los Gigantes",
+  total: 15,
+  unicornio: "unicornio8.png",
+  nombreUnicornio: "Titán",
+  tipo: "avanzada",
+  desbloqueoClase: 60000
 }
 
 ];
@@ -1463,6 +1474,35 @@ document.getElementById("pista").textContent = "";
 
 // ===== CASO ESPECIAL: FASE AVANZADA (FASE 6) =====
 if(fases[i].tipo === "avanzada"){
+
+// ===== FASE 8: FORJA DE LOS GIGANTES =====
+if(fases[i].nombre === "🧮 Forja de los Gigantes"){
+
+  generarBancoGigantes();
+
+  const total = fases[i].total;
+
+  const ops = [
+    ...bancoGigantes.facil.slice(0, Math.floor(total * 0.3)),
+    ...bancoGigantes.media.slice(0, Math.floor(total * 0.3)),
+    ...bancoGigantes.dificil.slice(0, total)
+  ].slice(0, total);
+
+  operaciones = ops.map(op => ({
+    texto: `🧠 Calcula: ${op.a} × ${op.b}`,
+    r: op.r,
+    pista: op.pista,
+    a: op.a,
+    b: op.b
+  }));
+
+  document.getElementById("imgUnicornio").src = fases[i].unicornio;
+  document.getElementById("mascaraUnicornio").style.height = "0%";
+
+  mostrar("juego");
+  mostrarOperacion();
+  return;
+}
 
 // ===== FASE 7: TORRE DEL HECHIZO =====
 if(fases[i].nombre === "🌀 Torre del Hechizo"){
@@ -3197,6 +3237,48 @@ function actualizarContadorMensajes(){
     `💬 Mensajes disponibles hoy: <strong>${mensajesDisponibles}</strong> / ${CONFIG_MURAL.maxMensajesDia}. Enviados ${mensajesUsadosHoy}`;
 }
 
+
+const bancoGigantes = {
+  facil: [],
+  media: [],
+  dificil: []
+};
+
+function generarBancoGigantes(){
+  bancoGigantes.facil = [];
+  bancoGigantes.media = [];
+  bancoGigantes.dificil = [];
+
+  while(
+    bancoGigantes.facil.length +
+    bancoGigantes.media.length +
+    bancoGigantes.dificil.length < 60
+  ){
+    const a = Math.floor(Math.random() * 90) + 10; // 10–99
+    const b = Math.floor(Math.random() * 8) + 2;   // 2–9
+
+    const resultado = a * b;
+
+    if(resultado > 999) continue; // evitar números enormes
+
+    const op = {
+      a,
+      b,
+      r: resultado,
+      pista: `💡 ${a} × ${b} = (${Math.floor(a/10)*10} × ${b}) + (${a%10} × ${b})`
+    };
+
+    if(resultado <= 150 && bancoGigantes.facil.length < 18){
+      bancoGigantes.facil.push(op);
+    }else if(resultado <= 400 && bancoGigantes.media.length < 18){
+      bancoGigantes.media.push(op);
+    }else if(bancoGigantes.dificil.length < 24){
+      bancoGigantes.dificil.push(op);
+    }
+  }
+}
+
+
 </script>
 
 <div id="confeti"></div>
@@ -3257,7 +3339,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.4.2
+    v 1.6.0
   </p>
 <p><br></p>
 </footer>
