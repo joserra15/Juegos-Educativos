@@ -1066,7 +1066,8 @@ const puntosPorMundo = {
   "⛰️ Montañas Violetas": 15,
   "🐉 Valle del Dragón": 18,
   "🏰 Castillo Arcoíris": 25,
-  "🔮 Santuario del Cálculo": 35
+  "🔮 Santuario del Cálculo": 35,
+"🌀 Torre del Hechizo": 50
   
 };
 
@@ -1237,11 +1238,60 @@ const fases = [
   nombreUnicornio: "Sabio",
   tipo: "avanzada",
   desbloqueoClase: 20000
+},
+{
+  nombre: "🌀 Torre del Hechizo",
+  total: 20,
+  unicornio: "unicornio7.png",
+  nombreUnicornio: "Arcano",
+  tipo: "avanzada",
+  desbloqueoClase: 0,
+  siempreActiva: true
 }
 
 ];
 
+const bancoHechizo = {
+  facil: [],
+  media: [],
+  dificil: []
+};
 
+function generarBancoHechizo(){
+  bancoHechizo.facil = [];
+  bancoHechizo.media = [];
+  bancoHechizo.dificil = [];
+
+  while(
+    bancoHechizo.facil.length +
+    bancoHechizo.media.length +
+    bancoHechizo.dificil.length < 60
+  ){
+    const a = Math.floor(Math.random() * 5) + 4; // 4–8
+    const b = Math.floor(Math.random() * 5) + 2; // 2–6
+    const c = Math.floor(Math.random() * 10) + 1; // +1..10
+    const d = Math.floor(Math.random() * 10) + 1; // -1..10
+
+    const expr = `${a}×${b}+${c}-${d}`;
+    const r = a * b + c - d;
+
+    if(r < 0 || r > 150) continue;
+
+    const op = {
+      expr,
+      r,
+      pista: `💡 ${a} × ${b} + ${c} − ${d}`
+    };
+
+    if(r <= 30 && bancoHechizo.facil.length < 18){
+      bancoHechizo.facil.push(op);
+    }else if(r <= 70 && bancoHechizo.media.length < 18){
+      bancoHechizo.media.push(op);
+    }else if(bancoHechizo.dificil.length < 24){
+      bancoHechizo.dificil.push(op);
+    }
+  }
+}
 
 const mundos = fases.map(f => f.nombre);
 
@@ -1297,12 +1347,25 @@ function construirMapa(){
   cont.innerHTML = "";
 
   fases.forEach((f, i) => {
+
+
     const b = document.createElement("button");
     b.textContent = f.nombre + (liberadas.includes(i) ? " ✅" : "");
+
+// ===== FASE SIEMPRE ACTIVA =====
+if (f.siempreActiva) {
+  b.disabled = false;
+  b.onclick = () => iniciarFase(i);
+  cont.appendChild(b);
+  return;
+}
 
 
 // ===== FASES AVANZADAS (DESBLOQUEO COLECTIVO) =====
 if (f.tipo === "avanzada") {
+
+//para pruebas
+//puntosClase=70000;
 
   const faseAnteriorSuperada = liberadas.includes(i - 1);
   const puntosNecesarios = f.desbloqueoClase || Infinity;
@@ -1400,6 +1463,33 @@ document.getElementById("pista").textContent = "";
 
 // ===== CASO ESPECIAL: FASE AVANZADA (FASE 6) =====
 if(fases[i].tipo === "avanzada"){
+
+// ===== FASE 7: TORRE DEL HECHIZO =====
+if(fases[i].nombre === "🌀 Torre del Hechizo"){
+
+  generarBancoHechizo();
+
+  const total = fases[i].total;
+  const ops = [
+    ...bancoHechizo.facil.slice(0, Math.floor(total * 0.3)),
+    ...bancoHechizo.media.slice(0, Math.floor(total * 0.3)),
+    ...bancoHechizo.dificil.slice(0, total)
+  ].slice(0, total);
+
+  operaciones = ops.map(op => ({
+    texto: `🧙‍♂️ Resuelve el hechizo: ${op.expr}`,
+    r: op.r,
+    pista: op.pista
+  }));
+
+  document.getElementById("imgUnicornio").src = fases[i].unicornio;
+  document.getElementById("mascaraUnicornio").style.height = "0%";
+
+  mostrar("juego");
+  mostrarOperacion();
+  return;
+}
+
 
 // ===== FASE AVANZADA (MUNDO 6) ALEATORIA =====
 
@@ -1674,7 +1764,7 @@ if(porcentaje === 100){
    // Mostrar popup de final de fase
 popup(
   fases[faseActual].tipo === "avanzada"
-    ? "🌟 ¡Has superado el Santuario del Cálculo!\nEste reto es solo para mentes expertas."
+    ? "🌟 ¡Has superado el reto avanzado!\nEste reto es solo para mentes expertas."
     : `🦄 ¡Has liberado a ${fases[faseActual].nombreUnicornio}!`,
   true
 );
@@ -2438,6 +2528,8 @@ puesto++;
 }
 
 
+generarBancoHechizo();
+
 try{
 if(!nombreJugador){
   mostrar("pantallaNombre");
@@ -3165,7 +3257,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.4.1
+    v 1.4.2
   </p>
 <p><br></p>
 </footer>
