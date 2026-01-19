@@ -2038,10 +2038,10 @@ if (Array.isArray(fases[faseActual].tablas)) {
 
  if(!tiemposMejores[nombre] || tiempoFinal < tiemposMejores[nombre]){
   tiemposMejores[nombre]=tiempoFinal;
-  logros.push(`⏱️ Mejor tiempo en ${nombre}: ${tiempoFinal}s`);
+  logros.push(`⏱️ Mejor tiempo en ${nombre}: ${formatearTiempo(tiempoFinal)}s`);
 
 agregarMensajeSistema(
-  `⏱️ ${nombreJugador} ha conseguido un nuevo récord en ${nombre}`
+  `⏱️ ${nombreJugador} ha conseguido un nuevo récord personal en ${nombre}`
 );
 
 
@@ -2144,7 +2144,7 @@ fases.forEach((fase, i) => {
 
   const tdTiempo = document.createElement("td");
   const tiempo = tiemposMejores[fase.nombre];
-  tdTiempo.textContent = tiempo ? `${tiempo} s` : "—";
+  tdTiempo.textContent = tiempo ? `${formatearTiempo(tiempo)} m:s` : "—";
 
   tr.appendChild(tdFase);
   tr.appendChild(tdUni);
@@ -2698,7 +2698,7 @@ function mostrarRankingRapidos(){
         const dato = mejores[mundo];
 
         tdJugador.textContent = dato.nombre
-          ? `${dato.nombre} (${dato.tiempo} s)`
+          ? `${dato.nombre} (${formatearTiempo(dato.tiempo)} m:s)`
           : "—";
 
         tr.appendChild(tdMundo);
@@ -2855,7 +2855,7 @@ document.getElementById("textoObjetivo").textContent =
         );
 
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td>${mundo}</td><td>${media} s</td>`;
+        tr.innerHTML = `<td>${mundo}</td><td>${formatearTiempo(media)} m:s</td>`;
         tbody.appendChild(tr);
       });
     })
@@ -3023,7 +3023,7 @@ div.innerHTML = `
     });
 }
 
-//agregarMensajeSistema("✨ Bienvenidos al Mural Mágico de la Clase");
+//agregarMensajeSistema("✨ Se han anadido dos nuevas fases, 🌀 Torre del Hechizo que esta ya disponible y 🧮 Forja de los Gigantes que se desbloquea al llegar a los 60.000 puntos entre toda la clase.");
 
 
 const mensajesPredefinidos = {
@@ -3278,6 +3278,15 @@ function generarBancoGigantes(){
   }
 }
 
+function formatearTiempo(segundos){
+  if(typeof segundos !== "number" || isNaN(segundos)) return "--:--";
+
+  const min = Math.floor(segundos / 60);
+  const sec = segundos % 60;
+
+  return `${min}:${sec.toString().padStart(2, "0")}`;
+}
+
 
 </script>
 
@@ -3339,7 +3348,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.6.0
+    v 1.6.1
   </p>
 <p><br></p>
 </footer>
