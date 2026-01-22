@@ -596,6 +596,30 @@ footer{
   margin-bottom: 2px;
 }
 
+.galeria-unicornios{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.unicornio-item{
+  text-align: center;
+}
+
+.unicornio-item img{
+  width: 100%;
+  max-width: 90px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.unicornio-item span{
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8em;
+}
+
 </style>
 </head>
 
@@ -684,6 +708,13 @@ footer{
 </table>
 
  </div><br>
+
+<h3 class="titulo-mochila">🦄 Unicornios liberados</h3>
+
+<div id="galeriaUnicornios" class="galeria-unicornios">
+  <!-- Unicornios liberados -->
+</div>
+
  <button onclick="mostrarMapa()">Volver</button>
 </div>
 
@@ -1727,6 +1758,14 @@ function mostrarOperacion(){
 
 actualizarIndicadorDificultad(operaciones[indice]);
  document.getElementById("respuesta").value="";
+
+setTimeout(() => {
+  const input = document.getElementById("respuesta");
+  if(input){
+    input.focus();
+    input.select();
+  }
+}, 100);
  
 }
 
@@ -2159,6 +2198,8 @@ document.getElementById("pinJugadorUI").textContent =
 
 
  mostrar("mochila");
+
+pintarUnicorniosLiberados();
 }
 
 /* =====================================================
@@ -3288,6 +3329,60 @@ function formatearTiempo(segundos){
 }
 
 
+document.addEventListener("keydown", function(e){
+  const input = document.getElementById("respuesta");
+
+  if(
+  document.activeElement === input &&
+  e.key === "Enter" &&
+  document.getElementById("popup").style.display !== "flex"
+){
+  e.preventDefault();
+  responder();
+}
+});
+
+
+/*
+document.addEventListener("keydown", function(e){
+  const popup = document.getElementById("popup");
+
+  if(
+    popup &&
+    popup.style.display === "flex" &&
+    e.key === "Enter"
+  ){
+    e.preventDefault();
+    cerrarPopup();
+  }
+});*/
+
+function pintarUnicorniosLiberados(){
+  const cont = document.getElementById("galeriaUnicornios");
+  if(!cont) return;
+
+  cont.innerHTML = "";
+
+  liberadas.forEach(i => {
+    const fase = fases[i];
+    if(!fase || !fase.unicornio) return;
+
+    const div = document.createElement("div");
+    div.className = "unicornio-item";
+
+    div.innerHTML = `
+      <img src="${fase.unicornio}" alt="${fase.nombreUnicornio}">
+      <span>${fase.nombreUnicornio}</span>
+    `;
+
+    cont.appendChild(div);
+  });
+
+  if(liberadas.length === 0){
+    cont.innerHTML = "<p>🔒 Aún no has liberado ningún unicornio</p>";
+  }
+}
+
 </script>
 
 <div id="confeti"></div>
@@ -3348,7 +3443,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 1.6.1
+    v 1.6.2
   </p>
 <p><br></p>
 </footer>
