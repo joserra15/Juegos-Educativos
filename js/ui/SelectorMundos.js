@@ -48,7 +48,6 @@ export function renderTarjetasMundos({
           <span class="badge-mundo badge-${badge.tipo}">${badge.texto}</span>
           <span class="emoji-mundo emoji-parallax">${entry.emoji}</span>
           <strong>${entry.nombre}</strong>
-          <p>${entry.descripcion}</p>
           <p class="meta-mundo">${entry.curso}º · ${entry.area}</p>
           <div class="tarjeta-progreso-mini">
             <div class="tarjeta-progreso-fill" style="width:${pct}%"></div>

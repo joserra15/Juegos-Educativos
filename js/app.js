@@ -116,6 +116,7 @@ let modoSesionExtendida = false;
 let bancoSesion = [];
 let preguntaActual = null;
 let aciertosSesion = 0;
+let recientesSesion = [];
 let rachaActual = 0;
 let pantallaAnteriorId = null;
 const mundos = () => fases.map(f => getFaseLabel(f));
@@ -674,21 +675,22 @@ function construirMapa(){
       b.appendChild(avatar);
     }
 
-    if (f.siempreActiva) {
-      b.classList.add("fase-disponible");
-      b.disabled = false;
-      b.onclick = () => iniciarFase(i);
-      nodo.appendChild(b);
-      cont.appendChild(nodo);
-      return;
-    }
-
-    if (f.tipo === "avanzada") {
+    if (f.siempreActiva || f.tipo === "avanzada") {
       const estado = evaluarEstadoFase(f, i, liberadas, puntosClase);
       if (estado.disponible) {
         b.classList.add("fase-disponible");
+        if (completada) b.classList.add("fase-completada");
         b.disabled = false;
         b.onclick = () => iniciarFase(i);
+      } else if (f.siempreActiva) {
+        b.classList.add("fase-bloqueada");
+        b.disabled = true;
+        b.onclick = () => {
+          popup(
+            "🔒 Aún no disponible\n\n" +
+            "Completa todas las fases anteriores para desbloquear este reto."
+          );
+        };
       } else {
         b.classList.add("fase-bloqueada", "boton-colectivo");
         b.disabled = true;
@@ -778,7 +780,14 @@ function actualizarContadorFallosUI(){
 
 function prepararPreguntaSesion(){
   const nivel = nivelDificultadSesion(aciertosSesion, fallosActual);
-  preguntaActual = elegirPreguntaDelBanco(bancoSesion, nivel);
+  preguntaActual = elegirPreguntaDelBanco(bancoSesion, nivel, recientesSesion);
+  if (preguntaActual) {
+    const clave =
+      preguntaActual.tipo === "fraccion"
+        ? `${preguntaActual.numerador}/${preguntaActual.denominador}`
+        : (preguntaActual.clave || `${preguntaActual.a}x${preguntaActual.b}`);
+    recientesSesion = [...recientesSesion, clave].slice(-5);
+  }
   operaciones = preguntaActual ? [preguntaActual] : [];
   opcionSeleccionada = null;
 }
@@ -787,6 +796,7 @@ function reiniciarSesionExtendida(){
   aciertosSesion = 0;
   fallosActual = 0;
   rachaActual = 0;
+  recientesSesion = [];
   resetearReveladoRecompensa();
   prepararPreguntaSesion();
   actualizarRachaUI();
@@ -799,17 +809,20 @@ function reiniciarSesionExtendida(){
 ===================================================== */
 function iniciarFase(i){
 
-
-if(fases[i].tipo === "avanzada" && !fases[i].siempreActiva){
-  const puntosNecesarios = fases[i].desbloqueoClase || 0;
-  const faseAnteriorSuperada = liberadas.includes(i - 1);
-  if(!faseAnteriorSuperada || puntosClase < puntosNecesarios){
+const estadoInicio = evaluarEstadoFase(fases[i], i, liberadas, puntosClase);
+if(!estadoInicio.disponible){
+  if(fases[i].siempreActiva){
+    popup("🔒 Completa las fases anteriores para desbloquear este reto.");
+  } else if(fases[i].tipo === "avanzada"){
+    const puntosNecesarios = fases[i].desbloqueoClase || 0;
     popup("🔒 Este mundo se desbloqueará cuando:\n\n"+
       "✔️ completes el mundo anterior\n"+
       `⭐ la clase llegue a ${puntosNecesarios.toLocaleString()} puntos\n\n`+
       `Progreso actual: ${puntosClase.toLocaleString()} / ${puntosNecesarios.toLocaleString()}`);
-    return;
+  } else {
+    popup("🔒 Completa la fase anterior para continuar.");
   }
+  return;
 }
 
  modoPracticaTabla = false;
@@ -818,6 +831,7 @@ if(fases[i].tipo === "avanzada" && !fases[i].siempreActiva){
 fallosActual = 0;
 erroresEnSesion = 0;
 aciertosSesion = 0;
+recientesSesion = [];
 rachaActual = 0;
 modoSesionExtendida = usaSesionExtendida(mundoId) && !modoRepaso;
 

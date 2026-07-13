@@ -509,7 +509,7 @@ function generarBancoDivisionExtendido(fase, contexto, minimo) {
 
 function generarBancoFraccionExtendido(fase, contexto, minimo) {
   const denominadores = fase.denominadores || [2, 3, 4, 5, 6, 8, 10, 12];
-  const base = [];
+  const unicas = [];
 
   for (const den of denominadores) {
     for (let num = 1; num < den; num++) {
@@ -517,40 +517,77 @@ function generarBancoFraccionExtendido(fase, contexto, minimo) {
       const op = crearOperacionFraccion({
         numerador: num,
         denominador: den,
-        texto: textoFraccionParteTodo(num, den, base.length),
+        texto: textoFraccionParteTodo(num, den, unicas.length),
         pista: `${num} de ${den} partes → ${num}/${den}`,
         opciones,
         r,
       });
-      op._dificultad = den + num;
-      base.push(op);
+      // Dificultad por denominador, con ligera variación por numerador
+      // (evita que 1/2 monopolice el tramo fácil).
+      op._dificultad = den * 10 + (num === 1 ? 0 : num);
+      unicas.push(op);
     }
   }
 
   if (fase.mecanica === "fraccion-avanzada") {
     const avanzadas = generarFraccionesAvanzadas({ ...fase, total: Math.max(12, minimo / 4) }, contexto);
     avanzadas.forEach((op, i) => {
-      op._dificultad = 20 + i;
-      base.push(op);
+      op._dificultad = 200 + i;
+      unicas.push(op);
     });
   }
 
-  return ampliarBancoHasta(base, minimo, (n) => {
+  const ampliadas = ampliarBancoHasta(unicas, minimo, (n) => {
     const den = denominadores[n % denominadores.length];
     const num = (n % (den - 1)) + 1;
     const { opciones, r } = generarOpcionesFraccion(num, den);
+    const varianteTexto = Math.floor(n / denominadores.length);
     const op = crearOperacionFraccion({
       numerador: num,
       denominador: den,
-      texto: textoFraccionParteTodo(num, den, n),
+      texto: textoFraccionParteTodo(num, den, n + varianteTexto),
       pista: `Recuerda: ${num}/${den}`,
       opciones,
       r,
     });
-    op._dificultad = den + num + Math.floor(n / 10);
+    // Variantes reutilizan la fracción pero con enunciado distinto; dificultad
+    // encima del set único para no saturar el inicio con repeticiones de 1/2.
+    op._dificultad = 100 + den * 10 + num + Math.floor(n / denominadores.length);
     op.clave = `${num}/${den}-v${n}`;
     return op;
-  }).sort((a, b) => a._dificultad - b._dificultad);
+  });
+
+  return intercalarFraccionesPorDenominador(ampliadas);
+}
+
+/** Mezcla fracciones del tramo fácil para no empezar siempre con 1/2. */
+function intercalarFraccionesPorDenominador(banco) {
+  const ordenado = [...banco].sort((a, b) => a._dificultad - b._dificultad);
+  const faciles = ordenado.slice(0, Math.min(18, Math.ceil(ordenado.length / 3)));
+  const resto = ordenado.slice(faciles.length);
+
+  const porDen = new Map();
+  for (const op of faciles) {
+    const den = op.denominador ?? 0;
+    if (!porDen.has(den)) porDen.set(den, []);
+    porDen.get(den).push(op);
+  }
+
+  const intercaladas = [];
+  const dens = [...porDen.keys()].sort((a, b) => a - b);
+  let quedan = true;
+  while (quedan) {
+    quedan = false;
+    for (const den of dens) {
+      const cola = porDen.get(den);
+      if (cola?.length) {
+        intercaladas.push(cola.shift());
+        if (cola.length) quedan = true;
+      }
+    }
+  }
+
+  return [...intercaladas, ...resto];
 }
 
 function variarPreguntaLectura(pregunta, variante) {

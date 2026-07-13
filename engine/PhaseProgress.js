@@ -17,10 +17,20 @@ export function esFaseAvanzadaDesbloqueada(liberadas, indice, puntosClase, desbl
   return faseAnteriorSuperada && puntosSuficientes;
 }
 
-/** Evalúa si una fase del mapa está jugable según su tipo y el progreso actual. */
+/**
+ * Evalúa si una fase del mapa está jugable.
+ * `siempreActiva` no salta el orden: solo omite requisitos de puntos de clase
+ * (reto colectivo), pero exige completar las fases anteriores.
+ */
 export function evaluarEstadoFase(fase, indice, liberadas, puntosClase = 0) {
   if (fase.siempreActiva) {
-    return { disponible: true, motivo: "siempre-activa" };
+    const previaCompletada = indice === 0 || liberadas.includes(indice - 1);
+    const secuencial = indiceFaseDisponible(liberadas, indice);
+    const disponible = previaCompletada && secuencial;
+    return {
+      disponible,
+      motivo: disponible ? "siempre-activa-desbloqueada" : "siempre-activa-bloqueada",
+    };
   }
   if (fase.tipo === "avanzada") {
     const desbloqueada = esFaseAvanzadaDesbloqueada(

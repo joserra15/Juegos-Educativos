@@ -87,9 +87,17 @@ describe("Regresión: fases avanzadas y colectivas", () => {
     expect(estado.disponible).toBe(true);
   });
 
-  it("respeta fases siempre activas", () => {
+  it("respeta fases siempre activas solo tras completar la anterior", () => {
     const fase = { id: "repaso", siempreActiva: true };
-    expect(evaluarEstadoFase(fase, 5, [], 0).disponible).toBe(true);
+    expect(evaluarEstadoFase(fase, 5, [], 0).disponible).toBe(false);
+    expect(evaluarEstadoFase(fase, 5, [0, 1, 2, 3, 4], 0).disponible).toBe(true);
+  });
+
+  it("no abre la última fase del mundo al empezar", () => {
+    const faseFinal = { id: "castillo", siempreActiva: true, tipo: "avanzada" };
+    expect(evaluarEstadoFase(faseFinal, 5, [], 99999).disponible).toBe(false);
+    expect(evaluarEstadoFase(faseFinal, 5, [0, 1, 2, 3], 99999).disponible).toBe(false);
+    expect(evaluarEstadoFase(faseFinal, 5, [0, 1, 2, 3, 4], 99999).disponible).toBe(true);
   });
 });
 
@@ -266,6 +274,18 @@ describe("Regresión: sesión extendida (todos los mundos)", () => {
     );
     expect(banco.length).toBeGreaterThanOrEqual(50);
     expect(banco[0].opciones?.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("varía las primeras fracciones del banco (no solo 1/2)", () => {
+    const banco = generarBancoFase(
+      { mecanica: "fraccion", denominadores: [2, 3, 4], id: "pizza-magica" },
+      { tipoMundo: "fraccion" },
+      50
+    );
+    const primeras = banco.slice(0, 5).map((op) => `${op.numerador}/${op.denominador}`);
+    const unicas = new Set(primeras);
+    expect(unicas.size).toBeGreaterThanOrEqual(3);
+    expect(primeras.every((f) => f === "1/2")).toBe(false);
   });
 
   it("requiere 10 aciertos para superar fase", () => {

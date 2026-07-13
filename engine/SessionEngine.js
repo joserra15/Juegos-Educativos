@@ -31,14 +31,22 @@ export function nivelDificultadSesion(aciertosSesion, fallosSesion = 0) {
   return 2;
 }
 
-export function elegirPreguntaDelBanco(banco, nivel) {
+export function elegirPreguntaDelBanco(banco, nivel, recientes = []) {
   if (!banco?.length) return null;
   const tercio = Math.max(1, Math.floor(banco.length / 3));
   const inicio = Math.min(nivel, 2) * tercio;
   const fin = Math.min(banco.length, inicio + tercio);
   const slice = banco.slice(inicio, fin);
   const pool = slice.length ? slice : banco;
-  return pool[Math.floor(Math.random() * pool.length)];
+
+  const recientesSet = new Set(recientes);
+  const frescas = pool.filter((op) => {
+    const clave = op.clave || `${op.numerador}/${op.denominador}` || `${op.a}x${op.b}`;
+    const fraccion = op.tipo === "fraccion" ? `${op.numerador}/${op.denominador}` : clave;
+    return !recientesSet.has(fraccion) && !recientesSet.has(clave);
+  });
+  const candidatos = frescas.length ? frescas : pool;
+  return candidatos[Math.floor(Math.random() * candidatos.length)];
 }
 
 export function faseSuperada(aciertosSesion, requeridos = ACIERTOS_PARA_PASAR) {
