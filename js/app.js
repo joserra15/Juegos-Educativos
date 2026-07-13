@@ -548,7 +548,6 @@ tiempoInicio=Date.now();
 iniciarTimer();
 
 
-document.getElementById("imgRecompensa").src = fases[0]?.recompensa?.asset || "unicornio1.png";
 setRecompensaVisual(fases[0]?.recompensa || { asset: "unicornio1.png" });
 
   mostrar("juego");
