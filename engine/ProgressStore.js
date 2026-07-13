@@ -238,11 +238,20 @@ export function mergeRemoteIfNewer(localPuntos, remotePuntos, localAllStates, re
   return { puntos: localPuntos, allMundosStates: localAllStates, merged: false };
 }
 
-export function getTiemposMundoFromFirebase(data, mundoId = MUNDO_LEGACY) {
-  const desdeMundo = data?.mundos?.[mundoId]?.tiemposMejores;
-  if (desdeMundo && Object.keys(desdeMundo).length > 0) return desdeMundo;
-  if (mundoId === MUNDO_LEGACY && data?.tiemposMejores) return data.tiemposMejores;
-  return {};
+export function getTiemposMundoFromFirebase(data, mundoId = MUNDO_LEGACY, clavesPermitidas = null) {
+  let raw = data?.mundos?.[mundoId]?.tiemposMejores;
+  if ((!raw || Object.keys(raw).length === 0) && mundoId === MUNDO_LEGACY && data?.tiemposMejores) {
+    raw = data.tiemposMejores;
+  }
+  if (!raw) return {};
+
+  if (!clavesPermitidas?.size) return raw;
+
+  const filtrado = {};
+  for (const [clave, valor] of Object.entries(raw)) {
+    if (clavesPermitidas.has(clave)) filtrado[clave] = valor;
+  }
+  return filtrado;
 }
 
 export function normalizarLiberadas(state) {

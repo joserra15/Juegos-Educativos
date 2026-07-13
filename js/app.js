@@ -1547,11 +1547,13 @@ try{
 }
 
 
-function mostrarRanking(){
+async function mostrarRanking(){
   mostrar("ranking");
-
-mostrarRankingRapidos();
-cargarPanelGlobal();
+  await asegurarMundoRankingSincronizado();
+  const ctx = crearContextoRankingStats();
+  actualizarEncabezadoRankingStats(ctx);
+  mostrarRankingRapidos(ctx);
+  cargarPanelGlobal(ctx);
 
   const lista = document.getElementById("listaRanking");
   lista.innerHTML = "<li>Cargando ranking…</li>";
@@ -1635,12 +1637,65 @@ function cargarProgresoDesdeFirebase(){
     .catch(err => { console.log("JA 😂 Error cargando progreso"); console.error(err); });
 }
 
+function clavesPermitidasFases(fasesRef){
+  const claves = new Set();
+  fasesRef.forEach((fase) => {
+    claves.add(fase.id);
+    claves.add(getFaseLabel(fase));
+    claves.add(fase.nombre);
+  });
+  return claves;
+}
+
+function filtrarTiemposPorMundo(tiempos, fasesRef){
+  const claves = clavesPermitidasFases(fasesRef);
+  const filtrado = {};
+  for (const [clave, valor] of Object.entries(tiempos || {})) {
+    if (claves.has(clave)) filtrado[clave] = valor;
+  }
+  return filtrado;
+}
+
+function getTiemposJugadorEnMundo(data, ctx){
+  let tiempos = getTiemposMundoFromFirebase(data, ctx.mundoRef, ctx.clavesPermitidas);
+  if(data.nombre === nombreJugador){
+    const local = migrateTiempoKeys(loadMundoState(ctx.mundoRef).tiemposMejores || {}, ctx.fasesRef);
+    tiempos = { ...tiempos, ...filtrarTiemposPorMundo(local, ctx.fasesRef) };
+  }
+  return tiempos;
+}
+
+function crearContextoRankingStats(){
+  const fasesRef = [...fases];
+  return {
+    mundoRef: mundoId,
+    fasesRef,
+    clavesPermitidas: clavesPermitidasFases(fasesRef),
+  };
+}
+
+function actualizarEncabezadoRankingStats(ctx){
+  const entry = getMundoEntry(manifestCatalog, ctx.mundoRef);
+  const etiqueta = entry ? `${entry.emoji} ${entry.nombre}` : (contenidoMundo?.nombre || "Mundo");
+  const rapido = document.getElementById("tituloRapidosMundo");
+  const medio = document.getElementById("tituloMediosMundo");
+  if(rapido) rapido.textContent = `⚡ Los más rápidos de cada fase · ${etiqueta}`;
+  if(medio) medio.textContent = `⏱️ Tiempo medio global · ${etiqueta}`;
+}
+
+async function asegurarMundoRankingSincronizado(){
+  const idActivo = getMundoActivoId();
+  if(!contenidoMundo || contenidoMundo.id !== idActivo || mundoId !== idActivo){
+    await cargarMundoContenido(idActivo);
+  }
+}
+
 function obtenerTiempoFase(tiempos, fase){
   if(!tiempos || !fase) return undefined;
   return tiempos[fase.id] ?? tiempos[getFaseLabel(fase)];
 }
 
-function mostrarRankingRapidos(){
+function mostrarRankingRapidos(ctx = crearContextoRankingStats()){
   const tbody = document.querySelector("#tablaRapidos tbody");
   tbody.innerHTML = "";
 
@@ -1651,7 +1706,7 @@ function mostrarRankingRapidos(){
   }
 
   const mejores = {};
-  fases.forEach((fase) => {
+  ctx.fasesRef.forEach((fase) => {
     mejores[fase.id] = {
       label: getFaseLabel(fase),
       nombre: null,
@@ -1663,9 +1718,9 @@ function mostrarRankingRapidos(){
     .then(snapshot => {
       snapshot.forEach(doc => {
         const data = doc.data();
-        const tiempos = getTiemposMundoFromFirebase(data, mundoId);
+        const tiempos = getTiemposJugadorEnMundo(data, ctx);
 
-        fases.forEach((fase) => {
+        ctx.fasesRef.forEach((fase) => {
           const tiempo = obtenerTiempoFase(tiempos, fase);
           if(tiempo === undefined) return;
 
@@ -1679,7 +1734,7 @@ function mostrarRankingRapidos(){
         });
       });
 
-      fases.forEach((fase) => {
+      ctx.fasesRef.forEach((fase) => {
         const tr = document.createElement("tr");
         const tdFase = document.createElement("td");
         const tdJugador = document.createElement("td");
@@ -1701,16 +1756,14 @@ function mostrarRankingRapidos(){
     });
 }
 
-function cargarPanelGlobal(){
+function cargarPanelGlobal(ctx = crearContextoRankingStats()){
   if(!db) return;
-
-datosClaseCargados = true;
 
   let puntosTotales = 0;
 	let totalRecompensas = 0;
 
   const tiemposPorFase = {};
-  fases.forEach((fase) => {
+  ctx.fasesRef.forEach((fase) => {
     tiemposPorFase[fase.id] = {
       label: getFaseLabel(fase),
       suma: 0,
@@ -1733,8 +1786,8 @@ datosClaseCargados = true;
           totalRecompensas += normalizarLiberadas({ liberadas: data.liberadas }).length;
         }
 
-        const tiempos = getTiemposMundoFromFirebase(data, mundoId);
-        fases.forEach((fase) => {
+        const tiempos = getTiemposJugadorEnMundo(data, ctx);
+        ctx.fasesRef.forEach((fase) => {
           const tiempo = obtenerTiempoFase(tiempos, fase);
           if(tiempo === undefined) return;
           tiemposPorFase[fase.id].suma += tiempo;
@@ -1763,7 +1816,7 @@ document.getElementById("textoObjetivo").textContent =
       const tbody = document.getElementById("tablaTiemposClase");
       tbody.innerHTML = "";
 
-      fases.forEach((fase) => {
+      ctx.fasesRef.forEach((fase) => {
         const stats = tiemposPorFase[fase.id];
         const tr = document.createElement("tr");
         const media = stats.count > 0 ? Math.round(stats.suma / stats.count) : null;

@@ -275,13 +275,16 @@ describe("QuestionGenerator mundos ampliados", () => {
 
 describe("ProgressStore récords multi-mundo", () => {
   it("lee tiempos del namespace del mundo activo", () => {
+    const claves = new Set(["pradera-inicial"]);
     const tiempos = getTiemposMundoFromFirebase({
       mundos: {
-        dinosaurios: { tiemposMejores: { "pradera-inicial": 54 } },
+        dinosaurios: { tiemposMejores: { "pradera-inicial": 54, "prado-rosa": 31 } },
         unicornios: { tiemposMejores: { "prado-rosa": 31 } },
       },
-    }, "dinosaurios");
+      tiemposMejores: { "prado-rosa": 99 },
+    }, "dinosaurios", claves);
     expect(tiempos["pradera-inicial"]).toBe(54);
+    expect(tiempos["prado-rosa"]).toBeUndefined();
   });
 
   it("normaliza liberadas iniciales sin progreso", () => {
