@@ -1,0 +1,1232 @@
+/* Mundos Mágicos Educativos — Design System v3.1 */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap");
+
+:root{
+  --mm-font-display: "Baloo 2", "Comic Sans MS", system-ui, sans-serif;
+  --mm-font-body: "Nunito", system-ui, sans-serif;
+  --mm-text: #3a0066;
+  --mm-text-soft: #5e35b1;
+  --mm-surface: rgba(255,255,255,0.94);
+  --mm-surface-glass: rgba(255,255,255,0.82);
+  --mm-radius-lg: 24px;
+  --mm-radius-md: 18px;
+  --mm-radius-sm: 12px;
+  --mm-shadow-soft: 0 10px 30px rgba(90, 40, 140, 0.12);
+  --mm-shadow-card: 0 8px 24px rgba(58, 0, 102, 0.1);
+  --mm-gradient-magic: linear-gradient(135deg, #ff80ab 0%, #b388ff 55%, #80deea 100%);
+  --mm-gradient-header: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(243,229,245,0.92));
+  --color-primario: #ff5c9a;
+  --color-secundario: #b388ff;
+  --color-acento: #4dd0e1;
+  --color-exito: #66bb6a;
+  --color-aviso: #ffb300;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  font-family: var(--mm-font-body);
+  color: var(--mm-text);
+
+  background-color:#f3e5f5;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.55)
+    ),
+    url("fondo-magico.jpg");
+
+  background-size:cover;
+  background-position:center;
+	background-repeat:no-repeat;
+	min-height:100vh;
+}
+
+
+header{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:10px;
+ background:#ede7f6;
+	position:relative;
+  z-index:20;
+}
+
+
+header img{
+ width:48px;height:48px;border-radius:50%;
+}
+
+
+.app-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+
+
+.header-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.nombre-jugador{
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+.puntos{
+  font-size: 0.9em;
+}
+
+.header-right{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+
+h1,h2,h3{text-align:center}
+button{
+ padding:12px 18px;
+ border:none;
+ border-radius:18px;
+ background:var(--color-primario);
+ color:white;
+ font-size:1.05em;
+}
+button:disabled{opacity:.4}
+input{
+ font-size:1.2em;
+ padding:8px;
+ border-radius:12px;
+ border:2px solid #ce93d8;
+ width:120px;
+}
+
+.tarjeta{
+  background:rgba(255,255,255,0.92);
+  border-radius:20px;
+  padding:16px;
+  max-width:900px;
+  margin:16px auto;
+}
+
+.pantalla{display:none;padding:16px}
+.activa{display:block}
+
+.flex{
+ display:flex;
+ flex-wrap:wrap;
+ gap:20px;
+ align-items:center;
+ justify-content:center;
+}
+
+/* ===== Unicornio: marco fijo + revelado limpio ===== */
+
+.recompensa-contenedor,
+.unicornio-contenedor{
+  width:160px;
+  height:160px;
+  border-radius:20px;
+  background:#f3e5f5;
+  border:3px solid #ce93d8;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+/* Máscara que crece */
+.recompensa-mascara,
+.unicornio-mascara{
+  width:100%;
+  height:0%;
+  overflow:hidden;
+  transition:height .5s ease;
+}
+
+/* Imagen siempre bien ajustada al marco */
+.recompensa-mascara img,
+.unicornio-mascara img,
+#imgRecompensa,
+#popupRecompensa{
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* Popup */
+.popup{
+ position:fixed;inset:0;
+ background:rgba(0,0,0,.45);
+ display:none;
+ align-items:center;
+ justify-content:center;
+ z-index:10;
+}
+.popup .caja{
+ background:white;
+ padding:20px;
+ border-radius:20px;
+ text-align:center;
+ max-width:320px;
+}
+
+/* Panel */
+.panel{
+ background:white;
+ border-radius:20px;
+ padding:16px;
+ max-width:480px;
+ margin:auto;
+}
+.final img{max-width:90%}
+
+
+#confeti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:20;
+  display:none;
+}
+
+.confeti-pieza{
+  position:absolute;
+  width:10px;
+  height:14px;
+  opacity:0.9;
+  animation: caer 1.5s linear forwards;
+}
+
+@keyframes caer{
+  from{
+    transform:translateY(-20px) rotate(0deg);
+  }
+  to{
+    transform:translateY(110vh) rotate(360deg);
+  }
+}
+
+
+.jugador-actual{
+  background:#fff3cd;
+  border-radius:10px;
+  padding:4px 8px;
+  font-weight:bold;
+  color:#6a1b9a;
+}
+
+#tablaTiempos th,
+#tablaTiempos td{
+  border:1px solid #ce93d8;
+  padding:6px;
+}
+
+#tablaTiempos tr:nth-child(even){
+  background:#fce4ec;
+}
+
+
+.pantalla.activa{
+  animation: entradaPantalla 0.35s ease;
+}
+
+@keyframes entradaPantalla{
+  from{
+    opacity:0;
+    transform:translateY(12px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ===== SOMBRAS SUAVES TIPO APP ===== */
+
+.tarjeta{
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.06);
+}
+
+
+/* ===== ANIMACIÓN DE BOTONES ===== */
+
+button{
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+
+button:active{
+  transform:scale(0.96);
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  filter:brightness(0.95);
+}
+
+
+/* ===== FEEDBACK VISUAL DE PUNTOS ===== */
+
+#puntos{
+  display:inline-block;
+  transition:transform 0.2s ease;
+}
+
+#puntos.subiendo{
+  animation: puntosSuben 0.6s ease;
+  color:#ff4081;
+  text-shadow:0 0 8px rgba(255,64,129,0.6);
+}
+
+@keyframes puntosSuben{
+  0%{
+    transform:scale(1);
+  }
+  30%{
+    transform:scale(1.4);
+  }
+  60%{
+    transform:scale(1.1);
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+
+.bloque-clase{
+  margin-bottom:20px;
+}
+
+.dato-grande{
+  font-size:2em;
+  font-weight:bold;
+  color:#6a1b9a;
+}
+
+.mensaje-clase{
+  font-size:0.95em;
+  opacity:0.85;
+}
+
+.barra-objetivo{
+  background:#e0e0e0;
+  border-radius:12px;
+  overflow:hidden;
+  height:18px;
+  margin:10px 0;
+}
+
+.barra-objetivo > div{
+  height:100%;
+  background:linear-gradient(90deg,#ba68c8,#f06292);
+  width:0%;
+  transition:width .4s ease;
+}
+
+.tabla-clase{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.tabla-clase th,
+.tabla-clase td{
+  padding:6px;
+  text-align:left;
+}
+
+.tarjeta-clase{
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+
+  border-radius:24px;
+  padding:20px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08),
+    inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+
+.tarjeta-clase .dato-grande{
+  color:#7b1fa2;
+  font-weight:700;
+}
+
+.tarjeta-clase .bloque-clase{
+  margin-bottom:14px;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+
+.pie{
+  margin-top:20px;
+  padding:16px 10px;
+  text-align:center;
+  font-size:0.85em;
+  color:#5e3a7a;
+  opacity:0.85;
+}
+
+.pie a{
+  color:#6a1b9a;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.pie a:hover{
+  text-decoration:underline;
+}
+
+.boton-colectivo{
+  background: linear-gradient(135deg, #ffd54f, #ffb300);
+  color: #5d3b00;
+  border: 3px dashed #ff9800;
+  opacity: 1;
+}
+
+.boton-colectivo:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255,193,7,0.8);
+}
+
+.bottom-nav{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 -2px 6px rgba(0,0,0,.15);
+}
+
+.bottom-nav button{
+  background: none;
+  border: none;
+  font-size: 1.6em;
+  cursor: pointer;
+  transition: transform .15s;
+}
+
+.bottom-nav button:active{
+  transform: scale(1.2);
+}
+
+.pantalla{
+  padding: 16px 16px 88px;
+}
+
+
+.app-header,
+.bottom-nav{
+  background:
+    linear-gradient(180deg, #f4f4f4, #e0e0e0),
+    radial-gradient(circle at top left, rgba(255,255,255,0.6), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(200,200,255,0.25), transparent 50%);
+}
+
+
+.app-header{
+  border-bottom: 1px solid #ddd;
+}
+
+.bottom-nav{
+  border-top: 1px solid #ddd;
+}
+
+body{
+  padding-top: 64px;
+}
+
+footer{
+  margin-top: 40px;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.85em;
+  color: #666;
+}
+
+.app-header::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:20%;
+  right:20%;
+  height:2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(180,150,255,0.8),
+    transparent
+  );
+}
+
+.bottom-nav::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:20%;
+  right:20%;
+  height:2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(180,150,255,0.8),
+    transparent
+  );
+}
+
+@keyframes brilloMagico{
+  0%,100%{opacity:0.2;}
+  50%{opacity:0.5;}
+}
+
+.app-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.3),
+    transparent 60%
+  );
+  animation: brilloMagico 6s infinite;
+  pointer-events:none;
+}
+
+.titulo-mapa{
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+
+.mural-mensajes{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mensaje-mural{
+  background: rgba(255,255,255,0.9);
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  font-size: 0.95em;
+}
+
+.mensaje-sistema{
+  border-left: 4px solid #9575cd;
+  background: #f3e5f5;
+}
+
+.mensaje-jugador{
+  border-left: 4px solid #81c784;
+}
+
+.texto-ayuda{
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.mural-botones{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mural-botones button{
+  font-size: 1.4em;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: none;
+  background: #ede7f6;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
+
+.mural-botones button:active{
+  transform: scale(0.95);
+}
+
+.mensaje-con-like{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-btn{
+  background: transparent;
+  border: none;
+  font-size: 0.9em;
+  cursor: pointer;
+  color: #555;
+}
+
+.like-btn.like-activo{
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.like-btn:disabled{
+  cursor: default;
+  opacity: 0.6;
+}
+
+.fecha-mural{
+  font-size: 0.7em;
+  color: #777;
+  margin-bottom: 2px;
+}
+
+.galeria-recompensas,
+.galeria-unicornios{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recompensa-item,
+.unicornio-item{
+  text-align: center;
+}
+
+.recompensa-item img,
+.unicornio-item img{
+  width: 72px;
+  height: 72px;
+  max-width: 72px;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background: #f3e5f5;
+}
+
+.unicornio-item span{
+  display: block;
+  margin-top: 4px;
+  font-size: 0.8em;
+}
+
+
+
+.curriculo-chip,
+.accesibilidad-chip,
+.tabla-chip{
+  display:inline-block;
+  padding:6px 10px;
+  margin:4px 6px 0 0;
+  border-radius:999px;
+  background:#ede7f6;
+  font-size:0.9em;
+}
+
+.panel-opciones,
+.panel-curriculo,
+.panel-visual,
+.panel-accesibilidad{
+  background:rgba(255,255,255,0.92);
+  border-radius:18px;
+  padding:14px;
+  max-width:900px;
+  margin:14px auto;
+}
+
+.controles-mapa,
+.controles-accesibilidad{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.select-tabla,
+.select-fuente{
+  font-size:1rem;
+  padding:10px;
+  border-radius:12px;
+  border:2px solid #ce93d8;
+  min-width:160px;
+}
+
+.modelo-rectangular{
+  margin-top:12px;
+}
+
+.rejilla-rectangular{
+  display:grid;
+  gap:4px;
+  margin-top:10px;
+  justify-content:flex-start;
+}
+
+.celda-rectangular{
+  width:18px;
+  height:18px;
+  border-radius:4px;
+  background:#ffb3d1;
+  border:1px solid #ce93d8;
+}
+
+.barra-tablas{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.barra-tabla-item{
+  display:grid;
+  grid-template-columns:72px 1fr 54px;
+  gap:10px;
+  align-items:center;
+}
+
+.barra-tabla-track{
+  width:100%;
+  height:14px;
+  background:#ede7f6;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.barra-tabla-fill{
+  height:100%;
+  background:linear-gradient(90deg, #80deea, #ff80ab);
+}
+
+body.font-large{
+  font-size: 1.12em;
+}
+
+body.high-contrast{
+  background-color:#fff8e1;
+  color:#1a1a1a;
+}
+
+body.high-contrast .tarjeta,
+body.high-contrast .panel,
+body.high-contrast .panel-opciones,
+body.high-contrast .panel-curriculo,
+body.high-contrast .panel-visual,
+body.high-contrast .panel-accesibilidad{
+  background:#fff;
+  border:2px solid #5d2e8c;
+}
+
+
+h1, h2, h3{
+  font-family: var(--mm-font-display);
+  letter-spacing: 0.02em;
+}
+
+button{
+  font-family: var(--mm-font-body);
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--mm-gradient-magic);
+  box-shadow: 0 6px 16px rgba(255, 92, 154, 0.35);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.grid-mundos{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:16px;
+  max-width:900px;
+  margin:0 auto;
+  padding:0 12px 20px;
+}
+
+.tarjeta-mundo{
+  background:rgba(255,255,255,0.94);
+  border:3px solid var(--color-secundario);
+  border-radius:20px;
+  padding:16px;
+  text-align:left;
+  cursor:pointer;
+  transition:transform .15s ease;
+}
+
+.tarjeta-mundo:hover:not(.bloqueada){
+  transform:translateY(-3px);
+}
+
+.tarjeta-mundo.bloqueada{
+  opacity:.72;
+  cursor:not-allowed;
+}
+
+.tarjeta-mundo .emoji-mundo{
+  font-size:2.2em;
+  display:block;
+  margin-bottom:8px;
+}
+
+.tarjeta-mundo .meta-mundo{
+  font-size:.85em;
+  color:#5e35b1;
+}
+
+.boton-volver-mundos{
+  margin:12px auto 0;
+  display:block;
+}
+
+.mapa-fases{
+  margin: 8px auto 20px;
+  max-width: 900px;
+}
+
+.mapa-fases button{
+  min-width: 140px;
+}
+
+.mapa-paneles{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.juego-layout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.juego-recompensa{
+  width: min(200px, 48vw);
+  height: min(200px, 48vw);
+  flex-shrink: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.recompensa-marco{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+}
+
+.recompensa-marco #imgRecompensa{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.recompensa-cubierta{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f3e5f5;
+  transition: height .5s ease;
+  pointer-events: none;
+}
+
+.juego-panel{
+  width: 100%;
+  text-align: center;
+}
+
+.juego-panel #problema{
+  font-size: 1.35em;
+  font-weight: bold;
+}
+
+.juego-meta-inferior{
+  width: 100%;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(206, 147, 216, 0.45);
+  opacity: 0.92;
+}
+
+.juego-meta-inferior .juego-objetivo{
+  font-size: 0.85em;
+  color: #6a1b9a;
+  margin-bottom: 6px;
+}
+
+.juego-meta-inferior #tagsFase .tabla-chip{
+  font-size: 0.8em;
+  padding: 4px 8px;
+}
+
+.juego-meta #objetivoFase{
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.juego-objetivo{
+  font-size: 0.95em;
+  color: #5e35b1;
+  margin: 0 0 8px;
+  line-height: 1.45;
+}
+
+#tagsFase{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.titulo-curso-selector{
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.1em;
+  color: #5e35b1;
+  margin: 16px 0 4px;
+}
+
+.opciones-lectura{
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.opcion-lectura{
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 1em;
+}
+
+.emoji-recompensa{
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+}
+
+.emoji-recompensa-mochila{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+  font-size: 2.4rem;
+  background: #f3e5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.resumen-cursos-panel{
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.resumen-curso-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #f3e5f5;
+  border-radius: 10px;
+  font-size: 0.9em;
+}
+
+.boton-volver-juego{
+  margin-top: 4px;
+}
+
+#popupRecompensa{
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+}
+
+/* ===== v3.1 Rediseño integral ===== */
+
+body{
+  background-attachment: fixed;
+}
+
+.app-header,
+.bottom-nav{
+  background: var(--mm-gradient-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.avatar{
+  box-shadow: 0 4px 12px rgba(179, 136, 255, 0.45);
+}
+
+.nombre-jugador{
+  font-family: var(--mm-font-display);
+}
+
+.header-right{
+  background: var(--mm-surface-glass);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 1em;
+  box-shadow: inset 0 0 0 1px rgba(179, 136, 255, 0.25);
+}
+
+.titulo-principal{
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 12px 0 8px;
+  background: var(--mm-gradient-magic);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitulo-hero{
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto 20px;
+  color: var(--mm-text-soft);
+  line-height: 1.5;
+}
+
+.tarjeta,
+.panel,
+.tarjeta-clase,
+.panel-opciones,
+.panel-curriculo,
+.panel-visual,
+.panel-accesibilidad{
+  background: var(--mm-surface);
+  border: 1px solid rgba(179, 136, 255, 0.2);
+  box-shadow: var(--mm-shadow-card);
+}
+
+.tarjeta-mundo{
+  border: 2px solid rgba(179, 136, 255, 0.35);
+  box-shadow: var(--mm-shadow-soft);
+  text-align: left;
+}
+
+.tarjeta-mundo:not(.bloqueada):hover{
+  box-shadow: 0 14px 32px rgba(179, 136, 255, 0.28);
+  border-color: var(--color-primario);
+}
+
+.tarjeta-mundo strong{
+  font-family: var(--mm-font-display);
+  font-size: 1.15em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.mapa-fases button{
+  min-width: 150px;
+  border-radius: var(--mm-radius-md);
+  position: relative;
+}
+
+.mapa-fases .fase-completada{
+  background: linear-gradient(135deg, #a5d6a7, #66bb6a);
+  box-shadow: 0 6px 14px rgba(102, 187, 106, 0.35);
+}
+
+.mapa-fases .fase-disponible{
+  animation: pulsoSuave 2.5s ease-in-out infinite;
+}
+
+.mapa-fases .fase-bloqueada{
+  filter: grayscale(0.35);
+}
+
+@keyframes pulsoSuave{
+  0%, 100%{ box-shadow: 0 6px 16px rgba(255, 92, 154, 0.3); }
+  50%{ box-shadow: 0 8px 22px rgba(179, 136, 255, 0.45); }
+}
+
+.juego-panel{
+  background: var(--mm-surface);
+  border-radius: var(--mm-radius-lg);
+  padding: 20px 16px;
+  box-shadow: var(--mm-shadow-card);
+  border: 1px solid rgba(179, 136, 255, 0.2);
+}
+
+.juego-panel #problema{
+  font-family: var(--mm-font-display);
+  font-size: clamp(1.25rem, 4vw, 1.55rem);
+}
+
+#respuesta{
+  width: min(160px, 40vw);
+  text-align: center;
+  font-weight: 700;
+  border-color: var(--color-secundario);
+}
+
+.opcion-lectura{
+  background: #f3e5f5;
+  color: var(--mm-text);
+  border: 2px solid transparent;
+}
+
+.opcion-lectura:hover:not(:disabled){
+  border-color: var(--color-secundario);
+  transform: translateY(-1px);
+}
+
+.recompensa-contenedor,
+.juego-recompensa{
+  border: 3px solid var(--color-secundario);
+  box-shadow: var(--mm-shadow-soft);
+}
+
+.popup{
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+}
+
+.popup .caja{
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-soft);
+  max-width: 360px;
+  animation: entradaPopup 0.35s ease;
+}
+
+@keyframes entradaPopup{
+  from{ opacity: 0; transform: scale(0.92) translateY(8px); }
+  to{ opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.bottom-nav button{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.bottom-nav button:hover{
+  background: rgba(179, 136, 255, 0.15);
+}
+
+.bottom-nav button:active{
+  transform: scale(1.08);
+}
+
+#tablaTiempos,
+#tablaRapidos,
+.tabla-clase{
+  border-radius: var(--mm-radius-sm);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(179, 136, 255, 0.25);
+}
+
+#tablaTiempos th,
+#tablaRapidos th,
+.tabla-clase th{
+  background: #ede7f6;
+  font-family: var(--mm-font-display);
+}
+
+.galeria-recompensas .recompensa-item img,
+.galeria-unicornios .unicornio-item img{
+  transition: transform 0.2s ease;
+}
+
+.galeria-recompensas .recompensa-item:hover img,
+.galeria-unicornios .unicornio-item:hover img{
+  transform: scale(1.06);
+}
+
+.boton-volver-mundos,
+.boton-volver-juego{
+  background: transparent;
+  color: var(--mm-text-soft);
+  box-shadow: none;
+  border: 2px dashed var(--color-secundario);
+}
+
+.boton-volver-mundos:hover,
+.boton-volver-juego:hover{
+  background: rgba(179, 136, 255, 0.1);
+}
+
+#pantallaNombre .tarjeta-nombre,
+#pantallaNombre{
+  text-align: center;
+}
+
+#pantallaNombre input{
+  width: min(240px, 80vw);
+}
+
+.final img{
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-soft);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pantalla.activa,
+  .mapa-fases .fase-disponible,
+  .popup .caja,
+  .app-header::before{
+    animation: none;
+  }
+}

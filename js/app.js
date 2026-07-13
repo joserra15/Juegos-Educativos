@@ -40,6 +40,12 @@ import {
   getEtiquetaRecompensa,
   getProgresoMundo
 } from "../engine/WorldManager.js";
+import {
+  evaluarEstadoFase,
+  crearContextoRanking,
+  combinarTiemposJugador,
+  obtenerTiempoFase,
+} from "../engine/PhaseProgress.js";
 
 
 let puntos = 0;
@@ -593,58 +599,49 @@ function construirMapa(){
   cont.innerHTML = "";
 
   fases.forEach((f, i) => {
-
-
     const b = document.createElement("button");
-    b.textContent = getFaseLabel(f) + (liberadas.includes(i) ? " ✅" : "");
+    const completada = liberadas.includes(i);
+    b.textContent = getFaseLabel(f) + (completada ? " ✅" : "");
+    b.className = "fase-btn";
 
-// ===== FASE SIEMPRE ACTIVA =====
-if (f.siempreActiva) {
-  b.disabled = false;
-  b.onclick = () => iniciarFase(i);
-  cont.appendChild(b);
-  return;
-}
+    if (f.siempreActiva) {
+      b.classList.add("fase-disponible");
+      b.disabled = false;
+      b.onclick = () => iniciarFase(i);
+      cont.appendChild(b);
+      return;
+    }
 
+    if (f.tipo === "avanzada") {
+      const estado = evaluarEstadoFase(f, i, liberadas, puntosClase);
 
-// ===== FASES AVANZADAS (DESBLOQUEO COLECTIVO) =====
-if (f.tipo === "avanzada") {
+      if (estado.disponible) {
+        b.classList.add("fase-disponible");
+        b.disabled = false;
+        b.onclick = () => iniciarFase(i);
+      } else {
+        b.classList.add("fase-bloqueada", "boton-colectivo");
+        b.disabled = true;
+        b.onclick = () => {
+          const puntosNecesarios = f.desbloqueoClase || Infinity;
+          popup(
+            "🌟 Reto colectivo 🌟\n\n" +
+            "Este mundo se desbloquea cuando:\n" +
+            "✔️ completes el mundo anterior\n" +
+            `⭐ el grupo global llegue a ${puntosNecesarios.toLocaleString()} puntos\n\n` +
+            `Progreso actual: ${puntosClase.toLocaleString()} / ${puntosNecesarios.toLocaleString()}`
+          );
+        };
+      }
 
-//para pruebas
-//puntosClase=70000;
+      cont.appendChild(b);
+      return;
+    }
 
-  const faseAnteriorSuperada = liberadas.includes(i - 1);
-  const puntosNecesarios = f.desbloqueoClase || Infinity;
-  const puntosSuficientes = puntosClase >= puntosNecesarios;
-
-
-  if (faseAnteriorSuperada && puntosSuficientes) {
-    // 🔓 Desbloqueada de verdad
-    b.disabled = false;
-    b.onclick = () => iniciarFase(i);
-  } else {
-    // 🔒 Bloqueada (aunque visible)
-    b.disabled = true;
-    b.classList.add("boton-colectivo");
-
-    b.onclick = () => {
-      popup(
-        "🌟 Reto colectivo 🌟\n\n" +
-        "Este mundo se desbloquea cuando:\n" +
-        "✔️ completes el mundo anterior\n" +
-        `⭐ el grupo global llegue a ${puntosNecesarios.toLocaleString()} puntos\n\n` +
-        `Progreso actual: ${puntosClase.toLocaleString()} / ${puntosNecesarios.toLocaleString()}`
-      );
-    };
-  }
-
-  cont.appendChild(b);
-  return;
-}
-
-
-    // ===== RESTO DE FASES =====
-    b.disabled = i > liberadas.length;
+    const estado = evaluarEstadoFase(f, i, liberadas, puntosClase);
+    b.disabled = !estado.disponible;
+    b.classList.add(estado.disponible ? "fase-disponible" : "fase-bloqueada");
+    if (completada) b.classList.add("fase-completada");
     b.onclick = () => iniciarFase(i);
 
     cont.appendChild(b);
@@ -1637,41 +1634,21 @@ function cargarProgresoDesdeFirebase(){
     .catch(err => { console.log("JA 😂 Error cargando progreso"); console.error(err); });
 }
 
-function clavesPermitidasFases(fasesRef){
-  const claves = new Set();
-  fasesRef.forEach((fase) => {
-    claves.add(fase.id);
-    claves.add(getFaseLabel(fase));
-    claves.add(fase.nombre);
-  });
-  return claves;
-}
-
-function filtrarTiemposPorMundo(tiempos, fasesRef){
-  const claves = clavesPermitidasFases(fasesRef);
-  const filtrado = {};
-  for (const [clave, valor] of Object.entries(tiempos || {})) {
-    if (claves.has(clave)) filtrado[clave] = valor;
-  }
-  return filtrado;
-}
-
 function getTiemposJugadorEnMundo(data, ctx){
-  let tiempos = getTiemposMundoFromFirebase(data, ctx.mundoRef, ctx.clavesPermitidas);
-  if(data.nombre === nombreJugador){
-    const local = migrateTiempoKeys(loadMundoState(ctx.mundoRef).tiemposMejores || {}, ctx.fasesRef);
-    tiempos = { ...tiempos, ...filtrarTiemposPorMundo(local, ctx.fasesRef) };
-  }
-  return tiempos;
+  const firebaseTiempos = getTiemposMundoFromFirebase(data, ctx.mundoRef, ctx.clavesPermitidas);
+  const localTiempos = data.nombre === nombreJugador
+    ? migrateTiempoKeys(loadMundoState(ctx.mundoRef).tiemposMejores || {}, ctx.fasesRef)
+    : null;
+  return combinarTiemposJugador({
+    firebaseTiempos,
+    localTiempos,
+    esJugadorActual: data.nombre === nombreJugador,
+    fases: ctx.fasesRef,
+  });
 }
 
 function crearContextoRankingStats(){
-  const fasesRef = [...fases];
-  return {
-    mundoRef: mundoId,
-    fasesRef,
-    clavesPermitidas: clavesPermitidasFases(fasesRef),
-  };
+  return crearContextoRanking(mundoId, fases);
 }
 
 function actualizarEncabezadoRankingStats(ctx){
@@ -1688,11 +1665,6 @@ async function asegurarMundoRankingSincronizado(){
   if(!contenidoMundo || contenidoMundo.id !== idActivo || mundoId !== idActivo){
     await cargarMundoContenido(idActivo);
   }
-}
-
-function obtenerTiempoFase(tiempos, fase){
-  if(!tiempos || !fase) return undefined;
-  return tiempos[fase.id] ?? tiempos[getFaseLabel(fase)];
 }
 
 function mostrarRankingRapidos(ctx = crearContextoRankingStats()){
