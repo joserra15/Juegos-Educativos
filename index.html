@@ -156,10 +156,15 @@ input{
   transition:height .5s ease;
 }
 
-/* Imagen siempre bien ajustada */
-.unicornio-mascara img{
+/* Imagen siempre bien ajustada al marco */
+.recompensa-mascara img,
+.unicornio-mascara img,
+#imgRecompensa,
+#popupRecompensa{
   width:100%;
   height:100%;
+  max-width:100%;
+  max-height:100%;
   object-fit:contain;
   display:block;
 }
@@ -601,9 +606,12 @@ footer{
 .galeria-recompensas,
 .galeria-unicornios{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 10px;
   margin-top: 10px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recompensa-item,
@@ -611,11 +619,16 @@ footer{
   text-align: center;
 }
 
+.recompensa-item img,
 .unicornio-item img{
-  width: 100%;
-  max-width: 90px;
+  width: 72px;
+  height: 72px;
+  max-width: 72px;
+  margin: 0 auto;
+  object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background: #f3e5f5;
 }
 
 .unicornio-item span{
@@ -783,6 +796,88 @@ button{
   display:block;
 }
 
+.mapa-fases{
+  margin: 8px auto 20px;
+  max-width: 900px;
+}
+
+.mapa-fases button{
+  min-width: 140px;
+}
+
+.mapa-paneles{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.juego-layout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.juego-recompensa{
+  width: min(180px, 42vw);
+  height: min(180px, 42vw);
+  flex-shrink: 0;
+}
+
+.juego-recompensa .recompensa-mascara{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.juego-recompensa .recompensa-mascara img{
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.juego-panel{
+  width: 100%;
+  text-align: center;
+}
+
+.juego-panel #problema{
+  font-size: 1.35em;
+  font-weight: bold;
+}
+
+.juego-meta{
+  margin: 8px 0 12px;
+}
+
+.juego-meta #objetivoFase{
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.juego-objetivo{
+  font-size: 0.95em;
+  color: #5e35b1;
+  margin: 0 0 8px;
+  line-height: 1.45;
+}
+
+#tagsFase{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+#popupRecompensa{
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+}
+
 </style>
 </head>
 
@@ -815,34 +910,36 @@ button{
   <h1 class="titulo-mapa" id="tituloMapaMundo">Mundo</h1>
   <button class="boton-volver-mundos" onclick="mostrarSelectorMundos()">🌍 Cambiar de mundo</button>
 
-  <div class="panel-curriculo">
-    <strong id="etiquetaCurricular">3º Primaria · Matemáticas · LOMLOE</strong>
-    <p id="textoCurricularMapa">Tablas del 1 al 10, cálculo mental y problemas cotidianos.</p>
-    <div id="chipsCurriculares"></div>
-  </div>
+  <div id="botonesFases" class="flex mapa-fases"></div>
 
-  <div class="panel-opciones">
-    <h3>🎯 Practica una tabla concreta</h3>
-    <div class="controles-mapa">
-      <select id="selectorTabla" class="select-tabla" aria-label="Seleccionar tabla a practicar"></select>
-      <button onclick="iniciarPracticaTabla()">🚀 Dominar esta tabla</button>
+  <div class="mapa-paneles">
+    <div class="panel-curriculo">
+      <strong id="etiquetaCurricular">3º Primaria · Matemáticas · LOMLOE</strong>
+      <p id="textoCurricularMapa">Tablas del 1 al 10, cálculo mental y problemas cotidianos.</p>
+      <div id="chipsCurriculares"></div>
     </div>
-    <p class="texto-ayuda">Puedes reforzar una tabla concreta antes de volver al mapa completo.</p>
-  </div>
 
-  <div class="panel-accesibilidad">
-    <h3>👀 Accesibilidad y lectura</h3>
-    <div class="controles-accesibilidad">
-      <label><input id="toggleContraste" type="checkbox"> Alto contraste</label>
-      <label for="selectorFuente">Tamaño de texto</label>
-      <select id="selectorFuente" class="select-fuente" aria-label="Tamaño del texto">
-        <option value="normal">Normal</option>
-        <option value="large">Grande</option>
-      </select>
+    <div class="panel-opciones">
+      <h3>🎯 Practica una tabla concreta</h3>
+      <div class="controles-mapa">
+        <select id="selectorTabla" class="select-tabla" aria-label="Seleccionar tabla a practicar"></select>
+        <button onclick="iniciarPracticaTabla()">🚀 Dominar esta tabla</button>
+      </div>
+      <p class="texto-ayuda">Puedes reforzar una tabla concreta antes de volver al mapa completo.</p>
+    </div>
+
+    <div class="panel-accesibilidad">
+      <h3>👀 Accesibilidad y lectura</h3>
+      <div class="controles-accesibilidad">
+        <label><input id="toggleContraste" type="checkbox"> Alto contraste</label>
+        <label for="selectorFuente">Tamaño de texto</label>
+        <select id="selectorFuente" class="select-fuente" aria-label="Tamaño del texto">
+          <option value="normal">Normal</option>
+          <option value="large">Grande</option>
+        </select>
+      </div>
     </div>
   </div>
-
-  <div id="botonesFases" class="flex"></div>
 </div>
 
 <!--
@@ -857,32 +954,33 @@ button{
 <div id="juego" class="pantalla">
  <h2 id="tituloFase"></h2>
  <h3 id="contador"></h3>
- <div class="flex">
-  <div>
+ <div class="juego-layout">
+  <div class="recompensa-contenedor juego-recompensa">
+    <div id="mascaraRecompensa" class="recompensa-mascara">
+      <img id="imgRecompensa" alt="Recompensa del reto">
+    </div>
+  </div>
+
+  <div class="juego-panel">
    <p id="problema"></p>
-<p id="indicadorDificultad" style="font-weight:bold"></p>
-<p id="objetivoFase" class="curriculo-chip"></p>
-<div id="tagsFase"></div>
+   <p id="indicadorDificultad" style="font-weight:bold"></p>
+   <div class="juego-meta">
+     <p id="objetivoFase" class="juego-objetivo"></p>
+     <div id="tagsFase"></div>
+   </div>
    <input type="number" id="respuesta" aria-label="Escribe la respuesta"><br><br>
    <button onclick="responder()">Responder</button>
    <p id="pista"></p>
-<div id="visualRectangular" class="panel-visual" style="display:none">
-  <strong>🧱 Ayuda visual</strong>
-  <p id="textoModeloRectangular"></p>
-  <div id="rejillaRectangular" class="rejilla-rectangular"></div>
-</div>
+   <div id="visualRectangular" class="panel-visual" style="display:none">
+     <strong>🧱 Ayuda visual</strong>
+     <p id="textoModeloRectangular"></p>
+     <div id="rejillaRectangular" class="rejilla-rectangular"></div>
+   </div>
    <p id="tiempo"></p>
-<p id="contadorFallos" style="font-weight:bold; color:#c62828"></p>
+   <p id="contadorFallos" style="font-weight:bold; color:#c62828"></p>
   </div>
 
-
-<div class="recompensa-contenedor">
-  <div id="mascaraRecompensa" class="recompensa-mascara">
-    <img id="imgRecompensa">
-  </div>
-</div>
-
- <button onclick="mostrarMapa()">Volver</button>
+  <button onclick="mostrarMapa()">Volver</button>
  </div>
 </div>
 
@@ -970,7 +1068,8 @@ button{
     <!-- Imagen del unicornio liberado -->
     <img id="popupRecompensa"
          src=""
-         style="display:none; width:140px; margin:10px auto;">
+         alt="Recompensa liberada"
+         style="display:none;">
 
     <button onclick="cerrarPopup()">Continuar</button>
   </div>
@@ -1247,7 +1346,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 2.2.0
+    v 2.2.1
   </p>
 <p><br></p>
 </footer>
