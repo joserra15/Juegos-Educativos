@@ -1,13 +1,16 @@
 {
   "name": "mundos-magicos-educativos",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "start": "npx --yes serve -l 4173 ."
   },
   "devDependencies": {
+    "@playwright/test": "^1.52.0",
     "vitest": "^3.2.4"
   }
 }

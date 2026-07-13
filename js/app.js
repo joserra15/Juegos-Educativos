@@ -59,6 +59,24 @@ import {
   faseSuperada,
   debeReiniciarFase,
 } from "../engine/SessionEngine.js";
+import {
+  initTarjetaPersonaje,
+  actualizarAvatarHeader,
+  renderHeroBienvenida,
+  iniciarTutorialSiNecesario,
+  avanzarTutorial,
+  saltarTutorial,
+  marcarTutorialCompletado,
+} from "./ui/Onboarding.js";
+import { renderTarjetasMundos } from "./ui/SelectorMundos.js";
+import { renderGraficosArea, exportarResumenJugador } from "./ui/PanelFamilias.js";
+import {
+  renderMejoraPersonal,
+  renderNarrativaHechizo,
+  renderRankingConMarcas,
+  actualizarSnapshotAlSalir,
+} from "./ui/RankingView.js";
+import { setImagenConLazy, aplicarLazyEnContenedor, prefetchAsset } from "./ui/LazyAssets.js";
 
 
 let puntos = 0;
@@ -99,6 +117,7 @@ let bancoSesion = [];
 let preguntaActual = null;
 let aciertosSesion = 0;
 let rachaActual = 0;
+let pantallaAnteriorId = null;
 const mundos = () => fases.map(f => getFaseLabel(f));
 
   
@@ -142,6 +161,7 @@ function sincronizarSiEsNecesario(){
 function cerrarHistoria(){
   localStorage.setItem("historiaVista", "true");
   mostrarSelectorMundos();
+  iniciarTutorialSiNecesario(mostrar);
 }
 
 
@@ -225,33 +245,14 @@ function mostrarSelectorMundos(){
   persistirMundoActual();
   recalcularPuntosGlobales();
 
-  cont.innerHTML = "";
-  const allStates = loadAllMundosStates();
-  const cursos = [...new Set(manifestCatalog.mundos.map(m => m.curso))].sort();
-
-  cursos.forEach(curso => {
-    const titulo = document.createElement("h2");
-    titulo.className = "titulo-curso-selector";
-    titulo.textContent = `${curso}º de Primaria`;
-    cont.appendChild(titulo);
-
-    manifestCatalog.mundos.filter(m => m.curso === curso).forEach(entry => {
-    const card = document.createElement("button");
-    card.className = "tarjeta-mundo" + (entry.disponible ? "" : " bloqueada");
-    const state = allStates[entry.id] || {};
-    const progreso = getProgresoMundo(state, entry.id === mundoId ? fases.length : state.liberadas?.length || 0);
-
-    card.innerHTML = `
-      <span class="emoji-mundo">${entry.emoji}</span>
-      <strong>${entry.nombre}</strong>
-      <p>${entry.descripcion}</p>
-      <p class="meta-mundo">${entry.curso}º · ${entry.area}</p>
-      <p class="meta-mundo">${entry.disponible ? `Progreso: ${progreso.completadas} fases · ${progreso.puntosMundo} ⭐` : "Próximamente"}</p>
-    `;
-
-    card.onclick = () => entrarMundo(entry.id);
-    cont.appendChild(card);
-    });
+  renderHeroBienvenida(nombreJugador);
+  renderTarjetasMundos({
+    container: cont,
+    manifest: manifestCatalog,
+    allStates: loadAllMundosStates(),
+    fasesActuales: fases.length,
+    mundoId,
+    onEntrar: entrarMundo,
   });
 
   const puntosGlobales = document.getElementById("puntosGlobalesSelector");
@@ -312,7 +313,8 @@ function setRecompensaVisual(recompensa){
   if(!img) return;
 
   if(recompensa?.asset){
-    img.src = recompensa.asset;
+    setImagenConLazy(img, recompensa.asset);
+    prefetchAsset(recompensa.asset);
     img.style.display = "block";
     if(emoji) emoji.style.display = "none";
   }else if(recompensa?.emoji){
@@ -322,7 +324,7 @@ function setRecompensaVisual(recompensa){
       emoji.style.display = "flex";
     }
   }else{
-    img.src = "unicornio1.png";
+    setImagenConLazy(img, "unicornio1.png");
     img.style.display = "block";
     if(emoji) emoji.style.display = "none";
   }
@@ -1324,6 +1326,7 @@ function mostrarPanel(){
  document.getElementById("panelIntentos").textContent=
   intentosTotales;
 
+ renderGraficosArea(manifestCatalog, loadAllMundosStates(), "graficosAreaPanel");
  pintarBarrasTablas();
  pintarResumenCursos();
 
@@ -1338,6 +1341,29 @@ function mostrarPanel(){
   });
 
  mostrar("panel");
+}
+
+function exportarResumenFamilia(){
+  exportarResumenJugador({
+    nombreJugador,
+    puntos,
+    mundosStates: loadAllMundosStates(),
+    manifest: manifestCatalog,
+    intentosTotales,
+  });
+}
+
+function avanzarTutorialUI(){
+  avanzarTutorial(mostrar);
+}
+
+function saltarTutorialUI(){
+  saltarTutorial();
+}
+
+function reiniciarTutorial(){
+  localStorage.removeItem("tutorialCompletado");
+  iniciarTutorialSiNecesario(mostrar);
 }
 
 /* =====================================================
@@ -1428,7 +1454,7 @@ function popup(texto, mostrarRecompensa=false, opciones = {}){
 
   const img = document.getElementById("popupRecompensa");
   if(mostrarRecompensa && rec?.asset){
-    img.src = rec.asset;
+    setImagenConLazy(img, rec.asset);
     img.style.display = "block";
   }else{
     img.style.display = "none";
@@ -1454,9 +1480,14 @@ function cerrarPopup(){
  }
 }
 function mostrar(id){
+ if(pantallaAnteriorId === "ranking"){
+   actualizarSnapshotAlSalir(tiemposMejores);
+ }
+
  document.querySelectorAll(".pantalla")
   .forEach(p=>p.classList.remove("activa"));
  document.getElementById(id).classList.add("activa");
+ pantallaAnteriorId = id;
 
   window.scrollTo({
     top: 0,
@@ -1703,6 +1734,15 @@ async function mostrarRanking(){
   mostrarRankingRapidos(ctx);
   cargarPanelGlobal(ctx);
 
+  renderMejoraPersonal("mejoraPersonalRanking", ctx.fasesRef, tiemposMejores);
+  renderRankingConMarcas(
+    document.getElementById("listaRanking"),
+    null,
+    nombreJugador,
+    ctx.fasesRef,
+    tiemposMejores
+  );
+
   const lista = document.getElementById("listaRanking");
   lista.innerHTML = "<li>Cargando ranking…</li>";
 
@@ -1920,6 +1960,8 @@ function cargarPanelGlobal(ctx = crearContextoRankingStats()){
 
       document.getElementById("puntosClase").textContent =
         puntosTotales.toLocaleString();
+
+      renderNarrativaHechizo("narrativaHechizo", puntosTotales);
 
       document.getElementById("unicorniosClase").textContent =
         totalRecompensas;
@@ -2407,10 +2449,13 @@ function pintarRecompensasLiberadas(){
     const rec = fase.recompensa;
 
     if(rec.asset){
-      div.innerHTML = `
-        <img src="${rec.asset}" alt="${rec.nombre}">
-        <span>${rec.nombre}</span>
-      `;
+      const img = document.createElement("img");
+      img.alt = rec.nombre;
+      setImagenConLazy(img, rec.asset);
+      div.appendChild(img);
+      const span = document.createElement("span");
+      span.textContent = rec.nombre;
+      div.appendChild(span);
     }else{
       div.innerHTML = `
         <span class="emoji-recompensa-mochila">${rec.emoji || "🎁"}</span>
@@ -2443,10 +2488,14 @@ async function initApp(){
       navigator.serviceWorker.register("./service-worker.js").catch(console.error);
     }
 
+    initTarjetaPersonaje();
+    actualizarAvatarHeader();
+
     const globalFns = {
       mostrar, mostrarMapa, mostrarSelectorMundos, entrarMundo, mostrarMochila, mostrarPanel, mostrarRanking, mostrarMural,
       responder, responderOpcion, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
-      iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido
+      iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido,
+      avanzarTutorialUI, saltarTutorialUI, reiniciarTutorial, exportarResumenFamilia,
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });
 
@@ -2454,6 +2503,7 @@ async function initApp(){
       mostrar("pantallaNombre");
     }else{
       actualizarHeaderNombre();
+      actualizarAvatarHeader();
       actualizarHeaderMundo();
       if(!localStorage.getItem("historiaVista")){
         mostrar("historia");

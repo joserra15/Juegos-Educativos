@@ -11,6 +11,7 @@
       "area": "matematicas",
       "descripcion": "Aprende las tablas de multiplicar liberando unicornios mágicos",
       "disponible": true,
+      "totalFases": 8,
       "contentFile": "unicornios.json",
       "tema": {
         "colorPrimario": "#ff80ab",
@@ -26,6 +27,7 @@
       "area": "matematicas",
       "descripcion": "Divisiones como reparto y relación con la multiplicación",
       "disponible": true,
+      "totalFases": 6,
       "contentFile": "dinosaurios.json",
       "tema": {
         "colorPrimario": "#4caf50",
@@ -41,6 +43,7 @@
       "area": "matematicas",
       "descripcion": "Fracciones propias, comparación y recta numérica",
       "disponible": true,
+      "totalFases": 6,
       "contentFile": "fracciones.json",
       "tema": {
         "colorPrimario": "#ff9800",
@@ -56,6 +59,7 @@
       "area": "lengua",
       "descripcion": "Comprensión lectora y ortografía en contextos narrativos",
       "disponible": true,
+      "totalFases": 6,
       "contentFile": "biblioteca.json",
       "tema": {
         "colorPrimario": "#5c6bc0",
@@ -71,6 +75,7 @@
       "area": "matematicas",
       "descripcion": "Multiplicación y división con números mayores (4º)",
       "disponible": true,
+      "totalFases": 5,
       "contentFile": "calculo-4.json",
       "tema": {
         "colorPrimario": "#00897b",
@@ -86,6 +91,7 @@
       "area": "matematicas",
       "descripcion": "Fracciones equivalentes, suma y comparación (4º)",
       "disponible": true,
+      "totalFases": 4,
       "contentFile": "fracciones-4.json",
       "tema": {
         "colorPrimario": "#e65100",
@@ -101,6 +107,7 @@
       "area": "lengua",
       "descripcion": "Comprensión, ortografía y gramática (4º)",
       "disponible": true,
+      "totalFases": 4,
       "contentFile": "lengua-4.json",
       "tema": {
         "colorPrimario": "#7b1fa2",

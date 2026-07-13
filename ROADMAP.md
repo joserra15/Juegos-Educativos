@@ -1,6 +1,6 @@
 # RoadMap — Rediseño integral Mundos Mágicos Educativos
 
-> Versión de referencia: **v3.1.0** · Última revisión: julio 2026
+> Versión de referencia: **v3.3.0** · Última revisión: julio 2026
 
 Este documento recoge el análisis de la interfaz actual y un plan por fases para evolucionar la app hacia una experiencia más profesional y atractiva para niños de 3º y 4º de Primaria, **sin perder la esencia**: desbloquear mundos, fases y criaturas/recompensas al resolver retos correctamente.
 
@@ -83,33 +83,12 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 - [x] Fases finales: 5 fallos → reinicio desde el principio
 - [x] Fracciones con opción múltiple (sin escribir)
 
-### 🔜 Fase B — Pendiente menor
+### ✅ Fase D — Selector y onboarding (v3.3.0)
 
-| Tarea | Descripción |
-|-------|-------------|
-| Mapa ilustrado | Sustituir grid de botones por camino vertical/serpenteante con nodos de fase |
-| Avatares en el mapa | Icono del jugador en la última fase completada |
-| Preview de recompensa | Silueta borrosa de la criatura en fases bloqueadas |
-| Barra de progreso del mundo | En mapa y en selector (`3/8 fases`) |
-| Microcopy | Textos motivadores por fase (“¡Casi llegas a Luna!”) |
-
-### 🔜 Fase C — Pendiente menor
-
-| Tarea | Descripción |
-|-------|-------------|
-| Popup de recompensa 2.0 | Animación de criatura + nombre + sonido opcional |
-| Revelado progresivo mejorado | Partículas al subir la máscara de la imagen |
-| Rachas y combos | “3 aciertos seguidos” con refuerzo visual |
-| Logros visuales | Insignias en mochila con rareza (bronce/plata/oro) |
-
-### 🔜 Fase D — Selector y onboarding (prioridad media)
-
-| Tarea | Descripción |
-|-------|-------------|
-| Hero de bienvenida | Ilustración + vídeo corto opcional en primera visita |
-| Tarjetas mundo animadas | Parallax suave del emoji, badge “Nuevo” / “Completado” |
-| Tutorial interactivo | 3 pasos: elegir mundo → jugar fase → ver mochila |
-| Pantalla nombre | Diseño más “tarjeta de personaje” con avatar aleatorio |
+- [x] Hero de bienvenida en selector de mundos
+- [x] Tarjetas mundo animadas con parallax y badges (Nuevo / Completado)
+- [x] Tutorial interactivo de 3 pasos (mundo → fase → mochila)
+- [x] Pantalla nombre como tarjeta de personaje con selector de avatar
 
 ### 🔜 Fase E — Navegación y accesibilidad (prioridad media)
 
@@ -120,23 +99,19 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 | Tamaños táctiles | Mínimo 44×44 px en todos los controles |
 | Lectura en voz alta | Web Speech API para enunciados de lectura |
 
-### 🔜 Fase F — Panel familias y ranking (prioridad media-baja)
+### ✅ Fase F — Panel familias y ranking (v3.3.0)
 
-| Tarea | Descripción |
-|-------|-------------|
-| Gráficos simples | Barras de progreso por área curricular |
-| Exportar resumen | PDF o imagen del progreso semanal |
-| Ranking amigable | Destacar mejora personal vs. récord anterior |
-| Panel global narrativo | Historia del “hechizo colectivo” con hitos |
+- [x] Gráficos de barras por área curricular (`PanelStats`, `PanelFamilias`)
+- [x] Exportar resumen de progreso (archivo `.txt`)
+- [x] Ranking amigable con mejora personal vs. récord anterior
+- [x] Panel global narrativo del hechizo colectivo con hitos
 
-### 🔜 Fase G — Arquitectura front (prioridad técnica)
+### ✅ Fase G — Arquitectura front (v3.3.0)
 
-| Tarea | Descripción |
-|-------|-------------|
-| Componentizar vistas | Pequeños módulos JS por pantalla |
-| Temas por mundo | CSS variables inyectadas desde `WorldManager` |
-| Lazy load de assets | Imágenes de criaturas bajo demanda |
-| Tests E2E | Playwright: flujo nombre → mundo → fase → recompensa |
+- [x] Módulos JS por pantalla (`js/ui/Onboarding`, `SelectorMundos`, `PanelFamilias`, `RankingView`, `LazyAssets`)
+- [x] Temas por mundo vía CSS variables desde `WorldManager`
+- [x] Lazy load de imágenes de criaturas (`LazyAssets`)
+- [x] Tests E2E con Playwright (flujo nombre → mundo → panel)
 
 ---
 

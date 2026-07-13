@@ -106,12 +106,22 @@ describe("Regresión: aislamiento multi-mundo", () => {
     return () => { globalThis.localStorage = original; };
   }
 
+  it("migra legacy sin recursión cuando el store está vacío", () => {
+    const restore = mockLocalStorage();
+    Object.keys(storage).forEach((k) => delete storage[k]);
+    storage.fasesLiberadas = JSON.stringify([0, 1]);
+    storage.puntos = "42";
+
+    const mundos = loadAllMundosStates();
+    expect(mundos.unicornios.liberadas).toEqual([0, 1]);
+    expect(mundos.unicornios.puntosMundo).toBe(42);
+    expect(JSON.parse(storage.mundos).unicornios.liberadas).toEqual([0, 1]);
+    restore();
+  });
+
   it("guarda progreso independiente por mundo", () => {
     const restore = mockLocalStorage();
     Object.keys(storage).forEach((k) => delete storage[k]);
-
-    // Evitar migración legacy en store vacío (recursión save → load → migrate)
-    storage.mundos = JSON.stringify({ unicornios: createDefaultMundoState() });
 
     saveMundoState("unicornios", {
       ...createDefaultMundoState(),

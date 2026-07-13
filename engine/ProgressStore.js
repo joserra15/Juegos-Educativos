@@ -113,12 +113,14 @@ function migrateLegacyLocalState(mundoId) {
   const puntosGlobal = +localStorage.getItem(LEGACY_KEYS.puntos) || 0;
   state.puntosMundo = puntosGlobal;
 
-  saveMundoState(mundoId, state);
+  const mundos = readMundosStore();
+  mundos[mundoId] = state;
+  writeMundosStore(mundos);
   return state;
 }
 
 export function saveMundoState(mundoId, state) {
-  const mundos = loadAllMundosStates();
+  const mundos = readMundosStore();
   mundos[mundoId] = state;
   writeMundosStore(mundos);
 

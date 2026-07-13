@@ -1,10 +1,15 @@
-const CACHE_NAME = "mundos-magicos-v10";
+const CACHE_NAME = "mundos-magicos-v11";
 
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
   "./css/app.css",
   "./js/app.js",
+  "./js/ui/Onboarding.js",
+  "./js/ui/SelectorMundos.js",
+  "./js/ui/PanelFamilias.js",
+  "./js/ui/RankingView.js",
+  "./js/ui/LazyAssets.js",
   "./manifest.json",
   "./content/manifest.json",
   "./content/unicornios.json",
@@ -22,6 +27,7 @@ const FILES_TO_CACHE = [
   "./engine/WorldManager.js",
   "./engine/PhaseProgress.js",
   "./engine/SessionEngine.js",
+  "./engine/PanelStats.js",
   "./avatar.png",
   "./unicornios.png",
   "./unicornio1.png",

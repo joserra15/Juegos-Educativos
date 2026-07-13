@@ -29,6 +29,11 @@ export function aplicarTemaMundo(contenido, entry) {
   root.style.setProperty("--color-primario", tema.colorPrimario);
   root.style.setProperty("--color-secundario", tema.colorSecundario);
   root.style.setProperty("--theme-color", tema.colorPrimario);
+  root.style.setProperty(
+    "--mm-gradient-magic",
+    `linear-gradient(135deg, ${tema.colorPrimario} 0%, ${tema.colorSecundario} 55%, #80deea 100%)`
+  );
+  root.style.setProperty("--color-acento", tema.colorSecundario);
 
   document.body.dataset.mundo = contenido?.id || entry?.id || "default";
 
