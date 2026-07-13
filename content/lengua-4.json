@@ -1,0 +1,150 @@
+{
+  "id": "lengua-4",
+  "version": "3.0.0",
+  "nombre": "Atelier de la Lengua",
+  "tipoMundo": "lectura",
+  "curso": 4,
+  "area": "lengua",
+  "competencias": ["CCL1", "CCL3", "CCL4", "CCL5"],
+  "saberes": [
+    "comprensión lectora avanzada",
+    "ortografía y acentuación",
+    "clases de palabras",
+    "textos narrativos y descriptivos"
+  ],
+  "tema": {
+    "colorPrimario": "#7b1fa2",
+    "colorSecundario": "#ba68c8",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "pluma",
+    "recompensaLabel": "medalla"
+  },
+  "etiquetaCurricular": "4º Primaria · Lengua · LOMLOE",
+  "textoCurricular": "Comprensión lectora, ortografía y gramática en 4º de Primaria.",
+  "fases": [
+    {
+      "id": "taller-textos",
+      "nombre": "Taller de Textos",
+      "emoji": "📝",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["comprension-4"],
+      "total": 6,
+      "recompensa": { "emoji": "📝", "nombre": "Escritor" },
+      "objetivo": "Comprender textos narrativos más largos.",
+      "tags": ["Comprensión 4º", "Narración"]
+    },
+    {
+      "id": "galeria-ortografia",
+      "nombre": "Galería de Ortografía",
+      "emoji": "✍️",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["ortografia-4"],
+      "total": 6,
+      "recompensa": { "emoji": "✍️", "nombre": "Ortógrafo" },
+      "objetivo": "Dominar acentuación y reglas ortográficas.",
+      "tags": ["Ortografía 4º", "Tildes"]
+    },
+    {
+      "id": "lab-gramatica",
+      "nombre": "Laboratorio Gramatical",
+      "emoji": "🧪",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["gramatica"],
+      "total": 6,
+      "recompensa": { "emoji": "🧪", "nombre": "Gramático" },
+      "objetivo": "Identificar sustantivos, verbos y adjetivos.",
+      "tags": ["Gramática", "Clases de palabras"]
+    },
+    {
+      "id": "salon-maestro",
+      "nombre": "Salón del Maestro",
+      "emoji": "🎓",
+      "mecanica": "lectura",
+      "total": 8,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "🎓", "nombre": "Maestro" },
+      "objetivo": "Consolidar lengua en 4º de Primaria.",
+      "tags": ["Lengua 4º", "Repaso global"]
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "c4-1",
+      "etiquetas": ["comprension-4"],
+      "texto": "Sara guardó sus notas en una carpeta azul y repasó los deberes antes del examen de ciencias. ¿Qué hizo Sara antes del examen?",
+      "opciones": ["Repasó los deberes", "Fue al parque", "Durmió toda la tarde"],
+      "correcta": 0,
+      "pista": "Busca qué hizo antes del examen."
+    },
+    {
+      "id": "c4-2",
+      "etiquetas": ["comprension-4"],
+      "texto": "El relato describe un bosque húmedo donde las hojas brillan después de la lluvia. ¿Cómo está el bosque?",
+      "opciones": ["Húmedo", "Seco", "Helado"],
+      "correcta": 0,
+      "pista": "La primera frase lo describe."
+    },
+    {
+      "id": "o4-1",
+      "etiquetas": ["ortografia-4"],
+      "texto": "¿Cuál palabra lleva tilde correctamente?",
+      "opciones": ["fácil", "facil", "facíl"],
+      "correcta": 0,
+      "pista": "Es esdrújula."
+    },
+    {
+      "id": "o4-2",
+      "etiquetas": ["ortografia-4"],
+      "texto": "Elige la forma correcta del plural:",
+      "opciones": ["lápices", "lapices", "lápizes"],
+      "correcta": 0,
+      "pista": "Termina en -ces."
+    },
+    {
+      "id": "g4-1",
+      "etiquetas": ["gramatica"],
+      "texto": "En la frase 'El perro corre rápido', ¿qué tipo de palabra es 'corre'?",
+      "opciones": ["Verbo", "Sustantivo", "Adjetivo"],
+      "correcta": 0,
+      "pista": "Expresa acción."
+    },
+    {
+      "id": "g4-2",
+      "etiquetas": ["gramatica"],
+      "texto": "En 'La casa grande', ¿qué palabra es adjetivo?",
+      "opciones": ["grande", "casa", "la"],
+      "correcta": 0,
+      "pista": "Describe la casa."
+    },
+    {
+      "id": "mix4-1",
+      "etiquetas": ["comprension-4", "gramatica"],
+      "texto": "Pedro leyó un artículo sobre planetas y subrayó las palabras nuevas. ¿Qué tipo de texto leyó?",
+      "opciones": ["Informativo", "Poema", "Receta"],
+      "correcta": 0,
+      "pista": "Un artículo sobre planetas informa."
+    },
+    {
+      "id": "mix4-2",
+      "etiquetas": ["ortografia-4", "comprension-4"],
+      "texto": "¿Cuál encabezado está bien escrito para un cuento de misterio?",
+      "opciones": ["La noche misteriosa", "La noche misteryosa", "La noche misterioza"],
+      "correcta": 0,
+      "pista": "Revisa misteriosa."
+    }
+  ],
+  "puntosPorFase": {
+    "taller-textos": 12,
+    "galeria-ortografia": 14,
+    "lab-gramatica": 14,
+    "salon-maestro": 28
+  },
+  "mensajes": {
+    "acierto": ["¡Lengua perfecta!", "¡Excelente lectura!", "¡Muy bien!"],
+    "error": ["Relee el texto", "Revisa la regla", "Prueba otra opción"],
+    "ultima": ["¡Última pregunta del atelier!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

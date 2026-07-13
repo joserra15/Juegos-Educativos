@@ -1,0 +1,106 @@
+{
+  "id": "calculo-4",
+  "version": "3.0.0",
+  "nombre": "Ciudad de los Números",
+  "tipoMundo": "multiplicacion",
+  "curso": 4,
+  "area": "matematicas",
+  "competencias": ["CE1", "CE2", "CE4"],
+  "saberes": [
+    "multiplicación de números de dos y tres cifras",
+    "división con resto",
+    "cálculo mental avanzado",
+    "problemas con varios pasos"
+  ],
+  "tema": {
+    "colorPrimario": "#00897b",
+    "colorSecundario": "#4db6ac",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "número",
+    "recompensaLabel": "insignia"
+  },
+  "etiquetaCurricular": "4º Primaria · Matemáticas · LOMLOE",
+  "textoCurricular": "Multiplicación y división con números mayores y estrategias de cálculo.",
+  "tablasDisponibles": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "fases": [
+    {
+      "id": "plaza-decenas",
+      "nombre": "Plaza de las Decenas",
+      "emoji": "🔢",
+      "mecanica": "multiplicacion",
+      "tablas": [6, 7, 8, 9, 10, 11, 12],
+      "total": 8,
+      "recompensa": { "emoji": "🔢", "nombre": "Decena" },
+      "objetivo": "Consolidar tablas hasta el 12.",
+      "tags": ["Tablas 6-12", "4º Primaria"]
+    },
+    {
+      "id": "avenida-productos",
+      "nombre": "Avenida de Productos",
+      "emoji": "✖️",
+      "mecanica": "producto-2cifras",
+      "total": 10,
+      "recompensa": { "emoji": "✖️", "nombre": "Productor" },
+      "objetivo": "Multiplicar números de dos cifras por una cifra.",
+      "tags": ["2 cifras × 1 cifra"]
+    },
+    {
+      "id": "parque-division",
+      "nombre": "Parque de la División",
+      "emoji": "➗",
+      "mecanica": "division",
+      "divisores": [3, 4, 5, 6, 7, 8, 9],
+      "total": 8,
+      "recompensa": { "emoji": "➗", "nombre": "Repartidor" },
+      "objetivo": "Dividir con números mayores en contexto.",
+      "tags": ["División 4º", "Reparto"]
+    },
+    {
+      "id": "torre-calculo",
+      "nombre": "Torre del Cálculo",
+      "emoji": "🗼",
+      "mecanica": "combinadas",
+      "total": 12,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "🗼", "nombre": "Calculín" },
+      "objetivo": "Resolver operaciones combinadas con números mayores.",
+      "tags": ["Operaciones combinadas", "4º"]
+    },
+    {
+      "id": "reto-ciudad",
+      "nombre": "Reto de la Ciudad",
+      "emoji": "🏙️",
+      "mecanica": "division-mixta",
+      "divisores": [4, 5, 6, 7, 8],
+      "tablas": [6, 7, 8, 9, 10, 11, 12],
+      "total": 12,
+      "tipo": "avanzada",
+      "desbloqueoClase": 40000,
+      "recompensa": { "emoji": "🏙️", "nombre": "Ciudadano" },
+      "objetivo": "Integrar multiplicación y división en problemas.",
+      "tags": ["Problemas", "4º Matemáticas"]
+    }
+  ],
+  "textos": [
+    "Hay {a} cajas con {b} libros cada una.",
+    "{a} edificios tienen {b} ventanas.",
+    "{b} camiones llevan {a} cajas.",
+    "{a} estanterías con {b} cuadernos.",
+    "En {a} salas hay {b} sillas."
+  ],
+  "puntosPorFase": {
+    "plaza-decenas": 12,
+    "avenida-productos": 18,
+    "parque-division": 16,
+    "torre-calculo": 30,
+    "reto-ciudad": 40
+  },
+  "mensajes": {
+    "acierto": ["¡Cálculo correcto!", "¡Excelente!", "¡Números dominados!"],
+    "error": ["Revisa el cálculo", "Prueba otra estrategia", "Casi"],
+    "ultima": ["¡Último reto numérico!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

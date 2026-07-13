@@ -1,8 +1,31 @@
 /**
- * Sistema de pistas adaptativas para multiplicación.
+ * Sistema de pistas adaptativas por tipo de operación.
  */
 
 export function getHint(op, fallosActual, fase) {
+  if (op?.pista && (fase?.tipo === "avanzada" || op.tipo === "lectura" || op.tipo === "fraccion")) {
+    return `💡 ${op.pista}`;
+  }
+
+  if (op?.tipo === "lectura") {
+    return fallosActual === 1
+      ? "Pista: relee con calma y busca la información en el texto."
+      : "Pista: descarta las opciones que no encajan con lo que dice el texto.";
+  }
+
+  if (op?.tipo === "fraccion") {
+    return fallosActual === 1
+      ? `Pista: la fracción tiene denominador ${op.denominador} y numerador ${op.numerador}.`
+      : `Pista: el numerador son las partes que tomamos (${op.numerador}).`;
+  }
+
+  if (op?.tipo === "division") {
+    if (fallosActual === 1) {
+      return `Pista: reparte ${op.a} en ${op.b} grupos iguales.`;
+    }
+    return `Pista: piensa qué número multiplicado por ${op.b} da ${op.a}.`;
+  }
+
   if (fase?.tipo === "avanzada" && op.pista) {
     return `💡 ${op.pista}`;
   }

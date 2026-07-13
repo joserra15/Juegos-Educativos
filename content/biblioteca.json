@@ -1,0 +1,190 @@
+{
+  "id": "biblioteca",
+  "version": "3.0.0",
+  "nombre": "Biblioteca Encantada",
+  "tipoMundo": "lectura",
+  "curso": 3,
+  "area": "lengua",
+  "competencias": ["CCL1", "CCL3", "CCL5"],
+  "saberes": [
+    "comprensión lectora",
+    "ortografía básica",
+    "vocabulario",
+    "inferencias simples"
+  ],
+  "tema": {
+    "colorPrimario": "#5c6bc0",
+    "colorSecundario": "#9fa8da",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "libro",
+    "recompensaLabel": "medalla"
+  },
+  "etiquetaCurricular": "3º Primaria · Lengua · LOMLOE",
+  "textoCurricular": "Comprensión lectora, ortografía y vocabulario en contextos narrativos.",
+  "fases": [
+    {
+      "id": "estante-cuentos",
+      "nombre": "Estante de Cuentos",
+      "emoji": "📖",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["comprension"],
+      "total": 6,
+      "recompensa": { "emoji": "📖", "nombre": "Lector" },
+      "objetivo": "Comprender ideas principales de textos breves.",
+      "tags": ["Comprensión", "Idea principal"]
+    },
+    {
+      "id": "sala-acentos",
+      "nombre": "Sala de Acentos",
+      "emoji": "✏️",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["ortografia"],
+      "total": 6,
+      "recompensa": { "emoji": "✏️", "nombre": "Ortográfico" },
+      "objetivo": "Identificar palabras bien escritas.",
+      "tags": ["Ortografía", "Acentos"]
+    },
+    {
+      "id": "rincon-palabras",
+      "nombre": "Rincón de Palabras",
+      "emoji": "🔤",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["vocabulario"],
+      "total": 6,
+      "recompensa": { "emoji": "🔤", "nombre": "Palabrín" },
+      "objetivo": "Ampliar vocabulario y significados.",
+      "tags": ["Vocabulario", "Sinónimos"]
+    },
+    {
+      "id": "puente-inferencias",
+      "nombre": "Puente de Inferencias",
+      "emoji": "🌉",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["inferencia"],
+      "total": 6,
+      "recompensa": { "emoji": "🌉", "nombre": "Detective" },
+      "objetivo": "Inferir información no dicha explícitamente.",
+      "tags": ["Inferencias", "Lectura"]
+    },
+    {
+      "id": "torre-textos",
+      "nombre": "Torre de Textos",
+      "emoji": "🗼",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["comprension", "vocabulario"],
+      "total": 8,
+      "recompensa": { "emoji": "🗼", "nombre": "Torreño" },
+      "objetivo": "Mezclar comprensión y vocabulario.",
+      "tags": ["Repaso", "Lengua 3º"]
+    },
+    {
+      "id": "biblioteca-magica",
+      "nombre": "Biblioteca Mágica",
+      "emoji": "✨",
+      "mecanica": "lectura",
+      "total": 8,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "✨", "nombre": "Guardián" },
+      "objetivo": "Consolidar comprensión y ortografía.",
+      "tags": ["Lengua 3º", "Repaso global"]
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "cuento-1",
+      "etiquetas": ["comprension"],
+      "texto": "Lucía encontró un libro brillante en la biblioteca. Al abrirlo, apareció un mapa del bosque. ¿Qué encontró Lucía?",
+      "opciones": ["Un mapa", "Un lápiz", "Una manzana"],
+      "correcta": 0,
+      "pista": "Lee la segunda frase con atención."
+    },
+    {
+      "id": "cuento-2",
+      "etiquetas": ["comprension"],
+      "texto": "El gato del bibliotecario se llama Sombra y duerme sobre los cuentos de aventuras. ¿Dónde duerme Sombra?",
+      "opciones": ["Sobre los cuentos", "En la calle", "En la cocina"],
+      "correcta": 0,
+      "pista": "Busca dónde duerme el gato."
+    },
+    {
+      "id": "orto-1",
+      "etiquetas": ["ortografia"],
+      "texto": "¿Cuál palabra está escrita correctamente?",
+      "opciones": ["árbol", "arbol", "arból"],
+      "correcta": 0,
+      "pista": "Lleva tilde en la primera a."
+    },
+    {
+      "id": "orto-2",
+      "etiquetas": ["ortografia"],
+      "texto": "¿Cuál palabra está bien escrita?",
+      "opciones": ["camión", "camion", "camiòn"],
+      "correcta": 0,
+      "pista": "Es palabra llana terminada en n."
+    },
+    {
+      "id": "vocab-1",
+      "etiquetas": ["vocabulario"],
+      "texto": "El sinónimo de 'rápido' es...",
+      "opciones": ["veloz", "lento", "pesado"],
+      "correcta": 0,
+      "pista": "Significa lo mismo que rápido."
+    },
+    {
+      "id": "vocab-2",
+      "etiquetas": ["vocabulario"],
+      "texto": "¿Qué palabra significa lo contrario de 'feliz'?",
+      "opciones": ["triste", "alegre", "contento"],
+      "correcta": 0,
+      "pista": "Busca el antónimo."
+    },
+    {
+      "id": "infer-1",
+      "etiquetas": ["inferencia"],
+      "texto": "Marcos llevó paraguas y botas al colegio. El cielo estaba muy oscuro. ¿Qué tiempo hacía probablemente?",
+      "opciones": ["Lluvia", "Nieve", "Sol"],
+      "correcta": 0,
+      "pista": "Piensa por qué lleva paraguas."
+    },
+    {
+      "id": "infer-2",
+      "etiquetas": ["inferencia"],
+      "texto": "La biblioteca estaba en silencio. Solo se oía el pasar de páginas. ¿Cómo está el ambiente?",
+      "opciones": ["Tranquilo", "Ruidoso", "Sucio"],
+      "correcta": 0,
+      "pista": "Silencio y páginas sugieren calma."
+    },
+    {
+      "id": "mix-1",
+      "etiquetas": ["comprension", "vocabulario"],
+      "texto": "La bibliotecaria organizó los libros por colores. Los cuentos rojos hablan de aventuras. ¿De qué hablan los rojos?",
+      "opciones": ["Aventuras", "Cocina", "Deportes"],
+      "correcta": 0,
+      "pista": "Está en la última frase."
+    },
+    {
+      "id": "mix-2",
+      "etiquetas": ["ortografia", "comprension"],
+      "texto": "¿Cuál título está bien escrito para un cuento de magia?",
+      "opciones": ["El hechizo azul", "El hechiso azul", "El hechizo asul"],
+      "correcta": 0,
+      "pista": "Revisa hechizo y azul."
+    }
+  ],
+  "puntosPorFase": {
+    "estante-cuentos": 10,
+    "sala-acentos": 12,
+    "rincon-palabras": 12,
+    "puente-inferencias": 14,
+    "torre-textos": 18,
+    "biblioteca-magica": 25
+  },
+  "mensajes": {
+    "acierto": ["¡Lectura perfecta!", "¡Muy bien!", "¡Has entendido el texto!"],
+    "error": ["Relee con calma", "Busca la pista en el texto", "Prueba otra opción"],
+    "ultima": ["¡Última pregunta del libro!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

@@ -10,7 +10,8 @@ import {
   generarOperacionesTabla,
   crearModeloRectangular,
   getDificultadLabel,
-  formatearTiempo
+  formatearTiempo,
+  getClaveOperacion
 } from "../engine/QuestionGenerator.js";
 import {
   puntosPorFase,
@@ -61,6 +62,9 @@ let CONFIG_MURAL = { maxMensajesDia: 10, puntosPorMensaje: 250 };
 let manifestCatalog = null;
 let contenidoMundo = null;
 let mundoId = getMundoActivoId();
+let tipoMundo = "multiplicacion";
+let bancoLectura = [];
+let bancoFracciones = [];
 let puntosMundo = 0;
 let puntosPorMundoMap = {};
 let modoPracticaTabla = false;
@@ -68,6 +72,7 @@ let erroresEnSesion = 0;
 let tablaSeleccionada = Number(localStorage.getItem("tablaSeleccionada")) || 2;
 let altoContraste = localStorage.getItem("altoContraste") === "true";
 let fuenteGrande = localStorage.getItem("fuenteGrande") === "true";
+let opcionSeleccionada = null;
 const mundos = () => fases.map(f => getFaseLabel(f));
 
   
@@ -158,6 +163,9 @@ async function cargarMundoContenido(id){
   mensajesUltima = contenidoMundo.mensajes.ultima;
   mensajesPredefinidos = contenidoMundo.mensajesPredefinidos;
   CONFIG_MURAL = contenidoMundo.configMural;
+  tipoMundo = contenidoMundo.tipoMundo || "multiplicacion";
+  bancoLectura = contenidoMundo.bancoLectura || [];
+  bancoFracciones = contenidoMundo.bancoFracciones || [];
 
   const entry = getMundoEntry(manifestCatalog, id);
   aplicarTemaMundo(contenidoMundo, entry);
@@ -193,8 +201,15 @@ function mostrarSelectorMundos(){
 
   cont.innerHTML = "";
   const allStates = loadAllMundosStates();
+  const cursos = [...new Set(manifestCatalog.mundos.map(m => m.curso))].sort();
 
-  manifestCatalog.mundos.forEach(entry => {
+  cursos.forEach(curso => {
+    const titulo = document.createElement("h2");
+    titulo.className = "titulo-curso-selector";
+    titulo.textContent = `${curso}º de Primaria`;
+    cont.appendChild(titulo);
+
+    manifestCatalog.mundos.filter(m => m.curso === curso).forEach(entry => {
     const card = document.createElement("button");
     card.className = "tarjeta-mundo" + (entry.disponible ? "" : " bloqueada");
     const state = allStates[entry.id] || {};
@@ -210,6 +225,7 @@ function mostrarSelectorMundos(){
 
     card.onclick = () => entrarMundo(entry.id);
     cont.appendChild(card);
+    });
   });
 
   const puntosGlobales = document.getElementById("puntosGlobalesSelector");
@@ -264,15 +280,65 @@ function bindAccessibilityControls(){
   }
 }
 
+function setRecompensaVisual(recompensa){
+  const img = document.getElementById("imgRecompensa");
+  const emoji = document.getElementById("emojiRecompensa");
+  if(!img) return;
+
+  if(recompensa?.asset){
+    img.src = recompensa.asset;
+    img.style.display = "block";
+    if(emoji) emoji.style.display = "none";
+  }else if(recompensa?.emoji){
+    img.style.display = "none";
+    if(emoji){
+      emoji.textContent = recompensa.emoji;
+      emoji.style.display = "flex";
+    }
+  }else{
+    img.src = "unicornio1.png";
+    img.style.display = "block";
+    if(emoji) emoji.style.display = "none";
+  }
+}
+
+function getContextoGenerador(){
+  return {
+    textos,
+    bancoAvanzado,
+    bancoLectura,
+    bancoFracciones,
+    fallosPorOperacion,
+    tipoMundo,
+    nivelAdaptativo: calcularNivelAdaptativo({ liberadas, fases, tiemposMejores, fallosPorOperacion }),
+    tablaFocal: null,
+  };
+}
+
+function actualizarPanelPractica(){
+  const panel = document.querySelector(".panel-opciones");
+  const titulo = panel?.querySelector("h3");
+  const lista = contenidoMundo?.tablasDisponibles || contenidoMundo?.divisoresDisponibles || [];
+  if(panel) panel.style.display = lista.length ? "block" : "none";
+  if(titulo){
+    titulo.textContent = tipoMundo === "division"
+      ? "🎯 Practica un divisor concreto"
+      : "🎯 Practica una tabla concreta";
+  }
+}
+
 function poblarSelectorTabla(){
   const selector = document.getElementById("selectorTabla");
-  if(!selector || !contenidoMundo?.tablasDisponibles) return;
+  const lista = contenidoMundo?.tablasDisponibles || contenidoMundo?.divisoresDisponibles;
+  if(!selector || !lista?.length) return;
   selector.innerHTML = "";
-  contenidoMundo.tablasDisponibles.forEach(tabla => {
+  lista.forEach(valor => {
     const option = document.createElement("option");
-    option.value = tabla;
-    option.textContent = `Tabla del ${tabla}`;
-    if(tabla === tablaSeleccionada) option.selected = true;
+    option.value = valor;
+    option.textContent = tipoMundo === "division"
+      ? `Divisor ${valor}`
+      : `Tabla del ${valor}`;
+    if(valor === tablaSeleccionada) option.selected = true;
     selector.appendChild(option);
   });
   selector.onchange = () => {
@@ -337,7 +403,10 @@ function renderVisualRectangular(op){
   }
 
   panel.style.display = fallosActual > 0 ? "block" : "none";
-  texto.textContent = `${modelo.filas} filas × ${modelo.columnas} columnas = ${modelo.total}`;
+  const etiqueta = modelo.etiqueta
+    ? modelo.etiqueta
+    : `${modelo.filas} filas × ${modelo.columnas} columnas = ${modelo.total}`;
+  texto.textContent = etiqueta;
   rejilla.style.gridTemplateColumns = `repeat(${modelo.columnas}, 18px)`;
   rejilla.innerHTML = "";
   modelo.celdas.forEach(() => {
@@ -356,11 +425,14 @@ function iniciarPracticaTabla(){
   faseActual = 0;
   indice = 0;
   fallosActual = 0;
-  operaciones = generarOperacionesTabla(tablaSeleccionada, textos, 10);
-  document.getElementById("tituloFase").textContent = `🎯 Dominio de la tabla del ${tablaSeleccionada}`;
+  operaciones = generarOperacionesTabla(tablaSeleccionada, textos, 10, tipoMundo);
+  const etiquetaPractica = tipoMundo === "division"
+    ? `🎯 Dominio del divisor ${tablaSeleccionada}`
+    : `🎯 Dominio de la tabla del ${tablaSeleccionada}`;
+  document.getElementById("tituloFase").textContent = etiquetaPractica;
   document.getElementById("contadorFallos").textContent = "";
   document.getElementById("pista").textContent = "";
-  document.getElementById("imgRecompensa").src = fases[0]?.recompensa?.asset || "unicornio1.png";
+  setRecompensaVisual(fases[0]?.recompensa || { emoji: "🎯" });
   resetearReveladoRecompensa();
   tiempoInicio = Date.now();
   iniciarTimer();
@@ -369,8 +441,12 @@ function iniciarPracticaTabla(){
 }
 
 function calcularProgresoTablas(){
-  return (contenidoMundo?.tablasDisponibles || []).map(tabla => {
-    const opsTabla = Array.from({ length: 10 }, (_, idx) => `${tabla}x${idx + 1}`);
+  const lista = contenidoMundo?.tablasDisponibles || contenidoMundo?.divisoresDisponibles || [];
+  return lista.map(tabla => {
+    const opsTabla = Array.from({ length: 10 }, (_, idx) => {
+      if(tipoMundo === "division") return `${tabla * (idx + 1)}div${tabla}`;
+      return `${tabla}x${idx + 1}`;
+    });
     const fallos = opsTabla.reduce((acc, key) => acc + (fallosPorOperacion[key] || 0), 0);
     let dominio = 100 - Math.min(100, fallos * 12);
     if(tablasDominadas.includes(tabla)) dominio = Math.max(dominio, 92);
@@ -382,11 +458,17 @@ function pintarBarrasTablas(){
   const cont = document.getElementById("barrasTablas");
   if(!cont) return;
   cont.innerHTML = "";
+  const lista = contenidoMundo?.tablasDisponibles || contenidoMundo?.divisoresDisponibles;
+  if(!lista?.length){
+    cont.innerHTML = "<p class='texto-ayuda'>Este mundo no usa práctica por tabla/divisor.</p>";
+    return;
+  }
   calcularProgresoTablas().forEach(({ tabla, dominio }) => {
     const row = document.createElement("div");
     row.className = "barra-tabla-item";
+    const etiqueta = tipoMundo === "division" ? `Divisor ${tabla}` : `Tabla ${tabla}`;
     row.innerHTML = `
-      <strong>Tabla ${tabla}</strong>
+      <strong>${etiqueta}</strong>
       <div class="barra-tabla-track"><div class="barra-tabla-fill" style="width:${dominio}%"></div></div>
       <span>${Math.round(dominio)}%</span>
     `;
@@ -445,7 +527,7 @@ try{
   indice = 0;
   fallosActual = 0;
   erroresEnSesion = 0;
-  operaciones = generarOperacionesRepaso(fallosPorOperacion, textos);
+  operaciones = generarOperacionesRepaso(fallosPorOperacion, textos, 8, tipoMundo);
 
   document.getElementById("tituloFase").textContent =
     "🔁 Repaso de operaciones difíciles";
@@ -467,6 +549,7 @@ iniciarTimer();
 
 
 document.getElementById("imgRecompensa").src = fases[0]?.recompensa?.asset || "unicornio1.png";
+setRecompensaVisual(fases[0]?.recompensa || { asset: "unicornio1.png" });
 
   mostrar("juego");
   mostrarOperacion();
@@ -631,9 +714,9 @@ document.getElementById("pista").textContent = "";
 
 
 const nivelAdaptativo = calcularNivelAdaptativo({ liberadas, fases, tiemposMejores, fallosPorOperacion });
-operaciones = generarOperacionesFase(fases[i], { textos, bancoAvanzado, fallosPorOperacion, nivelAdaptativo, tablaFocal: null });
+operaciones = generarOperacionesFase(fases[i], getContextoGenerador());
 
-document.getElementById("imgRecompensa").src = fases[i].recompensa.asset;
+setRecompensaVisual(fases[i].recompensa);
 resetearReveladoRecompensa();
 document.getElementById("indicadorDificultad").textContent = "";
 mostrar("juego");
@@ -644,17 +727,66 @@ mostrarOperacion();
 /* =====================================================
    MOSTRAR OPERACIÓN
 ===================================================== */
+function pintarOpcionesLectura(op){
+  const cont = document.getElementById("opcionesLectura");
+  const input = document.getElementById("respuesta");
+  if(!cont) return;
+
+  if(op?.tipo !== "lectura" || !op.opciones?.length){
+    cont.style.display = "none";
+    cont.innerHTML = "";
+    if(input) input.style.display = "";
+    opcionSeleccionada = null;
+    return;
+  }
+
+  if(input) input.style.display = "none";
+  cont.style.display = "flex";
+  cont.innerHTML = "";
+  opcionSeleccionada = null;
+
+  op.opciones.forEach((texto, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "opcion-lectura";
+    btn.textContent = texto;
+    btn.onclick = () => responderOpcion(idx);
+    cont.appendChild(btn);
+  });
+}
+
+function responderOpcion(idx){
+  opcionSeleccionada = idx;
+  responder();
+}
+
+function esRespuestaCorrecta(op, val){
+  if(op?.tipo === "lectura") return opcionSeleccionada === op.r;
+  return val === op.r;
+}
+
 function mostrarOperacion(){
- const esPracticaTabla = !modoRepaso && operaciones.length && operaciones.every(op => op.a === operaciones[0].a);
+ const esPracticaTabla = !modoRepaso && operaciones.length && tipoMundo !== "lectura" && operaciones.every(op => {
+   if(tipoMundo === "division") return op.b === operaciones[0].b;
+   return op.a === operaciones[0].a;
+ });
  const faseVisual = modoRepaso
-  ? { objetivo: "Repaso de las operaciones que más cuestan.", tags:["Refuerzo", "Memoria de trabajo", "Cálculo mental"] }
+  ? { objetivo: "Repaso de las operaciones que más cuestan.", tags:["Refuerzo", "Memoria de trabajo"] }
   : esPracticaTabla
-    ? { objetivo: `Practica intensiva de la tabla del ${operaciones[0].a}.`, tags:[`Tabla del ${operaciones[0].a}`, "Cálculo mental", "Grupos iguales"] }
+    ? {
+        objetivo: tipoMundo === "division"
+          ? `Practica intensiva del divisor ${operaciones[0].b}.`
+          : `Practica intensiva de la tabla del ${operaciones[0].a}.`,
+        tags: tipoMundo === "division"
+          ? [`Divisor ${operaciones[0].b}`, "Reparto"]
+          : [`Tabla del ${operaciones[0].a}`, "Cálculo mental", "Grupos iguales"]
+      }
     : fases[faseActual];
  document.getElementById("tituloFase").textContent = modoRepaso
   ? "🔁 Repaso de operaciones difíciles"
   : esPracticaTabla
-    ? `🎯 Dominio de la tabla del ${operaciones[0].a}`
+    ? (tipoMundo === "division"
+        ? `🎯 Dominio del divisor ${operaciones[0].b}`
+        : `🎯 Dominio de la tabla del ${operaciones[0].a}`)
     : getFaseLabel(fases[faseActual]);
  document.getElementById("contador").textContent=
   `Pregunta ${indice+1} de ${operaciones.length}`;
@@ -664,6 +796,7 @@ function mostrarOperacion(){
 actualizarIndicadorDificultad(operaciones[indice]);
  pintarTagsFase(faseVisual);
  renderVisualRectangular(operaciones[indice]);
+ pintarOpcionesLectura(operaciones[indice]);
  document.getElementById("respuesta").value="";
 
 setTimeout(() => {
@@ -693,7 +826,7 @@ function responder(){
  const val=+respuesta.value;
  intentosTotales++;
 
- if(val===op.r){
+ if(esRespuestaCorrecta(op, val)){
   sonido([880,1320,1760]);
 	document.getElementById("pista").textContent = "";
   document.getElementById("visualRectangular").style.display = "none";
@@ -749,7 +882,7 @@ if(porcentaje === 100){
 popup(
   fases[faseActual].tipo === "avanzada"
     ? "🌟 ¡Has superado el reto avanzado!\nEste reto es solo para mentes expertas."
-    : `🦄 ¡Has liberado a ${fases[faseActual].recompensa.nombre}!`,
+    : `🎉 ¡Has conseguido a ${fases[faseActual].recompensa.nombre}!`,
   true
 );
 
@@ -815,7 +948,7 @@ if(!modoRepaso && faseActual >= 4 && fallosActual === 6){
 
 
 
-  const clave=`${op.a}x${op.b}`;
+  const clave = getClaveOperacion(op);
   fallosPorOperacion[clave]=(fallosPorOperacion[clave]||0)+1;
 
   mostrarPista(op);
@@ -891,7 +1024,7 @@ if(!liberadas.includes(faseActual)){
 }
 
 agregarMensajeSistema(
-  `🦄 ${nombreJugador} ha liberado a ${fases[faseActual].recompensa.nombre}`
+  `🎉 ${nombreJugador} ha conseguido a ${fases[faseActual].recompensa.nombre}`
 );
 
  if(fases[faseActual].tablas){
@@ -1041,6 +1174,27 @@ pintarResumenMundosMochila();
 /* =====================================================
    PANEL FAMILIAR
 ===================================================== */
+function pintarResumenCursos(){
+  const cont = document.getElementById("resumenCursosPanel");
+  if(!cont || !manifestCatalog) return;
+  cont.innerHTML = "";
+  const allStates = loadAllMundosStates();
+  const cursos = [...new Set(manifestCatalog.mundos.map(m => m.curso))].sort();
+
+  cursos.forEach(curso => {
+    const mundosCurso = manifestCatalog.mundos.filter(m => m.curso === curso);
+    const puntosCurso = mundosCurso.reduce((acc, m) => acc + (allStates[m.id]?.puntosMundo || 0), 0);
+    const fasesCurso = mundosCurso.reduce((acc, m) => {
+      const lib = allStates[m.id]?.liberadas || [0];
+      return acc + Math.max(0, lib.length - 1);
+    }, 0);
+    const row = document.createElement("div");
+    row.className = "resumen-curso-item";
+    row.innerHTML = `<span>${curso}º Primaria</span><strong>${fasesCurso} fases · ${puntosCurso}⭐</strong>`;
+    cont.appendChild(row);
+  });
+}
+
 function mostrarPanel(){
  document.getElementById("panelFases").textContent=
   `${liberadas.length}/${fases.length}`;
@@ -1050,6 +1204,7 @@ function mostrarPanel(){
   intentosTotales;
 
  pintarBarrasTablas();
+ pintarResumenCursos();
 
  const ul=document.getElementById("listaFallos");
  ul.innerHTML="";
@@ -1126,13 +1281,16 @@ function actualizarProgreso(){
    UTILIDADES
 ===================================================== */
 
-function popup(texto, mostrarUnicornio=false){
-  document.getElementById("popupTexto").textContent = texto;
+function popup(texto, mostrarRecompensa=false){
+  const rec = mostrarRecompensa ? fases[faseActual]?.recompensa : null;
+  document.getElementById("popupTexto").textContent = rec?.emoji && !rec?.asset
+    ? `${rec.emoji} ${texto}`
+    : texto;
 
   const img = document.getElementById("popupRecompensa");
 
-  if(mostrarUnicornio){
-    img.src = fases[faseActual].recompensa.asset;
+  if(mostrarRecompensa && rec?.asset){
+    img.src = rec.asset;
     img.style.display = "block";
   }else{
     img.style.display = "none";
@@ -1196,6 +1354,7 @@ cargarPuntosClase(() => {
       actualizarHeaderMundo();
       construirMapa();
       actualizarPanelCurricular();
+      actualizarPanelPractica();
       poblarSelectorTabla();
       bindAccessibilityControls();
       applyAccessibilitySettings();
@@ -2056,7 +2215,6 @@ function pintarResumenMundosMochila(){
   if(!ul || !manifestCatalog) return;
   const resumen = document.createElement("li");
   const partes = manifestCatalog.mundos
-    .filter(m => m.disponible)
     .map(m => {
       const st = loadMundoState(m.id);
       return `${m.emoji} ${st.puntosMundo || 0}⭐`;
@@ -2073,15 +2231,23 @@ function pintarRecompensasLiberadas(){
 
   liberadas.forEach(i => {
     const fase = fases[i];
-    if(!fase || !fase.recompensa.asset) return;
+    if(!fase?.recompensa) return;
 
     const div = document.createElement("div");
     div.className = "recompensa-item";
+    const rec = fase.recompensa;
 
-    div.innerHTML = `
-      <img src="${fase.recompensa.asset}" alt="${fase.recompensa.nombre}">
-      <span>${fase.recompensa.nombre}</span>
-    `;
+    if(rec.asset){
+      div.innerHTML = `
+        <img src="${rec.asset}" alt="${rec.nombre}">
+        <span>${rec.nombre}</span>
+      `;
+    }else{
+      div.innerHTML = `
+        <span class="emoji-recompensa-mochila">${rec.emoji || "🎁"}</span>
+        <span>${rec.nombre}</span>
+      `;
+    }
 
     cont.appendChild(div);
   });
@@ -2110,7 +2276,7 @@ async function initApp(){
 
     const globalFns = {
       mostrar, mostrarMapa, mostrarSelectorMundos, entrarMundo, mostrarMochila, mostrarPanel, mostrarRanking, mostrarMural,
-      responder, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
+      responder, responderOpcion, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
       iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });

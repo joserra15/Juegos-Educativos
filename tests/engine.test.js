@@ -9,6 +9,10 @@ import {
   formatearTiempo,
   generarBancoHechizo,
   generarBancoGigantes,
+  generarOperacionesDivision,
+  generarOperacionesFraccion,
+  generarOperacionesLectura,
+  getClaveOperacion,
 } from "../engine/QuestionGenerator.js";
 import {
   puntosPorFase,
@@ -216,6 +220,54 @@ describe("WorldManager", () => {
       dinosaurios: { puntosMundo: 20 },
     });
     expect(total).toBe(50);
+  });
+});
+
+describe("QuestionGenerator mundos ampliados", () => {
+  const textosDivision = ["Reparte {total} entre {grupos} grupos."];
+
+  it("genera operaciones de división con cociente correcto", () => {
+    const ops = generarOperacionesDivision(
+      { total: 6, divisores: [2, 3] },
+      { textos: textosDivision, nivelAdaptativo: 0 }
+    );
+    expect(ops.length).toBe(6);
+    expect(ops[0].tipo).toBe("division");
+    expect(ops[0].a).toBe(ops[0].b * ops[0].r);
+  });
+
+  it("genera operaciones de fracciones con numerador", () => {
+    const ops = generarOperacionesFraccion(
+      { total: 4, denominadores: [2, 4] },
+      {}
+    );
+    expect(ops[0].tipo).toBe("fraccion");
+    expect(ops[0].r).toBe(ops[0].numerador);
+  });
+
+  it("genera preguntas de lectura con opciones", () => {
+    const ops = generarOperacionesLectura(
+      { total: 2 },
+      {
+        bancoLectura: [
+          {
+            texto: "¿Cuál es correcto?",
+            opciones: ["A", "B", "C"],
+            correcta: 1,
+            pista: "B",
+          },
+        ],
+      }
+    );
+    expect(ops[0].tipo).toBe("lectura");
+    expect(ops[0].opciones).toHaveLength(3);
+    expect(ops[0].r).toBe(1);
+  });
+
+  it("genera claves estables por tipo de operación", () => {
+    expect(getClaveOperacion({ tipo: "division", a: 12, b: 3, r: 4 })).toBe("12div3");
+    expect(getClaveOperacion({ tipo: "fraccion", numerador: 2, denominador: 5, r: 2 })).toBe("2/5");
+    expect(getClaveOperacion({ a: 3, b: 4, r: 12 })).toBe("3x4");
   });
 });
 

@@ -1,0 +1,110 @@
+{
+  "id": "fracciones",
+  "version": "3.0.0",
+  "nombre": "Reino de las Porciones",
+  "tipoMundo": "fraccion",
+  "curso": 3,
+  "area": "matematicas",
+  "competencias": ["CE1", "CE2", "CE7"],
+  "saberes": [
+    "fracciones propias",
+    "comparación de fracciones",
+    "recta numérica",
+    "parte-todo"
+  ],
+  "tema": {
+    "colorPrimario": "#ff9800",
+    "colorSecundario": "#ffb74d",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "porción",
+    "recompensaLabel": "medalla"
+  },
+  "etiquetaCurricular": "3º Primaria · Matemáticas · LOMLOE",
+  "textoCurricular": "Fracciones propias, comparación y representación en la recta numérica.",
+  "fases": [
+    {
+      "id": "pizza-magica",
+      "nombre": "Pizza Mágica",
+      "emoji": "🍕",
+      "mecanica": "fraccion",
+      "denominadores": [2, 3, 4],
+      "total": 8,
+      "recompensa": { "emoji": "🍕", "nombre": "Porcina" },
+      "objetivo": "Identificar fracciones con denominadores 2, 3 y 4.",
+      "tags": ["1/2", "1/3", "1/4"]
+    },
+    {
+      "id": "tarta-frutas",
+      "nombre": "Tarta de Frutas",
+      "emoji": "🍰",
+      "mecanica": "fraccion",
+      "denominadores": [3, 4, 5, 6],
+      "total": 8,
+      "recompensa": { "emoji": "🍰", "nombre": "Tartín" },
+      "objetivo": "Trabajar fracciones propias con distintos denominadores.",
+      "tags": ["Fracción propia", "Numerador"]
+    },
+    {
+      "id": "comparar-porciones",
+      "nombre": "Comparar Porciones",
+      "emoji": "⚖️",
+      "mecanica": "fraccion",
+      "denominadores": [4, 5, 6, 8],
+      "total": 8,
+      "recompensa": { "emoji": "⚖️", "nombre": "Equilibra" },
+      "objetivo": "Comparar fracciones con el mismo denominador.",
+      "tags": ["Comparación", "Mayor/menor"]
+    },
+    {
+      "id": "recta-numerica",
+      "nombre": "Recta Numérica",
+      "emoji": "📏",
+      "mecanica": "fraccion",
+      "denominadores": [2, 4, 5, 10],
+      "total": 8,
+      "recompensa": { "emoji": "📏", "nombre": "Rectín" },
+      "objetivo": "Ubicar fracciones en la recta numérica.",
+      "tags": ["Recta", "Medios y cuartos"]
+    },
+    {
+      "id": "mezcla-dulce",
+      "nombre": "Mezcla Dulce",
+      "emoji": "🍬",
+      "mecanica": "fraccion",
+      "denominadores": [2, 3, 4, 5, 6, 8],
+      "total": 10,
+      "recompensa": { "emoji": "🍬", "nombre": "Dulcín" },
+      "objetivo": "Resolver problemas con fracciones en contexto.",
+      "tags": ["Problemas", "Parte-todo"]
+    },
+    {
+      "id": "castillo-fracciones",
+      "nombre": "Castillo de Fracciones",
+      "emoji": "🏰",
+      "mecanica": "fraccion",
+      "denominadores": [2, 3, 4, 5, 6, 8, 10],
+      "total": 12,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "👑", "nombre": "Fracción Real" },
+      "objetivo": "Consolidar fracciones propias y comparación.",
+      "tags": ["Repaso", "Fracciones 3º"]
+    }
+  ],
+  "textos": [],
+  "puntosPorFase": {
+    "pizza-magica": 10,
+    "tarta-frutas": 12,
+    "comparar-porciones": 14,
+    "recta-numerica": 16,
+    "mezcla-dulce": 20,
+    "castillo-fracciones": 28
+  },
+  "mensajes": {
+    "acierto": ["¡Porción perfecta!", "¡Bien pensado!", "¡Fracción correcta!"],
+    "error": ["Revisa el numerador", "Piensa en las partes iguales", "Casi lo tienes"],
+    "ultima": ["¡Última porción del reto!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

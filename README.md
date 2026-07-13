@@ -1,33 +1,39 @@
 # Mundos Mágicos Educativos
 
-Plataforma de juegos educativos para primaria (3º-4º), alineada con LOMLOE.
+Plataforma de juegos educativos para **3º y 4º de Primaria** (España), alineada con LOMLOE.
 
-## Estructura (v2.0)
+## Mundos disponibles (v3.0)
+
+### 3º de Primaria
+| Mundo | Área | Contenido |
+|-------|------|-----------|
+| 🦄 Unicornios | Matemáticas | Tablas de multiplicar del 1 al 10 |
+| 🦕 Dinosaurios | Matemáticas | División como reparto equitativo |
+| 🍕 Fracciones | Matemáticas | Fracciones propias, comparación y recta |
+| 📚 Biblioteca | Lengua | Comprensión lectora y ortografía |
+
+### 4º de Primaria
+| Mundo | Área | Contenido |
+|-------|------|-----------|
+| 🏙️ Ciudad de los Números | Matemáticas | Tablas hasta 12, productos 2 cifras, división |
+| 👑 Imperio de las Fracciones | Matemáticas | Equivalencia, suma y comparación |
+| ✍️ Atelier de la Lengua | Lengua | Comprensión, ortografía y gramática |
+
+## Estructura
 
 ```
-content/          # Contenido JSON por mundo
-  manifest.json   # Catálogo de mundos disponibles
-  unicornios.json # Mundo de tablas de multiplicar
-engine/           # Motor de juego reutilizable
-  ContentLoader.js
-  QuestionGenerator.js
-  Scoring.js
-  Hints.js
-  ProgressStore.js
-js/app.js         # Aplicación principal (UI + Firebase)
-tests/            # Tests con Vitest
-index.html        # Shell HTML/CSS
+content/          # JSON por mundo + manifest.json
+engine/           # Motor reutilizable (preguntas, pistas, progreso)
+js/app.js         # UI + Firebase
+tests/            # Vitest
 ```
 
-## Desarrollo local
+## Desarrollo
 
 ```bash
 npm install
 npm test
-# Servir con cualquier servidor estático, p.ej.:
 npx serve .
 ```
 
-## Despliegue
-
-Push a `main` despliega automáticamente en GitHub Pages (workflow con tests + deploy).
+Push a `main` despliega en GitHub Pages con tests automáticos.

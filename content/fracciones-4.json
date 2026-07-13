@@ -1,0 +1,131 @@
+{
+  "id": "fracciones-4",
+  "version": "3.0.0",
+  "nombre": "Imperio de las Fracciones",
+  "tipoMundo": "fraccion",
+  "curso": 4,
+  "area": "matematicas",
+  "competencias": ["CE1", "CE2", "CE7"],
+  "saberes": [
+    "fracciones equivalentes",
+    "suma de fracciones mismo denominador",
+    "comparación con distinto denominador",
+    "fracciones y decimales sencillos"
+  ],
+  "tema": {
+    "colorPrimario": "#e65100",
+    "colorSecundario": "#ff9800",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "fracción",
+    "recompensaLabel": "corona"
+  },
+  "etiquetaCurricular": "4º Primaria · Matemáticas · LOMLOE",
+  "textoCurricular": "Fracciones equivalentes, operaciones y comparación en 4º de Primaria.",
+  "fases": [
+    {
+      "id": "puente-equivalentes",
+      "nombre": "Puente Equivalente",
+      "emoji": "🌉",
+      "mecanica": "fraccion-avanzada",
+      "total": 8,
+      "recompensa": { "emoji": "🌉", "nombre": "Equivalente" },
+      "objetivo": "Reconocer fracciones equivalentes.",
+      "tags": ["Equivalencia", "4º"]
+    },
+    {
+      "id": "sala-sumas",
+      "nombre": "Sala de Sumas",
+      "emoji": "➕",
+      "mecanica": "fraccion-avanzada",
+      "total": 8,
+      "recompensa": { "emoji": "➕", "nombre": "Sumador" },
+      "objetivo": "Sumar fracciones con igual denominador.",
+      "tags": ["Suma", "Mismo denominador"]
+    },
+    {
+      "id": "mercado-comparar",
+      "nombre": "Mercado de Comparar",
+      "emoji": "🏪",
+      "mecanica": "fraccion-avanzada",
+      "total": 8,
+      "recompensa": { "emoji": "🏪", "nombre": "Comerciante" },
+      "objetivo": "Comparar fracciones con distinto denominador.",
+      "tags": ["Comparación", "4º"]
+    },
+    {
+      "id": "palacio-fracciones",
+      "nombre": "Palacio de Fracciones",
+      "emoji": "🏰",
+      "mecanica": "fraccion-avanzada",
+      "total": 10,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "👑", "nombre": "Emperador" },
+      "objetivo": "Consolidar fracciones en 4º de Primaria.",
+      "tags": ["Fracciones 4º", "Repaso"]
+    }
+  ],
+  "bancoFracciones": [
+    {
+      "id": "eq-1",
+      "texto": "¿Qué fracción es equivalente a 1/2? Escribe el numerador de  ?/4",
+      "r": 2,
+      "pista": "1/2 = 2/4",
+      "numerador": 2,
+      "denominador": 4
+    },
+    {
+      "id": "eq-2",
+      "texto": "¿Qué numerador hace equivalente 2/3 y ?/6?",
+      "r": 4,
+      "pista": "Duplica numerador y denominador.",
+      "numerador": 4,
+      "denominador": 6
+    },
+    {
+      "id": "sum-1",
+      "texto": "1/5 + 2/5 = ?/5. Escribe el numerador.",
+      "r": 3,
+      "pista": "Suma 1 + 2.",
+      "numerador": 3,
+      "denominador": 5
+    },
+    {
+      "id": "sum-2",
+      "texto": "2/8 + 3/8 = ?/8. Escribe el numerador.",
+      "r": 5,
+      "pista": "2 + 3 = 5.",
+      "numerador": 5,
+      "denominador": 8
+    },
+    {
+      "id": "cmp-1",
+      "texto": "Entre 3/4 y 1/4, ¿qué numerador es mayor en la fracción mayor? (escribe 3 o 1)",
+      "r": 3,
+      "pista": "Mismo denominador: mayor numerador.",
+      "numerador": 3,
+      "denominador": 4
+    },
+    {
+      "id": "cmp-2",
+      "texto": "¿Cuánto es 1/2 en octavos? Escribe el numerador de ?/8",
+      "r": 4,
+      "pista": "1/2 = 4/8",
+      "numerador": 4,
+      "denominador": 8
+    }
+  ],
+  "puntosPorFase": {
+    "puente-equivalentes": 14,
+    "sala-sumas": 16,
+    "mercado-comparar": 18,
+    "palacio-fracciones": 30
+  },
+  "mensajes": {
+    "acierto": ["¡Fracción maestra!", "¡Correcto!", "¡Imperio conquistado!"],
+    "error": ["Revisa numeradores", "Iguala denominadores", "Casi"],
+    "ultima": ["¡Última fracción del reto!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

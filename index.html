@@ -905,6 +905,65 @@ button{
   gap: 6px;
 }
 
+.titulo-curso-selector{
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.1em;
+  color: #5e35b1;
+  margin: 16px 0 4px;
+}
+
+.opciones-lectura{
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.opcion-lectura{
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 1em;
+}
+
+.emoji-recompensa{
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+}
+
+.emoji-recompensa-mochila{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto;
+  font-size: 2.4rem;
+  background: #f3e5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.resumen-cursos-panel{
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.resumen-curso-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #f3e5f5;
+  border-radius: 10px;
+  font-size: 0.9em;
+}
+
 .boton-volver-juego{
   margin-top: 4px;
 }
@@ -995,6 +1054,7 @@ button{
   <div class="recompensa-contenedor juego-recompensa">
     <div class="recompensa-marco">
       <img id="imgRecompensa" alt="Recompensa del reto">
+      <span id="emojiRecompensa" class="emoji-recompensa" aria-hidden="true"></span>
       <div id="mascaraRecompensa" class="recompensa-cubierta"></div>
     </div>
   </div>
@@ -1002,6 +1062,7 @@ button{
   <div class="juego-panel">
    <p id="problema"></p>
    <p id="indicadorDificultad" style="font-weight:bold"></p>
+   <div id="opcionesLectura" class="opciones-lectura"></div>
    <input type="number" id="respuesta" aria-label="Escribe la respuesta"><br><br>
    <button onclick="responder()">Responder</button>
    <p id="pista"></p>
@@ -1067,6 +1128,8 @@ button{
   <p>Fases completadas: <span id="panelFases"></span></p>
   <p>Tablas dominadas: <span id="panelTablas"></span></p>
   <p>Intentos totales: <span id="panelIntentos"></span></p>
+  <h4>🎓 Progreso por curso</h4>
+  <div id="resumenCursosPanel" class="resumen-cursos-panel"></div>
   <h4>📈 Progreso por tabla</h4>
   <div id="barrasTablas" class="barra-tablas"></div>
   <h4>❌ Operaciones con fallos</h4>
@@ -1385,7 +1448,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 2.2.2
+    v 3.0.0
   </p>
 <p><br></p>
 </footer>

@@ -1,0 +1,119 @@
+{
+  "id": "dinosaurios",
+  "version": "3.0.0",
+  "nombre": "Valle de los Dinosaurios",
+  "tipoMundo": "division",
+  "curso": 3,
+  "area": "matematicas",
+  "competencias": ["CE1", "CE2", "CE4"],
+  "saberes": [
+    "división como reparto equitativo",
+    "relación multiplicación-división",
+    "cálculo mental",
+    "resolución de problemas"
+  ],
+  "tema": {
+    "colorPrimario": "#4caf50",
+    "colorSecundario": "#81c784",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "dinosaurio",
+    "recompensaLabel": "dinosaurio"
+  },
+  "etiquetaCurricular": "3º Primaria · Matemáticas · LOMLOE",
+  "textoCurricular": "División como reparto equitativo y relación con la multiplicación.",
+  "divisoresDisponibles": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "fases": [
+    {
+      "id": "pradera-inicial",
+      "nombre": "Pradera Inicial",
+      "emoji": "🌿",
+      "mecanica": "division",
+      "divisores": [2, 3],
+      "total": 8,
+      "recompensa": { "emoji": "🦖", "nombre": "Rexito" },
+      "objetivo": "Repartir cantidades en 2 y 3 grupos iguales.",
+      "tags": ["Divisor 2", "Divisor 3", "Reparto"]
+    },
+    {
+      "id": "nido-huevos",
+      "nombre": "Nido de Huevos",
+      "emoji": "🥚",
+      "mecanica": "division",
+      "divisores": [4, 5],
+      "total": 8,
+      "recompensa": { "emoji": "🦕", "nombre": "Huevín" },
+      "objetivo": "Resolver repartos con divisores 4 y 5.",
+      "tags": ["Divisor 4", "Divisor 5"]
+    },
+    {
+      "id": "rio-jurasico",
+      "nombre": "Río Jurásico",
+      "emoji": "🌊",
+      "mecanica": "division",
+      "divisores": [6, 7],
+      "total": 8,
+      "recompensa": { "emoji": "🐊", "nombre": "Nadador" },
+      "objetivo": "Practicar divisiones con 6 y 7.",
+      "tags": ["Divisor 6", "Divisor 7"]
+    },
+    {
+      "id": "volcan-activo",
+      "nombre": "Volcán Activo",
+      "emoji": "🌋",
+      "mecanica": "division",
+      "divisores": [8, 9, 10],
+      "total": 8,
+      "recompensa": { "emoji": "🔥", "nombre": "Lava" },
+      "objetivo": "Dominar repartos con divisores mayores.",
+      "tags": ["Divisor 8", "Divisor 9", "Divisor 10"]
+    },
+    {
+      "id": "gran-reparto",
+      "nombre": "Gran Reparto",
+      "emoji": "🍃",
+      "mecanica": "division",
+      "divisores": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "total": 10,
+      "recompensa": { "emoji": "🌴", "nombre": "Selvín" },
+      "objetivo": "Mezclar repartos en problemas verbales.",
+      "tags": ["Repaso", "Problemas"]
+    },
+    {
+      "id": "torre-trex",
+      "nombre": "Torre del T-Rex",
+      "emoji": "🏔️",
+      "mecanica": "division-mixta",
+      "divisores": [2, 3, 4, 5],
+      "tablas": [2, 3, 4, 5],
+      "total": 12,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "👑", "nombre": "Tyran" },
+      "objetivo": "Relacionar multiplicación y división en retos mixtos.",
+      "tags": ["Multiplicación", "División", "Relación"]
+    }
+  ],
+  "textos": [
+    "Hay {total} huevos para repartir en {grupos} nidos iguales.",
+    "{total} frutas se reparten entre {grupos} dinosaurios.",
+    "Un cuidador tiene {total} hojas y las pone en {grupos} montones iguales.",
+    "{total} piedras se colocan en {grupos} caminos iguales.",
+    "Hay {total} conchas repartidas en {grupos} cestas.",
+    "{total} semillas se dividen entre {grupos} plantas."
+  ],
+  "puntosPorFase": {
+    "pradera-inicial": 10,
+    "nido-huevos": 12,
+    "rio-jurasico": 14,
+    "volcan-activo": 16,
+    "gran-reparto": 20,
+    "torre-trex": 30
+  },
+  "mensajes": {
+    "acierto": ["¡Gran reparto!", "¡Bien calculado!", "¡Los dinosaurios celebran!"],
+    "error": ["Casi, prueba otra vez", "Reparte con calma", "Piensa en grupos iguales"],
+    "ultima": ["¡Última pregunta del reto!", "¡Un esfuerzo más!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

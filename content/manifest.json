@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "3.0.0",
   "appName": "Mundos Mágicos Educativos",
   "defaultMundo": "unicornios",
   "mundos": [
@@ -25,8 +25,8 @@
       "curso": 3,
       "area": "matematicas",
       "descripcion": "Divisiones como reparto y relación con la multiplicación",
-      "disponible": false,
-      "proximamente": true,
+      "disponible": true,
+      "contentFile": "dinosaurios.json",
       "tema": {
         "colorPrimario": "#4caf50",
         "colorSecundario": "#81c784",
@@ -40,8 +40,8 @@
       "curso": 3,
       "area": "matematicas",
       "descripcion": "Fracciones propias, comparación y recta numérica",
-      "disponible": false,
-      "proximamente": true,
+      "disponible": true,
+      "contentFile": "fracciones.json",
       "tema": {
         "colorPrimario": "#ff9800",
         "colorSecundario": "#ffb74d",
@@ -55,11 +55,56 @@
       "curso": 3,
       "area": "lengua",
       "descripcion": "Comprensión lectora y ortografía en contextos narrativos",
-      "disponible": false,
-      "proximamente": true,
+      "disponible": true,
+      "contentFile": "biblioteca.json",
       "tema": {
         "colorPrimario": "#5c6bc0",
         "colorSecundario": "#9fa8da",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "calculo-4",
+      "nombre": "Ciudad de los Números",
+      "emoji": "🏙️",
+      "curso": 4,
+      "area": "matematicas",
+      "descripcion": "Multiplicación y división con números mayores (4º)",
+      "disponible": true,
+      "contentFile": "calculo-4.json",
+      "tema": {
+        "colorPrimario": "#00897b",
+        "colorSecundario": "#4db6ac",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "fracciones-4",
+      "nombre": "Imperio de las Fracciones",
+      "emoji": "👑",
+      "curso": 4,
+      "area": "matematicas",
+      "descripcion": "Fracciones equivalentes, suma y comparación (4º)",
+      "disponible": true,
+      "contentFile": "fracciones-4.json",
+      "tema": {
+        "colorPrimario": "#e65100",
+        "colorSecundario": "#ff9800",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "lengua-4",
+      "nombre": "Atelier de la Lengua",
+      "emoji": "✍️",
+      "curso": 4,
+      "area": "lengua",
+      "descripcion": "Comprensión, ortografía y gramática (4º)",
+      "disponible": true,
+      "contentFile": "lengua-4.json",
+      "tema": {
+        "colorPrimario": "#7b1fa2",
+        "colorSecundario": "#ba68c8",
         "fondo": "fondo-magico.jpg"
       }
     }
