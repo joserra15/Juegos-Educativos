@@ -1,15 +1,16 @@
 /**
- * Sesión de juego extendida para mundos no-unicornio:
+ * Sesión de juego extendida (todos los mundos):
  * banco ≥50 preguntas, 10 aciertos para pasar, dificultad creciente.
  */
 
 export const ACIERTOS_PARA_PASAR = 10;
 export const FALLOS_MAX_FASE_FINAL = 5;
 export const TAMANO_BANCO_MINIMO = 50;
-export const MUNDO_CLASICO = "unicornios";
+export const MUNDO_LEGACY = "unicornios";
 
-export function usaSesionExtendida(mundoId) {
-  return mundoId !== MUNDO_CLASICO;
+/** Todos los mundos usan sesión extendida (incluido unicornios). */
+export function usaSesionExtendida(_mundoId) {
+  return true;
 }
 
 /** Fase final: avanzada o una de las dos últimas del mundo. */

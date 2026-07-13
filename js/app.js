@@ -769,8 +769,6 @@ function actualizarContadorFallosUI(){
 
   if(modoSesionExtendida && esFinal){
     el.textContent = `❌ Fallos: ${fallosActual} / ${FALLOS_MAX_FASE_FINAL}`;
-  }else if(!modoRepaso && !modoSesionExtendida && faseActual >= 4){
-    el.textContent = `❌ Fallos: ${fallosActual} / 6`;
   }else{
     el.textContent = "";
   }
@@ -1073,20 +1071,6 @@ function responder(){
       document.getElementById("popup").style.display = "none";
       reiniciarSesionExtendida();
     }, 2800);
-    guardarEstado();
-    guardarProgreso();
-    return;
-  }
-
-  if(!modoRepaso && !modoSesionExtendida && faseActual >= 4 && fallosActual === 6){
-    popup("🚨 Has llegado al máximo de fallos permitidos.\nDebes repetir este reto.");
-    fallosActual = 0;
-    modoRepaso = false;
-    setTimeout(() => {
-      document.getElementById("popup").style.display = "none";
-      mostrarMapa();
-      document.getElementById("contadorFallos").textContent = "";
-    }, 4000);
     guardarEstado();
     guardarProgreso();
     return;

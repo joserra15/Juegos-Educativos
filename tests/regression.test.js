@@ -217,10 +217,25 @@ describe("Regresión: tiempos y ranking por mundo", () => {
   });
 });
 
-describe("Regresión: sesión extendida (mundos no-unicornio)", () => {
-  it("activa sesión extendida fuera de unicornios", () => {
+describe("Regresión: sesión extendida (todos los mundos)", () => {
+  it("activa sesión extendida en todos los mundos", () => {
     expect(usaSesionExtendida("dinosaurios")).toBe(true);
-    expect(usaSesionExtendida("unicornios")).toBe(false);
+    expect(usaSesionExtendida("unicornios")).toBe(true);
+    expect(usaSesionExtendida("fracciones")).toBe(true);
+  });
+
+  it("genera banco de al menos 50 preguntas para tablas (unicornios)", () => {
+    const banco = generarBancoFase(
+      { tablas: [1, 2, 3, 4, 5], total: 8 },
+      {
+        textos: ["Hay {a} grupos de {b} estrellas."],
+        tipoMundo: "multiplicacion",
+        bancoAvanzado: [],
+      },
+      50
+    );
+    expect(banco.length).toBeGreaterThanOrEqual(50);
+    expect(banco[0].r).toBe(banco[0].a * banco[0].b);
   });
 
   it("genera banco de al menos 50 preguntas para división", () => {

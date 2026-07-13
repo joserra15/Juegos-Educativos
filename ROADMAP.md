@@ -75,7 +75,7 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 - [x] Rachas visuales (≥3 aciertos seguidos)
 - [x] Confeti y brillo al completar
 
-### ✅ Mecánica de sesión extendida — mundos no-unicornio (v3.2.0)
+### ✅ Mecánica de sesión extendida — todos los mundos (v3.2.1)
 
 - [x] Banco aleatorio ≥50 preguntas por fase (`generarBancoFase`)
 - [x] 10 aciertos necesarios para pasar cada fase
