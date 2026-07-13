@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "appName": "Mundos Mágicos Educativos",
+  "defaultMundo": "unicornios",
+  "mundos": [
+    {
+      "id": "unicornios",
+      "nombre": "El Mundo de los Unicornios",
+      "emoji": "🦄",
+      "curso": 3,
+      "area": "matematicas",
+      "descripcion": "Aprende las tablas de multiplicar liberando unicornios mágicos",
+      "disponible": true,
+      "contentFile": "unicornios.json"
+    }
+  ]
+}

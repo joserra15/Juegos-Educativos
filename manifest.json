@@ -1,7 +1,7 @@
 {
-  "name": "El Mundo de los Unicornios de Lucía",
-  "short_name": "Unicornios",
-  "description": "Juego mágico para aprender las tablas de multiplicar",
+  "name": "Mundos Mágicos Educativos",
+  "short_name": "Mundos Mágicos",
+  "description": "Juegos educativos para primaria: tablas de multiplicar y más",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f3e5f5",

@@ -1,0 +1,154 @@
+import { describe, it, expect } from "vitest";
+import { getFaseLabel, migrateTiempoKeys } from "../engine/ContentLoader.js";
+import {
+  generarOperacionesFase,
+  generarOperacionesRepaso,
+  getDificultadLabel,
+  formatearTiempo,
+  generarBancoHechizo,
+  generarBancoGigantes,
+} from "../engine/QuestionGenerator.js";
+import {
+  puntosPorFase,
+  calcularPenalizacion,
+  calcularNivelAdaptativo,
+  calcularProporcionesDificultad,
+} from "../engine/Scoring.js";
+import { getHint } from "../engine/Hints.js";
+import {
+  createDefaultMundoState,
+  parseFirebaseData,
+  buildFirebasePayload,
+  mergeRemoteIfNewer,
+} from "../engine/ProgressStore.js";
+
+const fasesMock = [
+  { id: "prado-rosa", nombre: "Prado Rosa", emoji: "🌸", tablas: [2, 3], total: 8, recompensa: { asset: "u1.png", nombre: "Rosita" } },
+  { id: "torre-hechizo", nombre: "Torre del Hechizo", emoji: "🌀", total: 5, tipo: "avanzada", recompensa: { asset: "u7.png", nombre: "Arcano" } },
+];
+
+const textos = ["Hay {a} cofres con {b} gemas."];
+
+describe("ContentLoader", () => {
+  it("genera etiqueta con emoji", () => {
+    expect(getFaseLabel(fasesMock[0])).toBe("🌸 Prado Rosa");
+  });
+
+  it("migra claves antiguas a IDs", () => {
+    const migrated = migrateTiempoKeys({ "🌸 Prado Rosa": 42 }, fasesMock);
+    expect(migrated["prado-rosa"]).toBe(42);
+  });
+});
+
+describe("QuestionGenerator", () => {
+  it("genera operaciones estándar con respuestas correctas", () => {
+    const ops = generarOperacionesFase(fasesMock[0], {
+      textos,
+      bancoAvanzado: [],
+      fallosPorOperacion: {},
+      nivelAdaptativo: 0,
+    });
+    expect(ops).toHaveLength(8);
+    ops.forEach((op) => expect(op.r).toBe(op.a * op.b));
+  });
+
+  it("genera repaso desde fallos", () => {
+    const ops = generarOperacionesRepaso({ "3x7": 2, "2x4": 1 }, textos, 5);
+    expect(ops.length).toBeGreaterThan(0);
+    expect(ops[0].r).toBe(ops[0].a * ops[0].b);
+  });
+
+  it("etiqueta dificultad por multiplicador", () => {
+    expect(getDificultadLabel({ b: 3 })).toContain("fácil");
+    expect(getDificultadLabel({ b: 8 })).toContain("difícil");
+  });
+
+  it("formatea tiempo mm:ss", () => {
+    expect(formatearTiempo(65)).toBe("1:05");
+  });
+
+  it("genera bancos procedimentales", () => {
+    const hechizo = generarBancoHechizo();
+    expect(hechizo.facil.length + hechizo.media.length + hechizo.dificil.length).toBeGreaterThan(0);
+    const gigantes = generarBancoGigantes();
+    expect(gigantes.dificil.length).toBeGreaterThan(0);
+  });
+});
+
+describe("Scoring", () => {
+  it("devuelve puntos por fase", () => {
+    expect(puntosPorFase(fasesMock[0], { "prado-rosa": 10 })).toBe(10);
+    expect(puntosPorFase({ id: "x" }, {})).toBe(10);
+  });
+
+  it("calcula penalización mínima", () => {
+    expect(calcularPenalizacion(10)).toBe(5);
+    expect(calcularPenalizacion(4)).toBe(3);
+  });
+
+  it("sube nivel adaptativo con buen rendimiento", () => {
+    const nivel = calcularNivelAdaptativo({
+      liberadas: [0, 1],
+      fases: fasesMock,
+      tiemposMejores: { "prado-rosa": 20 },
+      fallosPorOperacion: {},
+    });
+    expect(nivel).toBeGreaterThan(0);
+  });
+
+  it("ajusta proporciones de dificultad", () => {
+    const { numFaciles, numMedias, numDificiles } = calcularProporcionesDificultad(12, 2);
+    expect(numFaciles + numMedias + numDificiles).toBe(12);
+  });
+});
+
+describe("Hints", () => {
+  it("da pista conceptual en primer fallo", () => {
+    expect(getHint({ a: 3, b: 4 }, 1, fasesMock[0])).toContain("grupos");
+  });
+
+  it("usa pista avanzada si existe", () => {
+    expect(getHint({ pista: "descomposición" }, 1, fasesMock[1])).toContain("descomposición");
+  });
+});
+
+describe("ProgressStore", () => {
+  it("crea estado por defecto", () => {
+    const state = createDefaultMundoState();
+    expect(state.liberadas).toEqual([0]);
+  });
+
+  it("parsea datos Firebase con namespace mundos", () => {
+    const parsed = parseFirebaseData({
+      puntos: 100,
+      mundos: { unicornios: { liberadas: [0, 1], tiemposMejores: {}, fallosPorOperacion: {} } },
+    });
+    expect(parsed.puntos).toBe(100);
+    expect(parsed.mundoState.liberadas).toEqual([0, 1]);
+  });
+
+  it("migra datos legacy de Firebase", () => {
+    const parsed = parseFirebaseData({ puntos: 50, liberadas: [0, 2] });
+    expect(parsed.mundoState.liberadas).toEqual([0, 2]);
+  });
+
+  it("construye payload con mundos y campos legacy", () => {
+    const payload = buildFirebasePayload("Lucia", { puntos: 10, intentosTotales: 5 }, {
+      liberadas: [0],
+      tiemposMejores: {},
+      fallosPorOperacion: {},
+      tablasDominadas: [],
+      logros: [],
+    }, "unicornios", "1234");
+    expect(payload.mundos.unicornios).toBeDefined();
+    expect(payload.liberadas).toEqual([0]);
+  });
+
+  it("fusiona si remoto tiene más puntos", () => {
+    const local = createDefaultMundoState();
+    const remote = { ...createDefaultMundoState(), liberadas: [0, 1, 2] };
+    const merged = mergeRemoteIfNewer(10, 50, local, remote);
+    expect(merged.merged).toBe(true);
+    expect(merged.puntos).toBe(50);
+  });
+});

@@ -1,0 +1,440 @@
+{
+  "id": "unicornios",
+  "version": "2.0.0",
+  "nombre": "El Mundo de los Unicornios",
+  "curso": 3,
+  "area": "matematicas",
+  "competencias": [
+    "CE2",
+    "CE4"
+  ],
+  "saberes": [
+    "tablas de multiplicar",
+    "cálculo mental",
+    "resolución de problemas"
+  ],
+  "tema": {
+    "colorPrimario": "#ff80ab",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "unicornio",
+    "recompensaLabel": "unicornio"
+  },
+  "fases": [
+    {
+      "id": "prado-rosa",
+      "nombre": "Prado Rosa",
+      "emoji": "🌸",
+      "tablas": [
+        2,
+        3
+      ],
+      "total": 8,
+      "recompensa": {
+        "asset": "unicornio1.png",
+        "nombre": "Rosita"
+      }
+    },
+    {
+      "id": "bosque-esmeralda",
+      "nombre": "Bosque Esmeralda",
+      "emoji": "🌲",
+      "tablas": [
+        4,
+        5
+      ],
+      "total": 8,
+      "recompensa": {
+        "asset": "unicornio2.png",
+        "nombre": "Esmerín"
+      }
+    },
+    {
+      "id": "valle-dragon",
+      "nombre": "Valle del Dragón",
+      "emoji": "🐉",
+      "tablas": [
+        6,
+        7
+      ],
+      "total": 8,
+      "recompensa": {
+        "asset": "unicornio3.png",
+        "nombre": "Drako"
+      }
+    },
+    {
+      "id": "montanas-violetas",
+      "nombre": "Montañas Violetas",
+      "emoji": "⛰️",
+      "tablas": [
+        8,
+        9
+      ],
+      "total": 8,
+      "recompensa": {
+        "asset": "unicornio4.png",
+        "nombre": "Violeta"
+      }
+    },
+    {
+      "id": "castillo-arcoiris",
+      "nombre": "Castillo Arcoíris",
+      "emoji": "🏰",
+      "tablas": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "total": 12,
+      "recompensa": {
+        "asset": "unicornio5.png",
+        "nombre": "Arco"
+      }
+    },
+    {
+      "id": "santuario-calculo",
+      "nombre": "Santuario del Cálculo",
+      "emoji": "🔮",
+      "total": 15,
+      "tipo": "avanzada",
+      "desbloqueoClase": 20000,
+      "recompensa": {
+        "asset": "unicornio6.png",
+        "nombre": "Sabio"
+      }
+    },
+    {
+      "id": "torre-hechizo",
+      "nombre": "Torre del Hechizo",
+      "emoji": "🌀",
+      "total": 20,
+      "tipo": "avanzada",
+      "desbloqueoClase": 0,
+      "siempreActiva": true,
+      "recompensa": {
+        "asset": "unicornio7.png",
+        "nombre": "Arcano"
+      }
+    },
+    {
+      "id": "forja-gigantes",
+      "nombre": "Forja de los Gigantes",
+      "emoji": "🧮",
+      "total": 15,
+      "tipo": "avanzada",
+      "desbloqueoClase": 60000,
+      "recompensa": {
+        "asset": "unicornio8.png",
+        "nombre": "Titán"
+      }
+    }
+  ],
+  "textos": [
+    "Hay {a} cofres con {b} gemas.",
+    "{a} dragones vigilan {b} huevos.",
+    "{b} unicornios llevan {a} estrellas.",
+    "{a} caminos tienen {b} faroles.",
+    "{b} cofres esconden {a} llaves.",
+    "{a} hadas preparan {b} pociones.",
+    "{b} castillos tienen {a} torres.",
+    "{a} grupos de {b} flores.",
+    "{b} carros con {a} sacos.",
+    "{a} jaulas con {b} dragones.",
+    "{b} estanterías con {a} libros.",
+    "{a} mesas con {b} pergaminos.",
+    "{b} niños reciben {a} cromos.",
+    "{a} mochilas con {b} cuentos.",
+    "{b} cofres con {a} monedas.",
+    "{a} filas de {b} árboles.",
+    "{b} naves llevan {a} tripulantes.",
+    "{a} trenes con {b} vagones.",
+    "{b} robots tienen {a} piezas.",
+    "{a} casas con {b} ventanas.",
+    "{b} cajas con {a} juguetes.",
+    "{a} torres con {b} banderas.",
+    "{b} globos con {a} cuerdas.",
+    "{a} cofres con {b} tesoros.",
+    "{b} magos usan {a} varitas.",
+    "{a} sacos con {b} semillas.",
+    "{b} barcos con {a} velas.",
+    "{a} dragones comen {b} peces.",
+    "{b} cofres con {a} coronas.",
+    "{a} caminos con {b} piedras.",
+    "{b} carretas con {a} ruedas.",
+    "{a} cofres con {b} estrellas.",
+    "{b} árboles tienen {a} ramas.",
+    "{a} grupos de {b} cristales.",
+    "{b} cofres con {a} mapas.",
+    "{a} mochilas con {b} cuadernos.",
+    "{b} torres con {a} escudos.",
+    "{a} cofres con {b} anillos.",
+    "{b} estantes con {a} frascos.",
+    "{a} cajas con {b} pociones."
+  ],
+  "puntosPorFase": {
+    "prado-rosa": 10,
+    "bosque-esmeralda": 12,
+    "montanas-violetas": 15,
+    "valle-dragon": 18,
+    "castillo-arcoiris": 25,
+    "santuario-calculo": 35,
+    "torre-hechizo": 40,
+    "forja-gigantes": 55
+  },
+  "bancoAvanzado": [
+    {
+      "a": 4,
+      "b": 12,
+      "pista": "Haz 4 × 10 y suma 4 × 2"
+    },
+    {
+      "a": 4,
+      "b": 15,
+      "pista": "Descompón 15 en 10 y 5"
+    },
+    {
+      "a": 4,
+      "b": 18,
+      "pista": "Haz 4 × 20 y resta 4 × 2"
+    },
+    {
+      "a": 4,
+      "b": 25,
+      "pista": "25 es 100 dividido entre 4"
+    },
+    {
+      "a": 4,
+      "b": 30,
+      "pista": "Multiplica 4 × 3 y añade un cero"
+    },
+    {
+      "a": 5,
+      "b": 12,
+      "pista": "Haz 5 × 10 y suma 5 × 2"
+    },
+    {
+      "a": 5,
+      "b": 14,
+      "pista": "Haz 5 × 10 y suma 5 × 4"
+    },
+    {
+      "a": 5,
+      "b": 18,
+      "pista": "Haz 5 × 20 y resta 5 × 2"
+    },
+    {
+      "a": 5,
+      "b": 25,
+      "pista": "Multiplica 100 y divide entre 4"
+    },
+    {
+      "a": 5,
+      "b": 30,
+      "pista": "Multiplica 5 × 3 y añade un cero"
+    },
+    {
+      "a": 6,
+      "b": 12,
+      "pista": "Haz 6 × 10 y suma 6 × 2"
+    },
+    {
+      "a": 6,
+      "b": 15,
+      "pista": "Descompón 15 en 10 y 5"
+    },
+    {
+      "a": 6,
+      "b": 18,
+      "pista": "Haz 6 × 20 y resta 6 × 2"
+    },
+    {
+      "a": 6,
+      "b": 25,
+      "pista": "25 es 100 dividido entre 4"
+    },
+    {
+      "a": 6,
+      "b": 30,
+      "pista": "Multiplica 6 × 3 y añade un cero"
+    },
+    {
+      "a": 7,
+      "b": 12,
+      "pista": "Haz 7 × 10 y suma 7 × 2"
+    },
+    {
+      "a": 7,
+      "b": 14,
+      "pista": "Haz 7 × 7 y duplica"
+    },
+    {
+      "a": 7,
+      "b": 15,
+      "pista": "Descompón 15 en 10 y 5"
+    },
+    {
+      "a": 7,
+      "b": 20,
+      "pista": "Multiplica 7 × 2 y añade un cero"
+    },
+    {
+      "a": 7,
+      "b": 30,
+      "pista": "Multiplica 7 × 3 y añade un cero"
+    },
+    {
+      "a": 8,
+      "b": 12,
+      "pista": "Haz 8 × 10 y suma 8 × 2"
+    },
+    {
+      "a": 8,
+      "b": 15,
+      "pista": "Descompón 15 en 10 y 5"
+    },
+    {
+      "a": 8,
+      "b": 18,
+      "pista": "Haz 8 × 20 y resta 8 × 2"
+    },
+    {
+      "a": 8,
+      "b": 25,
+      "pista": "Multiplica por 100 y divide entre 4"
+    },
+    {
+      "a": 8,
+      "b": 30,
+      "pista": "Multiplica 8 × 3 y añade un cero"
+    },
+    {
+      "a": 9,
+      "b": 12,
+      "pista": "Haz 9 × 10 y suma 9 × 2"
+    },
+    {
+      "a": 9,
+      "b": 14,
+      "pista": "Haz 9 × 10 y suma 9 × 4"
+    },
+    {
+      "a": 9,
+      "b": 15,
+      "pista": "Haz 9 × 10 y suma 9 × 5"
+    },
+    {
+      "a": 9,
+      "b": 18,
+      "pista": "Haz 9 × 20 y resta 9 × 2"
+    },
+    {
+      "a": 9,
+      "b": 30,
+      "pista": "Multiplica 9 × 3 y añade un cero"
+    },
+    {
+      "a": 6,
+      "b": 40,
+      "pista": "Multiplica 6 × 4 y añade un cero"
+    },
+    {
+      "a": 8,
+      "b": 40,
+      "pista": "Multiplica 8 × 4 y añade un cero"
+    },
+    {
+      "a": 5,
+      "b": 40,
+      "pista": "Multiplica 5 × 4 y añade un cero"
+    },
+    {
+      "a": 4,
+      "b": 40,
+      "pista": "Multiplica 4 × 4 y añade un cero"
+    },
+    {
+      "a": 7,
+      "b": 40,
+      "pista": "Multiplica 7 × 4 y añade un cero"
+    }
+  ],
+  "mensajes": {
+    "acierto": [
+      "✨ ¡Genial, {nombre}!",
+      "🦄 ¡Perfecto! Sigue así {nombre}",
+      "🌟 ¡Esta te ha salido genial!",
+      "💖 ¡Muy bien pensado!",
+      "🎉 ¡Lo has hecho súper bien!",
+      "👏 ¡Se nota que practicas!",
+      "🚀 ¡Qué rapidez!",
+      "🌈 ¡Otro acierto más {nombre}!"
+    ],
+    "error": [
+      "💭 Casi… piensa un poco más",
+      "🔍 Prueba otra vez, tú puedes",
+      "🧠 No pasa nada, inténtalo de nuevo",
+      "💪 Sigue intentándolo",
+      "✨ Vamos otra vez, sin prisas",
+      "🦄 Inténtalo de nuevo",
+      "🌱 De los errores se aprende"
+    ],
+    "ultima": [
+      "🔥 ¡Último reto, a por él!",
+      "🏁 ¡Esta es la última!",
+      "🌟 Última pregunta… ¡confía en ti!",
+      "🦄 El último empujón"
+    ]
+  },
+  "mensajesPredefinidos": {
+    "animo": {
+      "icono": "⭐",
+      "texto": "¡Vamos equipo!"
+    },
+    "logrado": {
+      "icono": "🎉",
+      "texto": "¡Reto superado!"
+    },
+    "esfuerzo": {
+      "icono": "💪",
+      "texto": "Lo voy a intentar otra vez"
+    },
+    "clase": {
+      "icono": "🌈",
+      "texto": "¡La clase va genial!"
+    },
+    "cerca": {
+      "icono": "🔮",
+      "texto": "¡Estamos cerca del siguiente mundo!"
+    },
+    "unicornio": {
+      "icono": "🦄",
+      "texto": "¡Los unicornios nos necesitan!"
+    },
+    "estrellas": {
+      "icono": "✨",
+      "texto": "¡Buen trabajo!"
+    },
+    "tiempo": {
+      "icono": "⏱️",
+      "texto": "¡Hemos mejorado el tiempo!"
+    },
+    "ayuda": {
+      "icono": "👋🏻",
+      "texto": "¡Hola a todos!"
+    },
+    "magia": {
+      "icono": "🥇",
+      "texto": "¡Somos unos campeones!"
+    }
+  },
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  },
+  "objetivoClase": 60000
+}
