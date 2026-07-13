@@ -238,13 +238,16 @@ describe("QuestionGenerator mundos ampliados", () => {
     expect(ops[0].a).toBe(ops[0].b * ops[0].r);
   });
 
-  it("genera operaciones de fracciones con numerador", () => {
+  it("genera operaciones de fracciones con opciones múltiples", () => {
     const ops = generarOperacionesFraccion(
       { total: 4, denominadores: [2, 4] },
       {}
     );
     expect(ops[0].tipo).toBe("fraccion");
-    expect(ops[0].r).toBe(ops[0].numerador);
+    expect(ops[0].opciones.length).toBeGreaterThanOrEqual(4);
+    const fraccion = `${ops[0].numerador}/${ops[0].denominador}`;
+    expect(ops[0].opciones).toContain(fraccion);
+    expect(ops[0].r).toBe(ops[0].opciones.indexOf(fraccion));
   });
 
   it("genera preguntas de lectura con opciones", () => {

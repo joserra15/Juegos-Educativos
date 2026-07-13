@@ -48,7 +48,15 @@
   <h1 class="titulo-mapa" id="tituloMapaMundo">Mundo</h1>
   <button class="boton-volver-mundos" onclick="mostrarSelectorMundos()">🌍 Cambiar de mundo</button>
 
-  <div id="botonesFases" class="flex mapa-fases"></div>
+  <div class="mapa-progreso-wrap">
+    <div class="mapa-progreso-track" aria-hidden="true">
+      <div id="barraProgresoMundo" class="mapa-progreso-fill"></div>
+    </div>
+    <p id="textoProgresoMundo" class="mapa-progreso-texto">0 de 0 fases</p>
+  </div>
+  <p id="mapaMicrocopy" class="mapa-microcopy">¡Elige tu próximo reto y sigue la aventura!</p>
+
+  <div id="botonesFases" class="mapa-camino"></div>
 
   <div class="mapa-paneles">
     <div class="panel-curriculo">
@@ -92,6 +100,7 @@
 <div id="juego" class="pantalla">
  <h2 id="tituloFase"></h2>
  <h3 id="contador"></h3>
+ <p id="rachaJuego" class="racha-juego" style="display:none" aria-live="polite"></p>
  <div class="juego-layout">
   <div class="recompensa-contenedor juego-recompensa">
     <div class="recompensa-marco">
@@ -206,16 +215,17 @@
 
 <!-- POPUP -->
 <div id="popup" class="popup">
-  <div class="caja">
+  <div class="caja popup-caja" id="popupCaja">
+    <div id="popupEmojiGrande" class="popup-emoji-grande" aria-hidden="true"></div>
     <h3 id="popupTexto"></h3>
+    <p id="popupSubtitulo" class="popup-subtitulo"></p>
 
-    <!-- Imagen del unicornio liberado -->
     <img id="popupRecompensa"
          src=""
          alt="Recompensa liberada"
          style="display:none;">
 
-    <button onclick="cerrarPopup()">Continuar</button>
+    <button onclick="cerrarPopup()">¡Genial!</button>
   </div>
 </div>
 
@@ -486,7 +496,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 3.1.0
+    v 3.2.0
   </p>
 <p><br></p>
 </footer>

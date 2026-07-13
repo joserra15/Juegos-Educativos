@@ -11,7 +11,8 @@ import {
   crearModeloRectangular,
   getDificultadLabel,
   formatearTiempo,
-  getClaveOperacion
+  getClaveOperacion,
+  generarBancoFase,
 } from "../engine/QuestionGenerator.js";
 import {
   puntosPorFase,
@@ -46,6 +47,18 @@ import {
   combinarTiemposJugador,
   obtenerTiempoFase,
 } from "../engine/PhaseProgress.js";
+import {
+  usaSesionExtendida,
+  esFaseFinal,
+  ACIERTOS_PARA_PASAR,
+  FALLOS_MAX_FASE_FINAL,
+  TAMANO_BANCO_MINIMO,
+  calcularProgresoRevelado,
+  nivelDificultadSesion,
+  elegirPreguntaDelBanco,
+  faseSuperada,
+  debeReiniciarFase,
+} from "../engine/SessionEngine.js";
 
 
 let puntos = 0;
@@ -81,6 +94,11 @@ let tablaSeleccionada = Number(localStorage.getItem("tablaSeleccionada")) || 2;
 let altoContraste = localStorage.getItem("altoContraste") === "true";
 let fuenteGrande = localStorage.getItem("fuenteGrande") === "true";
 let opcionSeleccionada = null;
+let modoSesionExtendida = false;
+let bancoSesion = [];
+let preguntaActual = null;
+let aciertosSesion = 0;
+let rachaActual = 0;
 const mundos = () => fases.map(f => getFaseLabel(f));
 
   
@@ -389,8 +407,10 @@ function pintarTagsFase(fase){
 
 function actualizarReveladoRecompensa(porcentaje){
   const cubierta = document.getElementById("mascaraRecompensa");
+  const marco = cubierta?.closest(".recompensa-marco");
   if(!cubierta) return;
   cubierta.style.height = `${Math.max(0, 100 - porcentaje)}%`;
+  if(marco) marco.classList.toggle("revelado-completo", porcentaje >= 100);
 }
 
 function resetearReveladoRecompensa(){
@@ -594,27 +614,75 @@ function mensajeAleatorio(arr){
 /* =====================================================
    MAPA
 ===================================================== */
+const MICROCOPY_MAPA = [
+  "¡Elige tu próximo reto y sigue la aventura!",
+  "Cada respuesta correcta revela una criatura mágica.",
+  "¡Vas muy bien! Sigue explorando el camino.",
+  "Casi dominas este mundo… ¡un reto más!",
+  "¡Eres un explorador estrella! 🌟",
+];
+
 function construirMapa(){
   const cont = document.getElementById("botonesFases");
   cont.innerHTML = "";
 
+  const ultimaCompletada = liberadas.length
+    ? Math.max(...liberadas.filter((i) => i < fases.length))
+    : -1;
+
   fases.forEach((f, i) => {
-    const b = document.createElement("button");
     const completada = liberadas.includes(i);
-    b.textContent = getFaseLabel(f) + (completada ? " ✅" : "");
-    b.className = "fase-btn";
+    const nodo = document.createElement("div");
+    nodo.className = "camino-nodo";
+
+    const linea = document.createElement("div");
+    linea.className = "camino-linea" + (completada ? " camino-linea-hecha" : "");
+    if (i > 0) nodo.appendChild(linea);
+
+    const b = document.createElement("button");
+    b.className = "camino-fase-btn fase-btn";
+    b.type = "button";
+
+    const preview = document.createElement("span");
+    preview.className = "camino-preview" + (completada || evaluarEstadoFase(f, i, liberadas, puntosClase).disponible ? "" : " camino-preview-bloqueada");
+    if (f.recompensa?.asset) {
+      const img = document.createElement("img");
+      img.src = f.recompensa.asset;
+      img.alt = "";
+      preview.appendChild(img);
+    } else {
+      preview.textContent = f.recompensa?.emoji || f.emoji || "❓";
+    }
+
+    const emoji = document.createElement("span");
+    emoji.className = "camino-emoji";
+    emoji.textContent = f.emoji || "⭐";
+
+    const nombre = document.createElement("span");
+    nombre.className = "camino-nombre";
+    nombre.textContent = f.nombre + (completada ? " ✅" : "");
+
+    b.append(preview, emoji, nombre);
+
+    if (ultimaCompletada === i) {
+      const avatar = document.createElement("span");
+      avatar.className = "camino-avatar-jugador";
+      avatar.textContent = "🧍";
+      avatar.title = "Tu posición";
+      b.appendChild(avatar);
+    }
 
     if (f.siempreActiva) {
       b.classList.add("fase-disponible");
       b.disabled = false;
       b.onclick = () => iniciarFase(i);
-      cont.appendChild(b);
+      nodo.appendChild(b);
+      cont.appendChild(nodo);
       return;
     }
 
     if (f.tipo === "avanzada") {
       const estado = evaluarEstadoFase(f, i, liberadas, puntosClase);
-
       if (estado.disponible) {
         b.classList.add("fase-disponible");
         b.disabled = false;
@@ -633,8 +701,8 @@ function construirMapa(){
           );
         };
       }
-
-      cont.appendChild(b);
+      nodo.appendChild(b);
+      cont.appendChild(nodo);
       return;
     }
 
@@ -644,8 +712,20 @@ function construirMapa(){
     if (completada) b.classList.add("fase-completada");
     b.onclick = () => iniciarFase(i);
 
-    cont.appendChild(b);
+    nodo.appendChild(b);
+    cont.appendChild(nodo);
   });
+
+  const pct = fases.length ? Math.round((liberadas.length / fases.length) * 100) : 0;
+  const barra = document.getElementById("barraProgresoMundo");
+  const textoProg = document.getElementById("textoProgresoMundo");
+  const micro = document.getElementById("mapaMicrocopy");
+  if (barra) barra.style.width = `${pct}%`;
+  if (textoProg) textoProg.textContent = `${liberadas.length} de ${fases.length} fases completadas (${pct}%)`;
+  if (micro) {
+    const idx = Math.min(Math.floor(liberadas.length / Math.max(1, fases.length / MICROCOPY_MAPA.length)), MICROCOPY_MAPA.length - 1);
+    micro.textContent = MICROCOPY_MAPA[idx];
+  }
 
   actualizarProgreso();
 }
@@ -669,6 +749,51 @@ function sonido(freqs,dur=0.3){
  });
 }
 
+function actualizarRachaUI(){
+  const el = document.getElementById("rachaJuego");
+  if(!el) return;
+  if(rachaActual >= 3){
+    el.style.display = "block";
+    el.textContent = `🔥 ¡Racha de ${rachaActual} aciertos seguidos!`;
+    el.classList.add("racha-activa");
+  }else{
+    el.style.display = "none";
+    el.classList.remove("racha-activa");
+  }
+}
+
+function actualizarContadorFallosUI(){
+  const el = document.getElementById("contadorFallos");
+  if(!el) return;
+  const esFinal = esFaseFinal(faseActual, fases[faseActual], fases.length);
+
+  if(modoSesionExtendida && esFinal){
+    el.textContent = `❌ Fallos: ${fallosActual} / ${FALLOS_MAX_FASE_FINAL}`;
+  }else if(!modoRepaso && !modoSesionExtendida && faseActual >= 4){
+    el.textContent = `❌ Fallos: ${fallosActual} / 6`;
+  }else{
+    el.textContent = "";
+  }
+}
+
+function prepararPreguntaSesion(){
+  const nivel = nivelDificultadSesion(aciertosSesion, fallosActual);
+  preguntaActual = elegirPreguntaDelBanco(bancoSesion, nivel);
+  operaciones = preguntaActual ? [preguntaActual] : [];
+  opcionSeleccionada = null;
+}
+
+function reiniciarSesionExtendida(){
+  aciertosSesion = 0;
+  fallosActual = 0;
+  rachaActual = 0;
+  resetearReveladoRecompensa();
+  prepararPreguntaSesion();
+  actualizarRachaUI();
+  actualizarContadorFallosUI();
+  mostrarOperacion();
+}
+
 /* =====================================================
    INICIAR FASE (orden creciente de dificultad)
 ===================================================== */
@@ -687,20 +812,17 @@ if(fases[i].tipo === "avanzada" && !fases[i].siempreActiva){
   }
 }
 
-//alert("Entrando en fase " + i);
  modoPracticaTabla = false;
  faseActual=i;
  indice=0;
 fallosActual = 0;
 erroresEnSesion = 0;
+aciertosSesion = 0;
+rachaActual = 0;
+modoSesionExtendida = usaSesionExtendida(mundoId) && !modoRepaso;
 
-// Mostrar contador de fallos en fases con límite (Castillo y Santuario)
-if(!modoRepaso && i >= 4){
-  document.getElementById("contadorFallos").textContent =
-    "❌ Fallos: 0 / 6";
-}else{
-  document.getElementById("contadorFallos").textContent = "";
-}
+actualizarContadorFallosUI();
+actualizarRachaUI();
 
 document.getElementById("pista").textContent = "";
 
@@ -708,11 +830,15 @@ document.getElementById("pista").textContent = "";
  tiempoInicio=Date.now();
  iniciarTimer();
 
- operaciones = [];
-
-
 const nivelAdaptativo = calcularNivelAdaptativo({ liberadas, fases, tiemposMejores, fallosPorOperacion });
-operaciones = generarOperacionesFase(fases[i], getContextoGenerador());
+const contexto = getContextoGenerador();
+
+if(modoSesionExtendida){
+  bancoSesion = generarBancoFase(fases[i], contexto, TAMANO_BANCO_MINIMO);
+  prepararPreguntaSesion();
+}else{
+  operaciones = generarOperacionesFase(fases[i], contexto);
+}
 
 setRecompensaVisual(fases[i].recompensa);
 resetearReveladoRecompensa();
@@ -725,12 +851,14 @@ mostrarOperacion();
 /* =====================================================
    MOSTRAR OPERACIÓN
 ===================================================== */
-function pintarOpcionesLectura(op){
+function pintarOpcionesSeleccion(op){
   const cont = document.getElementById("opcionesLectura");
   const input = document.getElementById("respuesta");
   if(!cont) return;
 
-  if(op?.tipo !== "lectura" || !op.opciones?.length){
+  const usaOpciones = (op?.tipo === "lectura" || op?.tipo === "fraccion") && op.opciones?.length;
+
+  if(!usaOpciones){
     cont.style.display = "none";
     cont.innerHTML = "";
     if(input) input.style.display = "";
@@ -758,14 +886,22 @@ function responderOpcion(idx){
 }
 
 function esRespuestaCorrecta(op, val){
-  if(op?.tipo === "lectura") return opcionSeleccionada === op.r;
+  if(op?.tipo === "lectura" || op?.tipo === "fraccion") return opcionSeleccionada === op.r;
   return val === op.r;
 }
 
+function obtenerOperacionActual(){
+  if(modoSesionExtendida) return preguntaActual;
+  return operaciones[indice];
+}
+
 function mostrarOperacion(){
- const esPracticaTabla = !modoRepaso && operaciones.length && tipoMundo !== "lectura" && operaciones.every(op => {
-   if(tipoMundo === "division") return op.b === operaciones[0].b;
-   return op.a === operaciones[0].a;
+ const op = obtenerOperacionActual();
+ if(!op) return;
+
+ const esPracticaTabla = !modoRepaso && !modoSesionExtendida && operaciones.length && tipoMundo !== "lectura" && operaciones.every(o => {
+   if(tipoMundo === "division") return o.b === operaciones[0].b;
+   return o.a === operaciones[0].a;
  });
  const faseVisual = modoRepaso
   ? { objetivo: "Repaso de las operaciones que más cuestan.", tags:["Refuerzo", "Memoria de trabajo"] }
@@ -786,20 +922,26 @@ function mostrarOperacion(){
         ? `🎯 Dominio del divisor ${operaciones[0].b}`
         : `🎯 Dominio de la tabla del ${operaciones[0].a}`)
     : getFaseLabel(fases[faseActual]);
- document.getElementById("contador").textContent=
-  `Pregunta ${indice+1} de ${operaciones.length}`;
- document.getElementById("problema").textContent=
-  operaciones[indice].texto;
 
-actualizarIndicadorDificultad(operaciones[indice]);
+ if(modoSesionExtendida){
+   document.getElementById("contador").textContent =
+     `✅ Aciertos: ${aciertosSesion} / ${ACIERTOS_PARA_PASAR} · Banco de ${bancoSesion.length} preguntas`;
+ }else{
+   document.getElementById("contador").textContent =
+     `Pregunta ${indice+1} de ${operaciones.length}`;
+ }
+
+ document.getElementById("problema").textContent = op.texto;
+
+actualizarIndicadorDificultad(op);
  pintarTagsFase(faseVisual);
- renderVisualRectangular(operaciones[indice]);
- pintarOpcionesLectura(operaciones[indice]);
+ renderVisualRectangular(op);
+ pintarOpcionesSeleccion(op);
  document.getElementById("respuesta").value="";
 
 setTimeout(() => {
   const input = document.getElementById("respuesta");
-  if(input){
+  if(input && input.style.display !== "none"){
     input.focus();
     input.select();
   }
@@ -816,155 +958,152 @@ function mostrarPista(op){
   renderVisualRectangular(op);
 }
 
-/* =====================================================
-   RESPONDER
-===================================================== */
+function completarFaseConCelebracion(){
+  if (faseActual === fases.length - 1) {
+    sonidoFinalMagico();
+  }
+  actualizarReveladoRecompensa(100);
+  lanzarConfeti();
+  popup(
+    fases[faseActual].tipo === "avanzada"
+      ? "🌟 ¡Has superado el reto avanzado!\nEste reto es solo para mentes expertas."
+      : `🎉 ¡Has conseguido a ${fases[faseActual].recompensa.nombre}!`,
+    true,
+    { celebracion: true, subtitulo: "¡Recompensa desbloqueada al completo!" }
+  );
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => finalizarFase());
+  });
+}
+
 function responder(){
- const op=operaciones[indice];
- const val=+respuesta.value;
+ const op = obtenerOperacionActual();
+ if(!op) return;
+ const val = +document.getElementById("respuesta").value;
  intentosTotales++;
 
  if(esRespuestaCorrecta(op, val)){
   sonido([880,1320,1760]);
-	document.getElementById("pista").textContent = "";
+  document.getElementById("pista").textContent = "";
   document.getElementById("visualRectangular").style.display = "none";
 
-if(!modoRepaso){
-	
-	// Sistema unificado de puntos por fase
-const puntosGanados = puntosDelMundoActual();
-puntos += puntosGanados;
-puntosMundo += puntosGanados;
+  if(!modoRepaso){
+    const puntosGanados = puntosDelMundoActual();
+    puntos += puntosGanados;
+    puntosMundo += puntosGanados;
 
-
-  // 🎯 GANAR MENSAJES PARA EL MURAL
-  const totalGanados = Math.floor(puntos / CONFIG_MURAL.puntosPorMensaje);
-  const maxPermitidos = CONFIG_MURAL.maxMensajesDia;
-
-  mensajesDisponibles = Math.min(
-    totalGanados - mensajesUsadosHoy,
-    maxPermitidos - mensajesUsadosHoy
-  );
-
-  mensajesDisponibles = Math.max(0, mensajesDisponibles);
-
-  localStorage.setItem("mensajesDisponibles", mensajesDisponibles);
-
-actualizarContadorMensajes();
-
-}
-
-  indice++;
-  fallosActual=0;
-
-  const porcentaje=Math.floor((indice/operaciones.length)*100);
-
-
-actualizarReveladoRecompensa(porcentaje);
-
-if(porcentaje === 100){
-  lanzarConfeti();
-}
-
-
-
-  if(indice>=operaciones.length){
-//alert("LLAMANDO A FINALIZAR FASE");
-// 🔊 Sonido final (permitido porque viene de un click)
-  if (faseActual === fases.length - 1) {
-    sonidoFinalMagico();
+    const totalGanados = Math.floor(puntos / CONFIG_MURAL.puntosPorMensaje);
+    const maxPermitidos = CONFIG_MURAL.maxMensajesDia;
+    mensajesDisponibles = Math.min(
+      totalGanados - mensajesUsadosHoy,
+      maxPermitidos - mensajesUsadosHoy
+    );
+    mensajesDisponibles = Math.max(0, mensajesDisponibles);
+    localStorage.setItem("mensajesDisponibles", mensajesDisponibles);
+    actualizarContadorMensajes();
   }
 
-  
-   // Mostrar popup de final de fase
-popup(
-  fases[faseActual].tipo === "avanzada"
-    ? "🌟 ¡Has superado el reto avanzado!\nEste reto es solo para mentes expertas."
-    : `🎉 ¡Has conseguido a ${fases[faseActual].recompensa.nombre}!`,
-  true
-);
+  rachaActual++;
+  actualizarRachaUI();
 
-// 🔑 Dejar respirar al navegador para que pinte el popup
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    finalizarFase();
-  });
-});
+  if(modoSesionExtendida){
+    aciertosSesion++;
+    fallosActual = 0;
+    actualizarContadorFallosUI();
 
+    const porcentaje = calcularProgresoRevelado(aciertosSesion);
+    actualizarReveladoRecompensa(porcentaje);
 
-
+    if(faseSuperada(aciertosSesion)){
+      completarFaseConCelebracion();
+    }else{
+      if(aciertosSesion === ACIERTOS_PARA_PASAR - 1){
+        popup(conNombre(mensajeAleatorio(mensajesUltima)), false, { racha: rachaActual });
+      }else{
+        const extra = rachaActual >= 3 ? `\n🔥 Racha: ${rachaActual}` : "";
+        popup(conNombre(mensajeAleatorio(mensajesAcierto)) + extra);
+      }
+      prepararPreguntaSesion();
+    }
   }else{
-   // Mensaje especial si es la última pregunta
-if(indice === operaciones.length - 1){
-  popup(conNombre(mensajeAleatorio(mensajesUltima)));
-}else{
-  popup(conNombre(mensajeAleatorio(mensajesAcierto)));
-}
+    indice++;
+    fallosActual = 0;
 
+    const porcentaje = Math.floor((indice / operaciones.length) * 100);
+    actualizarReveladoRecompensa(porcentaje);
+
+    if(porcentaje === 100){
+      lanzarConfeti();
+    }
+
+    if(indice >= operaciones.length){
+      completarFaseConCelebracion();
+    }else{
+      if(indice === operaciones.length - 1){
+        popup(conNombre(mensajeAleatorio(mensajesUltima)), false, { racha: rachaActual });
+      }else{
+        popup(conNombre(mensajeAleatorio(mensajesAcierto)), false, { racha: rachaActual });
+      }
+    }
   }
  }else{
   sonido([1720,1320,800]);
   erroresEnSesion++;
+  rachaActual = 0;
+  actualizarRachaUI();
 
-if(!modoRepaso){
-
-
-const penalizacion = Math.max(3, Math.floor(puntosDelMundoActual() / 2));
-puntos -= penalizacion;
-puntosMundo = Math.max(0, puntosMundo - penalizacion);
-
-  //puntos = Math.max(0, puntos-5);
-}
+  if(!modoRepaso){
+    const penalizacion = Math.max(3, Math.floor(puntosDelMundoActual() / 2));
+    puntos -= penalizacion;
+    puntosMundo = Math.max(0, puntosMundo - penalizacion);
+  }
 
   fallosActual++;
+  actualizarContadorFallosUI();
 
-// Mostrar contador de fallos desde la fase 5 en adelante
-if(!modoRepaso && faseActual >= 4){
-  document.getElementById("contadorFallos").textContent =
-    `❌ Fallos: ${fallosActual} / 6`;
-}
+  const esFinal = esFaseFinal(faseActual, fases[faseActual], fases.length);
 
-// 🔑 SI LLEGA A 6 → CORTAR AQUÍ
-if(!modoRepaso && faseActual >= 4 && fallosActual === 6){
+  if(modoSesionExtendida && esFinal && debeReiniciarFase(fallosActual, true)){
+    popup(
+      `🚨 Has llegado a ${FALLOS_MAX_FASE_FINAL} fallos.\n¡Volvemos a empezar desde el principio!`,
+      false,
+      { alerta: true }
+    );
+    setTimeout(() => {
+      document.getElementById("popup").style.display = "none";
+      reiniciarSesionExtendida();
+    }, 2800);
+    guardarEstado();
+    guardarProgreso();
+    return;
+  }
 
-  popup(
-    "🚨 Has llegado al máximo de fallos permitidos.\nDebes repetir este reto."
-  );
-
-  // Reiniciar estado de la fase
-  fallosActual = 0;
-  modoRepaso = false;
-
-  setTimeout(() => {
-    document.getElementById("popup").style.display = "none";
-    mostrarMapa();
-    document.getElementById("contadorFallos").textContent = "";
-  }, 4000);
-
-  return; // ⛔ MUY IMPORTANTE
-}
-
-
+  if(!modoRepaso && !modoSesionExtendida && faseActual >= 4 && fallosActual === 6){
+    popup("🚨 Has llegado al máximo de fallos permitidos.\nDebes repetir este reto.");
+    fallosActual = 0;
+    modoRepaso = false;
+    setTimeout(() => {
+      document.getElementById("popup").style.display = "none";
+      mostrarMapa();
+      document.getElementById("contadorFallos").textContent = "";
+    }, 4000);
+    guardarEstado();
+    guardarProgreso();
+    return;
+  }
 
   const clave = getClaveOperacion(op);
-  fallosPorOperacion[clave]=(fallosPorOperacion[clave]||0)+1;
-
+  fallosPorOperacion[clave] = (fallosPorOperacion[clave] || 0) + 1;
   mostrarPista(op);
   popup(conNombre(mensajeAleatorio(mensajesError)));
  }
 
  guardarEstado();
+ guardarProgreso();
 
-guardarProgreso();
-
-const puntosEl = document.getElementById("puntos");
-//puntosEl.textContent = puntos;
-puntosEl.classList.add("subiendo");
-
-setTimeout(() => {
-  puntosEl.classList.remove("subiendo");
-}, 600);
-
+ const puntosEl = document.getElementById("puntos");
+ puntosEl.classList.add("subiendo");
+ setTimeout(() => puntosEl.classList.remove("subiendo"), 600);
 }
 
 
@@ -1279,19 +1418,41 @@ function actualizarProgreso(){
    UTILIDADES
 ===================================================== */
 
-function popup(texto, mostrarRecompensa=false){
+function popup(texto, mostrarRecompensa=false, opciones = {}){
+  const caja = document.getElementById("popupCaja");
   const rec = mostrarRecompensa ? fases[faseActual]?.recompensa : null;
+
   document.getElementById("popupTexto").textContent = rec?.emoji && !rec?.asset
     ? `${rec.emoji} ${texto}`
     : texto;
 
-  const img = document.getElementById("popupRecompensa");
+  const subtitulo = document.getElementById("popupSubtitulo");
+  if(subtitulo){
+    subtitulo.textContent = opciones.subtitulo || (opciones.racha >= 3 ? `🔥 Racha de ${opciones.racha} aciertos` : "");
+    subtitulo.style.display = subtitulo.textContent ? "block" : "none";
+  }
 
+  const emojiGrande = document.getElementById("popupEmojiGrande");
+  if(emojiGrande){
+    if(mostrarRecompensa && rec?.emoji && !rec?.asset){
+      emojiGrande.textContent = rec.emoji;
+      emojiGrande.style.display = "block";
+    }else{
+      emojiGrande.style.display = "none";
+    }
+  }
+
+  const img = document.getElementById("popupRecompensa");
   if(mostrarRecompensa && rec?.asset){
     img.src = rec.asset;
     img.style.display = "block";
   }else{
     img.style.display = "none";
+  }
+
+  if(caja){
+    caja.classList.toggle("popup-celebracion", !!opciones.celebracion);
+    caja.classList.toggle("popup-alerta", !!opciones.alerta);
   }
 
   document.getElementById("popup").style.display = "flex";
@@ -1300,7 +1461,13 @@ function popup(texto, mostrarRecompensa=false){
 
 function cerrarPopup(){
  document.getElementById("popup").style.display="none";
- if(indice<operaciones.length) mostrarOperacion();
+ const caja = document.getElementById("popupCaja");
+ if(caja) caja.classList.remove("popup-celebracion", "popup-alerta");
+ if(modoSesionExtendida){
+   if(!faseSuperada(aciertosSesion)) mostrarOperacion();
+ }else if(indice < operaciones.length){
+   mostrarOperacion();
+ }
 }
 function mostrar(id){
  document.querySelectorAll(".pantalla")

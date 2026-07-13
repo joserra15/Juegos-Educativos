@@ -48,16 +48,44 @@ function crearOperacionDivision(textos, divisor, cociente) {
   };
 }
 
-function crearOperacionFraccion({ numerador, denominador, texto, pista }) {
+function crearOperacionFraccion({ numerador, denominador, texto, pista, opciones, r }) {
+  const opts = opciones || generarOpcionesFraccion(numerador, denominador).opciones;
+  const respuesta = typeof r === "number" ? r : opts.indexOf(`${numerador}/${denominador}`);
   return {
     tipo: "fraccion",
     numerador,
     denominador,
-    r: numerador,
+    r: respuesta,
+    opciones: opts,
     clave: `${numerador}/${denominador}`,
     texto,
     pista,
   };
+}
+
+export function generarOpcionesFraccion(numerador, denominador, cantidad = 4) {
+  const correcta = `${numerador}/${denominador}`;
+  const opciones = new Set([correcta]);
+  const dens = [2, 3, 4, 5, 6, 8, 10, 12];
+
+  while (opciones.size < cantidad) {
+    const den = dens[Math.floor(Math.random() * dens.length)];
+    const num = Math.floor(Math.random() * (den - 1)) + 1;
+    opciones.add(`${num}/${den}`);
+  }
+
+  const lista = mezclar([...opciones]);
+  return { opciones: lista, r: lista.indexOf(correcta) };
+}
+
+function textoFraccionParteTodo(num, den, variante) {
+  const plantillas = [
+    `¿Qué fracción representa ${num} partes de un total de ${den} iguales?`,
+    `Una pizza tiene ${den} porciones iguales. Tomas ${num}. ¿Qué fracción es?`,
+    `De ${den} trozos iguales, ¿cuál fracción son ${num}?`,
+    `En una barra dividida en ${den} partes, eliges ${num}. Selecciona la fracción correcta.`,
+  ];
+  return plantillas[variante % plantillas.length];
 }
 
 function crearOperacionLectura(pregunta) {
@@ -162,26 +190,24 @@ export function generarOperacionesFraccion(fase, contexto) {
   const denominadores = fase.denominadores || [2, 3, 4, 5, 6];
   const total = fase.total || 8;
   const ops = [];
+  const vistos = new Set();
 
   while (ops.length < total) {
     const den = denominadores[Math.floor(Math.random() * denominadores.length)];
     const num = Math.floor(Math.random() * (den - 1)) + 1;
-    const variantes = [
-      {
-        texto: `Una pizza está dividida en ${den} partes iguales. Si comes ${num}, ¿qué numerador representa tu porción? (denominador ${den})`,
-        pista: `Piensa en ${num} trozos de un total de ${den}.`,
-      },
-      {
-        texto: `En una barra de chocolate con ${den} trozos, ¿cuántos llevas si te quedas ${num}?`,
-        pista: `El numerador cuenta las partes que tienes.`,
-      },
-      {
-        texto: `¿Qué numerador forma la fracción ${num}/${den}? Escribe el numerador.`,
-        pista: `Arriba va el número de partes tomadas: ${num}.`,
-      },
-    ];
-    const variante = variantes[ops.length % variantes.length];
-    ops.push(crearOperacionFraccion({ numerador: num, denominador: den, ...variante }));
+    const clave = `${num}/${den}`;
+    if (vistos.has(clave)) continue;
+    vistos.add(clave);
+
+    const { opciones, r } = generarOpcionesFraccion(num, den);
+    ops.push(crearOperacionFraccion({
+      numerador: num,
+      denominador: den,
+      texto: textoFraccionParteTodo(num, den, ops.length),
+      pista: `Piensa en ${num} trozos de un total de ${den}.`,
+      opciones,
+      r,
+    }));
   }
 
   return ops;
@@ -190,15 +216,21 @@ export function generarOperacionesFraccion(fase, contexto) {
 function generarFraccionesAvanzadas(fase, contexto) {
   const { bancoFracciones = [] } = contexto;
   if (bancoFracciones.length > 0) {
-    return mezclar(bancoFracciones).slice(0, fase.total).map((item) => ({
-      tipo: "fraccion",
-      texto: item.texto,
-      r: item.r,
-      pista: item.pista,
-      clave: item.id || item.texto.slice(0, 30),
-      numerador: item.numerador,
-      denominador: item.denominador,
-    }));
+    return mezclar(bancoFracciones).slice(0, fase.total).map((item) => {
+      const num = item.numerador ?? item.r;
+      const den = item.denominador ?? 4;
+      const { opciones, r } = generarOpcionesFraccion(num, den);
+      return {
+        tipo: "fraccion",
+        texto: item.texto.replace(/Escribe el numerador\.?/gi, "Selecciona la fracción correcta."),
+        r: opciones.indexOf(`${num}/${den}`) >= 0 ? opciones.indexOf(`${num}/${den}`) : r,
+        opciones,
+        pista: item.pista,
+        clave: item.id || item.texto.slice(0, 30),
+        numerador: num,
+        denominador: den,
+      };
+    });
   }
 
   const ops = [];
@@ -211,10 +243,12 @@ function generarFraccionesAvanzadas(fase, contexto) {
 
   while (ops.length < (fase.total || 8)) {
     const [n1, d1, n2, d2] = pares[ops.length % pares.length];
+    const { opciones, r } = generarOpcionesFraccion(n2, d1);
     ops.push({
       tipo: "fraccion",
-      texto: `¿Cuánto es ${n1}/${d1} + ${n2 - n1}/${d1}? (mismo denominador, escribe el numerador)`,
-      r: n2,
+      texto: `¿Cuánto es ${n1}/${d1} + ${n2 - n1}/${d1}? Selecciona el resultado.`,
+      r: opciones.indexOf(`${n2}/${d1}`) >= 0 ? opciones.indexOf(`${n2}/${d1}`) : r,
+      opciones,
       pista: `Suma los numeradores: ${n1} + ${n2 - n1} = ${n2}`,
       clave: `suma-${n1}-${d1}-${n2}`,
       numerador: n2,
@@ -333,11 +367,14 @@ export function generarOperacionesRepaso(fallosPorOperacion, textos, max = 8, ti
     }
     if (clave.includes("/")) {
       const [num, den] = clave.split("/").map(Number);
+      const { opciones, r } = generarOpcionesFraccion(num, den);
       return crearOperacionFraccion({
         numerador: num,
         denominador: den,
-        texto: `Repasa: escribe el numerador de ${num}/${den}`,
-        pista: `El numerador es ${num}.`,
+        texto: `Repasa: selecciona la fracción ${num}/${den}`,
+        pista: `La fracción correcta es ${num}/${den}.`,
+        opciones,
+        r,
       });
     }
     if (clave.includes("x")) {
@@ -429,4 +466,212 @@ export function getClaveOperacion(op) {
   if (op.tipo === "fraccion") return `${op.numerador}/${op.denominador}`;
   if (op.a && op.b) return `${op.a}x${op.b}`;
   return op.texto?.slice(0, 40) || "op";
+}
+
+function ampliarBancoHasta(banco, minimo, generador) {
+  const resultado = [...banco];
+  const vistos = new Set(resultado.map((op) => getClaveOperacion(op)));
+  let intentos = 0;
+  while (resultado.length < minimo && intentos < minimo * 4) {
+    intentos++;
+    const op = generador(resultado.length);
+    const clave = getClaveOperacion(op);
+    if (vistos.has(clave)) continue;
+    vistos.add(clave);
+    op._dificultad = op._dificultad ?? resultado.length;
+    resultado.push(op);
+  }
+  return resultado;
+}
+
+function generarBancoDivisionExtendido(fase, contexto, minimo) {
+  const { textos, nivelAdaptativo } = contexto;
+  const divisores = fase.divisores || [2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const base = [];
+
+  for (const divisor of divisores) {
+    for (let cociente = 1; cociente <= 12; cociente++) {
+      const op = crearOperacionDivision(textos, divisor, cociente);
+      op._dificultad = cociente + divisor;
+      base.push(op);
+    }
+  }
+
+  return ampliarBancoHasta(base, minimo, (n) => {
+    const divisor = divisores[n % divisores.length];
+    const cociente = (n % 12) + 1;
+    const op = crearOperacionDivision(textos, divisor, cociente);
+    op._dificultad = cociente + divisor + Math.floor(n / 12);
+    op.clave = `${op.a}div${op.b}-v${n}`;
+    return op;
+  }).sort((a, b) => a._dificultad - b._dificultad);
+}
+
+function generarBancoFraccionExtendido(fase, contexto, minimo) {
+  const denominadores = fase.denominadores || [2, 3, 4, 5, 6, 8, 10, 12];
+  const base = [];
+
+  for (const den of denominadores) {
+    for (let num = 1; num < den; num++) {
+      const { opciones, r } = generarOpcionesFraccion(num, den);
+      const op = crearOperacionFraccion({
+        numerador: num,
+        denominador: den,
+        texto: textoFraccionParteTodo(num, den, base.length),
+        pista: `${num} de ${den} partes → ${num}/${den}`,
+        opciones,
+        r,
+      });
+      op._dificultad = den + num;
+      base.push(op);
+    }
+  }
+
+  if (fase.mecanica === "fraccion-avanzada") {
+    const avanzadas = generarFraccionesAvanzadas({ ...fase, total: Math.max(12, minimo / 4) }, contexto);
+    avanzadas.forEach((op, i) => {
+      op._dificultad = 20 + i;
+      base.push(op);
+    });
+  }
+
+  return ampliarBancoHasta(base, minimo, (n) => {
+    const den = denominadores[n % denominadores.length];
+    const num = (n % (den - 1)) + 1;
+    const { opciones, r } = generarOpcionesFraccion(num, den);
+    const op = crearOperacionFraccion({
+      numerador: num,
+      denominador: den,
+      texto: textoFraccionParteTodo(num, den, n),
+      pista: `Recuerda: ${num}/${den}`,
+      opciones,
+      r,
+    });
+    op._dificultad = den + num + Math.floor(n / 10);
+    op.clave = `${num}/${den}-v${n}`;
+    return op;
+  }).sort((a, b) => a._dificultad - b._dificultad);
+}
+
+function variarPreguntaLectura(pregunta, variante) {
+  const opciones = mezclar([...pregunta.opciones]);
+  const textoCorrecto = pregunta.opciones[pregunta.correcta];
+  const nuevaCorrecta = opciones.indexOf(textoCorrecto);
+  return crearOperacionLectura({
+    ...pregunta,
+    id: `${pregunta.id || "lec"}-v${variante}`,
+    opciones,
+    correcta: nuevaCorrecta,
+  });
+}
+
+function generarBancoLecturaExtendido(fase, contexto, minimo) {
+  const { bancoLectura = [] } = contexto;
+  const filtradas = bancoLectura.filter(
+    (p) => !fase.etiquetasLectura || fase.etiquetasLectura.some((t) => p.etiquetas?.includes(t))
+  );
+  const fuente = filtradas.length > 0 ? filtradas : bancoLectura;
+  const base = fuente.map((p, i) => {
+    const op = crearOperacionLectura(p);
+    op._dificultad = i;
+    return op;
+  });
+
+  return ampliarBancoHasta(base, minimo, (n) => {
+    const pregunta = fuente[n % fuente.length];
+    const op = variarPreguntaLectura(pregunta, n);
+    op._dificultad = n;
+    return op;
+  }).sort((a, b) => a._dificultad - b._dificultad);
+}
+
+function generarBancoMultiplicacionExtendido(fase, contexto, minimo) {
+  const ops = generarOperacionesFase(fase, contexto);
+  const base = ops.map((op, i) => ({ ...op, _dificultad: op.b ?? i }));
+
+  return ampliarBancoHasta(base, minimo, (n) => {
+    const tablas = fase.tablas || [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const a = tablas[n % tablas.length];
+    const b = (n % 10) + 1;
+    const op = crearOperacionBasica(contexto.textos, a, b);
+    op._dificultad = a + b + Math.floor(n / 10);
+    op.clave = `${a}x${b}-v${n}`;
+    return op;
+  }).sort((a, b) => a._dificultad - b._dificultad);
+}
+
+/** Banco amplio (≥50) ordenado por dificultad creciente para sesión extendida. */
+export function generarBancoFase(fase, contexto, minimo = 50) {
+  const mecanica = fase.mecanica || contexto.tipoMundo || "multiplicacion";
+
+  if (mecanica === "division" || mecanica === "division-mixta") {
+    if (mecanica === "division-mixta") {
+      const divs = generarBancoDivisionExtendido(fase, contexto, Math.floor(minimo / 2));
+      const mults = generarBancoMultiplicacionExtendido(
+        { ...fase, mecanica: "multiplicacion" },
+        contexto,
+        Math.ceil(minimo / 2)
+      );
+      return [...divs, ...mults].sort((a, b) => a._dificultad - b._dificultad);
+    }
+    return generarBancoDivisionExtendido(fase, contexto, minimo);
+  }
+
+  if (mecanica === "fraccion" || mecanica === "fraccion-avanzada") {
+    return generarBancoFraccionExtendido(fase, contexto, minimo);
+  }
+
+  if (mecanica === "lectura") {
+    return generarBancoLecturaExtendido(fase, contexto, minimo);
+  }
+
+  if (mecanica === "producto-2cifras" || fase.id === "forja-gigantes") {
+    const gigantes = generarBancoGigantes();
+    const todas = [...gigantes.facil, ...gigantes.media, ...gigantes.dificil].map((op, i) => ({
+      tipo: "multiplicacion",
+      texto: `🧠 Calcula: ${op.a} × ${op.b}`,
+      r: op.r,
+      pista: op.pista,
+      a: op.a,
+      b: op.b,
+      _dificultad: i,
+    }));
+    return ampliarBancoHasta(todas, minimo, (n) => ({
+      tipo: "multiplicacion",
+      texto: `🧠 Calcula: ${10 + (n % 80)} × ${2 + (n % 9)}`,
+      a: 10 + (n % 80),
+      b: 2 + (n % 9),
+      r: (10 + (n % 80)) * (2 + (n % 9)),
+      _dificultad: n,
+      clave: `gig-v${n}`,
+    })).sort((a, b) => a._dificultad - b._dificultad);
+  }
+
+  if (mecanica === "combinadas" || fase.id === "torre-hechizo") {
+    const hechizo = generarBancoHechizo();
+    const todas = [...hechizo.facil, ...hechizo.media, ...hechizo.dificil].map((op, i) => ({
+      tipo: "combinada",
+      texto: `🧙‍♂️ Resuelve: ${op.expr}`,
+      r: op.r,
+      pista: op.pista,
+      _dificultad: i,
+      clave: `comb-${op.expr}`,
+    }));
+    return ampliarBancoHasta(todas, minimo, (n) => {
+      const a = 4 + (n % 6);
+      const b = 2 + (n % 5);
+      const c = 1 + (n % 8);
+      const expr = `${a}×${b}+${c}`;
+      return {
+        tipo: "combinada",
+        texto: `🧙‍♂️ Resuelve: ${expr}`,
+        r: a * b + c,
+        pista: `💡 ${a} × ${b} + ${c}`,
+        _dificultad: n,
+        clave: `comb-v${n}`,
+      };
+    }).sort((a, b) => a._dificultad - b._dificultad);
+  }
+
+  return generarBancoMultiplicacionExtendido(fase, contexto, minimo);
 }

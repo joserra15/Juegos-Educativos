@@ -60,7 +60,30 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 - [x] `engine/PhaseProgress.js` + `tests/regression.test.js`
 - [x] Documento ROADMAP
 
-### 🔜 Fase B — Recorrido y mapa (prioridad alta)
+### ✅ Fase B — Recorrido y mapa (v3.2.0)
+
+- [x] Mapa en camino vertical con nodos de fase
+- [x] Avatar del jugador en la última fase completada
+- [x] Preview borroso de recompensa en fases bloqueadas
+- [x] Barra de progreso del mundo en el mapa
+- [x] Microcopy motivador según avance
+
+### ✅ Fase C — Celebración y engagement (v3.2.0)
+
+- [x] Popup de recompensa con animación y emoji grande
+- [x] Revelado completo de criatura al terminar fase (`revelado-completo`)
+- [x] Rachas visuales (≥3 aciertos seguidos)
+- [x] Confeti y brillo al completar
+
+### ✅ Mecánica de sesión extendida — mundos no-unicornio (v3.2.0)
+
+- [x] Banco aleatorio ≥50 preguntas por fase (`generarBancoFase`)
+- [x] 10 aciertos necesarios para pasar cada fase
+- [x] Dificultad creciente durante la sesión
+- [x] Fases finales: 5 fallos → reinicio desde el principio
+- [x] Fracciones con opción múltiple (sin escribir)
+
+### 🔜 Fase B — Pendiente menor
 
 | Tarea | Descripción |
 |-------|-------------|
@@ -70,7 +93,7 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 | Barra de progreso del mundo | En mapa y en selector (`3/8 fases`) |
 | Microcopy | Textos motivadores por fase (“¡Casi llegas a Luna!”) |
 
-### 🔜 Fase C — Celebración y engagement (prioridad alta)
+### 🔜 Fase C — Pendiente menor
 
 | Tarea | Descripción |
 |-------|-------------|

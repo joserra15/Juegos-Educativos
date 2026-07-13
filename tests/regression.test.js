@@ -21,6 +21,18 @@ import {
   obtenerTiempoFase,
   liberarFase,
 } from "../engine/PhaseProgress.js";
+import {
+  usaSesionExtendida,
+  esFaseFinal,
+  ACIERTOS_PARA_PASAR,
+  FALLOS_MAX_FASE_FINAL,
+  calcularProgresoRevelado,
+  nivelDificultadSesion,
+  elegirPreguntaDelBanco,
+  faseSuperada,
+  debeReiniciarFase,
+} from "../engine/SessionEngine.js";
+import { generarBancoFase } from "../engine/QuestionGenerator.js";
 
 const fasesUnicornios = [
   { id: "prado-rosa", nombre: "Prado Rosa", emoji: "🌸", total: 8 },
@@ -202,6 +214,60 @@ describe("Regresión: tiempos y ranking por mundo", () => {
     expect(ctx.mundoRef).toBe("fracciones");
     expect(ctx.fasesRef).toHaveLength(3);
     expect(ctx.clavesPermitidas.has("torre-hechizo")).toBe(true);
+  });
+});
+
+describe("Regresión: sesión extendida (mundos no-unicornio)", () => {
+  it("activa sesión extendida fuera de unicornios", () => {
+    expect(usaSesionExtendida("dinosaurios")).toBe(true);
+    expect(usaSesionExtendida("unicornios")).toBe(false);
+  });
+
+  it("genera banco de al menos 50 preguntas para división", () => {
+    const banco = generarBancoFase(
+      { mecanica: "division", divisores: [2, 3, 4, 5] },
+      { textos: ["Reparte {total} entre {grupos}."], tipoMundo: "division" },
+      50
+    );
+    expect(banco.length).toBeGreaterThanOrEqual(50);
+    expect(banco[0]._dificultad).toBeLessThanOrEqual(banco[banco.length - 1]._dificultad);
+  });
+
+  it("genera banco de fracciones con opciones múltiples", () => {
+    const banco = generarBancoFase(
+      { mecanica: "fraccion", denominadores: [2, 3, 4] },
+      { tipoMundo: "fraccion" },
+      50
+    );
+    expect(banco.length).toBeGreaterThanOrEqual(50);
+    expect(banco[0].opciones?.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("requiere 10 aciertos para superar fase", () => {
+    expect(faseSuperada(9)).toBe(false);
+    expect(faseSuperada(ACIERTOS_PARA_PASAR)).toBe(true);
+    expect(calcularProgresoRevelado(5)).toBe(50);
+    expect(calcularProgresoRevelado(10)).toBe(100);
+  });
+
+  it("reinicia fase final tras 5 fallos", () => {
+    expect(esFaseFinal(4, { tipo: "avanzada" }, 6)).toBe(true);
+    expect(debeReiniciarFase(4, true)).toBe(false);
+    expect(debeReiniciarFase(FALLOS_MAX_FASE_FINAL, true)).toBe(true);
+  });
+
+  it("aumenta dificultad según avance en sesión", () => {
+    expect(nivelDificultadSesion(0, 0)).toBe(0);
+    expect(nivelDificultadSesion(5, 0)).toBe(1);
+    expect(nivelDificultadSesion(8, 0)).toBe(2);
+  });
+
+  it("elige preguntas del tercio correcto del banco", () => {
+    const banco = Array.from({ length: 60 }, (_, i) => ({ id: i, _dificultad: i }));
+    const facil = elegirPreguntaDelBanco(banco, 0);
+    const dificil = elegirPreguntaDelBanco(banco, 2);
+    expect(facil._dificultad).toBeLessThan(20);
+    expect(dificil._dificultad).toBeGreaterThanOrEqual(40);
   });
 });
 
