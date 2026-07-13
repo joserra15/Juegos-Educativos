@@ -22,7 +22,14 @@ import {
   parseFirebaseData,
   buildFirebasePayload,
   mergeRemoteIfNewer,
+  getMundoActivoId,
+  setMundoActivoId,
 } from "../engine/ProgressStore.js";
+import {
+  getMundoEntry,
+  getProgresoMundo,
+  calcularPuntosGlobales,
+} from "../engine/WorldManager.js";
 
 const fasesMock = [
   { id: "prado-rosa", nombre: "Prado Rosa", emoji: "🌸", tablas: [1, 2, 3], total: 8, recompensa: { asset: "u1.png", nombre: "Rosita" } },
@@ -152,22 +159,79 @@ describe("ProgressStore", () => {
   });
 
   it("construye payload con mundos y campos legacy", () => {
-    const payload = buildFirebasePayload("Lucia", { puntos: 10, intentosTotales: 5 }, {
-      liberadas: [0],
-      tiemposMejores: {},
-      fallosPorOperacion: {},
-      tablasDominadas: [],
-      logros: [],
-    }, "unicornios", "1234");
+    const allMundosStates = {
+      unicornios: {
+        liberadas: [0],
+        tiemposMejores: {},
+        fallosPorOperacion: {},
+        tablasDominadas: [],
+        logros: [],
+        puntosMundo: 10,
+      },
+    };
+    const payload = buildFirebasePayload(
+      "Lucia",
+      { puntos: 10, puntosPorMundo: { unicornios: 10 }, intentosTotales: 5 },
+      allMundosStates,
+      "unicornios",
+      "1234"
+    );
     expect(payload.mundos.unicornios).toBeDefined();
     expect(payload.liberadas).toEqual([0]);
+    expect(payload.puntosPorMundo.unicornios).toBe(10);
   });
 
   it("fusiona si remoto tiene más puntos", () => {
-    const local = createDefaultMundoState();
-    const remote = { ...createDefaultMundoState(), liberadas: [0, 1, 2] };
+    const local = { unicornios: createDefaultMundoState() };
+    const remote = { unicornios: { ...createDefaultMundoState(), liberadas: [0, 1, 2] } };
     const merged = mergeRemoteIfNewer(10, 50, local, remote);
     expect(merged.merged).toBe(true);
     expect(merged.puntos).toBe(50);
+  });
+});
+
+describe("WorldManager", () => {
+  const manifestMock = {
+    mundos: [
+      { id: "unicornios", nombre: "Unicornios", disponible: true },
+      { id: "dinosaurios", nombre: "Dinosaurios", disponible: false },
+    ],
+  };
+
+  it("obtiene entrada de mundo por id", () => {
+    expect(getMundoEntry(manifestMock, "unicornios")?.nombre).toBe("Unicornios");
+    expect(getMundoEntry(manifestMock, "inexistente")).toBeNull();
+  });
+
+  it("calcula progreso de un mundo", () => {
+    const progreso = getProgresoMundo({ liberadas: [0, 1, 2], puntosMundo: 42 }, 8);
+    expect(progreso.completadas).toBe(2);
+    expect(progreso.puntosMundo).toBe(42);
+    expect(progreso.total).toBe(8);
+  });
+
+  it("suma puntos globales de todos los mundos", () => {
+    const total = calcularPuntosGlobales({
+      unicornios: { puntosMundo: 30 },
+      dinosaurios: { puntosMundo: 20 },
+    });
+    expect(total).toBe(50);
+  });
+});
+
+describe("ProgressStore mundo activo", () => {
+  it("guarda y recupera el mundo activo", () => {
+    const storage = {};
+    const original = globalThis.localStorage;
+    globalThis.localStorage = {
+      getItem: (key) => storage[key] ?? null,
+      setItem: (key, value) => { storage[key] = value; },
+      removeItem: (key) => { delete storage[key]; },
+    };
+
+    setMundoActivoId("unicornios");
+    expect(getMundoActivoId()).toBe("unicornios");
+
+    globalThis.localStorage = original;
   });
 });

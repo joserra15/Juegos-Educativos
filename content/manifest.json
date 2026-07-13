@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.2.0",
   "appName": "Mundos Mágicos Educativos",
   "defaultMundo": "unicornios",
   "mundos": [
@@ -11,7 +11,57 @@
       "area": "matematicas",
       "descripcion": "Aprende las tablas de multiplicar liberando unicornios mágicos",
       "disponible": true,
-      "contentFile": "unicornios.json"
+      "contentFile": "unicornios.json",
+      "tema": {
+        "colorPrimario": "#ff80ab",
+        "colorSecundario": "#ce93d8",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "dinosaurios",
+      "nombre": "Valle de los Dinosaurios",
+      "emoji": "🦕",
+      "curso": 3,
+      "area": "matematicas",
+      "descripcion": "Divisiones como reparto y relación con la multiplicación",
+      "disponible": false,
+      "proximamente": true,
+      "tema": {
+        "colorPrimario": "#4caf50",
+        "colorSecundario": "#81c784",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "fracciones",
+      "nombre": "Reino de las Porciones",
+      "emoji": "🍕",
+      "curso": 3,
+      "area": "matematicas",
+      "descripcion": "Fracciones propias, comparación y recta numérica",
+      "disponible": false,
+      "proximamente": true,
+      "tema": {
+        "colorPrimario": "#ff9800",
+        "colorSecundario": "#ffb74d",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "biblioteca",
+      "nombre": "Biblioteca Encantada",
+      "emoji": "📚",
+      "curso": 3,
+      "area": "lengua",
+      "descripcion": "Comprensión lectora y ortografía en contextos narrativos",
+      "disponible": false,
+      "proximamente": true,
+      "tema": {
+        "colorPrimario": "#5c6bc0",
+        "colorSecundario": "#9fa8da",
+        "fondo": "fondo-magico.jpg"
+      }
     }
   ]
 }

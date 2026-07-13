@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Mundo de los Unicornios</title>
+<title>Mundos Mágicos Educativos</title>
 <link rel="icon" type="image/png" href="avatar.png">
 
 <link rel="apple-touch-icon" href="avatar.png">
@@ -101,7 +101,7 @@ button{
  padding:12px 18px;
  border:none;
  border-radius:18px;
- background:#ff80ab;
+ background:var(--color-primario);
  color:white;
  font-size:1.05em;
 }
@@ -135,6 +135,7 @@ input{
 
 /* ===== Unicornio: marco fijo + revelado limpio ===== */
 
+.recompensa-contenedor,
 .unicornio-contenedor{
   width:160px;
   height:160px;
@@ -147,6 +148,7 @@ input{
 }
 
 /* Máscara que crece */
+.recompensa-mascara,
 .unicornio-mascara{
   width:100%;
   height:0%;
@@ -596,6 +598,7 @@ footer{
   margin-bottom: 2px;
 }
 
+.galeria-recompensas,
 .galeria-unicornios{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
@@ -603,6 +606,7 @@ footer{
   margin-top: 10px;
 }
 
+.recompensa-item,
 .unicornio-item{
   text-align: center;
 }
@@ -725,6 +729,60 @@ body.high-contrast .panel-accesibilidad{
   border:2px solid #5d2e8c;
 }
 
+
+:root{
+  --color-primario:#ff80ab;
+  --color-secundario:#ce93d8;
+}
+
+button{
+  background:var(--color-primario);
+}
+
+.grid-mundos{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:16px;
+  max-width:900px;
+  margin:0 auto;
+  padding:0 12px 20px;
+}
+
+.tarjeta-mundo{
+  background:rgba(255,255,255,0.94);
+  border:3px solid var(--color-secundario);
+  border-radius:20px;
+  padding:16px;
+  text-align:left;
+  cursor:pointer;
+  transition:transform .15s ease;
+}
+
+.tarjeta-mundo:hover:not(.bloqueada){
+  transform:translateY(-3px);
+}
+
+.tarjeta-mundo.bloqueada{
+  opacity:.72;
+  cursor:not-allowed;
+}
+
+.tarjeta-mundo .emoji-mundo{
+  font-size:2.2em;
+  display:block;
+  margin-bottom:8px;
+}
+
+.tarjeta-mundo .meta-mundo{
+  font-size:.85em;
+  color:#5e35b1;
+}
+
+.boton-volver-mundos{
+  margin:12px auto 0;
+  display:block;
+}
+
 </style>
 </head>
 
@@ -740,14 +798,22 @@ body.high-contrast .panel-accesibilidad{
   </div>
 
   <div class="header-right">
-    🦄 <span id="progresoMundos">0 / 8</span>
+    <span id="iconoMundoActivo">🦄</span> <span id="progresoMundos">0 / 8</span>
 <span id="avatarProgreso">🧍‍♀️</span>
   </div>
 </header>
 
 
-<div id="mapa" class="pantalla activa">
-  <h1 class="titulo-mapa">🦄 El Mundo de los Unicornios</h1>
+<div id="selectorMundos" class="pantalla">
+  <h1>🌈 Mundos Mágicos Educativos</h1>
+  <p class="texto-ayuda" style="text-align:center">Elige un mundo temático para aprender jugando</p>
+  <div id="tarjetasMundos" class="grid-mundos"></div>
+  <p class="texto-ayuda" style="text-align:center">⭐ Puntos totales: <strong id="puntosGlobalesSelector">0</strong></p>
+</div>
+
+<div id="mapa" class="pantalla">
+  <h1 class="titulo-mapa" id="tituloMapaMundo">Mundo</h1>
+  <button class="boton-volver-mundos" onclick="mostrarSelectorMundos()">🌍 Cambiar de mundo</button>
 
   <div class="panel-curriculo">
     <strong id="etiquetaCurricular">3º Primaria · Matemáticas · LOMLOE</strong>
@@ -810,9 +876,9 @@ body.high-contrast .panel-accesibilidad{
   </div>
 
 
-<div class="unicornio-contenedor">
-  <div id="mascaraUnicornio" class="unicornio-mascara">
-    <img id="imgUnicornio">
+<div class="recompensa-contenedor">
+  <div id="mascaraRecompensa" class="recompensa-mascara">
+    <img id="imgRecompensa">
   </div>
 </div>
 
@@ -839,7 +905,7 @@ body.high-contrast .panel-accesibilidad{
   <thead>
     <tr style="background:#ede7f6">
       <th>Mundo</th>
-      <th>Unicornio</th>
+      <th>Recompensa</th>
       <th>Mejor tiempo</th>
     </tr>
   </thead>
@@ -848,9 +914,9 @@ body.high-contrast .panel-accesibilidad{
 
  </div><br>
 
-<h3 class="titulo-mochila">🦄 Unicornios liberados</h3>
+<h3 class="titulo-mochila" id="tituloGaleriaRecompensas">Recompensas liberadas</h3>
 
-<div id="galeriaUnicornios" class="galeria-unicornios">
+<div id="galeriaRecompensas" class="galeria-unicornios">
   <!-- Unicornios liberados -->
 </div>
 
@@ -889,7 +955,7 @@ body.high-contrast .panel-accesibilidad{
 
 <!-- FINAL -->
 <div id="final" class="pantalla final">
- <h2>🌈 ¡Has liberado a todos los unicornios <span id="nombreJugadorFinal"></span>, ahora son libres!</h2>
+ <h2>🌈 ¡Has completado <span id="nombreMundoFinal"></span>, <span id="nombreJugadorFinal"></span>!</h2>
  <img src="unicornios.png">
 
  <button onclick="mostrarMapa()">Volver</button>
@@ -902,7 +968,7 @@ body.high-contrast .panel-accesibilidad{
     <h3 id="popupTexto"></h3>
 
     <!-- Imagen del unicornio liberado -->
-    <img id="popupUnicornio"
+    <img id="popupRecompensa"
          src=""
          style="display:none; width:140px; margin:10px auto;">
 
@@ -967,12 +1033,12 @@ body.high-contrast .panel-accesibilidad{
     </p>
   </div>
 
-<!-- Unicornios liberados -->
+<!-- Recompensas liberadas en todos los mundos -->
   <div class="bloque-clase">
-    <h3>🦄 Unicornios liberados</h3>
+    <h3>🎁 Recompensas liberadas</h3>
     <p id="unicorniosClase" class="dato-grande">—</p>
     <p class="mensaje-clase">
-      Cada unicornio liberado devuelve la magia a los Mundos Mágicos.
+      Cada reto superado en cualquier mundo suma magia al grupo.
     </p>
   </div>
 
@@ -1181,13 +1247,14 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 2.1.0
+    v 2.2.0
   </p>
 <p><br></p>
 </footer>
 
 
 <nav class="bottom-nav">
+  <button onclick="mostrarSelectorMundos()" title="Mundos">🌍</button>
   <button onclick="mostrarMapa()" title="Mapa">🗺️</button>
   <button onclick="mostrarMochila()" title="Mochila">🎒</button>
 	<button onclick="mostrarMural()" 

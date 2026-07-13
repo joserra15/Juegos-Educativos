@@ -1,4 +1,5 @@
 import {
+  loadManifest,
   loadMundoContent,
   getFaseLabel,
   migrateTiempoKeys
@@ -18,15 +19,24 @@ import {
 } from "../engine/Scoring.js";
 import { getHint } from "../engine/Hints.js";
 import {
-  MUNDO_ACTUAL,
+  MUNDO_LEGACY,
   loadMundoState,
+  loadAllMundosStates,
   saveMundoState,
   loadGlobalState,
   saveGlobalState,
   buildFirebasePayload,
   parseFirebaseData,
-  mergeRemoteIfNewer
+  mergeRemoteIfNewer,
+  getMundoActivoId,
+  setMundoActivoId
 } from "../engine/ProgressStore.js";
+import {
+  getMundoEntry,
+  aplicarTemaMundo,
+  getEtiquetaRecompensa,
+  getProgresoMundo
+} from "../engine/WorldManager.js";
 
 
 let puntos = 0;
@@ -48,7 +58,11 @@ let mensajesError = [];
 let mensajesUltima = [];
 let mensajesPredefinidos = {};
 let CONFIG_MURAL = { maxMensajesDia: 10, puntosPorMensaje: 250 };
+let manifestCatalog = null;
 let contenidoMundo = null;
+let mundoId = getMundoActivoId();
+let puntosMundo = 0;
+let puntosPorMundoMap = {};
 let modoPracticaTabla = false;
 let erroresEnSesion = 0;
 let tablaSeleccionada = Number(localStorage.getItem("tablaSeleccionada")) || 2;
@@ -76,16 +90,15 @@ function sincronizarSiEsNecesario(){
   db.collection("players").doc(nombreJugador).get()
     .then(doc => {
       if(!doc.exists) return;
-      const parsed = parseFirebaseData(doc.data());
-      const localState = { liberadas, tiemposMejores, fallosPorOperacion, tablasDominadas, logros };
-      const merged = mergeRemoteIfNewer(puntos, parsed.puntos, localState, parsed.mundoState);
+      const parsed = parseFirebaseData(doc.data(), mundoId);
+      const localAll = loadAllMundosStates();
+      const merged = mergeRemoteIfNewer(puntos, parsed.puntos, localAll, parsed.allMundosStates);
       if(merged.merged){
-        puntos = merged.puntos;
-        liberadas = merged.mundoState.liberadas;
-        tiemposMejores = migrateTiempoKeys(merged.mundoState.tiemposMejores, fases);
-        fallosPorOperacion = merged.mundoState.fallosPorOperacion;
-        tablasDominadas = merged.mundoState.tablasDominadas || [];
-        logros = merged.mundoState.logros || [];
+        for(const [id, state] of Object.entries(merged.allMundosStates)){
+          saveMundoState(id, state);
+        }
+        aplicarEstadoMundo(loadMundoState(mundoId));
+        recalcularPuntosGlobales();
         guardarEstado();
         actualizarPuntosUI();
       }
@@ -97,8 +110,130 @@ function sincronizarSiEsNecesario(){
 
 function cerrarHistoria(){
   localStorage.setItem("historiaVista", "true");
+  mostrarSelectorMundos();
+}
+
+
+function snapshotMundoState(){
+  return {
+    liberadas,
+    tiemposMejores,
+    fallosPorOperacion,
+    tablasDominadas,
+    logros,
+    puntosMundo,
+    historiaVista: localStorage.getItem("historiaVista") === "true"
+  };
+}
+
+function aplicarEstadoMundo(state){
+  liberadas = state.liberadas || [0];
+  tiemposMejores = migrateTiempoKeys(state.tiemposMejores || {}, fases);
+  fallosPorOperacion = state.fallosPorOperacion || {};
+  tablasDominadas = state.tablasDominadas || [];
+  logros = state.logros || [];
+  puntosMundo = state.puntosMundo || 0;
+}
+
+function persistirMundoActual(){
+  saveMundoState(mundoId, snapshotMundoState());
+}
+
+function recalcularPuntosGlobales(){
+  const global = loadGlobalState();
+  puntos = global.puntos;
+  puntosPorMundoMap = global.puntosPorMundo || {};
+}
+
+async function cargarMundoContenido(id){
+  mundoId = id;
+  setMundoActivoId(id);
+  contenidoMundo = await loadMundoContent(id);
+  fases = contenidoMundo.fases;
+  textos = contenidoMundo.textos;
+  bancoAvanzado = contenidoMundo.bancoAvanzado;
+  puntosPorFaseMap = contenidoMundo.puntosPorFase;
+  mensajesAcierto = contenidoMundo.mensajes.acierto;
+  mensajesError = contenidoMundo.mensajes.error;
+  mensajesUltima = contenidoMundo.mensajes.ultima;
+  mensajesPredefinidos = contenidoMundo.mensajesPredefinidos;
+  CONFIG_MURAL = contenidoMundo.configMural;
+
+  const entry = getMundoEntry(manifestCatalog, id);
+  aplicarTemaMundo(contenidoMundo, entry);
+  actualizarTextosRecompensa();
+
+  const state = loadMundoState(id);
+  aplicarEstadoMundo(state);
+  recalcularPuntosGlobales();
+}
+
+function actualizarTextosRecompensa(){
+  const label = getEtiquetaRecompensa(contenidoMundo);
+  const tituloGaleria = document.getElementById("tituloGaleriaRecompensas");
+  if(tituloGaleria) tituloGaleria.textContent = `${contenidoMundo?.tema?.criatura || "Recompensas"} liberados`;
+  const nombreMundoFinal = document.getElementById("nombreMundoFinal");
+  if(nombreMundoFinal) nombreMundoFinal.textContent = contenidoMundo?.nombre || "este mundo";
+}
+
+function actualizarHeaderMundo(){
+  const entry = getMundoEntry(manifestCatalog, mundoId);
+  const icono = document.getElementById("iconoMundoActivo");
+  if(icono) icono.textContent = entry?.emoji || contenidoMundo?.tema?.criatura || "🌍";
+  const titulo = document.getElementById("tituloMapaMundo");
+  if(titulo) titulo.textContent = entry ? `${entry.emoji} ${entry.nombre}` : contenidoMundo?.nombre || "Mundo";
+}
+
+function mostrarSelectorMundos(){
+  const cont = document.getElementById("tarjetasMundos");
+  if(!cont || !manifestCatalog) return;
+
+  persistirMundoActual();
+  recalcularPuntosGlobales();
+
+  cont.innerHTML = "";
+  const allStates = loadAllMundosStates();
+
+  manifestCatalog.mundos.forEach(entry => {
+    const card = document.createElement("button");
+    card.className = "tarjeta-mundo" + (entry.disponible ? "" : " bloqueada");
+    const state = allStates[entry.id] || {};
+    const progreso = getProgresoMundo(state, entry.id === mundoId ? fases.length : state.liberadas?.length || 0);
+
+    card.innerHTML = `
+      <span class="emoji-mundo">${entry.emoji}</span>
+      <strong>${entry.nombre}</strong>
+      <p>${entry.descripcion}</p>
+      <p class="meta-mundo">${entry.curso}º · ${entry.area}</p>
+      <p class="meta-mundo">${entry.disponible ? `Progreso: ${progreso.completadas} fases · ${progreso.puntosMundo} ⭐` : "Próximamente"}</p>
+    `;
+
+    card.onclick = () => entrarMundo(entry.id);
+    cont.appendChild(card);
+  });
+
+  const puntosGlobales = document.getElementById("puntosGlobalesSelector");
+  if(puntosGlobales) puntosGlobales.textContent = puntos;
+
+  mostrar("selectorMundos");
+}
+
+async function entrarMundo(id){
+  const entry = getMundoEntry(manifestCatalog, id);
+  if(!entry) return;
+  if(!entry.disponible){
+    popup("🔒 Este mundo estará disponible muy pronto.\n\n¡Sigue practicando en los mundos abiertos!");
+    return;
+  }
+
+  persistirMundoActual();
+  await cargarMundoContenido(id);
+  actualizarHeaderMundo();
+  actualizarHeaderNombre();
+  actualizarPuntosUI();
   mostrarMapa();
 }
+
 
 function applyAccessibilitySettings(){
   document.body.classList.toggle("high-contrast", altoContraste);
@@ -215,8 +350,8 @@ function iniciarPracticaTabla(){
   document.getElementById("tituloFase").textContent = `🎯 Dominio de la tabla del ${tablaSeleccionada}`;
   document.getElementById("contadorFallos").textContent = "";
   document.getElementById("pista").textContent = "";
-  document.getElementById("imgUnicornio").src = fases[0]?.recompensa?.asset || "unicornio1.png";
-  document.getElementById("mascaraUnicornio").style.height = "0%";
+  document.getElementById("imgRecompensa").src = fases[0]?.recompensa?.asset || "unicornio1.png";
+  document.getElementById("mascaraRecompensa").style.height = "0%";
   tiempoInicio = Date.now();
   iniciarTimer();
   mostrar("juego");
@@ -308,7 +443,7 @@ try{
   document.getElementById("contador").textContent =
     `Pregunta 1 de ${operaciones.length}`;
 
-document.getElementById("mascaraUnicornio").style.height = "0%";
+document.getElementById("mascaraRecompensa").style.height = "0%";
  
 indice=0;
  fallosActual=0;
@@ -321,7 +456,7 @@ tiempoInicio=Date.now();
 iniciarTimer();
 
 
-document.getElementById("imgUnicornio").src = fases[0]?.recompensa?.asset || "unicornio1.png";
+document.getElementById("imgRecompensa").src = fases[0]?.recompensa?.asset || "unicornio1.png";
 
   mostrar("juego");
   mostrarOperacion();
@@ -488,8 +623,8 @@ document.getElementById("pista").textContent = "";
 const nivelAdaptativo = calcularNivelAdaptativo({ liberadas, fases, tiemposMejores, fallosPorOperacion });
 operaciones = generarOperacionesFase(fases[i], { textos, bancoAvanzado, fallosPorOperacion, nivelAdaptativo, tablaFocal: null });
 
-document.getElementById("imgUnicornio").src = fases[i].recompensa.asset;
-document.getElementById("mascaraUnicornio").style.height = "0%";
+document.getElementById("imgRecompensa").src = fases[i].recompensa.asset;
+document.getElementById("mascaraRecompensa").style.height = "0%";
 document.getElementById("indicadorDificultad").textContent = "";
 mostrar("juego");
 mostrarOperacion();
@@ -558,6 +693,7 @@ if(!modoRepaso){
 	// Sistema unificado de puntos por fase
 const puntosGanados = puntosDelMundoActual();
 puntos += puntosGanados;
+puntosMundo += puntosGanados;
 
 
   // 🎯 GANAR MENSAJES PARA EL MURAL
@@ -583,7 +719,7 @@ actualizarContadorMensajes();
   const porcentaje=Math.floor((indice/operaciones.length)*100);
 
 
-document.getElementById("mascaraUnicornio").style.height =
+document.getElementById("mascaraRecompensa").style.height =
   porcentaje + "%";
 
 if(porcentaje === 100){
@@ -635,6 +771,7 @@ if(!modoRepaso){
 
 const penalizacion = Math.max(3, Math.floor(puntosDelMundoActual() / 2));
 puntos -= penalizacion;
+puntosMundo = Math.max(0, puntosMundo - penalizacion);
 
   //puntos = Math.max(0, puntos-5);
 }
@@ -734,9 +871,8 @@ if(modoPracticaTabla){
 
 const puntosGanados = puntosDelMundoActual() * 4;
 
-
-
 puntos += puntosGanados;
+puntosMundo += puntosGanados;
  //puntos+=50;
 
 
@@ -795,7 +931,7 @@ guardarProgreso();
 
 
 
-document.getElementById("mascaraUnicornio").style.height ="0%";
+document.getElementById("mascaraRecompensa").style.height ="0%";
 actualizarPuntosUI();
 
 
@@ -889,7 +1025,8 @@ document.getElementById("pinJugadorUI").textContent =
 
  mostrar("mochila");
 
-pintarUnicorniosLiberados();
+pintarRecompensasLiberadas();
+pintarResumenMundosMochila();
 }
 
 /* =====================================================
@@ -931,14 +1068,19 @@ if(!confirm("¿Seguro que quieres reiniciar todo el juego?")) return;
   localStorage.removeItem("fasesLiberadas");
   localStorage.removeItem("tiemposMejores");
   localStorage.removeItem("fallosPorOperacion");
+  localStorage.removeItem("mundos");
+  localStorage.removeItem("mundoActivo");
 
 localStorage.removeItem("historiaVista");
 
   // Reiniciar estado en memoria
   puntos = 0;
-  liberadas = [0]; // 🔑 CLAVE
+  puntosMundo = 0;
+  liberadas = [0];
   tiemposMejores = {};
   fallosPorOperacion = {};
+  tablasDominadas = [];
+  logros = [];
 
   // Guardar estado inicial correcto
   localStorage.setItem("fasesLiberadas", JSON.stringify(liberadas));
@@ -955,7 +1097,7 @@ guardarProgreso();
 if(!nombreJugador){
   mostrar("pantallaNombre");
 }else{
-  mostrarMapa();
+  mostrarSelectorMundos();
 }
  
 }
@@ -978,7 +1120,7 @@ function actualizarProgreso(){
 function popup(texto, mostrarUnicornio=false){
   document.getElementById("popupTexto").textContent = texto;
 
-  const img = document.getElementById("popupUnicornio");
+  const img = document.getElementById("popupRecompensa");
 
   if(mostrarUnicornio){
     img.src = fases[faseActual].recompensa.asset;
@@ -1027,8 +1169,9 @@ setTimeout(() => {
    GUARDAR
 ===================================================== */
 function guardarEstado(){
-  saveGlobalState({ puntos, intentosTotales });
-  saveMundoState(MUNDO_ACTUAL, { liberadas, tiemposMejores, fallosPorOperacion, tablasDominadas, logros });
+  persistirMundoActual();
+  recalcularPuntosGlobales();
+  saveGlobalState({ puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap });
   document.getElementById("puntos").textContent = puntos;
   actualizarProgreso();
 }
@@ -1041,6 +1184,7 @@ try{
 
 cargarPuntosClase(() => {
 		//cargarPanelClase();
+      actualizarHeaderMundo();
       construirMapa();
       actualizarPanelCurricular();
       poblarSelectorTabla();
@@ -1106,7 +1250,7 @@ agregarMensajeSistema(
 );
     localStorage.setItem("nombreJugador", nombreJugador);
     actualizarHeaderNombre();
-    mostrarMapa();
+    mostrar("historia");
     return;
   }
 
@@ -1136,7 +1280,7 @@ agregarMensajeSistema(
 
     actualizarHeaderNombre();
     actualizarPuntosUI();
-    mostrarMapa();
+    mostrarSelectorMundos();
   }else{
     error.textContent =
       "PIN incorrecto ❌ Prueba con otro nombre";
@@ -1167,9 +1311,7 @@ localStorage.setItem("pinJugador", pin);
 
 db.collection("players")
   .doc(nombreJugador)
-  .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales }, {
-    liberadas, tiemposMejores, fallosPorOperacion, tablasDominadas, logros
-  }));
+  .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap }, loadAllMundosStates(), mundoId, pin));
 
 actualizarHeaderNombre();
 actualizarPuntosUI();
@@ -1219,9 +1361,7 @@ try{
 
   db.collection("players")
     .doc(nombreJugador)
-    .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales }, {
-      liberadas, tiemposMejores, fallosPorOperacion, tablasDominadas, logros
-    }))
+    .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap }, loadAllMundosStates(), mundoId))
     .then(() => {
       console.log("Firebase OK ✅");
     })
@@ -1274,8 +1414,10 @@ cargarPanelClase();
 
 const esJugadorActual = data.nombre === nombreJugador;
 
+const puntosMundoRanking = data.puntosPorMundo?.[mundoId];
+const extraMundo = puntosMundoRanking !== undefined ? ` · ${puntosMundoRanking}⭐ en este mundo` : "";
 li.textContent = esJugadorActual
-  ? `👉 ${puesto}. ${data.nombre} — ${data.puntos} ⭐`
+  ? `👉 ${puesto}. ${data.nombre} — ${data.puntos} ⭐${extraMundo}`
   : `${puesto}. ${data.nombre} — ${data.puntos} ⭐`;
 
 if(esJugadorActual){
@@ -1296,31 +1438,30 @@ puesto++;
 
 
 function guardarProgreso(){
-  saveGlobalState({ puntos, intentosTotales });
-  saveMundoState(MUNDO_ACTUAL, { liberadas, tiemposMejores, fallosPorOperacion, tablasDominadas, logros });
+  persistirMundoActual();
+  recalcularPuntosGlobales();
+  saveGlobalState({ puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap });
   if(!db || !nombreJugador) return;
+  const allStates = loadAllMundosStates();
   db.collection("players").doc(nombreJugador)
-    .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales }, {
-      liberadas, tiemposMejores, fallosPorOperacion, tablasDominadas, logros
-    }))
+    .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap }, allStates, mundoId))
     .catch(err => { console.log("JA 😂 Error guardando progreso"); console.error(err); });
 }
 
 function cargarProgresoDesdeFirebase(){
   if(!db || !nombreJugador) return;
   db.collection("players").doc(nombreJugador).get()
-    .then(doc => {
+    .then(async doc => {
       if(!doc.exists) return;
-      const parsed = parseFirebaseData(doc.data());
-      puntos = parsed.puntos;
-      liberadas = parsed.mundoState.liberadas;
-      tiemposMejores = migrateTiempoKeys(parsed.mundoState.tiemposMejores, fases);
-      fallosPorOperacion = parsed.mundoState.fallosPorOperacion;
-      tablasDominadas = parsed.mundoState.tablasDominadas || [];
-      logros = parsed.mundoState.logros || [];
+      const parsed = parseFirebaseData(doc.data(), mundoId);
+      for(const [id, state] of Object.entries(parsed.allMundosStates)){
+        saveMundoState(id, state);
+      }
+      if(parsed.mundoActivo) setMundoActivoId(parsed.mundoActivo);
+      await cargarMundoContenido(getMundoActivoId());
       guardarEstado();
       actualizarPuntosUI();
-      mostrarMapa();
+      mostrarSelectorMundos();
     })
     .catch(err => { console.log("JA 😂 Error cargando progreso"); console.error(err); });
 }
@@ -1485,8 +1626,14 @@ datosClaseCargados = true;
         // Puntos
         puntosTotales += data.puntos || 0;
 
-        // Unicornios liberados
-        totalUnicornios += (data.liberadas || []).length;
+        // Recompensas liberadas (multi-mundo o legacy)
+        if (data.mundos && Object.keys(data.mundos).length > 0) {
+          Object.values(data.mundos).forEach((mundo) => {
+            totalUnicornios += (mundo.liberadas || []).filter((i) => i > 0).length;
+          });
+        } else {
+          totalUnicornios += (data.liberadas || []).filter((i) => i > 0).length;
+        }
 
         // Tiempos
         const tiempos = data.tiemposMejores || {};
@@ -1895,8 +2042,22 @@ document.addEventListener("keydown", function(e){
   }
 });*/
 
-function pintarUnicorniosLiberados(){
-  const cont = document.getElementById("galeriaUnicornios");
+function pintarResumenMundosMochila(){
+  const ul = document.getElementById("listaLogros");
+  if(!ul || !manifestCatalog) return;
+  const resumen = document.createElement("li");
+  const partes = manifestCatalog.mundos
+    .filter(m => m.disponible)
+    .map(m => {
+      const st = loadMundoState(m.id);
+      return `${m.emoji} ${st.puntosMundo || 0}⭐`;
+    });
+  resumen.textContent = `Mundos: ${partes.join(" · ")}`;
+  ul.prepend(resumen);
+}
+
+function pintarRecompensasLiberadas(){
+  const cont = document.getElementById("galeriaRecompensas");
   if(!cont) return;
 
   cont.innerHTML = "";
@@ -1906,7 +2067,7 @@ function pintarUnicorniosLiberados(){
     if(!fase || !fase.recompensa.asset) return;
 
     const div = document.createElement("div");
-    div.className = "unicornio-item";
+    div.className = "recompensa-item";
 
     div.innerHTML = `
       <img src="${fase.recompensa.asset}" alt="${fase.recompensa.nombre}">
@@ -1917,64 +2078,45 @@ function pintarUnicorniosLiberados(){
   });
 
   if(liberadas.length === 0){
-    cont.innerHTML = "<p>🔒 Aún no has liberado ningún unicornio</p>";
+    cont.innerHTML = `<p>🔒 Aún no has liberado ninguna ${getEtiquetaRecompensa(contenidoMundo)}</p>`;
   }
 }
 
 
 async function initApp(){
   try {
-    contenidoMundo = await loadMundoContent(MUNDO_ACTUAL);
-    fases = contenidoMundo.fases;
-    textos = contenidoMundo.textos;
-    bancoAvanzado = contenidoMundo.bancoAvanzado;
-    puntosPorFaseMap = contenidoMundo.puntosPorFase;
-    mensajesAcierto = contenidoMundo.mensajes.acierto;
-    mensajesError = contenidoMundo.mensajes.error;
-    mensajesUltima = contenidoMundo.mensajes.ultima;
-    mensajesPredefinidos = contenidoMundo.mensajesPredefinidos;
-    CONFIG_MURAL = contenidoMundo.configMural;
+    manifestCatalog = await loadManifest();
     applyAccessibilitySettings();
 
     const globalState = loadGlobalState();
     puntos = globalState.puntos;
+    puntosPorMundoMap = globalState.puntosPorMundo || {};
     intentosTotales = globalState.intentosTotales;
 
-    const mundoState = loadMundoState(MUNDO_ACTUAL);
-    liberadas = mundoState.liberadas;
-    tiemposMejores = migrateTiempoKeys(mundoState.tiemposMejores, fases);
-    fallosPorOperacion = mundoState.fallosPorOperacion;
-    tablasDominadas = mundoState.tablasDominadas;
-    logros = mundoState.logros;
+    await cargarMundoContenido(getMundoActivoId());
 
     if("serviceWorker" in navigator){
       navigator.serviceWorker.register("./service-worker.js").catch(console.error);
     }
 
-    try{
-if(!nombreJugador){
-  mostrar("pantallaNombre");
-}else{
-  actualizarHeaderNombre();
-  if(!localStorage.getItem("historiaVista")){
-  mostrar("historia");
-}else{
-  mostrarMapa();
-}
-}
-}catch(error){
-
-mostrarMapa();
-
-}
-
     const globalFns = {
-      mostrar, mostrarMapa, mostrarMochila, mostrarPanel, mostrarRanking, mostrarMural,
+      mostrar, mostrarMapa, mostrarSelectorMundos, entrarMundo, mostrarMochila, mostrarPanel, mostrarRanking, mostrarMural,
       responder, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
       iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });
 
+    if(!nombreJugador){
+      mostrar("pantallaNombre");
+    }else{
+      actualizarHeaderNombre();
+      actualizarHeaderMundo();
+      if(!localStorage.getItem("historiaVista")){
+        mostrar("historia");
+      }else{
+        mostrarSelectorMundos();
+      }
+    }
   } catch(err) {
     console.error("Error iniciando la app:", err);
     alert("No se pudo cargar el juego. Recarga la página.");

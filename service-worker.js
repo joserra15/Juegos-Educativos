@@ -1,4 +1,4 @@
-const CACHE_NAME = "mundos-magicos-v2";
+const CACHE_NAME = "mundos-magicos-v3";
 
 const FILES_TO_CACHE = [
   "./",
@@ -12,6 +12,7 @@ const FILES_TO_CACHE = [
   "./engine/Scoring.js",
   "./engine/Hints.js",
   "./engine/ProgressStore.js",
+  "./engine/WorldManager.js",
   "./avatar.png",
   "./unicornios.png",
   "./unicornio1.png",
