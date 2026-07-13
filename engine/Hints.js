@@ -12,6 +12,8 @@ export function getHint(op, fallosActual, fase) {
   }
 
   switch (op.a) {
+    case 1:
+      return `Pista: la tabla del 1 deja el mismo número: 1 × ${op.b} = ${op.b}`;
     case 2:
       return `Pista: doblar ${op.b} → ${op.b} + ${op.b}`;
     case 3:
@@ -28,6 +30,8 @@ export function getHint(op, fallosActual, fase) {
       return `Pista: dobla ${op.b} tres veces seguidas`;
     case 9:
       return `Pista: calcula 10 × ${op.b} y resta ${op.b}`;
+    case 10:
+      return `Pista: la tabla del 10 es muy rápida: ${op.b} y añades un cero`;
     default:
       return `Pista: ${op.b} + ${op.b} + ... (${op.a} veces)`;
   }

@@ -15,6 +15,15 @@ function aplicarTexto(textos, a, b) {
   return t + " ¿Cuántos hay en total?";
 }
 
+function crearOperacionBasica(textos, a, b) {
+  return {
+    a,
+    b,
+    r: a * b,
+    texto: aplicarTexto(textos, a, b),
+  };
+}
+
 export function generarBancoHechizo() {
   const banco = { facil: [], media: [], dificil: [] };
 
@@ -70,7 +79,7 @@ function seleccionarPorDificultad(banco, total) {
 }
 
 export function generarOperacionesFase(fase, contexto) {
-  const { textos, bancoAvanzado, fallosPorOperacion, nivelAdaptativo } = contexto;
+  const { textos, bancoAvanzado, nivelAdaptativo, tablaFocal = null } = contexto;
 
   if (fase.id === "forja-gigantes") {
     const banco = generarBancoGigantes();
@@ -103,8 +112,9 @@ export function generarOperacionesFase(fase, contexto) {
   }
 
   let todas = [];
-  for (const a of fase.tablas) {
-    for (let b = 2; b <= 9; b++) {
+  const tablasObjetivo = tablaFocal ? [tablaFocal] : fase.tablas;
+  for (const a of tablasObjetivo) {
+    for (let b = 1; b <= 10; b++) {
       todas.push({ a, b, r: a * b, dificultad: b });
     }
   }
@@ -124,12 +134,7 @@ export function generarOperacionesFase(fase, contexto) {
     ...dificiles.slice(0, numDificiles),
   ];
 
-  return seleccion.map((op) => ({
-    a: op.a,
-    b: op.b,
-    r: op.r,
-    texto: aplicarTexto(textos, op.a, op.b),
-  }));
+  return seleccion.map((op) => crearOperacionBasica(textos, op.a, op.b));
 }
 
 export function generarOperacionesRepaso(fallosPorOperacion, textos, max = 8) {
@@ -146,6 +151,38 @@ export function generarOperacionesRepaso(fallosPorOperacion, textos, max = 8) {
       texto: aplicarTexto(textos, a, b),
     };
   });
+}
+
+export function generarOperacionesTabla(tabla, textos, total = 10) {
+  const candidatos = [];
+  for (let b = 1; b <= 10; b++) {
+    candidatos.push(crearOperacionBasica(textos, tabla, b));
+  }
+
+  const barajadas = mezclar(candidatos);
+  if (total <= barajadas.length) return barajadas.slice(0, total);
+
+  const extras = [];
+  while (barajadas.length + extras.length < total) {
+    extras.push(crearOperacionBasica(textos, tabla, (extras.length % 10) + 1));
+  }
+  return [...barajadas, ...extras];
+}
+
+export function crearModeloRectangular(op, maxCeldas = 100) {
+  if (!op?.a || !op?.b) return null;
+  const total = op.a * op.b;
+  if (total > maxCeldas) return null;
+
+  return {
+    filas: op.a,
+    columnas: op.b,
+    total,
+    celdas: Array.from({ length: total }, (_, index) => ({
+      fila: Math.floor(index / op.b),
+      columna: index % op.b,
+    })),
+  };
 }
 
 export function getDificultadLabel(op) {

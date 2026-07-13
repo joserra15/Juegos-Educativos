@@ -3,6 +3,8 @@ import { getFaseLabel, migrateTiempoKeys } from "../engine/ContentLoader.js";
 import {
   generarOperacionesFase,
   generarOperacionesRepaso,
+  generarOperacionesTabla,
+  crearModeloRectangular,
   getDificultadLabel,
   formatearTiempo,
   generarBancoHechizo,
@@ -23,7 +25,7 @@ import {
 } from "../engine/ProgressStore.js";
 
 const fasesMock = [
-  { id: "prado-rosa", nombre: "Prado Rosa", emoji: "🌸", tablas: [2, 3], total: 8, recompensa: { asset: "u1.png", nombre: "Rosita" } },
+  { id: "prado-rosa", nombre: "Prado Rosa", emoji: "🌸", tablas: [1, 2, 3], total: 8, recompensa: { asset: "u1.png", nombre: "Rosita" } },
   { id: "torre-hechizo", nombre: "Torre del Hechizo", emoji: "🌀", total: 5, tipo: "avanzada", recompensa: { asset: "u7.png", nombre: "Arcano" } },
 ];
 
@@ -56,6 +58,18 @@ describe("QuestionGenerator", () => {
     const ops = generarOperacionesRepaso({ "3x7": 2, "2x4": 1 }, textos, 5);
     expect(ops.length).toBeGreaterThan(0);
     expect(ops[0].r).toBe(ops[0].a * ops[0].b);
+  });
+
+  it("genera práctica de una sola tabla", () => {
+    const ops = generarOperacionesTabla(10, textos, 10);
+    expect(ops).toHaveLength(10);
+    expect(new Set(ops.map((op) => op.a))).toEqual(new Set([10]));
+  });
+
+  it("crea un modelo rectangular cuando el total es manejable", () => {
+    const modelo = crearModeloRectangular({ a: 3, b: 4 });
+    expect(modelo.total).toBe(12);
+    expect(modelo.celdas).toHaveLength(12);
   });
 
   it("etiqueta dificultad por multiplicador", () => {
@@ -109,6 +123,11 @@ describe("Hints", () => {
 
   it("usa pista avanzada si existe", () => {
     expect(getHint({ pista: "descomposición" }, 1, fasesMock[1])).toContain("descomposición");
+  });
+
+  it("da pistas específicas para las tablas del 1 y del 10", () => {
+    expect(getHint({ a: 1, b: 7 }, 2, fasesMock[0])).toContain("mismo número");
+    expect(getHint({ a: 10, b: 4 }, 2, fasesMock[0])).toContain("añades un cero");
   });
 });
 

@@ -1,17 +1,20 @@
 {
   "id": "unicornios",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "nombre": "El Mundo de los Unicornios",
   "curso": 3,
   "area": "matematicas",
   "competencias": [
+    "CE1",
     "CE2",
-    "CE4"
+    "CE4",
+    "CE7"
   ],
   "saberes": [
-    "tablas de multiplicar",
+    "tablas de multiplicar del 1 al 10",
     "cálculo mental",
-    "resolución de problemas"
+    "resolución de problemas",
+    "modelo rectangular y grupos iguales"
   ],
   "tema": {
     "colorPrimario": "#ff80ab",
@@ -25,6 +28,7 @@
       "nombre": "Prado Rosa",
       "emoji": "🌸",
       "tablas": [
+        1,
         2,
         3
       ],
@@ -32,7 +36,13 @@
       "recompensa": {
         "asset": "unicornio1.png",
         "nombre": "Rosita"
-      }
+      },
+      "objetivo": "Consolidar las tablas del 1, 2 y 3 con grupos iguales.",
+      "tags": [
+        "Tabla del 1",
+        "Tabla del 2",
+        "Tabla del 3"
+      ]
     },
     {
       "id": "bosque-esmeralda",
@@ -46,7 +56,12 @@
       "recompensa": {
         "asset": "unicornio2.png",
         "nombre": "Esmerín"
-      }
+      },
+      "objetivo": "Resolver productos de las tablas del 4 y del 5 con estrategias de doble y conteo.",
+      "tags": [
+        "Tabla del 4",
+        "Tabla del 5"
+      ]
     },
     {
       "id": "valle-dragon",
@@ -60,7 +75,12 @@
       "recompensa": {
         "asset": "unicornio3.png",
         "nombre": "Drako"
-      }
+      },
+      "objetivo": "Practicar tablas del 6 y 7 aplicando descomposición y cálculo mental.",
+      "tags": [
+        "Tabla del 6",
+        "Tabla del 7"
+      ]
     },
     {
       "id": "montanas-violetas",
@@ -68,19 +88,27 @@
       "emoji": "⛰️",
       "tablas": [
         8,
-        9
+        9,
+        10
       ],
       "total": 8,
       "recompensa": {
         "asset": "unicornio4.png",
         "nombre": "Violeta"
-      }
+      },
+      "objetivo": "Dominar tablas del 8, 9 y 10 con estrategias de aproximación.",
+      "tags": [
+        "Tabla del 8",
+        "Tabla del 9",
+        "Tabla del 10"
+      ]
     },
     {
       "id": "castillo-arcoiris",
       "nombre": "Castillo Arcoíris",
       "emoji": "🏰",
       "tablas": [
+        1,
         2,
         3,
         4,
@@ -88,13 +116,19 @@
         6,
         7,
         8,
-        9
+        9,
+        10
       ],
       "total": 12,
       "recompensa": {
         "asset": "unicornio5.png",
         "nombre": "Arco"
-      }
+      },
+      "objetivo": "Mezclar todas las tablas del 1 al 10 en problemas verbales.",
+      "tags": [
+        "Repaso global",
+        "Tablas 1-10"
+      ]
     },
     {
       "id": "santuario-calculo",
@@ -106,7 +140,12 @@
       "recompensa": {
         "asset": "unicornio6.png",
         "nombre": "Sabio"
-      }
+      },
+      "objetivo": "Usar estrategias flexibles para productos más grandes.",
+      "tags": [
+        "Descomposición",
+        "Cálculo mental"
+      ]
     },
     {
       "id": "torre-hechizo",
@@ -119,7 +158,11 @@
       "recompensa": {
         "asset": "unicornio7.png",
         "nombre": "Arcano"
-      }
+      },
+      "objetivo": "Resolver operaciones combinadas manteniendo el control del cálculo.",
+      "tags": [
+        "Operaciones combinadas"
+      ]
     },
     {
       "id": "forja-gigantes",
@@ -131,7 +174,11 @@
       "recompensa": {
         "asset": "unicornio8.png",
         "nombre": "Titán"
-      }
+      },
+      "objetivo": "Aplicar la multiplicación a números de dos cifras por una cifra.",
+      "tags": [
+        "Producto 2 cifras × 1 cifra"
+      ]
     }
   ],
   "textos": [
@@ -436,5 +483,19 @@
     "maxMensajesDia": 10,
     "puntosPorMensaje": 250
   },
-  "objetivoClase": 60000
+  "objetivoClase": 60000,
+  "etiquetaCurricular": "3º Primaria · Matemáticas · LOMLOE",
+  "textoCurricular": "Sentido numérico: tablas del 1 al 10, cálculo mental y resolución de problemas en contextos cotidianos.",
+  "tablasDisponibles": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ]
 }

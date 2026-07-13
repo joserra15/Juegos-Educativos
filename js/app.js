@@ -6,6 +6,8 @@ import {
 import {
   generarOperacionesFase,
   generarOperacionesRepaso,
+  generarOperacionesTabla,
+  crearModeloRectangular,
   getDificultadLabel,
   formatearTiempo
 } from "../engine/QuestionGenerator.js";
@@ -47,6 +49,11 @@ let mensajesUltima = [];
 let mensajesPredefinidos = {};
 let CONFIG_MURAL = { maxMensajesDia: 10, puntosPorMensaje: 250 };
 let contenidoMundo = null;
+let modoPracticaTabla = false;
+let erroresEnSesion = 0;
+let tablaSeleccionada = Number(localStorage.getItem("tablaSeleccionada")) || 2;
+let altoContraste = localStorage.getItem("altoContraste") === "true";
+let fuenteGrande = localStorage.getItem("fuenteGrande") === "true";
 const mundos = () => fases.map(f => getFaseLabel(f));
 
   
@@ -91,6 +98,155 @@ function sincronizarSiEsNecesario(){
 function cerrarHistoria(){
   localStorage.setItem("historiaVista", "true");
   mostrarMapa();
+}
+
+function applyAccessibilitySettings(){
+  document.body.classList.toggle("high-contrast", altoContraste);
+  document.body.classList.toggle("font-large", fuenteGrande);
+
+  const contraste = document.getElementById("toggleContraste");
+  const fuente = document.getElementById("selectorFuente");
+  if(contraste) contraste.checked = altoContraste;
+  if(fuente) fuente.value = fuenteGrande ? "large" : "normal";
+}
+
+function bindAccessibilityControls(){
+  const contraste = document.getElementById("toggleContraste");
+  const fuente = document.getElementById("selectorFuente");
+  if(contraste){
+    contraste.onchange = () => {
+      altoContraste = contraste.checked;
+      localStorage.setItem("altoContraste", String(altoContraste));
+      applyAccessibilitySettings();
+    };
+  }
+  if(fuente){
+    fuente.onchange = () => {
+      fuenteGrande = fuente.value === "large";
+      localStorage.setItem("fuenteGrande", String(fuenteGrande));
+      applyAccessibilitySettings();
+    };
+  }
+}
+
+function poblarSelectorTabla(){
+  const selector = document.getElementById("selectorTabla");
+  if(!selector || !contenidoMundo?.tablasDisponibles) return;
+  selector.innerHTML = "";
+  contenidoMundo.tablasDisponibles.forEach(tabla => {
+    const option = document.createElement("option");
+    option.value = tabla;
+    option.textContent = `Tabla del ${tabla}`;
+    if(tabla === tablaSeleccionada) option.selected = true;
+    selector.appendChild(option);
+  });
+  selector.onchange = () => {
+    tablaSeleccionada = Number(selector.value);
+    localStorage.setItem("tablaSeleccionada", String(tablaSeleccionada));
+  };
+}
+
+function actualizarPanelCurricular(){
+  const etiqueta = document.getElementById("etiquetaCurricular");
+  const texto = document.getElementById("textoCurricularMapa");
+  const chips = document.getElementById("chipsCurriculares");
+  if(etiqueta) etiqueta.textContent = contenidoMundo?.etiquetaCurricular || "3º Primaria · Matemáticas";
+  if(texto) texto.textContent = contenidoMundo?.textoCurricular || "";
+  if(chips){
+    chips.innerHTML = "";
+    (contenidoMundo?.saberes || []).forEach(saber => {
+      const span = document.createElement("span");
+      span.className = "curriculo-chip";
+      span.textContent = saber;
+      chips.appendChild(span);
+    });
+  }
+}
+
+function pintarTagsFase(fase){
+  const objetivo = document.getElementById("objetivoFase");
+  const tags = document.getElementById("tagsFase");
+  if(objetivo) objetivo.textContent = fase?.objetivo || "";
+  if(tags){
+    tags.innerHTML = "";
+    (fase?.tags || []).forEach(tag => {
+      const span = document.createElement("span");
+      span.className = "tabla-chip";
+      span.textContent = tag;
+      tags.appendChild(span);
+    });
+  }
+}
+
+function renderVisualRectangular(op){
+  const panel = document.getElementById("visualRectangular");
+  const texto = document.getElementById("textoModeloRectangular");
+  const rejilla = document.getElementById("rejillaRectangular");
+  if(!panel || !texto || !rejilla) return;
+
+  const modelo = crearModeloRectangular(op);
+  if(!modelo){
+    panel.style.display = "none";
+    rejilla.innerHTML = "";
+    return;
+  }
+
+  panel.style.display = fallosActual > 0 ? "block" : "none";
+  texto.textContent = `${modelo.filas} filas × ${modelo.columnas} columnas = ${modelo.total}`;
+  rejilla.style.gridTemplateColumns = `repeat(${modelo.columnas}, 18px)`;
+  rejilla.innerHTML = "";
+  modelo.celdas.forEach(() => {
+    const celda = document.createElement("div");
+    celda.className = "celda-rectangular";
+    rejilla.appendChild(celda);
+  });
+}
+
+function iniciarPracticaTabla(){
+  tablaSeleccionada = Number(document.getElementById("selectorTabla")?.value || tablaSeleccionada || 2);
+  modoPracticaTabla = true;
+  erroresEnSesion = 0;
+  localStorage.setItem("tablaSeleccionada", String(tablaSeleccionada));
+  modoRepaso = false;
+  faseActual = 0;
+  indice = 0;
+  fallosActual = 0;
+  operaciones = generarOperacionesTabla(tablaSeleccionada, textos, 10);
+  document.getElementById("tituloFase").textContent = `🎯 Dominio de la tabla del ${tablaSeleccionada}`;
+  document.getElementById("contadorFallos").textContent = "";
+  document.getElementById("pista").textContent = "";
+  document.getElementById("imgUnicornio").src = fases[0]?.recompensa?.asset || "unicornio1.png";
+  document.getElementById("mascaraUnicornio").style.height = "0%";
+  tiempoInicio = Date.now();
+  iniciarTimer();
+  mostrar("juego");
+  mostrarOperacion();
+}
+
+function calcularProgresoTablas(){
+  return (contenidoMundo?.tablasDisponibles || []).map(tabla => {
+    const opsTabla = Array.from({ length: 10 }, (_, idx) => `${tabla}x${idx + 1}`);
+    const fallos = opsTabla.reduce((acc, key) => acc + (fallosPorOperacion[key] || 0), 0);
+    let dominio = 100 - Math.min(100, fallos * 12);
+    if(tablasDominadas.includes(tabla)) dominio = Math.max(dominio, 92);
+    return { tabla, dominio };
+  });
+}
+
+function pintarBarrasTablas(){
+  const cont = document.getElementById("barrasTablas");
+  if(!cont) return;
+  cont.innerHTML = "";
+  calcularProgresoTablas().forEach(({ tabla, dominio }) => {
+    const row = document.createElement("div");
+    row.className = "barra-tabla-item";
+    row.innerHTML = `
+      <strong>Tabla ${tabla}</strong>
+      <div class="barra-tabla-track"><div class="barra-tabla-fill" style="width:${dominio}%"></div></div>
+      <span>${Math.round(dominio)}%</span>
+    `;
+    cont.appendChild(row);
+  });
 }
 
 
@@ -140,8 +296,10 @@ try{
   }
 
   modoRepaso = true;
+  modoPracticaTabla = false;
   indice = 0;
   fallosActual = 0;
+  erroresEnSesion = 0;
   operaciones = generarOperacionesRepaso(fallosPorOperacion, textos);
 
   document.getElementById("tituloFase").textContent =
@@ -304,9 +462,11 @@ if(fases[i].tipo === "avanzada" && !fases[i].siempreActiva){
 }
 
 //alert("Entrando en fase " + i);
+ modoPracticaTabla = false;
  faseActual=i;
  indice=0;
 fallosActual = 0;
+erroresEnSesion = 0;
 
 // Mostrar contador de fallos en fases con límite (Castillo y Santuario)
 if(!modoRepaso && i >= 4){
@@ -326,7 +486,7 @@ document.getElementById("pista").textContent = "";
 
 
 const nivelAdaptativo = calcularNivelAdaptativo({ liberadas, fases, tiemposMejores, fallosPorOperacion });
-operaciones = generarOperacionesFase(fases[i], { textos, bancoAvanzado, fallosPorOperacion, nivelAdaptativo });
+operaciones = generarOperacionesFase(fases[i], { textos, bancoAvanzado, fallosPorOperacion, nivelAdaptativo, tablaFocal: null });
 
 document.getElementById("imgUnicornio").src = fases[i].recompensa.asset;
 document.getElementById("mascaraUnicornio").style.height = "0%";
@@ -340,13 +500,25 @@ mostrarOperacion();
    MOSTRAR OPERACIÓN
 ===================================================== */
 function mostrarOperacion(){
- document.getElementById("tituloFase").textContent=getFaseLabel(fases[faseActual]);
+ const esPracticaTabla = !modoRepaso && operaciones.length && operaciones.every(op => op.a === operaciones[0].a);
+ const faseVisual = modoRepaso
+  ? { objetivo: "Repaso de las operaciones que más cuestan.", tags:["Refuerzo", "Memoria de trabajo", "Cálculo mental"] }
+  : esPracticaTabla
+    ? { objetivo: `Practica intensiva de la tabla del ${operaciones[0].a}.`, tags:[`Tabla del ${operaciones[0].a}`, "Cálculo mental", "Grupos iguales"] }
+    : fases[faseActual];
+ document.getElementById("tituloFase").textContent = modoRepaso
+  ? "🔁 Repaso de operaciones difíciles"
+  : esPracticaTabla
+    ? `🎯 Dominio de la tabla del ${operaciones[0].a}`
+    : getFaseLabel(fases[faseActual]);
  document.getElementById("contador").textContent=
   `Pregunta ${indice+1} de ${operaciones.length}`;
  document.getElementById("problema").textContent=
   operaciones[indice].texto;
 
 actualizarIndicadorDificultad(operaciones[indice]);
+ pintarTagsFase(faseVisual);
+ renderVisualRectangular(operaciones[indice]);
  document.getElementById("respuesta").value="";
 
 setTimeout(() => {
@@ -365,6 +537,7 @@ function actualizarIndicadorDificultad(op){
 
 function mostrarPista(op){
   document.getElementById("pista").textContent = getHint(op, fallosActual, fases[faseActual]);
+  renderVisualRectangular(op);
 }
 
 /* =====================================================
@@ -378,6 +551,7 @@ function responder(){
  if(val===op.r){
   sonido([880,1320,1760]);
 	document.getElementById("pista").textContent = "";
+  document.getElementById("visualRectangular").style.display = "none";
 
 if(!modoRepaso){
 	
@@ -454,6 +628,7 @@ if(indice === operaciones.length - 1){
   }
  }else{
   sonido([1720,1320,800]);
+  erroresEnSesion++;
 
 if(!modoRepaso){
 
@@ -533,6 +708,22 @@ if(modoRepaso){
   modoRepaso = false;
   popup("🎉 ¡Repaso terminado!");
   mostrarMapa();
+  return;
+}
+
+if(modoPracticaTabla){
+  if(!tablasDominadas.includes(tablaSeleccionada) && erroresEnSesion <= 2){
+    tablasDominadas.push(tablaSeleccionada);
+    logros.push(`🎯 Tabla del ${tablaSeleccionada} dominada en práctica guiada`);
+  }
+  guardarEstado();
+  guardarProgreso();
+  popup(`🌟 ¡Práctica terminada! Has trabajado la tabla del ${tablaSeleccionada}.`);
+  setTimeout(() => {
+    document.getElementById("popup").style.display = "none";
+    mostrarMapa();
+  }, 2200);
+  modoPracticaTabla = false;
   return;
 }
 
@@ -708,9 +899,11 @@ function mostrarPanel(){
  document.getElementById("panelFases").textContent=
   `${liberadas.length}/${fases.length}`;
  document.getElementById("panelTablas").textContent=
-  tablasDominadas.join(", ");
+  tablasDominadas.length ? tablasDominadas.join(", ") : "Aún en progreso";
  document.getElementById("panelIntentos").textContent=
   intentosTotales;
+
+ pintarBarrasTablas();
 
  const ul=document.getElementById("listaFallos");
  ul.innerHTML="";
@@ -849,6 +1042,10 @@ try{
 cargarPuntosClase(() => {
 		//cargarPanelClase();
       construirMapa();
+      actualizarPanelCurricular();
+      poblarSelectorTabla();
+      bindAccessibilityControls();
+      applyAccessibilitySettings();
       actualizarPuntosUI();
       mostrar("mapa");
     });
@@ -1737,6 +1934,7 @@ async function initApp(){
     mensajesUltima = contenidoMundo.mensajes.ultima;
     mensajesPredefinidos = contenidoMundo.mensajesPredefinidos;
     CONFIG_MURAL = contenidoMundo.configMural;
+    applyAccessibilitySettings();
 
     const globalState = loadGlobalState();
     puntos = globalState.puntos;
@@ -1773,7 +1971,7 @@ mostrarMapa();
     const globalFns = {
       mostrar, mostrarMapa, mostrarMochila, mostrarPanel, mostrarRanking, mostrarMural,
       responder, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
-      iniciarRepasoErrores, toggleLike, enviarMensajePredefinido
+      iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });
 

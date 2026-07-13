@@ -620,6 +620,111 @@ footer{
   font-size: 0.8em;
 }
 
+
+
+.curriculo-chip,
+.accesibilidad-chip,
+.tabla-chip{
+  display:inline-block;
+  padding:6px 10px;
+  margin:4px 6px 0 0;
+  border-radius:999px;
+  background:#ede7f6;
+  font-size:0.9em;
+}
+
+.panel-opciones,
+.panel-curriculo,
+.panel-visual,
+.panel-accesibilidad{
+  background:rgba(255,255,255,0.92);
+  border-radius:18px;
+  padding:14px;
+  max-width:900px;
+  margin:14px auto;
+}
+
+.controles-mapa,
+.controles-accesibilidad{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.select-tabla,
+.select-fuente{
+  font-size:1rem;
+  padding:10px;
+  border-radius:12px;
+  border:2px solid #ce93d8;
+  min-width:160px;
+}
+
+.modelo-rectangular{
+  margin-top:12px;
+}
+
+.rejilla-rectangular{
+  display:grid;
+  gap:4px;
+  margin-top:10px;
+  justify-content:flex-start;
+}
+
+.celda-rectangular{
+  width:18px;
+  height:18px;
+  border-radius:4px;
+  background:#ffb3d1;
+  border:1px solid #ce93d8;
+}
+
+.barra-tablas{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.barra-tabla-item{
+  display:grid;
+  grid-template-columns:72px 1fr 54px;
+  gap:10px;
+  align-items:center;
+}
+
+.barra-tabla-track{
+  width:100%;
+  height:14px;
+  background:#ede7f6;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.barra-tabla-fill{
+  height:100%;
+  background:linear-gradient(90deg, #80deea, #ff80ab);
+}
+
+body.font-large{
+  font-size: 1.12em;
+}
+
+body.high-contrast{
+  background-color:#fff8e1;
+  color:#1a1a1a;
+}
+
+body.high-contrast .tarjeta,
+body.high-contrast .panel,
+body.high-contrast .panel-opciones,
+body.high-contrast .panel-curriculo,
+body.high-contrast .panel-visual,
+body.high-contrast .panel-accesibilidad{
+  background:#fff;
+  border:2px solid #5d2e8c;
+}
+
 </style>
 </head>
 
@@ -644,6 +749,33 @@ footer{
 <div id="mapa" class="pantalla activa">
   <h1 class="titulo-mapa">🦄 El Mundo de los Unicornios</h1>
 
+  <div class="panel-curriculo">
+    <strong id="etiquetaCurricular">3º Primaria · Matemáticas · LOMLOE</strong>
+    <p id="textoCurricularMapa">Tablas del 1 al 10, cálculo mental y problemas cotidianos.</p>
+    <div id="chipsCurriculares"></div>
+  </div>
+
+  <div class="panel-opciones">
+    <h3>🎯 Practica una tabla concreta</h3>
+    <div class="controles-mapa">
+      <select id="selectorTabla" class="select-tabla" aria-label="Seleccionar tabla a practicar"></select>
+      <button onclick="iniciarPracticaTabla()">🚀 Dominar esta tabla</button>
+    </div>
+    <p class="texto-ayuda">Puedes reforzar una tabla concreta antes de volver al mapa completo.</p>
+  </div>
+
+  <div class="panel-accesibilidad">
+    <h3>👀 Accesibilidad y lectura</h3>
+    <div class="controles-accesibilidad">
+      <label><input id="toggleContraste" type="checkbox"> Alto contraste</label>
+      <label for="selectorFuente">Tamaño de texto</label>
+      <select id="selectorFuente" class="select-fuente" aria-label="Tamaño del texto">
+        <option value="normal">Normal</option>
+        <option value="large">Grande</option>
+      </select>
+    </div>
+  </div>
+
   <div id="botonesFases" class="flex"></div>
 </div>
 
@@ -663,9 +795,16 @@ footer{
   <div>
    <p id="problema"></p>
 <p id="indicadorDificultad" style="font-weight:bold"></p>
-   <input type="number" id="respuesta"><br><br>
+<p id="objetivoFase" class="curriculo-chip"></p>
+<div id="tagsFase"></div>
+   <input type="number" id="respuesta" aria-label="Escribe la respuesta"><br><br>
    <button onclick="responder()">Responder</button>
    <p id="pista"></p>
+<div id="visualRectangular" class="panel-visual" style="display:none">
+  <strong>🧱 Ayuda visual</strong>
+  <p id="textoModeloRectangular"></p>
+  <div id="rejillaRectangular" class="rejilla-rectangular"></div>
+</div>
    <p id="tiempo"></p>
 <p id="contadorFallos" style="font-weight:bold; color:#c62828"></p>
   </div>
@@ -725,6 +864,8 @@ footer{
   <p>Fases completadas: <span id="panelFases"></span></p>
   <p>Tablas dominadas: <span id="panelTablas"></span></p>
   <p>Intentos totales: <span id="panelIntentos"></span></p>
+  <h4>📈 Progreso por tabla</h4>
+  <div id="barrasTablas" class="barra-tablas"></div>
   <h4>❌ Operaciones con fallos</h4>
   <ul id="listaFallos"></ul>
 
@@ -1040,7 +1181,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 2.0.0
+    v 2.1.0
   </p>
 <p><br></p>
 </footer>
