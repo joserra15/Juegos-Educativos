@@ -18,7 +18,7 @@ const LEGACY_KEYS = {
 
 export function createDefaultMundoState() {
   return {
-    liberadas: [0],
+    liberadas: [],
     tiemposMejores: {},
     fallosPorOperacion: {},
     tablasDominadas: [],
@@ -236,6 +236,25 @@ export function mergeRemoteIfNewer(localPuntos, remotePuntos, localAllStates, re
     return { puntos: remotePuntos, allMundosStates: remoteAllStates, merged: true };
   }
   return { puntos: localPuntos, allMundosStates: localAllStates, merged: false };
+}
+
+export function getTiemposMundoFromFirebase(data, mundoId = MUNDO_LEGACY) {
+  const desdeMundo = data?.mundos?.[mundoId]?.tiemposMejores;
+  if (desdeMundo && Object.keys(desdeMundo).length > 0) return desdeMundo;
+  if (mundoId === MUNDO_LEGACY && data?.tiemposMejores) return data.tiemposMejores;
+  return {};
+}
+
+export function normalizarLiberadas(state) {
+  const liberadas = Array.isArray(state?.liberadas) ? [...state.liberadas] : [];
+  if (liberadas.length === 1 && liberadas[0] === 0) {
+    const tieneProgreso =
+      (state?.puntosMundo || 0) > 0 ||
+      Object.keys(state?.tiemposMejores || {}).length > 0 ||
+      (state?.logros || []).length > 0;
+    if (!tieneProgreso) return [];
+  }
+  return liberadas;
 }
 
 export function getMundoActivoId() {

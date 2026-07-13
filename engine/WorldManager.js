@@ -53,10 +53,9 @@ export function getEtiquetaRecompensa(contenido) {
 }
 
 export function getProgresoMundo(state, totalFases) {
-  const liberadas = state?.liberadas || [0];
-  const completadas = liberadas.filter((i) => i > 0).length;
+  const liberadas = state?.liberadas || [];
   return {
-    completadas: Math.max(0, liberadas.length - 1),
+    completadas: liberadas.length,
     total: totalFases || 0,
     puntosMundo: state?.puntosMundo || 0,
   };

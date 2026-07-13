@@ -30,7 +30,9 @@ import {
   parseFirebaseData,
   mergeRemoteIfNewer,
   getMundoActivoId,
-  setMundoActivoId
+  setMundoActivoId,
+  getTiemposMundoFromFirebase,
+  normalizarLiberadas,
 } from "../engine/ProgressStore.js";
 import {
   getMundoEntry,
@@ -44,7 +46,7 @@ let puntos = 0;
 let faseActual = 0;
 let indice = 0;
 let operaciones = [];
-let liberadas = [0];
+let liberadas = [];
 let intentosTotales = 0;
 let tablasDominadas = [];
 let logros = [];
@@ -132,7 +134,7 @@ function snapshotMundoState(){
 }
 
 function aplicarEstadoMundo(state){
-  liberadas = state.liberadas || [0];
+  liberadas = normalizarLiberadas(state);
   tiemposMejores = migrateTiempoKeys(state.tiemposMejores || {}, fases);
   fallosPorOperacion = state.fallosPorOperacion || {};
   tablasDominadas = state.tablasDominadas || [];
@@ -630,7 +632,7 @@ if (f.tipo === "avanzada") {
         "🌟 Reto colectivo 🌟\n\n" +
         "Este mundo se desbloquea cuando:\n" +
         "✔️ completes el mundo anterior\n" +
-        `⭐ la clase llegue a ${puntosNecesarios.toLocaleString()} puntos\n\n` +
+        `⭐ el grupo global llegue a ${puntosNecesarios.toLocaleString()} puntos\n\n` +
         `Progreso actual: ${puntosClase.toLocaleString()} / ${puntosNecesarios.toLocaleString()}`
       );
     };
@@ -1184,8 +1186,8 @@ function pintarResumenCursos(){
     const mundosCurso = manifestCatalog.mundos.filter(m => m.curso === curso);
     const puntosCurso = mundosCurso.reduce((acc, m) => acc + (allStates[m.id]?.puntosMundo || 0), 0);
     const fasesCurso = mundosCurso.reduce((acc, m) => {
-      const lib = allStates[m.id]?.liberadas || [0];
-      return acc + Math.max(0, lib.length - 1);
+      const lib = normalizarLiberadas(allStates[m.id] || {});
+      return acc + lib.length;
     }, 0);
     const row = document.createElement("div");
     row.className = "resumen-curso-item";
@@ -1239,7 +1241,7 @@ localStorage.removeItem("historiaVista");
   // Reiniciar estado en memoria
   puntos = 0;
   puntosMundo = 0;
-  liberadas = [0];
+  liberadas = [];
   tiemposMejores = {};
   fallosPorOperacion = {};
   tablasDominadas = [];
@@ -1549,7 +1551,7 @@ function mostrarRanking(){
   mostrar("ranking");
 
 mostrarRankingRapidos();
-cargarPanelClase();
+cargarPanelGlobal();
 
   const lista = document.getElementById("listaRanking");
   lista.innerHTML = "<li>Cargando ranking…</li>";
@@ -1633,6 +1635,11 @@ function cargarProgresoDesdeFirebase(){
     .catch(err => { console.log("JA 😂 Error cargando progreso"); console.error(err); });
 }
 
+function obtenerTiempoFase(tiempos, fase){
+  if(!tiempos || !fase) return undefined;
+  return tiempos[fase.id] ?? tiempos[getFaseLabel(fase)];
+}
+
 function mostrarRankingRapidos(){
   const tbody = document.querySelector("#tablaRapidos tbody");
   tbody.innerHTML = "";
@@ -1643,12 +1650,12 @@ function mostrarRankingRapidos(){
     return;
   }
 
-  // Inicializamos estructura de mejores tiempos
   const mejores = {};
-  mundos().forEach(mundo => {
-    mejores[mundo] = {
+  fases.forEach((fase) => {
+    mejores[fase.id] = {
+      label: getFaseLabel(fase),
       nombre: null,
-      tiempo: Infinity
+      tiempo: Infinity,
     };
   });
 
@@ -1656,37 +1663,34 @@ function mostrarRankingRapidos(){
     .then(snapshot => {
       snapshot.forEach(doc => {
         const data = doc.data();
-        const tiempos = data.tiemposMejores || {};
+        const tiempos = getTiemposMundoFromFirebase(data, mundoId);
 
-        mundos().forEach(mundo => {
-          if(tiempos[mundo] !== undefined){
-            const tiempo = tiempos[mundo];
+        fases.forEach((fase) => {
+          const tiempo = obtenerTiempoFase(tiempos, fase);
+          if(tiempo === undefined) return;
 
-            if(tiempo < mejores[mundo].tiempo){
-              mejores[mundo] = {
-                nombre: data.nombre,
-                tiempo: tiempo
-              };
-            }
+          if(tiempo < mejores[fase.id].tiempo){
+            mejores[fase.id] = {
+              label: getFaseLabel(fase),
+              nombre: data.nombre,
+              tiempo,
+            };
           }
         });
       });
 
-      // Pintar tabla
-      mundos().forEach(mundo => {
+      fases.forEach((fase) => {
         const tr = document.createElement("tr");
-
-        const tdMundo = document.createElement("td");
-        tdMundo.textContent = mundo;
-
+        const tdFase = document.createElement("td");
         const tdJugador = document.createElement("td");
-        const dato = mejores[mundo];
+        const dato = mejores[fase.id];
 
+        tdFase.textContent = dato.label;
         tdJugador.textContent = dato.nombre
           ? `${dato.nombre} (${formatearTiempo(dato.tiempo)} m:s)`
           : "—";
 
-        tr.appendChild(tdMundo);
+        tr.appendChild(tdFase);
         tr.appendChild(tdJugador);
         tbody.appendChild(tr);
       });
@@ -1694,6 +1698,81 @@ function mostrarRankingRapidos(){
     .catch(err => {
       console.log("JA 😂 Error ranking rápidos");
       console.error(err);
+    });
+}
+
+function cargarPanelGlobal(){
+  if(!db) return;
+
+datosClaseCargados = true;
+
+  let puntosTotales = 0;
+	let totalRecompensas = 0;
+
+  const tiemposPorFase = {};
+  fases.forEach((fase) => {
+    tiemposPorFase[fase.id] = {
+      label: getFaseLabel(fase),
+      suma: 0,
+      count: 0,
+    };
+  });
+
+  db.collection("players").get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+
+        puntosTotales += data.puntos || 0;
+
+        if (data.mundos && Object.keys(data.mundos).length > 0) {
+          Object.values(data.mundos).forEach((mundo) => {
+            totalRecompensas += normalizarLiberadas(mundo).length;
+          });
+        } else {
+          totalRecompensas += normalizarLiberadas({ liberadas: data.liberadas }).length;
+        }
+
+        const tiempos = getTiemposMundoFromFirebase(data, mundoId);
+        fases.forEach((fase) => {
+          const tiempo = obtenerTiempoFase(tiempos, fase);
+          if(tiempo === undefined) return;
+          tiemposPorFase[fase.id].suma += tiempo;
+          tiemposPorFase[fase.id].count++;
+        });
+      });
+
+      document.getElementById("puntosClase").textContent =
+        puntosTotales.toLocaleString();
+
+      document.getElementById("unicorniosClase").textContent =
+        totalRecompensas;
+
+      const objetivo = 60000;
+      const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
+
+      document.getElementById("barraClase").style.width = porcentaje + "%";
+
+puntosClase = puntosTotales;
+
+document.getElementById("textoObjetivo").textContent =
+        puntosTotales >= objetivo
+          ? "🎉 ¡Objetivo conseguido! El grupo global ha logrado una gran hazaña."
+          : `Faltan ${objetivo - puntosTotales} puntos para lograr el objetivo y desbloquear nuevos retos. ¿Podréis conseguirlo?`;
+
+      const tbody = document.getElementById("tablaTiemposClase");
+      tbody.innerHTML = "";
+
+      fases.forEach((fase) => {
+        const stats = tiemposPorFase[fase.id];
+        const tr = document.createElement("tr");
+        const media = stats.count > 0 ? Math.round(stats.suma / stats.count) : null;
+        tr.innerHTML = `<td>${stats.label}</td><td>${media !== null ? `${formatearTiempo(media)} m:s` : "—"}</td>`;
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(err => {
+      console.error("Error cargando panel global", err);
     });
 }
 
@@ -1770,91 +1849,6 @@ function sonidoFinalMagico(){
 
 function puntosDelMundoActual(){
   return puntosPorFase(fases[faseActual], puntosPorFaseMap);
-}
-
-
-function cargarPanelClase(){
-  if(!db) return;
-
-datosClaseCargados = true;
-
-  let puntosTotales = 0;
-  //let unicornios = new Set();
-	let totalUnicornios = 0;
-
-  const tiemposPorMundo = {};
-  const conteosPorMundo = {};
-
-  db.collection("players").get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        const data = doc.data();
-
-        // Puntos
-        puntosTotales += data.puntos || 0;
-
-        // Recompensas liberadas (multi-mundo o legacy)
-        if (data.mundos && Object.keys(data.mundos).length > 0) {
-          Object.values(data.mundos).forEach((mundo) => {
-            totalUnicornios += (mundo.liberadas || []).filter((i) => i > 0).length;
-          });
-        } else {
-          totalUnicornios += (data.liberadas || []).filter((i) => i > 0).length;
-        }
-
-        // Tiempos
-        const tiempos = data.tiemposMejores || {};
-        Object.keys(tiempos).forEach(mundo => {
-          if(!tiemposPorMundo[mundo]){
-            tiemposPorMundo[mundo] = 0;
-            conteosPorMundo[mundo] = 0;
-          }
-          tiemposPorMundo[mundo] += tiempos[mundo];
-          conteosPorMundo[mundo]++;
-        });
-      });
-
-      // Mostrar puntos
-      document.getElementById("puntosClase").textContent =
-        puntosTotales.toLocaleString();
-
-      // Mostrar unicornios
-      document.getElementById("unicorniosClase").textContent =
-        totalUnicornios;
-
-      // Barra de progreso
-      const objetivo = 60000;
-      const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
-
-      document.getElementById("barraClase").style.width = porcentaje + "%";
-
-puntosClase = puntosTotales;
-
-document.getElementById("textoObjetivo").textContent =
-        puntosTotales >= objetivo
-          ? "🎉 ¡Objetivo conseguido! La clase ha logrado una gran hazaña."
-          : `Faltan ${objetivo - puntosTotales} puntos para lograr el objetivo y desbloquear nuevos mundos. ¿Podreis consegurlo?`;
-
-      // Tabla de tiempos medios
-      const tbody = document.getElementById("tablaTiemposClase");
-      tbody.innerHTML = "";
-
-      Object.keys(tiemposPorMundo).forEach(mundo => {
-        const media = Math.round(
-          tiemposPorMundo[mundo] / conteosPorMundo[mundo]
-        );
-
-        const tr = document.createElement("tr");
-        tr.innerHTML = `<td>${mundo}</td><td>${formatearTiempo(media)} m:s</td>`;
-        tbody.appendChild(tr);
-      });
-    })
-    .catch(err => {
-      console.error("Error cargando panel de clase", err);
-    });
-
-construirMapa();
-
 }
 
 

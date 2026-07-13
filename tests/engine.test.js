@@ -28,6 +28,8 @@ import {
   mergeRemoteIfNewer,
   getMundoActivoId,
   setMundoActivoId,
+  getTiemposMundoFromFirebase,
+  normalizarLiberadas,
 } from "../engine/ProgressStore.js";
 import {
   getMundoEntry,
@@ -145,7 +147,7 @@ describe("Hints", () => {
 describe("ProgressStore", () => {
   it("crea estado por defecto", () => {
     const state = createDefaultMundoState();
-    expect(state.liberadas).toEqual([0]);
+    expect(state.liberadas).toEqual([]);
   });
 
   it("parsea datos Firebase con namespace mundos", () => {
@@ -209,7 +211,7 @@ describe("WorldManager", () => {
 
   it("calcula progreso de un mundo", () => {
     const progreso = getProgresoMundo({ liberadas: [0, 1, 2], puntosMundo: 42 }, 8);
-    expect(progreso.completadas).toBe(2);
+    expect(progreso.completadas).toBe(3);
     expect(progreso.puntosMundo).toBe(42);
     expect(progreso.total).toBe(8);
   });
@@ -268,6 +270,26 @@ describe("QuestionGenerator mundos ampliados", () => {
     expect(getClaveOperacion({ tipo: "division", a: 12, b: 3, r: 4 })).toBe("12div3");
     expect(getClaveOperacion({ tipo: "fraccion", numerador: 2, denominador: 5, r: 2 })).toBe("2/5");
     expect(getClaveOperacion({ a: 3, b: 4, r: 12 })).toBe("3x4");
+  });
+});
+
+describe("ProgressStore récords multi-mundo", () => {
+  it("lee tiempos del namespace del mundo activo", () => {
+    const tiempos = getTiemposMundoFromFirebase({
+      mundos: {
+        dinosaurios: { tiemposMejores: { "pradera-inicial": 54 } },
+        unicornios: { tiemposMejores: { "prado-rosa": 31 } },
+      },
+    }, "dinosaurios");
+    expect(tiempos["pradera-inicial"]).toBe(54);
+  });
+
+  it("normaliza liberadas iniciales sin progreso", () => {
+    expect(normalizarLiberadas({ liberadas: [0] })).toEqual([]);
+    expect(normalizarLiberadas({
+      liberadas: [0],
+      tiemposMejores: { "prado-rosa": 40 },
+    })).toEqual([0]);
   });
 });
 
