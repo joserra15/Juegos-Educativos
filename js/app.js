@@ -313,6 +313,16 @@ function pintarTagsFase(fase){
   }
 }
 
+function actualizarReveladoRecompensa(porcentaje){
+  const cubierta = document.getElementById("mascaraRecompensa");
+  if(!cubierta) return;
+  cubierta.style.height = `${Math.max(0, 100 - porcentaje)}%`;
+}
+
+function resetearReveladoRecompensa(){
+  actualizarReveladoRecompensa(0);
+}
+
 function renderVisualRectangular(op){
   const panel = document.getElementById("visualRectangular");
   const texto = document.getElementById("textoModeloRectangular");
@@ -351,7 +361,7 @@ function iniciarPracticaTabla(){
   document.getElementById("contadorFallos").textContent = "";
   document.getElementById("pista").textContent = "";
   document.getElementById("imgRecompensa").src = fases[0]?.recompensa?.asset || "unicornio1.png";
-  document.getElementById("mascaraRecompensa").style.height = "0%";
+  resetearReveladoRecompensa();
   tiempoInicio = Date.now();
   iniciarTimer();
   mostrar("juego");
@@ -443,7 +453,7 @@ try{
   document.getElementById("contador").textContent =
     `Pregunta 1 de ${operaciones.length}`;
 
-document.getElementById("mascaraRecompensa").style.height = "0%";
+resetearReveladoRecompensa();
  
 indice=0;
  fallosActual=0;
@@ -624,7 +634,7 @@ const nivelAdaptativo = calcularNivelAdaptativo({ liberadas, fases, tiemposMejor
 operaciones = generarOperacionesFase(fases[i], { textos, bancoAvanzado, fallosPorOperacion, nivelAdaptativo, tablaFocal: null });
 
 document.getElementById("imgRecompensa").src = fases[i].recompensa.asset;
-document.getElementById("mascaraRecompensa").style.height = "0%";
+resetearReveladoRecompensa();
 document.getElementById("indicadorDificultad").textContent = "";
 mostrar("juego");
 mostrarOperacion();
@@ -719,8 +729,7 @@ actualizarContadorMensajes();
   const porcentaje=Math.floor((indice/operaciones.length)*100);
 
 
-document.getElementById("mascaraRecompensa").style.height =
-  porcentaje + "%";
+actualizarReveladoRecompensa(porcentaje);
 
 if(porcentaje === 100){
   lanzarConfeti();
@@ -931,7 +940,7 @@ guardarProgreso();
 
 
 
-document.getElementById("mascaraRecompensa").style.height ="0%";
+actualizarReveladoRecompensa(100);
 actualizarPuntosUI();
 
 

@@ -820,22 +820,40 @@ button{
 }
 
 .juego-recompensa{
-  width: min(180px, 42vw);
-  height: min(180px, 42vw);
+  width: min(200px, 48vw);
+  height: min(200px, 48vw);
   flex-shrink: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
 }
 
-.juego-recompensa .recompensa-mascara{
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.juego-recompensa .recompensa-mascara img{
+.recompensa-marco{
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+}
+
+.recompensa-marco #imgRecompensa{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+}
+
+.recompensa-cubierta{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f3e5f5;
+  transition: height .5s ease;
+  pointer-events: none;
 }
 
 .juego-panel{
@@ -848,8 +866,23 @@ button{
   font-weight: bold;
 }
 
-.juego-meta{
-  margin: 8px 0 12px;
+.juego-meta-inferior{
+  width: 100%;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(206, 147, 216, 0.45);
+  opacity: 0.92;
+}
+
+.juego-meta-inferior .juego-objetivo{
+  font-size: 0.85em;
+  color: #6a1b9a;
+  margin-bottom: 6px;
+}
+
+.juego-meta-inferior #tagsFase .tabla-chip{
+  font-size: 0.8em;
+  padding: 4px 8px;
 }
 
 .juego-meta #objetivoFase{
@@ -870,6 +903,10 @@ button{
   flex-wrap: wrap;
   justify-content: center;
   gap: 6px;
+}
+
+.boton-volver-juego{
+  margin-top: 4px;
 }
 
 #popupRecompensa{
@@ -956,18 +993,15 @@ button{
  <h3 id="contador"></h3>
  <div class="juego-layout">
   <div class="recompensa-contenedor juego-recompensa">
-    <div id="mascaraRecompensa" class="recompensa-mascara">
+    <div class="recompensa-marco">
       <img id="imgRecompensa" alt="Recompensa del reto">
+      <div id="mascaraRecompensa" class="recompensa-cubierta"></div>
     </div>
   </div>
 
   <div class="juego-panel">
    <p id="problema"></p>
    <p id="indicadorDificultad" style="font-weight:bold"></p>
-   <div class="juego-meta">
-     <p id="objetivoFase" class="juego-objetivo"></p>
-     <div id="tagsFase"></div>
-   </div>
    <input type="number" id="respuesta" aria-label="Escribe la respuesta"><br><br>
    <button onclick="responder()">Responder</button>
    <p id="pista"></p>
@@ -980,7 +1014,12 @@ button{
    <p id="contadorFallos" style="font-weight:bold; color:#c62828"></p>
   </div>
 
-  <button onclick="mostrarMapa()">Volver</button>
+  <button class="boton-volver-juego" onclick="mostrarMapa()">Volver</button>
+
+  <div class="juego-meta juego-meta-inferior">
+    <p id="objetivoFase" class="juego-objetivo"></p>
+    <div id="tagsFase"></div>
+  </div>
  </div>
 </div>
 
@@ -1346,7 +1385,7 @@ progreso del juego.</p>
     </a>
   </p>
   <p>
-    v 2.2.1
+    v 2.2.2
   </p>
 <p><br></p>
 </footer>
