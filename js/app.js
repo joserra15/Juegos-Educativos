@@ -85,6 +85,7 @@ import {
   renderListaRankingPuntos,
   aplicarVisibilidadRanking,
 } from "./ui/RankingView.js";
+import { OBJETIVO_GLOBAL } from "../engine/PanelStats.js";
 import {
   setMochilaMundoSeleccionado,
   renderPinMochila,
@@ -1952,15 +1953,11 @@ async function pintarRankingPuntos(filtro){
       snapshot.forEach((doc) => cachePlayersRanking.push(doc.data()));
     }
 
-    const entry = filtro !== "global" ? getMundoEntry(manifestCatalog, filtro) : null;
-    const etiqueta = entry ? `${entry.emoji} ${entry.nombre}` : "";
-
     renderListaRankingPuntos({
       listaEl: lista,
       players: cachePlayersRanking,
       filtro,
       nombreJugador,
-      etiquetaMundo: etiqueta,
     });
   } catch (err) {
     console.error(err);
@@ -2122,7 +2119,7 @@ function cargarPanelGlobalResumen(){
     const elRec = document.getElementById("unicorniosClase");
     if(elRec) elRec.textContent = totalRecompensas;
 
-    const objetivo = 60000;
+    const objetivo = OBJETIVO_GLOBAL;
     const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
     const barra = document.getElementById("barraClase");
     if(barra) barra.style.width = porcentaje + "%";
@@ -2133,7 +2130,7 @@ function cargarPanelGlobalResumen(){
     if(texto){
       texto.textContent = puntosTotales >= objetivo
         ? "🎉 ¡Objetivo conseguido! El grupo global ha logrado una gran hazaña."
-        : `Faltan ${objetivo - puntosTotales} puntos para lograr el objetivo y desbloquear nuevos retos. ¿Podréis conseguirlo?`;
+        : `Faltan ${(objetivo - puntosTotales).toLocaleString()} puntos para lograr el objetivo y desbloquear nuevos retos. ¿Podréis conseguirlo?`;
     }
   };
 
