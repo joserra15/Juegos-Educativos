@@ -148,39 +148,26 @@
 
 <!-- MOCHILA -->
 <div id="mochila" class="pantalla">
- <h2>🎒 Mochila de logros</h2>
- <div class="panel">
+  <h2>🎒 Mochila de logros</h2>
 
-<p>
-  🔐 <strong>Tu PIN secreto:</strong>
-  <span id="pinJugadorUI"></span>
-</p>
+  <div class="panel mochila-pin-panel">
+    <p>
+      🔐 <strong>Tu PIN secreto:</strong>
+      <span id="pinJugadorUI"></span>
+    </p>
+    <p class="texto-ayuda">El PIN es único para recuperar tu partida. Los logros y recompensas se ven mundo a mundo.</p>
+  </div>
 
-  <ul id="listaLogros"></ul>
+  <div id="mochilaVistaLista" class="mochila-vista">
+    <div id="mochilaListaMundos"></div>
+  </div>
 
-<h3>⏱️ Mejores tiempos por mundo</h3>
+  <div id="mochilaVistaDetalle" class="mochila-vista" hidden>
+    <div id="mochilaDetalleContenido"></div>
+  </div>
 
-<table id="tablaTiempos"
-       style="width:100%; border-collapse:collapse; text-align:center">
-  <thead>
-    <tr style="background:#ede7f6">
-      <th>Mundo</th>
-      <th>Recompensa</th>
-      <th>Mejor tiempo</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
- </div><br>
-
-<h3 class="titulo-mochila" id="tituloGaleriaRecompensas">Recompensas liberadas</h3>
-
-<div id="galeriaRecompensas" class="galeria-unicornios">
-  <!-- Unicornios liberados -->
-</div>
-
- <button onclick="mostrarMapa()">Volver</button>
+  <br>
+  <button type="button" onclick="mostrarMapa()">Volver</button>
 </div>
 
 <!-- PANEL PADRES -->
@@ -271,87 +258,83 @@
 </div>
 
 <div id="ranking" class="pantalla">
-  <h2>🏆 Ranking de puntos</h2>
+  <h2>🏆 Ranking</h2>
+  <p class="texto-ayuda ranking-intro">
+    Mira el ranking global de puntos o elige un mundo para ver su ranking y los tiempos medios.
+  </p>
+
+  <div id="selectorRanking" class="ranking-selector"></div>
+
+  <h3 id="tituloRankingPuntos">🏆 Ranking global de puntos</h3>
   <p id="notaRankingPersonal" class="nota-ranking-personal" style="display:none"></p>
+  <ol id="listaRanking" class="lista-ranking-puntos"></ol>
 
-  <ol id="listaRanking"
-      style="font-size:1.2em; line-height:1.6"></ol>
-
-  <div class="tarjeta tarjeta-ranking-personal">
-    <h3>💪 Tus marcas en este mundo</h3>
-    <div id="mejoraPersonalRanking"></div>
-  </div>
-
-  <br>
-
-<h3 id="tituloRapidosMundo">⚡ Los más rápidos de cada fase</h3>
-
-<table id="tablaRapidos"
-       style="width:100%; border-collapse:collapse; margin-top:10px">
-  <thead>
-    <tr>
-      <th>Fase</th>
-      <th>🥇 Más rápido</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
-
-<br>
-
-<div class="tarjeta tarjeta-clase">
-  <h2>🌍 Panel global</h2>
-
-  <div id="narrativaHechizo" class="narrativa-hechizo-wrap"></div>
-
-  <div class="bloque-clase">
-    <h3>⭐ Puntos globales</h3>
-    <p id="puntosClase" class="dato-grande">—</p>
-    <p class="mensaje-clase">
-      Cada punto cuenta. ¡Tu esfuerzo suma al grupo de todos los jugadores!
-    </p>
-  </div>
-
-  <div class="bloque-clase">
-    <h3>🎁 Recompensas liberadas</h3>
-    <p id="unicorniosClase" class="dato-grande">—</p>
-    <p class="mensaje-clase">
-      Cada reto superado en cualquier mundo suma magia al grupo global.
-    </p>
-  </div>
-
-  <div class="bloque-clase">
-    <h3>🌈 Objetivo global: 60.000 puntos</h3>
-
-    <div class="barra-objetivo">
-      <div id="barraClase"></div>
+  <div id="bloqueRankingPorMundo" hidden>
+    <div class="tarjeta tarjeta-ranking-personal">
+      <h3 id="tituloMarcasMundo">💪 Tus marcas en este mundo</h3>
+      <div id="mejoraPersonalRanking"></div>
     </div>
 
-    <p id="textoObjetivo" class="mensaje-clase">Si conseguís el objetivo común aparecerán nuevos retos en el juego. ¿Podréis conseguirlo?</p>
-  </div>
-
-  <div class="bloque-clase">
-    <h3 id="tituloMediosMundo">⏱️ Tiempo medio global (este mundo)</h3>
-
-    <table class="tabla-clase">
+    <h3 id="tituloRapidosMundo">⚡ Los más rápidos de cada fase</h3>
+    <table id="tablaRapidos" class="tabla-ranking">
       <thead>
         <tr>
           <th>Fase</th>
-          <th>Tiempo medio</th>
+          <th>🥇 Más rápido</th>
         </tr>
       </thead>
-      <tbody id="tablaTiemposClase"></tbody>
+      <tbody></tbody>
     </table>
 
-    <p class="mensaje-clase">
-      Mejora tu tiempo y ayudarás a mejorar la media del grupo en este mundo.
-    </p>
+    <div class="bloque-clase bloque-medios-mundo">
+      <h3 id="tituloMediosMundo">⏱️ Tiempo medio por fase</h3>
+      <table class="tabla-clase">
+        <thead>
+          <tr>
+            <th>Fase</th>
+            <th>Tiempo medio</th>
+          </tr>
+        </thead>
+        <tbody id="tablaTiemposClase"></tbody>
+      </table>
+      <p class="mensaje-clase">
+        Mejora tu tiempo y ayudarás a mejorar la media del grupo en este mundo.
+      </p>
+    </div>
   </div>
-</div>
 
-<br>
+  <div class="tarjeta tarjeta-clase">
+    <h2>🌍 Panel global</h2>
 
-  <button onclick="mostrarMapa()">⬅ Volver</button>
+    <div id="narrativaHechizo" class="narrativa-hechizo-wrap"></div>
+
+    <div class="bloque-clase">
+      <h3>⭐ Puntos globales</h3>
+      <p id="puntosClase" class="dato-grande">—</p>
+      <p class="mensaje-clase">
+        Cada punto cuenta. ¡Tu esfuerzo suma al grupo de todos los jugadores!
+      </p>
+    </div>
+
+    <div class="bloque-clase">
+      <h3>🎁 Recompensas liberadas</h3>
+      <p id="unicorniosClase" class="dato-grande">—</p>
+      <p class="mensaje-clase">
+        Cada reto superado en cualquier mundo suma magia al grupo global.
+      </p>
+    </div>
+
+    <div class="bloque-clase">
+      <h3>🌈 Objetivo global: 60.000 puntos</h3>
+      <div class="barra-objetivo">
+        <div id="barraClase"></div>
+      </div>
+      <p id="textoObjetivo" class="mensaje-clase">Si conseguís el objetivo común aparecerán nuevos retos en el juego. ¿Podréis conseguirlo?</p>
+    </div>
+  </div>
+
+  <br>
+  <button type="button" onclick="mostrarMapa()">⬅ Volver</button>
 </div>
 
 

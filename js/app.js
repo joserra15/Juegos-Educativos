@@ -75,7 +75,19 @@ import {
   renderNarrativaHechizo,
   renderRankingConMarcas,
   actualizarSnapshotAlSalir,
+  getRankingFiltro,
+  setRankingFiltro,
+  renderSelectorRanking,
+  renderListaRankingPuntos,
+  aplicarVisibilidadRanking,
 } from "./ui/RankingView.js";
+import {
+  setMochilaMundoSeleccionado,
+  renderPinMochila,
+  renderListaMundosMochila,
+  renderDetalleMochilaMundo,
+  mostrarVistaMochila,
+} from "./ui/MochilaView.js";
 import { setImagenConLazy, aplicarLazyEnContenedor, prefetchAsset } from "./ui/LazyAssets.js";
 
 
@@ -224,11 +236,19 @@ async function cargarMundoContenido(id){
 }
 
 function actualizarTextosRecompensa(){
-  const label = getEtiquetaRecompensa(contenidoMundo);
-  const tituloGaleria = document.getElementById("tituloGaleriaRecompensas");
-  if(tituloGaleria) tituloGaleria.textContent = `${contenidoMundo?.tema?.criatura || "Recompensas"} liberados`;
   const nombreMundoFinal = document.getElementById("nombreMundoFinal");
   if(nombreMundoFinal) nombreMundoFinal.textContent = contenidoMundo?.nombre || "este mundo";
+}
+
+/** Cache de contenido de mundos para mochila/ranking sin cambiar el mundo activo. */
+const cacheContenidoMundos = {};
+
+async function obtenerContenidoMundo(id){
+  if(contenidoMundo?.id === id) return contenidoMundo;
+  if(cacheContenidoMundos[id]) return cacheContenidoMundos[id];
+  const contenido = await loadMundoContent(id);
+  cacheContenidoMundos[id] = contenido;
+  return contenido;
 }
 
 function actualizarHeaderMundo(){
@@ -1260,52 +1280,72 @@ function iniciarTimer(){
 }
 
 /* =====================================================
-   MOCHILA
+   MOCHILA (por mundos, sin mezclar información)
 ===================================================== */
 function mostrarMochila(){
- const ul=document.getElementById("listaLogros");
- ul.innerHTML="";
- logros.forEach(l=>{
-  const li=document.createElement("li");
-  li.textContent=l;
-  ul.appendChild(li);
- });
+  persistirMundoActual();
+  setMochilaMundoSeleccionado(null);
+  renderPinMochila(
+    document.getElementById("pinJugadorUI"),
+    localStorage.getItem("pinJugador")
+  );
+  renderListaMundosMochila({
+    container: document.getElementById("mochilaListaMundos"),
+    manifest: manifestCatalog,
+    allStates: loadAllMundosStates(),
+    onAbrirMundo: abrirMochilaMundo,
+  });
+  mostrarVistaMochila("lista");
+  mostrar("mochila");
+}
 
-// === Tabla de mejores tiempos ===
-const tbody = document
-  .querySelector("#tablaTiempos tbody");
+async function abrirMochilaMundo(id){
+  const entry = getMundoEntry(manifestCatalog, id);
+  if(!entry || entry.disponible === false) return;
 
-tbody.innerHTML = "";
+  setMochilaMundoSeleccionado(id);
+  const detalle = document.getElementById("mochilaDetalleContenido");
+  if(detalle){
+    detalle.innerHTML = `<p class="texto-ayuda">Cargando ${entry.emoji} ${entry.nombre}…</p>`;
+  }
+  mostrarVistaMochila("detalle");
 
-fases.forEach((fase, i) => {
-  const tr = document.createElement("tr");
-
-  const tdFase = document.createElement("td");
-  tdFase.textContent = getFaseLabel(fase);
-
-  const tdUni = document.createElement("td");
-  tdUni.textContent = fase.recompensa.nombre;
-
-  const tdTiempo = document.createElement("td");
-  const tiempo = tiemposMejores[fase.id];
-  tdTiempo.textContent = tiempo ? `${formatearTiempo(tiempo)} m:s` : "—";
-
-  tr.appendChild(tdFase);
-  tr.appendChild(tdUni);
-  tr.appendChild(tdTiempo);
-
-  tbody.appendChild(tr);
-});
-
-const pin = localStorage.getItem("pinJugador");
-document.getElementById("pinJugadorUI").textContent =
-  pin ? pin : "—";
-
-
- mostrar("mochila");
-
-pintarRecompensasLiberadas();
-pintarResumenMundosMochila();
+  try {
+    const contenido = await obtenerContenidoMundo(id);
+    const state = loadMundoState(id);
+    renderDetalleMochilaMundo({
+      container: detalle,
+      entry,
+      contenido,
+      state,
+      onVolver: () => {
+        setMochilaMundoSeleccionado(null);
+        renderListaMundosMochila({
+          container: document.getElementById("mochilaListaMundos"),
+          manifest: manifestCatalog,
+          allStates: loadAllMundosStates(),
+          onAbrirMundo: abrirMochilaMundo,
+        });
+        mostrarVistaMochila("lista");
+      },
+      setImagen: setImagenConLazy,
+    });
+  } catch (err) {
+    console.error("Error cargando mochila del mundo", err);
+    if(detalle){
+      detalle.innerHTML = `
+        <button type="button" class="mochila-volver" id="btnMochilaVolverError">← Mundos de la mochila</button>
+        <p class="texto-ayuda">No se pudo cargar este mundo. Inténtalo de nuevo.</p>
+      `;
+      const btn = detalle.querySelector("#btnMochilaVolverError");
+      if(btn){
+        btn.onclick = () => {
+          setMochilaMundoSeleccionado(null);
+          mostrarVistaMochila("lista");
+        };
+      }
+    }
+  }
 }
 
 /* =====================================================
@@ -1740,73 +1780,103 @@ try{
 }
 
 
+let cachePlayersRanking = null;
+
 async function mostrarRanking(){
   mostrar("ranking");
-  await asegurarMundoRankingSincronizado();
-  const ctx = crearContextoRankingStats();
-  actualizarEncabezadoRankingStats(ctx);
-  mostrarRankingRapidos(ctx);
-  cargarPanelGlobal(ctx);
+  persistirMundoActual();
 
-  renderMejoraPersonal("mejoraPersonalRanking", ctx.fasesRef, tiemposMejores);
+  if(!getRankingFiltro()) setRankingFiltro("global");
+
+  renderSelectorRanking({
+    container: document.getElementById("selectorRanking"),
+    manifest: manifestCatalog,
+    filtroActual: getRankingFiltro(),
+    onCambiar: cambiarFiltroRanking,
+  });
+
+  aplicarVisibilidadRanking(getRankingFiltro());
+  await refrescarVistaRanking();
+}
+
+async function cambiarFiltroRanking(filtro){
+  setRankingFiltro(filtro);
+  renderSelectorRanking({
+    container: document.getElementById("selectorRanking"),
+    manifest: manifestCatalog,
+    filtroActual: filtro,
+    onCambiar: cambiarFiltroRanking,
+  });
+  aplicarVisibilidadRanking(filtro);
+  await refrescarVistaRanking();
+}
+
+async function refrescarVistaRanking(){
+  const filtro = getRankingFiltro() || "global";
+  const lista = document.getElementById("listaRanking");
+  if(lista) lista.innerHTML = "<li>Cargando ranking…</li>";
+
+  // Panel colectivo siempre (puntos globales de clase)
+  cargarPanelGlobalResumen();
+
+  if(filtro === "global"){
+    await pintarRankingPuntos("global");
+    return;
+  }
+
+  const ctx = await crearContextoRankingPorMundo(filtro);
+  actualizarEncabezadoRankingStats(ctx);
+  await pintarRankingPuntos(filtro);
+
+  const stateLocal = loadMundoState(filtro);
+  const tiemposLocales = migrateTiempoKeys(stateLocal.tiemposMejores || {}, ctx.fasesRef);
+  renderMejoraPersonal("mejoraPersonalRanking", ctx.fasesRef, tiemposLocales);
   renderRankingConMarcas(
     document.getElementById("listaRanking"),
     null,
     nombreJugador,
     ctx.fasesRef,
-    tiemposMejores
+    tiemposLocales
   );
+  mostrarRankingRapidos(ctx);
+  cargarTiemposMediosMundo(ctx);
+}
 
+async function crearContextoRankingPorMundo(mundoRef){
+  const contenido = await obtenerContenidoMundo(mundoRef);
+  return crearContextoRanking(mundoRef, contenido.fases || []);
+}
+
+async function pintarRankingPuntos(filtro){
   const lista = document.getElementById("listaRanking");
-  lista.innerHTML = "<li>Cargando ranking…</li>";
+  if(!lista) return;
 
   if(!db){
-    lista.innerHTML =
-      "<li>Ranking no disponible sin conexión</li>";
+    lista.innerHTML = "<li>Ranking no disponible sin conexión</li>";
     return;
   }
 
-  db.collection("players")
-    .orderBy("puntos", "desc")
-    .limit(20)
-    .get()
-    .then(snapshot => {
-      lista.innerHTML = "";
+  try {
+    if(!cachePlayersRanking){
+      const snapshot = await db.collection("players").get();
+      cachePlayersRanking = [];
+      snapshot.forEach((doc) => cachePlayersRanking.push(doc.data()));
+    }
 
-      if(snapshot.empty){
-        lista.innerHTML = "<li>Aún no hay datos</li>";
-        return;
-      }
+    const entry = filtro !== "global" ? getMundoEntry(manifestCatalog, filtro) : null;
+    const etiqueta = entry ? `${entry.emoji} ${entry.nombre}` : "";
 
-      let puesto = 1;
-
-      snapshot.forEach(doc => {
-        const data = doc.data();
-
-        const li = document.createElement("li");
-
-const esJugadorActual = data.nombre === nombreJugador;
-
-const puntosMundoRanking = data.puntosPorMundo?.[mundoId];
-const extraMundo = puntosMundoRanking !== undefined ? ` · ${puntosMundoRanking}⭐ en este mundo` : "";
-li.textContent = esJugadorActual
-  ? `👉 ${puesto}. ${data.nombre} — ${data.puntos} ⭐${extraMundo}`
-  : `${puesto}. ${data.nombre} — ${data.puntos} ⭐`;
-
-if(esJugadorActual){
-  li.classList.add("jugador-actual");
-}
-
-lista.appendChild(li);
-puesto++;
-      });
-    })
-    .catch(err => {
-      console.log("JA 😂 Error leyendo ranking");
-      console.error(err);
-      lista.innerHTML =
-        "<li>Error cargando ranking</li>";
+    renderListaRankingPuntos({
+      listaEl: lista,
+      players: cachePlayersRanking,
+      filtro,
+      nombreJugador,
+      etiquetaMundo: etiqueta,
     });
+  } catch (err) {
+    console.error(err);
+    lista.innerHTML = "<li>Error cargando ranking</li>";
+  }
 }
 
 
@@ -1814,6 +1884,7 @@ function guardarProgreso(){
   persistirMundoActual();
   recalcularPuntosGlobales();
   saveGlobalState({ puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap });
+  cachePlayersRanking = null;
   if(!db || !nombreJugador) return;
   const allStates = loadAllMundosStates();
   db.collection("players").doc(nombreJugador)
@@ -1858,18 +1929,15 @@ function crearContextoRankingStats(){
 
 function actualizarEncabezadoRankingStats(ctx){
   const entry = getMundoEntry(manifestCatalog, ctx.mundoRef);
-  const etiqueta = entry ? `${entry.emoji} ${entry.nombre}` : (contenidoMundo?.nombre || "Mundo");
+  const etiqueta = entry ? `${entry.emoji} ${entry.nombre}` : "Mundo";
   const rapido = document.getElementById("tituloRapidosMundo");
   const medio = document.getElementById("tituloMediosMundo");
+  const marcas = document.getElementById("tituloMarcasMundo");
+  const tituloPuntos = document.getElementById("tituloRankingPuntos");
   if(rapido) rapido.textContent = `⚡ Los más rápidos de cada fase · ${etiqueta}`;
-  if(medio) medio.textContent = `⏱️ Tiempo medio global · ${etiqueta}`;
-}
-
-async function asegurarMundoRankingSincronizado(){
-  const idActivo = getMundoActivoId();
-  if(!contenidoMundo || contenidoMundo.id !== idActivo || mundoId !== idActivo){
-    await cargarMundoContenido(idActivo);
-  }
+  if(medio) medio.textContent = `⏱️ Tiempo medio · ${etiqueta}`;
+  if(marcas) marcas.textContent = `💪 Tus marcas · ${etiqueta}`;
+  if(tituloPuntos) tituloPuntos.textContent = `🏆 Ranking de puntos · ${etiqueta}`;
 }
 
 function mostrarRankingRapidos(ctx = crearContextoRankingStats()){
@@ -1933,11 +2001,70 @@ function mostrarRankingRapidos(ctx = crearContextoRankingStats()){
     });
 }
 
-function cargarPanelGlobal(ctx = crearContextoRankingStats()){
+function cargarPanelGlobalResumen(){
   if(!db) return;
 
-  let puntosTotales = 0;
-	let totalRecompensas = 0;
+  const aplicar = (players) => {
+    let puntosTotales = 0;
+    let totalRecompensas = 0;
+
+    players.forEach((data) => {
+      puntosTotales += data.puntos || 0;
+      if (data.mundos && Object.keys(data.mundos).length > 0) {
+        Object.values(data.mundos).forEach((mundo) => {
+          totalRecompensas += normalizarLiberadas(mundo).length;
+        });
+      } else {
+        totalRecompensas += normalizarLiberadas({ liberadas: data.liberadas }).length;
+      }
+    });
+
+    const elPuntos = document.getElementById("puntosClase");
+    if(elPuntos) elPuntos.textContent = puntosTotales.toLocaleString();
+    renderNarrativaHechizo("narrativaHechizo", puntosTotales);
+
+    const elRec = document.getElementById("unicorniosClase");
+    if(elRec) elRec.textContent = totalRecompensas;
+
+    const objetivo = 60000;
+    const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
+    const barra = document.getElementById("barraClase");
+    if(barra) barra.style.width = porcentaje + "%";
+
+    puntosClase = puntosTotales;
+
+    const texto = document.getElementById("textoObjetivo");
+    if(texto){
+      texto.textContent = puntosTotales >= objetivo
+        ? "🎉 ¡Objetivo conseguido! El grupo global ha logrado una gran hazaña."
+        : `Faltan ${objetivo - puntosTotales} puntos para lograr el objetivo y desbloquear nuevos retos. ¿Podréis conseguirlo?`;
+    }
+  };
+
+  if(cachePlayersRanking){
+    aplicar(cachePlayersRanking);
+    return;
+  }
+
+  db.collection("players").get()
+    .then((snapshot) => {
+      cachePlayersRanking = [];
+      snapshot.forEach((doc) => cachePlayersRanking.push(doc.data()));
+      aplicar(cachePlayersRanking);
+    })
+    .catch((err) => {
+      console.error("Error cargando panel global", err);
+    });
+}
+
+function cargarTiemposMediosMundo(ctx){
+  const tbody = document.getElementById("tablaTiemposClase");
+  if(!tbody || !ctx) return;
+
+  if(!db){
+    tbody.innerHTML = "<tr><td colspan='2'>No disponible sin conexión</td></tr>";
+    return;
+  }
 
   const tiemposPorFase = {};
   ctx.fasesRef.forEach((fase) => {
@@ -1948,64 +2075,48 @@ function cargarPanelGlobal(ctx = crearContextoRankingStats()){
     };
   });
 
-  db.collection("players").get()
-    .then(snapshot => {
-      snapshot.forEach(doc => {
-        const data = doc.data();
-
-        puntosTotales += data.puntos || 0;
-
-        if (data.mundos && Object.keys(data.mundos).length > 0) {
-          Object.values(data.mundos).forEach((mundo) => {
-            totalRecompensas += normalizarLiberadas(mundo).length;
-          });
-        } else {
-          totalRecompensas += normalizarLiberadas({ liberadas: data.liberadas }).length;
-        }
-
-        const tiempos = getTiemposJugadorEnMundo(data, ctx);
-        ctx.fasesRef.forEach((fase) => {
-          const tiempo = obtenerTiempoFase(tiempos, fase);
-          if(tiempo === undefined) return;
-          tiemposPorFase[fase.id].suma += tiempo;
-          tiemposPorFase[fase.id].count++;
-        });
-      });
-
-      document.getElementById("puntosClase").textContent =
-        puntosTotales.toLocaleString();
-
-      renderNarrativaHechizo("narrativaHechizo", puntosTotales);
-
-      document.getElementById("unicorniosClase").textContent =
-        totalRecompensas;
-
-      const objetivo = 60000;
-      const porcentaje = Math.min(100, (puntosTotales / objetivo) * 100);
-
-      document.getElementById("barraClase").style.width = porcentaje + "%";
-
-puntosClase = puntosTotales;
-
-document.getElementById("textoObjetivo").textContent =
-        puntosTotales >= objetivo
-          ? "🎉 ¡Objetivo conseguido! El grupo global ha logrado una gran hazaña."
-          : `Faltan ${objetivo - puntosTotales} puntos para lograr el objetivo y desbloquear nuevos retos. ¿Podréis conseguirlo?`;
-
-      const tbody = document.getElementById("tablaTiemposClase");
-      tbody.innerHTML = "";
-
+  const pintar = (players) => {
+    players.forEach((data) => {
+      const tiempos = getTiemposJugadorEnMundo(data, ctx);
       ctx.fasesRef.forEach((fase) => {
-        const stats = tiemposPorFase[fase.id];
-        const tr = document.createElement("tr");
-        const media = stats.count > 0 ? Math.round(stats.suma / stats.count) : null;
-        tr.innerHTML = `<td>${stats.label}</td><td>${media !== null ? `${formatearTiempo(media)} m:s` : "—"}</td>`;
-        tbody.appendChild(tr);
+        const tiempo = obtenerTiempoFase(tiempos, fase);
+        if(tiempo === undefined) return;
+        tiemposPorFase[fase.id].suma += tiempo;
+        tiemposPorFase[fase.id].count++;
       });
-    })
-    .catch(err => {
-      console.error("Error cargando panel global", err);
     });
+
+    tbody.innerHTML = "";
+    ctx.fasesRef.forEach((fase) => {
+      const stats = tiemposPorFase[fase.id];
+      const tr = document.createElement("tr");
+      const media = stats.count > 0 ? Math.round(stats.suma / stats.count) : null;
+      tr.innerHTML = `<td>${stats.label}</td><td>${media !== null ? `${formatearTiempo(media)} m:s` : "—"}</td>`;
+      tbody.appendChild(tr);
+    });
+  };
+
+  if(cachePlayersRanking){
+    pintar(cachePlayersRanking);
+    return;
+  }
+
+  db.collection("players").get()
+    .then((snapshot) => {
+      cachePlayersRanking = [];
+      snapshot.forEach((doc) => cachePlayersRanking.push(doc.data()));
+      pintar(cachePlayersRanking);
+    })
+    .catch((err) => {
+      console.error("Error cargando tiempos medios", err);
+      tbody.innerHTML = "<tr><td colspan='2'>Error cargando medias</td></tr>";
+    });
+}
+
+/** Compatibilidad: panel global + medias del mundo activo. */
+function cargarPanelGlobal(ctx = crearContextoRankingStats()){
+  cargarPanelGlobalResumen();
+  if(ctx) cargarTiemposMediosMundo(ctx);
 }
 
 function iniciarAudio(){
@@ -2435,55 +2546,6 @@ document.addEventListener("keydown", function(e){
   }
 });*/
 
-function pintarResumenMundosMochila(){
-  const ul = document.getElementById("listaLogros");
-  if(!ul || !manifestCatalog) return;
-  const resumen = document.createElement("li");
-  const partes = manifestCatalog.mundos
-    .map(m => {
-      const st = loadMundoState(m.id);
-      return `${m.emoji} ${st.puntosMundo || 0}⭐`;
-    });
-  resumen.textContent = `Mundos: ${partes.join(" · ")}`;
-  ul.prepend(resumen);
-}
-
-function pintarRecompensasLiberadas(){
-  const cont = document.getElementById("galeriaRecompensas");
-  if(!cont) return;
-
-  cont.innerHTML = "";
-
-  liberadas.forEach(i => {
-    const fase = fases[i];
-    if(!fase?.recompensa) return;
-
-    const div = document.createElement("div");
-    div.className = "recompensa-item";
-    const rec = fase.recompensa;
-
-    if(rec.asset){
-      const img = document.createElement("img");
-      img.alt = rec.nombre;
-      setImagenConLazy(img, rec.asset);
-      div.appendChild(img);
-      const span = document.createElement("span");
-      span.textContent = rec.nombre;
-      div.appendChild(span);
-    }else{
-      div.innerHTML = `
-        <span class="emoji-recompensa-mochila">${rec.emoji || "🎁"}</span>
-        <span>${rec.nombre}</span>
-      `;
-    }
-
-    cont.appendChild(div);
-  });
-
-  if(liberadas.length === 0){
-    cont.innerHTML = `<p>🔒 Aún no has liberado ninguna ${getEtiquetaRecompensa(contenidoMundo)}</p>`;
-  }
-}
 
 
 async function initApp(){
@@ -2506,7 +2568,7 @@ async function initApp(){
     actualizarAvatarHeader();
 
     const globalFns = {
-      mostrar, mostrarMapa, mostrarSelectorMundos, entrarMundo, mostrarMochila, mostrarPanel, mostrarRanking, mostrarMural,
+      mostrar, mostrarMapa, mostrarSelectorMundos, entrarMundo, mostrarMochila, abrirMochilaMundo, mostrarPanel, mostrarRanking, mostrarMural,
       responder, responderOpcion, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
       iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido,
       avanzarTutorialUI, saltarTutorialUI, reiniciarTutorial, exportarResumenFamilia,

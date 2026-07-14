@@ -19,7 +19,7 @@ const TUTORIAL_PASOS = [
   },
   {
     titulo: "3. Revisa tu mochila",
-    texto: "En la mochila verás tus logros, PIN y criaturas liberadas.",
+    texto: "En la mochila elige un mundo para ver dónde estás, tus logros y criaturas de ese mundo.",
     target: ".bottom-nav button[title='Mochila']",
     pantalla: null,
   },

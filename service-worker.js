@@ -1,4 +1,4 @@
-const CACHE_NAME = "mundos-magicos-v13";
+const CACHE_NAME = "mundos-magicos-v14";
 
 const FILES_TO_CACHE = [
   "./",
@@ -9,6 +9,7 @@ const FILES_TO_CACHE = [
   "./js/ui/SelectorMundos.js",
   "./js/ui/PanelFamilias.js",
   "./js/ui/RankingView.js",
+  "./js/ui/MochilaView.js",
   "./js/ui/LazyAssets.js",
   "./manifest.json",
   "./content/manifest.json",
