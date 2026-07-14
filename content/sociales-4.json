@@ -5,7 +5,11 @@
   "tipoMundo": "lectura",
   "curso": 4,
   "area": "sociales",
-  "competencias": ["CC1", "CC2", "CC3"],
+  "competencias": [
+    "CC1",
+    "CC2",
+    "CC3"
+  ],
   "saberes": [
     "geografía de España",
     "comunidades autónomas",
@@ -28,33 +32,57 @@
       "nombre": "Mirador de España",
       "emoji": "🇪🇸",
       "mecanica": "lectura",
-      "etiquetasLectura": ["geografia"],
+      "etiquetasLectura": [
+        "geografia"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🏔️", "nombre": "Cumbre" },
+      "recompensa": {
+        "emoji": "🏔️",
+        "nombre": "Cumbre"
+      },
       "objetivo": "Situar accidentes geográficos y mares de España.",
-      "tags": ["Geografía", "Relieve"]
+      "tags": [
+        "Geografía",
+        "Relieve"
+      ]
     },
     {
       "id": "ruta-comunidades",
       "nombre": "Ruta de las Comunidades",
       "emoji": "🧭",
       "mecanica": "lectura",
-      "etiquetasLectura": ["comunidades"],
+      "etiquetasLectura": [
+        "comunidades"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🗺️", "nombre": "Autónomo" },
+      "recompensa": {
+        "emoji": "🗺️",
+        "nombre": "Autónomo"
+      },
       "objetivo": "Conocer comunidades autónomas y capitales clave.",
-      "tags": ["CC. AA.", "Territorio"]
+      "tags": [
+        "CC. AA.",
+        "Territorio"
+      ]
     },
     {
       "id": "sendero-paisajes",
       "nombre": "Sendero de Paisajes",
       "emoji": "🌄",
       "mecanica": "lectura",
-      "etiquetasLectura": ["paisajes"],
+      "etiquetasLectura": [
+        "paisajes"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🌾", "nombre": "Paisaje" },
+      "recompensa": {
+        "emoji": "🌾",
+        "nombre": "Paisaje"
+      },
       "objetivo": "Relacionar clima, relieve y formas de vida.",
-      "tags": ["Paisaje", "Clima"]
+      "tags": [
+        "Paisaje",
+        "Clima"
+      ]
     },
     {
       "id": "archivo-cronopolis",
@@ -64,155 +92,611 @@
       "total": 8,
       "tipo": "avanzada",
       "siempreActiva": true,
-      "recompensa": { "emoji": "👑", "nombre": "Cronista Mayor" },
+      "recompensa": {
+        "emoji": "👑",
+        "nombre": "Cronista Mayor"
+      },
       "objetivo": "Consolidar ciencias sociales de 4º.",
-      "tags": ["Sociales 4º", "Repaso global"]
+      "tags": [
+        "Sociales 4º",
+        "Repaso global"
+      ]
     }
   ],
   "bancoLectura": [
     {
       "id": "geo-1",
-      "etiquetas": ["geografia"],
+      "etiquetas": [
+        "geografia"
+      ],
       "texto": "España está en el suroeste de Europa, en la península…",
-      "opciones": ["Ibérica", "Itálica", "Escandinava"],
+      "opciones": [
+        "Ibérica",
+        "Itálica",
+        "Escandinava"
+      ],
       "correcta": 0,
       "pista": "La comparten España y Portugal."
     },
     {
       "id": "geo-2",
-      "etiquetas": ["geografia"],
+      "etiquetas": [
+        "geografia"
+      ],
       "texto": "El mar que baña la costa este de España es el…",
-      "opciones": ["Mediterráneo", "Báltico", "Caspio"],
+      "opciones": [
+        "Mediterráneo",
+        "Báltico",
+        "Caspio"
+      ],
       "correcta": 0,
       "pista": "Baña Cataluña, Valencia y Murcia, entre otras."
     },
     {
       "id": "geo-3",
-      "etiquetas": ["geografia"],
+      "etiquetas": [
+        "geografia"
+      ],
       "texto": "Los Pirineos son una cordillera entre España y…",
-      "opciones": ["Francia", "Marruecos", "Italia"],
+      "opciones": [
+        "Francia",
+        "Marruecos",
+        "Italia"
+      ],
       "correcta": 0,
       "pista": "Están al norte."
     },
     {
       "id": "geo-4",
-      "etiquetas": ["geografia"],
+      "etiquetas": [
+        "geografia"
+      ],
       "texto": "Las Islas Canarias se encuentran en el océano…",
-      "opciones": ["Atlántico", "Índico", "Ártico"],
+      "opciones": [
+        "Atlántico",
+        "Índico",
+        "Ártico"
+      ],
       "correcta": 0,
       "pista": "Al oeste de África."
     },
     {
       "id": "ccaa-1",
-      "etiquetas": ["comunidades"],
+      "etiquetas": [
+        "comunidades"
+      ],
       "texto": "Madrid es la capital de España y también de la Comunidad de…",
-      "opciones": ["Madrid", "Andalucía", "Galicia"],
+      "opciones": [
+        "Madrid",
+        "Andalucía",
+        "Galicia"
+      ],
       "correcta": 0,
       "pista": "Coincide el nombre."
     },
     {
       "id": "ccaa-2",
-      "etiquetas": ["comunidades"],
+      "etiquetas": [
+        "comunidades"
+      ],
       "texto": "Sevilla es una ciudad importante de…",
-      "opciones": ["Andalucía", "Asturias", "La Rioja"],
+      "opciones": [
+        "Andalucía",
+        "Asturias",
+        "La Rioja"
+      ],
       "correcta": 0,
       "pista": "Está en el sur de España."
     },
     {
       "id": "ccaa-3",
-      "etiquetas": ["comunidades"],
+      "etiquetas": [
+        "comunidades"
+      ],
       "texto": "España se organiza en comunidades autónomas y…",
-      "opciones": ["Ciudades autónomas (Ceuta y Melilla)", "Solo reinos antiguos", "Solo islas inventadas"],
+      "opciones": [
+        "Ciudades autónomas (Ceuta y Melilla)",
+        "Solo reinos antiguos",
+        "Solo islas inventadas"
+      ],
       "correcta": 0,
       "pista": "Hay dos ciudades autónomas en el norte de África."
     },
     {
       "id": "ccaa-4",
-      "etiquetas": ["comunidades"],
+      "etiquetas": [
+        "comunidades"
+      ],
       "texto": "Cataluña, País Vasco y Galicia son ejemplos de…",
-      "opciones": ["Comunidades autónomas", "Países distintos", "Continentes"],
+      "opciones": [
+        "Comunidades autónomas",
+        "Países distintos",
+        "Continentes"
+      ],
       "correcta": 0,
       "pista": "Forman parte del Estado español."
     },
     {
       "id": "pai-1",
-      "etiquetas": ["paisajes"],
+      "etiquetas": [
+        "paisajes"
+      ],
       "texto": "Un paisaje de altas montañas y nieve es típico de un clima…",
-      "opciones": ["De montaña", "Desértico tropical", "Ecuatorial de selva"],
+      "opciones": [
+        "De montaña",
+        "Desértico tropical",
+        "Ecuatorial de selva"
+      ],
       "correcta": 0,
       "pista": "Hace frío y hay relieve elevado."
     },
     {
       "id": "pai-2",
-      "etiquetas": ["paisajes"],
+      "etiquetas": [
+        "paisajes"
+      ],
       "texto": "En la costa mediterránea suele hacer veranos…",
-      "opciones": ["Cálidos y secos", "Helados polares", "Siempre lluviosos como la selva"],
+      "opciones": [
+        "Cálidos y secos",
+        "Helados polares",
+        "Siempre lluviosos como la selva"
+      ],
       "correcta": 0,
       "pista": "Clima mediterráneo."
     },
     {
       "id": "pai-3",
-      "etiquetas": ["paisajes"],
+      "etiquetas": [
+        "paisajes"
+      ],
       "texto": "Los pueblos de campos de cereal en meseta suelen estar en…",
-      "opciones": ["Paisajes de interior", "Solo volcanes", "Solo glaciares"],
+      "opciones": [
+        "Paisajes de interior",
+        "Solo volcanes",
+        "Solo glaciares"
+      ],
       "correcta": 0,
       "pista": "Meseta Central."
     },
     {
       "id": "pai-4",
-      "etiquetas": ["paisajes"],
+      "etiquetas": [
+        "paisajes"
+      ],
       "texto": "El turismo de playa es importante en muchas zonas…",
-      "opciones": ["Costeras", "Solo de alta montaña sin mar", "Del Polo Norte"],
+      "opciones": [
+        "Costeras",
+        "Solo de alta montaña sin mar",
+        "Del Polo Norte"
+      ],
       "correcta": 0,
       "pista": "Cerca del mar."
     },
     {
       "id": "hist-1",
-      "etiquetas": ["historia", "geografia"],
+      "etiquetas": [
+        "historia",
+        "geografia"
+      ],
       "texto": "Los restos de murallas o castillos nos ayudan a conocer…",
-      "opciones": ["El pasado histórico", "Solo el clima de mañana", "Las tablas del 7"],
+      "opciones": [
+        "El pasado histórico",
+        "Solo el clima de mañana",
+        "Las tablas del 7"
+      ],
       "correcta": 0,
       "pista": "Son fuentes históricas."
     },
     {
       "id": "hist-2",
-      "etiquetas": ["historia", "comunidades"],
+      "etiquetas": [
+        "historia",
+        "comunidades"
+      ],
       "texto": "Una línea del tiempo sirve para…",
-      "opciones": ["Ordenar hechos del pasado", "Medir la lluvia", "Calcular divisiones"],
+      "opciones": [
+        "Ordenar hechos del pasado",
+        "Medir la lluvia",
+        "Calcular divisiones"
+      ],
       "correcta": 0,
       "pista": "Coloca acontecimientos en orden."
     },
     {
       "id": "hist-3",
-      "etiquetas": ["historia", "paisajes"],
+      "etiquetas": [
+        "historia",
+        "paisajes"
+      ],
       "texto": "Antes de las ciudades grandes, muchas personas vivían de…",
-      "opciones": ["La agricultura y la ganadería", "Solo videojuegos", "Viajes espaciales"],
+      "opciones": [
+        "La agricultura y la ganadería",
+        "Solo videojuegos",
+        "Viajes espaciales"
+      ],
       "correcta": 0,
       "pista": "Actividades del campo."
     },
     {
       "id": "org-1",
-      "etiquetas": ["comunidades", "historia"],
+      "etiquetas": [
+        "comunidades",
+        "historia"
+      ],
       "texto": "Las leyes más importantes de España están en la…",
-      "opciones": ["Constitución", "Receta del cocido", "Guía del Zoo"],
+      "opciones": [
+        "Constitución",
+        "Receta del cocido",
+        "Guía del Zoo"
+      ],
       "correcta": 0,
       "pista": "Es la norma fundamental del Estado."
     },
     {
       "id": "mix-s4-1",
-      "etiquetas": ["geografia", "paisajes"],
+      "etiquetas": [
+        "geografia",
+        "paisajes"
+      ],
       "texto": "El océano Atlántico baña, entre otras, las costas de Galicia y…",
-      "opciones": ["Andalucía (oeste) y Canarias", "Solo el Himalaya", "Solo el Mar Negro"],
+      "opciones": [
+        "Andalucía (oeste) y Canarias",
+        "Solo el Himalaya",
+        "Solo el Mar Negro"
+      ],
       "correcta": 0,
       "pista": "Piensa en el oeste y en las islas."
     },
     {
       "id": "mix-s4-2",
-      "etiquetas": ["comunidades", "paisajes"],
+      "etiquetas": [
+        "comunidades",
+        "paisajes"
+      ],
       "texto": "Un mapa político de España muestra…",
-      "opciones": ["Comunidades y provincias", "Solo climas sin nombres", "Solo ríos sin fronteras"],
+      "opciones": [
+        "Comunidades y provincias",
+        "Solo climas sin nombres",
+        "Solo ríos sin fronteras"
+      ],
       "correcta": 0,
       "pista": "Divide el territorio administrativo."
+    },
+    {
+      "id": "geo-e1",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "España está en…",
+      "opciones": [
+        "Europa",
+        "África",
+        "América"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e2",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una península está…",
+      "opciones": [
+        "Casi rodeada de agua",
+        "Totalmente isla",
+        "Nunca junto al mar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e3",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Madrid es…",
+      "opciones": [
+        "Capital de España",
+        "Un océano",
+        "Una cordillera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e4",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una frontera separa…",
+      "opciones": [
+        "Territorios",
+        "Solo nubes",
+        "Solo días"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e5",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "El Mediterráneo baña…",
+      "opciones": [
+        "Costas de España",
+        "Solo Galicia siempre",
+        "Solo Canarias"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e6",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una cordillera es…",
+      "opciones": [
+        "Conjunto de montañas",
+        "Un río",
+        "Una playa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e1",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "España se organiza en…",
+      "opciones": [
+        "Comunidades autónomas",
+        "Continentes nuevos",
+        "Órbitas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e2",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Una CCAA tiene…",
+      "opciones": [
+        "Instituciones propias",
+        "Su planeta",
+        "Ninguna capital"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e3",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "La bandera de España es…",
+      "opciones": [
+        "Roja y gualda",
+        "Solo azul",
+        "Verde y negra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e4",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Cataluña o Andalucía son…",
+      "opciones": [
+        "Comunidades autónomas",
+        "Países distintos",
+        "Ríos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e5",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Ceuta y Melilla son…",
+      "opciones": [
+        "Ciudades autónomas",
+        "Montañas",
+        "Ríos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e1",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Un paisaje de costa tiene…",
+      "opciones": [
+        "Mar/playa",
+        "Solo desierto interior",
+        "Solo glaciares"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e2",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Montaña es…",
+      "opciones": [
+        "Elevada/pendiente",
+        "Totalmente plana",
+        "Solo ciudad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e3",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Paisaje agrario muestra…",
+      "opciones": [
+        "Campos",
+        "Solo fábricas",
+        "Solo océanos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e4",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Paisaje urbano tiene…",
+      "opciones": [
+        "Edificios y calles",
+        "Solo bosques",
+        "Solo desiertos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e5",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Proteger el paisaje ayuda a…",
+      "opciones": [
+        "Conservar",
+        "Contaminar más",
+        "Secar ríos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e1",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "La prehistoria es anterior a…",
+      "opciones": [
+        "La escritura",
+        "Internet solo",
+        "Dinosaurios hoy en España"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e2",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Una fuente histórica puede ser…",
+      "opciones": [
+        "Documento o resto",
+        "Un deseo",
+        "Inventada sin base"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e3",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Los romanos dejaron…",
+      "opciones": [
+        "Calzadas/puentes",
+        "Solo rascacielos",
+        "Solo coches"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e4",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Edad Media sigue a…",
+      "opciones": [
+        "Edad Antigua",
+        "El futuro",
+        "Contemporánea antes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e5",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Un castillo es típico de…",
+      "opciones": [
+        "Edad Media",
+        "Solo prehistoria",
+        "Solo siglo XXI"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e6",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Investigar el pasado sirve para…",
+      "opciones": [
+        "Entender quiénes somos",
+        "Cambiar gravedad",
+        "Borrar el presente"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e7",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Una línea del tiempo ordena…",
+      "opciones": [
+        "Hechos",
+        "Colores al azar",
+        "Comidas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e8",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Los fósiles ayudan a conocer…",
+      "opciones": [
+        "Seres del pasado",
+        "El WiFi",
+        "Las apps"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {
@@ -222,10 +706,23 @@
     "archivo-cronopolis": 28
   },
   "mensajes": {
-    "acierto": ["¡Cronópolis te aplaude!", "¡Gran explorador!", "¡Sociales de 4º!"],
-    "error": ["Consulta el mapa otra vez", "Revisa la pista", "Prueba otra opción"],
-    "ultima": ["¡Última pregunta del archivo!"]
+    "acierto": [
+      "¡Cronópolis te aplaude!",
+      "¡Gran explorador!",
+      "¡Sociales de 4º!"
+    ],
+    "error": [
+      "Consulta el mapa otra vez",
+      "Revisa la pista",
+      "Prueba otra opción"
+    ],
+    "ultima": [
+      "¡Última pregunta del archivo!"
+    ]
   },
   "mensajesPredefinidos": {},
-  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }

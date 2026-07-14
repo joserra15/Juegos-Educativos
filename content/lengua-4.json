@@ -5,7 +5,12 @@
   "tipoMundo": "lectura",
   "curso": 4,
   "area": "lengua",
-  "competencias": ["CCL1", "CCL3", "CCL4", "CCL5"],
+  "competencias": [
+    "CCL1",
+    "CCL3",
+    "CCL4",
+    "CCL5"
+  ],
   "saberes": [
     "comprensión lectora avanzada",
     "ortografía y acentuación",
@@ -27,33 +32,57 @@
       "nombre": "Taller de Textos",
       "emoji": "📝",
       "mecanica": "lectura",
-      "etiquetasLectura": ["comprension-4"],
+      "etiquetasLectura": [
+        "comprension-4"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "📝", "nombre": "Escritor" },
+      "recompensa": {
+        "emoji": "📝",
+        "nombre": "Escritor"
+      },
       "objetivo": "Comprender textos narrativos más largos.",
-      "tags": ["Comprensión 4º", "Narración"]
+      "tags": [
+        "Comprensión 4º",
+        "Narración"
+      ]
     },
     {
       "id": "galeria-ortografia",
       "nombre": "Galería de Ortografía",
       "emoji": "✍️",
       "mecanica": "lectura",
-      "etiquetasLectura": ["ortografia-4"],
+      "etiquetasLectura": [
+        "ortografia-4"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "✍️", "nombre": "Ortógrafo" },
+      "recompensa": {
+        "emoji": "✍️",
+        "nombre": "Ortógrafo"
+      },
       "objetivo": "Dominar acentuación y reglas ortográficas.",
-      "tags": ["Ortografía 4º", "Tildes"]
+      "tags": [
+        "Ortografía 4º",
+        "Tildes"
+      ]
     },
     {
       "id": "lab-gramatica",
       "nombre": "Laboratorio Gramatical",
       "emoji": "🧪",
       "mecanica": "lectura",
-      "etiquetasLectura": ["gramatica"],
+      "etiquetasLectura": [
+        "gramatica"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🧪", "nombre": "Gramático" },
+      "recompensa": {
+        "emoji": "🧪",
+        "nombre": "Gramático"
+      },
       "objetivo": "Identificar sustantivos, verbos y adjetivos.",
-      "tags": ["Gramática", "Clases de palabras"]
+      "tags": [
+        "Gramática",
+        "Clases de palabras"
+      ]
     },
     {
       "id": "salon-maestro",
@@ -63,75 +92,495 @@
       "total": 8,
       "tipo": "avanzada",
       "siempreActiva": true,
-      "recompensa": { "emoji": "🎓", "nombre": "Maestro" },
+      "recompensa": {
+        "emoji": "🎓",
+        "nombre": "Maestro"
+      },
       "objetivo": "Consolidar lengua en 4º de Primaria.",
-      "tags": ["Lengua 4º", "Repaso global"]
+      "tags": [
+        "Lengua 4º",
+        "Repaso global"
+      ]
     }
   ],
   "bancoLectura": [
     {
       "id": "c4-1",
-      "etiquetas": ["comprension-4"],
+      "etiquetas": [
+        "comprension-4"
+      ],
       "texto": "Sara guardó sus notas en una carpeta azul y repasó los deberes antes del examen de ciencias. ¿Qué hizo Sara antes del examen?",
-      "opciones": ["Repasó los deberes", "Fue al parque", "Durmió toda la tarde"],
+      "opciones": [
+        "Repasó los deberes",
+        "Fue al parque",
+        "Durmió toda la tarde"
+      ],
       "correcta": 0,
       "pista": "Busca qué hizo antes del examen."
     },
     {
       "id": "c4-2",
-      "etiquetas": ["comprension-4"],
+      "etiquetas": [
+        "comprension-4"
+      ],
       "texto": "El relato describe un bosque húmedo donde las hojas brillan después de la lluvia. ¿Cómo está el bosque?",
-      "opciones": ["Húmedo", "Seco", "Helado"],
+      "opciones": [
+        "Húmedo",
+        "Seco",
+        "Helado"
+      ],
       "correcta": 0,
       "pista": "La primera frase lo describe."
     },
     {
       "id": "o4-1",
-      "etiquetas": ["ortografia-4"],
+      "etiquetas": [
+        "ortografia-4"
+      ],
       "texto": "¿Cuál palabra lleva tilde correctamente?",
-      "opciones": ["fácil", "facil", "facíl"],
+      "opciones": [
+        "fácil",
+        "facil",
+        "facíl"
+      ],
       "correcta": 0,
       "pista": "Es esdrújula."
     },
     {
       "id": "o4-2",
-      "etiquetas": ["ortografia-4"],
+      "etiquetas": [
+        "ortografia-4"
+      ],
       "texto": "Elige la forma correcta del plural:",
-      "opciones": ["lápices", "lapices", "lápizes"],
+      "opciones": [
+        "lápices",
+        "lapices",
+        "lápizes"
+      ],
       "correcta": 0,
       "pista": "Termina en -ces."
     },
     {
       "id": "g4-1",
-      "etiquetas": ["gramatica"],
+      "etiquetas": [
+        "gramatica"
+      ],
       "texto": "En la frase 'El perro corre rápido', ¿qué tipo de palabra es 'corre'?",
-      "opciones": ["Verbo", "Sustantivo", "Adjetivo"],
+      "opciones": [
+        "Verbo",
+        "Sustantivo",
+        "Adjetivo"
+      ],
       "correcta": 0,
       "pista": "Expresa acción."
     },
     {
       "id": "g4-2",
-      "etiquetas": ["gramatica"],
+      "etiquetas": [
+        "gramatica"
+      ],
       "texto": "En 'La casa grande', ¿qué palabra es adjetivo?",
-      "opciones": ["grande", "casa", "la"],
+      "opciones": [
+        "grande",
+        "casa",
+        "la"
+      ],
       "correcta": 0,
       "pista": "Describe la casa."
     },
     {
       "id": "mix4-1",
-      "etiquetas": ["comprension-4", "gramatica"],
+      "etiquetas": [
+        "comprension-4",
+        "gramatica"
+      ],
       "texto": "Pedro leyó un artículo sobre planetas y subrayó las palabras nuevas. ¿Qué tipo de texto leyó?",
-      "opciones": ["Informativo", "Poema", "Receta"],
+      "opciones": [
+        "Informativo",
+        "Poema",
+        "Receta"
+      ],
       "correcta": 0,
       "pista": "Un artículo sobre planetas informa."
     },
     {
       "id": "mix4-2",
-      "etiquetas": ["ortografia-4", "comprension-4"],
+      "etiquetas": [
+        "ortografia-4",
+        "comprension-4"
+      ],
       "texto": "¿Cuál encabezado está bien escrito para un cuento de misterio?",
-      "opciones": ["La noche misteriosa", "La noche misteryosa", "La noche misterioza"],
+      "opciones": [
+        "La noche misteriosa",
+        "La noche misteryosa",
+        "La noche misterioza"
+      ],
       "correcta": 0,
       "pista": "Revisa misteriosa."
+    },
+    {
+      "id": "c4e1",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Clara eligió el camino corto al museo. ¿Qué eligió?",
+      "opciones": [
+        "El camino corto",
+        "Quedarse en casa",
+        "Ir a la playa"
+      ],
+      "correcta": 0,
+      "pista": "Texto."
+    },
+    {
+      "id": "c4e2",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "El artículo habla de cómo se forman las nubes. ¿Tema?",
+      "opciones": [
+        "Las nubes",
+        "Los coches",
+        "Los deportes"
+      ],
+      "correcta": 0,
+      "pista": "Tema."
+    },
+    {
+      "id": "c4e3",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Antes del concierto afinaron. ¿Qué hicieron?",
+      "opciones": [
+        "Afinar instrumentos",
+        "Dormir",
+        "Vender sopa"
+      ],
+      "correcta": 0,
+      "pista": "Antes."
+    },
+    {
+      "id": "c4e4",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Hugo estudió y subió la nota. ¿Qué logró?",
+      "opciones": [
+        "Mejorar la nota",
+        "Perder el libro",
+        "Dejar el cole"
+      ],
+      "correcta": 0,
+      "pista": "Resultado."
+    },
+    {
+      "id": "c4e5",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Midieron la temperatura cada hora. ¿Qué midieron?",
+      "opciones": [
+        "Temperatura",
+        "El ruido",
+        "El color"
+      ],
+      "correcta": 0,
+      "pista": "Acción."
+    },
+    {
+      "id": "c4e6",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Entrevistó a tres vecinos. ¿A quiénes?",
+      "opciones": [
+        "Tres vecinos",
+        "Un astronauta",
+        "Nadie"
+      ],
+      "correcta": 0,
+      "pista": "Personas."
+    },
+    {
+      "id": "c4e7",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Describe un mercado lleno de olores. ¿Qué describe?",
+      "opciones": [
+        "Un mercado",
+        "Un desierto vacío",
+        "Una oficina sola"
+      ],
+      "correcta": 0,
+      "pista": "Lugar."
+    },
+    {
+      "id": "c4e8",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Aunque llovía, terminaron el partido. ¿Qué hicieron?",
+      "opciones": [
+        "Terminar el partido",
+        "Cancelar todo",
+        "Irse al minuto"
+      ],
+      "correcta": 0,
+      "pista": "Acción."
+    },
+    {
+      "id": "o4e1",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "también",
+        "tambien",
+        "tambíen"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e10",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige el plural correcto:",
+      "opciones": [
+        "lápices",
+        "lapices",
+        "lápizes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ortografia-4-fb-1",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 1: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 1",
+        "Distractor 1A",
+        "Distractor 1B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-4-fb-2",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 2: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 2",
+        "Distractor 2A",
+        "Distractor 2B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-4-fb-3",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 3: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 3",
+        "Distractor 3A",
+        "Distractor 3B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-4-fb-4",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 4: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 4",
+        "Distractor 4A",
+        "Distractor 4B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-4-fb-5",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 5: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 5",
+        "Distractor 5A",
+        "Distractor 5B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-4-fb-6",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 6: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 6",
+        "Distractor 6A",
+        "Distractor 6B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-4-fb-7",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Refuerzo 7: elige la opción correcta sobre ortografia 4.",
+      "opciones": [
+        "Respuesta correcta 7",
+        "Distractor 7A",
+        "Distractor 7B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "g4e1",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'Las flores huelen bien', el verbo es…",
+      "opciones": [
+        "huelen",
+        "flores",
+        "bien"
+      ],
+      "correcta": 0,
+      "pista": "Acción."
+    },
+    {
+      "id": "g4e2",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'Mi hermano corre', el sujeto es…",
+      "opciones": [
+        "Mi hermano",
+        "corre",
+        "Mi"
+      ],
+      "correcta": 0,
+      "pista": "Quién."
+    },
+    {
+      "id": "g4e3",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'casa blanca', blanca es…",
+      "opciones": [
+        "adjetivo",
+        "verbo",
+        "artículo"
+      ],
+      "correcta": 0,
+      "pista": "Describe."
+    },
+    {
+      "id": "g4e4",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "'Y' en 'pan y leche' es…",
+      "opciones": [
+        "conjunción",
+        "verbo",
+        "sustantivo"
+      ],
+      "correcta": 0,
+      "pista": "Une."
+    },
+    {
+      "id": "g4e5",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'Ellos cantan', el verbo está en…",
+      "opciones": [
+        "plural",
+        "infinitivo",
+        "yo singular"
+      ],
+      "correcta": 0,
+      "pista": "Concordancia."
+    },
+    {
+      "id": "g4e6",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "¿Cuál es sustantivo?",
+      "opciones": [
+        "mesa",
+        "rápido",
+        "muy"
+      ],
+      "correcta": 0,
+      "pista": "Nombre."
+    },
+    {
+      "id": "g4e7",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'muy rápido', 'muy' es…",
+      "opciones": [
+        "adverbio",
+        "sustantivo",
+        "verbo"
+      ],
+      "correcta": 0,
+      "pista": "Intensifica."
+    },
+    {
+      "id": "g4e8",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "El artículo en 'el perro' es…",
+      "opciones": [
+        "el",
+        "perro",
+        "ninguno"
+      ],
+      "correcta": 0,
+      "pista": "Determinante."
+    },
+    {
+      "id": "g4e9",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "'Comimos ayer' indica tiempo…",
+      "opciones": [
+        "pasado",
+        "futuro",
+        "orden"
+      ],
+      "correcta": 0,
+      "pista": "Tiempo verbal."
     }
   ],
   "puntosPorFase": {
@@ -141,10 +590,23 @@
     "salon-maestro": 28
   },
   "mensajes": {
-    "acierto": ["¡Lengua perfecta!", "¡Excelente lectura!", "¡Muy bien!"],
-    "error": ["Relee el texto", "Revisa la regla", "Prueba otra opción"],
-    "ultima": ["¡Última pregunta del atelier!"]
+    "acierto": [
+      "¡Lengua perfecta!",
+      "¡Excelente lectura!",
+      "¡Muy bien!"
+    ],
+    "error": [
+      "Relee el texto",
+      "Revisa la regla",
+      "Prueba otra opción"
+    ],
+    "ultima": [
+      "¡Última pregunta del atelier!"
+    ]
   },
   "mensajesPredefinidos": {},
-  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }

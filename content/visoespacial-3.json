@@ -512,6 +512,272 @@
       ],
       "correcta": 0,
       "pista": "Cualquier diámetro."
+    },
+    {
+      "id": "fo-e1",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Lados de un hexágono…",
+      "opciones": [
+        "6",
+        "5",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e2",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Un óvalo se parece a…",
+      "opciones": [
+        "elipse/huevo",
+        "cuadrado",
+        "cubo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e3",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Ángulos rectos en un cuadrado…",
+      "opciones": [
+        "4",
+        "3",
+        "0"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e4",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Figura sin lados rectos…",
+      "opciones": [
+        "círculo",
+        "cuadrado",
+        "rectángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e1",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Pelota debajo de mesa → mesa está…",
+      "opciones": [
+        "Encima",
+        "Debajo",
+        "Dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e2",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Contrario de izquierda…",
+      "opciones": [
+        "derecha",
+        "arriba",
+        "dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e3",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Dentro de una caja está…",
+      "opciones": [
+        "algo interior",
+        "el techo del cielo",
+        "la calle"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e4",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "3.er piso respecto al 2.º…",
+      "opciones": [
+        "arriba",
+        "abajo",
+        "dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e5",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Delante de la fila está…",
+      "opciones": [
+        "el primero",
+        "el último",
+        "nadie"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e1",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "3 filas × 2 sillas. ¿Sillas?",
+      "opciones": [
+        "6",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e2",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "★ ★ ☆ ★ ¿Cuántas ★?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e3",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "4 baldas × 3 libros. ¿Libros?",
+      "opciones": [
+        "12",
+        "7",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e4",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "2 manos × 5 dedos. ¿Dedos?",
+      "opciones": [
+        "10",
+        "5",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e5",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Ventana 3×3. ¿Cristales?",
+      "opciones": [
+        "9",
+        "6",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e1",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "La letra O es…",
+      "opciones": [
+        "simétrica",
+        "imposible",
+        "solo triangular"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e2",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "¿Qué letra suele tener simetría vertical?",
+      "opciones": [
+        "A",
+        "J",
+        "F"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e3",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Un corazón centrado suele tener simetría…",
+      "opciones": [
+        "vertical",
+        "ninguna",
+        "solo de color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e4",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Espejo vertical de b ≈",
+      "opciones": [
+        "d",
+        "q",
+        "p"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e7",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "La letra H tiene…",
+      "opciones": [
+        "simetría",
+        "0 ejes",
+        "solo color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {

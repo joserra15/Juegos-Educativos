@@ -5,7 +5,11 @@
   "tipoMundo": "lectura",
   "curso": 3,
   "area": "sociales",
-  "competencias": ["CPSAA", "CC1", "CC2"],
+  "competencias": [
+    "CPSAA",
+    "CC1",
+    "CC2"
+  ],
   "saberes": [
     "el municipio y la localidad",
     "planos y mapas",
@@ -28,55 +32,96 @@
       "nombre": "Plaza del Pueblo",
       "emoji": "🏘️",
       "mecanica": "lectura",
-      "etiquetasLectura": ["localidad"],
+      "etiquetasLectura": [
+        "localidad"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🏠", "nombre": "Vecino" },
+      "recompensa": {
+        "emoji": "🏠",
+        "nombre": "Vecino"
+      },
       "objetivo": "Conocer el municipio y sus servicios.",
-      "tags": ["Municipio", "Servicios"]
+      "tags": [
+        "Municipio",
+        "Servicios"
+      ]
     },
     {
       "id": "calle-mapas",
       "nombre": "Calle de los Mapas",
       "emoji": "🗺️",
       "mecanica": "lectura",
-      "etiquetasLectura": ["mapas"],
+      "etiquetasLectura": [
+        "mapas"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🧭", "nombre": "Brújula" },
+      "recompensa": {
+        "emoji": "🧭",
+        "nombre": "Brújula"
+      },
       "objetivo": "Leer planos, puntos cardinales y símbolos.",
-      "tags": ["Mapas", "Orientación"]
+      "tags": [
+        "Mapas",
+        "Orientación"
+      ]
     },
     {
       "id": "puente-tiempo",
       "nombre": "Puente del Tiempo",
       "emoji": "⏳",
       "mecanica": "lectura",
-      "etiquetasLectura": ["pasado-presente"],
+      "etiquetasLectura": [
+        "pasado-presente"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "📜", "nombre": "Cronista" },
+      "recompensa": {
+        "emoji": "📜",
+        "nombre": "Cronista"
+      },
       "objetivo": "Comparar pasado y presente de la vida cotidiana.",
-      "tags": ["Historia local", "Cambios"]
+      "tags": [
+        "Historia local",
+        "Cambios"
+      ]
     },
     {
       "id": "taller-oficios",
       "nombre": "Taller de Oficios",
       "emoji": "🛠️",
       "mecanica": "lectura",
-      "etiquetasLectura": ["oficios"],
+      "etiquetasLectura": [
+        "oficios"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "👷", "nombre": "Oficial" },
+      "recompensa": {
+        "emoji": "👷",
+        "nombre": "Oficial"
+      },
       "objetivo": "Reconocer trabajos y su utilidad social.",
-      "tags": ["Oficios", "Trabajo"]
+      "tags": [
+        "Oficios",
+        "Trabajo"
+      ]
     },
     {
       "id": "salon-normas",
       "nombre": "Salón de Normas",
       "emoji": "🤝",
       "mecanica": "lectura",
-      "etiquetasLectura": ["convivencia", "localidad"],
+      "etiquetasLectura": [
+        "convivencia",
+        "localidad"
+      ],
       "total": 8,
-      "recompensa": { "emoji": "⚖️", "nombre": "Justo" },
+      "recompensa": {
+        "emoji": "⚖️",
+        "nombre": "Justo"
+      },
       "objetivo": "Entender normas, derechos y respeto.",
-      "tags": ["Convivencia", "Ciudadanía"]
+      "tags": [
+        "Convivencia",
+        "Ciudadanía"
+      ]
     },
     {
       "id": "ayuntamiento-magico",
@@ -86,187 +131,831 @@
       "total": 8,
       "tipo": "avanzada",
       "siempreActiva": true,
-      "recompensa": { "emoji": "🌟", "nombre": "Alcalde" },
+      "recompensa": {
+        "emoji": "🌟",
+        "nombre": "Alcalde"
+      },
       "objetivo": "Consolidar ciencias sociales de 3º.",
-      "tags": ["Sociales 3º", "Repaso global"]
+      "tags": [
+        "Sociales 3º",
+        "Repaso global"
+      ]
     }
   ],
   "bancoLectura": [
     {
       "id": "loc-1",
-      "etiquetas": ["localidad"],
+      "etiquetas": [
+        "localidad"
+      ],
       "texto": "El ayuntamiento es el edificio donde se organiza…",
-      "opciones": ["El municipio", "Solo el colegio", "Solo el parque"],
+      "opciones": [
+        "El municipio",
+        "Solo el colegio",
+        "Solo el parque"
+      ],
       "correcta": 0,
       "pista": "Allí trabajan el alcalde o la alcaldesa."
     },
     {
       "id": "loc-2",
-      "etiquetas": ["localidad"],
+      "etiquetas": [
+        "localidad"
+      ],
       "texto": "¿Qué servicio municipal apaga incendios?",
-      "opciones": ["Los bomberos", "La biblioteca", "El mercado"],
+      "opciones": [
+        "Los bomberos",
+        "La biblioteca",
+        "El mercado"
+      ],
       "correcta": 0,
       "pista": "Van en camión rojo."
     },
     {
       "id": "loc-3",
-      "etiquetas": ["localidad"],
+      "etiquetas": [
+        "localidad"
+      ],
       "texto": "El lugar donde viven muchas personas juntas se llama…",
-      "opciones": ["Localidad o municipio", "Desierto vacío", "Solo una casa"],
+      "opciones": [
+        "Localidad o municipio",
+        "Desierto vacío",
+        "Solo una casa"
+      ],
       "correcta": 0,
       "pista": "Puede ser un pueblo o una ciudad."
     },
     {
       "id": "loc-4",
-      "etiquetas": ["localidad"],
+      "etiquetas": [
+        "localidad"
+      ],
       "texto": "¿Dónde se cura a las personas enfermas?",
-      "opciones": ["En el centro de salud u hospital", "En la panadería", "En el cine"],
+      "opciones": [
+        "En el centro de salud u hospital",
+        "En la panadería",
+        "En el cine"
+      ],
       "correcta": 0,
       "pista": "Hay médicos y enfermeros."
     },
     {
       "id": "map-1",
-      "etiquetas": ["mapas"],
+      "etiquetas": [
+        "mapas"
+      ],
       "texto": "En un mapa, la brújula señala el norte. ¿Qué hay enfrente del norte?",
-      "opciones": ["El sur", "El este", "El oeste"],
+      "opciones": [
+        "El sur",
+        "El este",
+        "El oeste"
+      ],
       "correcta": 0,
       "pista": "Es el punto cardinal opuesto."
     },
     {
       "id": "map-2",
-      "etiquetas": ["mapas"],
+      "etiquetas": [
+        "mapas"
+      ],
       "texto": "Un plano del colegio es…",
-      "opciones": ["Un dibujo que representa lugares", "Una receta de cocina", "Una canción"],
+      "opciones": [
+        "Un dibujo que representa lugares",
+        "Una receta de cocina",
+        "Una canción"
+      ],
       "correcta": 0,
       "pista": "Sirve para orientarse."
     },
     {
       "id": "map-3",
-      "etiquetas": ["mapas"],
+      "etiquetas": [
+        "mapas"
+      ],
       "texto": "Si el Sol sale por el este, se pone por el…",
-      "opciones": ["Oeste", "Norte", "Sur"],
+      "opciones": [
+        "Oeste",
+        "Norte",
+        "Sur"
+      ],
       "correcta": 0,
       "pista": "Es el lado contrario al amanecer."
     },
     {
       "id": "map-4",
-      "etiquetas": ["mapas"],
+      "etiquetas": [
+        "mapas"
+      ],
       "texto": "En un plano, una cruz roja suele indicar…",
-      "opciones": ["Un hospital o centro sanitario", "Una montaña", "Un río"],
+      "opciones": [
+        "Un hospital o centro sanitario",
+        "Una montaña",
+        "Un río"
+      ],
       "correcta": 0,
       "pista": "Piensa en un símbolo de ayuda."
     },
     {
       "id": "pas-1",
-      "etiquetas": ["pasado-presente"],
+      "etiquetas": [
+        "pasado-presente"
+      ],
       "texto": "Antes muchas cartas se enviaban por correo postal. Hoy también usamos…",
-      "opciones": ["Correo electrónico y móviles", "Solo trompetas", "Solo humo"],
+      "opciones": [
+        "Correo electrónico y móviles",
+        "Solo trompetas",
+        "Solo humo"
+      ],
       "correcta": 0,
       "pista": "Comparamos pasado y presente."
     },
     {
       "id": "pas-2",
-      "etiquetas": ["pasado-presente"],
+      "etiquetas": [
+        "pasado-presente"
+      ],
       "texto": "Una fotografía antigua de tu pueblo muestra…",
-      "opciones": ["Cómo era en el pasado", "El futuro lejano", "Solo inventos falsos"],
+      "opciones": [
+        "Cómo era en el pasado",
+        "El futuro lejano",
+        "Solo inventos falsos"
+      ],
       "correcta": 0,
       "pista": "Los documentos nos hablan de antes."
     },
     {
       "id": "pas-3",
-      "etiquetas": ["pasado-presente"],
+      "etiquetas": [
+        "pasado-presente"
+      ],
       "texto": "Antes se iba al molino a moler trigo. Ahora el pan se compra en…",
-      "opciones": ["La panadería o supermercado", "El cielo", "La biblioteca"],
+      "opciones": [
+        "La panadería o supermercado",
+        "El cielo",
+        "La biblioteca"
+      ],
       "correcta": 0,
       "pista": "Piensa dónde compráis el pan hoy."
     },
     {
       "id": "pas-4",
-      "etiquetas": ["pasado-presente"],
+      "etiquetas": [
+        "pasado-presente"
+      ],
       "texto": "Las tradiciones (fiestas, danzas, platos) forman parte de…",
-      "opciones": ["La cultura local", "Solo de las matemáticas", "Solo del clima"],
+      "opciones": [
+        "La cultura local",
+        "Solo de las matemáticas",
+        "Solo del clima"
+      ],
       "correcta": 0,
       "pista": "Se transmiten de generación en generación."
     },
     {
       "id": "ofi-1",
-      "etiquetas": ["oficios"],
+      "etiquetas": [
+        "oficios"
+      ],
       "texto": "¿Quién enseña en el colegio?",
-      "opciones": ["El maestro o la maestra", "El panadero", "El bombero"],
+      "opciones": [
+        "El maestro o la maestra",
+        "El panadero",
+        "El bombero"
+      ],
       "correcta": 0,
       "pista": "Da clases cada día."
     },
     {
       "id": "ofi-2",
-      "etiquetas": ["oficios"],
+      "etiquetas": [
+        "oficios"
+      ],
       "texto": "Una persona que cultiva la tierra y cuida plantas de comida es…",
-      "opciones": ["Agricultor o agricultora", "Piloto", "Cantante"],
+      "opciones": [
+        "Agricultor o agricultora",
+        "Piloto",
+        "Cantante"
+      ],
       "correcta": 0,
       "pista": "Trabaja en el campo."
     },
     {
       "id": "ofi-3",
-      "etiquetas": ["oficios"],
+      "etiquetas": [
+        "oficios"
+      ],
       "texto": "¿Quién reparte cartas y paquetes?",
-      "opciones": ["El cartero o la cartera", "El nadador", "El pintor"],
+      "opciones": [
+        "El cartero o la cartera",
+        "El nadador",
+        "El pintor"
+      ],
       "correcta": 0,
       "pista": "Va de casa en casa con el correo."
     },
     {
       "id": "ofi-4",
-      "etiquetas": ["oficios"],
+      "etiquetas": [
+        "oficios"
+      ],
       "texto": "Los oficios existen porque…",
-      "opciones": ["Las personas necesitan bienes y servicios", "Sobran las horas", "Nadie quiere jugar"],
+      "opciones": [
+        "Las personas necesitan bienes y servicios",
+        "Sobran las horas",
+        "Nadie quiere jugar"
+      ],
       "correcta": 0,
       "pista": "Cada trabajo ayuda a la comunidad."
     },
     {
       "id": "con-1",
-      "etiquetas": ["convivencia"],
+      "etiquetas": [
+        "convivencia"
+      ],
       "texto": "Respetar el turno de palabra en clase es…",
-      "opciones": ["Una norma de convivencia", "Una regla de fútbol", "Una receta"],
+      "opciones": [
+        "Una norma de convivencia",
+        "Una regla de fútbol",
+        "Una receta"
+      ],
       "correcta": 0,
       "pista": "Ayuda a vivir juntos en paz."
     },
     {
       "id": "con-2",
-      "etiquetas": ["convivencia"],
+      "etiquetas": [
+        "convivencia"
+      ],
       "texto": "Tirar papeles a la papelera es cuidar…",
-      "opciones": ["El entorno común", "Solo tu cuaderno", "La tele"],
+      "opciones": [
+        "El entorno común",
+        "Solo tu cuaderno",
+        "La tele"
+      ],
       "correcta": 0,
       "pista": "La calle y el parque son de todos."
     },
     {
       "id": "con-3",
-      "etiquetas": ["convivencia"],
+      "etiquetas": [
+        "convivencia"
+      ],
       "texto": "Todos los niños y niñas tienen derecho a…",
-      "opciones": ["Educación y protección", "Gritar siempre", "Romper normas"],
+      "opciones": [
+        "Educación y protección",
+        "Gritar siempre",
+        "Romper normas"
+      ],
       "correcta": 0,
       "pista": "Están en la Convención sobre los Derechos del Niño."
     },
     {
       "id": "con-4",
-      "etiquetas": ["convivencia"],
+      "etiquetas": [
+        "convivencia"
+      ],
       "texto": "Si alguien se cae en el patio, lo correcto es…",
-      "opciones": ["Ayudarle y avisar a un adulto", "Reírse", "Ignorarle"],
+      "opciones": [
+        "Ayudarle y avisar a un adulto",
+        "Reírse",
+        "Ignorarle"
+      ],
       "correcta": 0,
       "pista": "La empatía une a la clase."
     },
     {
       "id": "mix-s3-1",
-      "etiquetas": ["localidad", "convivencia"],
+      "etiquetas": [
+        "localidad",
+        "convivencia"
+      ],
       "texto": "En el municipio hay normas de tráfico. Cruzar por el paso de cebra sirve para…",
-      "opciones": ["Ir más seguro", "Correr más rápido sin mirar", "Jugar en la calzada"],
+      "opciones": [
+        "Ir más seguro",
+        "Correr más rápido sin mirar",
+        "Jugar en la calzada"
+      ],
       "correcta": 0,
       "pista": "Protege a peatones."
     },
     {
       "id": "mix-s3-2",
-      "etiquetas": ["mapas", "localidad"],
+      "etiquetas": [
+        "mapas",
+        "localidad"
+      ],
       "texto": "Para llegar a la biblioteca del pueblo puedes usar…",
-      "opciones": ["Un plano o mapa", "Una cuchara", "Una goma de borrar"],
+      "opciones": [
+        "Un plano o mapa",
+        "Una cuchara",
+        "Una goma de borrar"
+      ],
       "correcta": 0,
       "pista": "Te orienta por las calles."
+    },
+    {
+      "id": "lo-e1",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "El ayuntamiento está en…",
+      "opciones": [
+        "El municipio",
+        "La Luna",
+        "El océano"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e2",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Una calle forma parte de…",
+      "opciones": [
+        "La localidad",
+        "Otro planeta",
+        "El Sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e3",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Los vecinos viven en…",
+      "opciones": [
+        "La misma zona",
+        "Siempre otro país",
+        "El cielo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e4",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Un mapa local sirve para…",
+      "opciones": [
+        "Orientarse",
+        "Cocinar",
+        "Dormir"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e5",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "La plaza es…",
+      "opciones": [
+        "Espacio abierto del pueblo",
+        "Una montaña",
+        "Un río"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e6",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "El colegio está en…",
+      "opciones": [
+        "La localidad",
+        "Marte",
+        "El fondo del mar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e1",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "La leyenda de un mapa…",
+      "opciones": [
+        "Explica símbolos",
+        "Es un cuento",
+        "Es solo el título"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e2",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "El norte suele estar…",
+      "opciones": [
+        "Arriba",
+        "En el centro solo",
+        "Abajo siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e3",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Una brújula señala…",
+      "opciones": [
+        "El norte",
+        "La hora",
+        "El color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e4",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "La escala indica…",
+      "opciones": [
+        "Relación con la realidad",
+        "El precio",
+        "El clima"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e5",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Los ríos suelen dibujarse…",
+      "opciones": [
+        "En azul",
+        "Como cuadrados",
+        "Como casas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e6",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Un plano de la clase es…",
+      "opciones": [
+        "Un mapa sencillo",
+        "Una novela",
+        "Una receta"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e7",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "La rosa de los vientos muestra…",
+      "opciones": [
+        "Puntos cardinales",
+        "Comidas",
+        "Teléfonos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e1",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Una foto antigua habla del…",
+      "opciones": [
+        "Pasado",
+        "Futuro lejano solo",
+        "Espacio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e2",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Antes usaban más…",
+      "opciones": [
+        "Cartas/teléfono fijo",
+        "Cohetes personales",
+        "Telepatía"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e3",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Un museo guarda objetos del…",
+      "opciones": [
+        "Pasado",
+        "Mañana solo",
+        "Vacío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e4",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Los abuelos pueden contar…",
+      "opciones": [
+        "Cómo era antes",
+        "El clima de Marte",
+        "El futuro exacto"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e5",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Una tradición se transmite…",
+      "opciones": [
+        "De generación en generación",
+        "Solo por wifi",
+        "Solo un día"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e6",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Comparar ayer y hoy sirve para…",
+      "opciones": [
+        "Ver cambios",
+        "Olvidar todo",
+        "Borrar mapas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e7",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "El presente es…",
+      "opciones": [
+        "El ahora",
+        "Hace 100 años",
+        "El año 3000"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e8",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Un calendario organiza…",
+      "opciones": [
+        "Días y meses",
+        "Solo comidas",
+        "Solo colores"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e1",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un panadero…",
+      "opciones": [
+        "Hace pan",
+        "Apaga incendios siempre",
+        "Conduce trenes siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e2",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un médico…",
+      "opciones": [
+        "Cuida la salud",
+        "Construye casas",
+        "Vuela aviones siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e3",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un maestro…",
+      "opciones": [
+        "Enseña",
+        "Arregla coches solo",
+        "Pinta carreteras"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e4",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un bombero…",
+      "opciones": [
+        "Apaga incendios",
+        "Cocina postres siempre",
+        "Vende flores"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e5",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un agricultor…",
+      "opciones": [
+        "Cultiva",
+        "Dirige orquestas",
+        "Programa robots solo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e6",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un cartero…",
+      "opciones": [
+        "Reparte cartas",
+        "Cura dientes",
+        "Pinta cuadros"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e7",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Una enfermera…",
+      "opciones": [
+        "Ayuda en sanidad",
+        "Construye puentes",
+        "Arregla relojes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e8",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un policía…",
+      "opciones": [
+        "Cuida la seguridad",
+        "Siembra trigo siempre",
+        "Repara zapatos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e1",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Respetar a los demás es…",
+      "opciones": [
+        "Clave para convivir",
+        "Inútil",
+        "Orden de pelear"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e2",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Ante un conflicto conviene…",
+      "opciones": [
+        "Hablar y acordar",
+        "Insultar",
+        "Ignorar siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e3",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Compartir en clase…",
+      "opciones": [
+        "Ayuda al grupo",
+        "Está prohibido siempre",
+        "Rompe la amistad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e4",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Las normas del cole sirven para…",
+      "opciones": [
+        "Orden y respeto",
+        "Hacer daño",
+        "Callar ideas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e5",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Escuchar al hablar es…",
+      "opciones": [
+        "Respetuoso",
+        "Mala educación",
+        "Innecesario"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e6",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Ayudar a un compañero…",
+      "opciones": [
+        "Fortalece la convivencia",
+        "Está mal",
+        "Pierde el tiempo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e7",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Tirar basura al suelo…",
+      "opciones": [
+        "Perjudica a todos",
+        "Es un premio",
+        "Limpia el parque"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {
@@ -278,10 +967,23 @@
     "ayuntamiento-magico": 25
   },
   "mensajes": {
-    "acierto": ["¡Gran ciudadano!", "¡Historia bien leída!", "¡Excelente!"],
-    "error": ["Mira otra vez el pueblo", "Revisa la pista", "Prueba otra opción"],
-    "ultima": ["¡Última pregunta de la villa!"]
+    "acierto": [
+      "¡Gran ciudadano!",
+      "¡Historia bien leída!",
+      "¡Excelente!"
+    ],
+    "error": [
+      "Mira otra vez el pueblo",
+      "Revisa la pista",
+      "Prueba otra opción"
+    ],
+    "ultima": [
+      "¡Última pregunta de la villa!"
+    ]
   },
   "mensajesPredefinidos": {},
-  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }

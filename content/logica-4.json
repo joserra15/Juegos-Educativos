@@ -487,6 +487,300 @@
       ],
       "correcta": 0,
       "pista": "Si B verdad → A miente (A no lo hizo) y C miente (no fue B) → fue C."
+    },
+    {
+      "id": "se4-e1",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "2,4,8,16,…",
+      "opciones": [
+        "32",
+        "24",
+        "18"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e2",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "1,4,9,16,…",
+      "opciones": [
+        "25",
+        "20",
+        "18"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e3",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "20,17,14,11,…",
+      "opciones": [
+        "8",
+        "9",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e4",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "1,3,6,10,15,…",
+      "opciones": [
+        "21",
+        "18",
+        "20"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e5",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "A,C,E,G,…",
+      "opciones": [
+        "I",
+        "H",
+        "J"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e1",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Todos los peces nadan. Nemo es pez. ¿Nada?",
+      "opciones": [
+        "Sí",
+        "No",
+        "Imposible"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e2",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Ana > Bea > Clara. ¿Quién es mayor?",
+      "opciones": [
+        "Ana",
+        "Bea",
+        "Clara"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e3",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Si llueve, mojado. Calle seca. ¿Llueve?",
+      "opciones": [
+        "No",
+        "Sí",
+        "Seguro que sí"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e4",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Luis solo come fruta roja. ¿Come plátano?",
+      "opciones": [
+        "No",
+        "Sí",
+        "No se sabe"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e5",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Pedro delante de Sara y detrás de Lucía. ¿Primero?",
+      "opciones": [
+        "Lucía",
+        "Pedro",
+        "Sara"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e1",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Médico es a hospital como maestro a…",
+      "opciones": [
+        "colegio",
+        "farmacia",
+        "estadio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e2",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Hielo es a frío como fuego a…",
+      "opciones": [
+        "calor",
+        "agua",
+        "noche"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e3",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Autor es a libro como compositor a…",
+      "opciones": [
+        "canción",
+        "pincel",
+        "mapa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e4",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Minuto es a hora como día a…",
+      "opciones": [
+        "semana/mes",
+        "segundo",
+        "reloj"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e5",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Semilla es a árbol como larva a…",
+      "opciones": [
+        "insecto",
+        "hoja",
+        "nido"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e6",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Teclado es a ordenador como volante a…",
+      "opciones": [
+        "coche",
+        "silla",
+        "libro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e1",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Calcetines rojo/azul. ¿Mínimo para asegurar par igual?",
+      "opciones": [
+        "3",
+        "2",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e2",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Hoy martes. ¿Día en 3 días?",
+      "opciones": [
+        "Viernes",
+        "Jueves",
+        "Sábado"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e3",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "2 monedas = 30 cént.; una no es de 10. ¿Cuáles?",
+      "opciones": [
+        "20 y 10",
+        "15 y 15",
+        "30 y 0"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e4",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Reloj 3:00. ¿Ángulo aproximado?",
+      "opciones": [
+        "90°",
+        "180°",
+        "0°"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e5",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Ana tiene 6; yo el doble. ¿Cuántos tengo?",
+      "opciones": [
+        "12",
+        "6",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {
