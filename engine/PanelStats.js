@@ -68,6 +68,8 @@ export function etiquetaArea(area) {
   const mapa = {
     matematicas: "Matemáticas",
     lengua: "Lengua",
+    ciencias: "Ciencias",
+    sociales: "Sociales",
     general: "General",
   };
   return mapa[area] || area;

@@ -3,6 +3,7 @@
  */
 
 import { getProgresoMundo } from "../../engine/WorldManager.js";
+import { etiquetaArea } from "../../engine/PanelStats.js";
 
 export function getBadgeMundo(state, totalFases) {
   const completadas = state?.liberadas?.length || 0;
@@ -48,7 +49,7 @@ export function renderTarjetasMundos({
           <span class="badge-mundo badge-${badge.tipo}">${badge.texto}</span>
           <span class="emoji-mundo emoji-parallax">${entry.emoji}</span>
           <strong>${entry.nombre}</strong>
-          <p class="meta-mundo">${entry.curso}º · ${entry.area}</p>
+          <p class="meta-mundo">${entry.curso}º · ${etiquetaArea(entry.area)}</p>
           <div class="tarjeta-progreso-mini">
             <div class="tarjeta-progreso-fill" style="width:${pct}%"></div>
           </div>

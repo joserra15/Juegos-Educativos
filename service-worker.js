@@ -1,4 +1,4 @@
-const CACHE_NAME = "mundos-magicos-v12";
+const CACHE_NAME = "mundos-magicos-v13";
 
 const FILES_TO_CACHE = [
   "./",
@@ -19,6 +19,10 @@ const FILES_TO_CACHE = [
   "./content/calculo-4.json",
   "./content/fracciones-4.json",
   "./content/lengua-4.json",
+  "./content/ciencias-3.json",
+  "./content/sociales-3.json",
+  "./content/ciencias-4.json",
+  "./content/sociales-4.json",
   "./engine/ContentLoader.js",
   "./engine/QuestionGenerator.js",
   "./engine/Scoring.js",
