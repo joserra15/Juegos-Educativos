@@ -1,0 +1,519 @@
+{
+  "id": "logica-4",
+  "version": "3.5.0",
+  "nombre": "Torre de Enigmas",
+  "tipoMundo": "lectura",
+  "curso": 4,
+  "area": "logica",
+  "competencias": [
+    "STEM1",
+    "STEM3",
+    "CPSAA5",
+    "CE1"
+  ],
+  "saberes": [
+    "series complejas",
+    "deducción",
+    "analogías",
+    "problemas de lógica"
+  ],
+  "tema": {
+    "colorPrimario": "#4a148c",
+    "colorSecundario": "#ab47bc",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "sphinx",
+    "recompensaLabel": "cristal"
+  },
+  "etiquetaCurricular": "4º Primaria · Lógica · Razonamiento",
+  "textoCurricular": "Series avanzadas, deducción sencilla, analogías y problemas lógicos de 4º.",
+  "fases": [
+    {
+      "id": "series-altas",
+      "nombre": "Series Altas",
+      "emoji": "📈",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "series-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "📈",
+        "nombre": "Seriante"
+      },
+      "objetivo": "Completar series con reglas más difíciles.",
+      "tags": [
+        "Series",
+        "Reglas"
+      ]
+    },
+    {
+      "id": "sala-deduccion",
+      "nombre": "Sala de Deducción",
+      "emoji": "🔍",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "deduccion"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔍",
+        "nombre": "Detective"
+      },
+      "objetivo": "Sacar conclusiones a partir de pistas.",
+      "tags": [
+        "Deducción",
+        "Pistas"
+      ]
+    },
+    {
+      "id": "sala-analogias",
+      "nombre": "Sala de Analogías",
+      "emoji": "🔗",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "analogias-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔗",
+        "nombre": "Nexo Mayor"
+      },
+      "objetivo": "Relaciones más abstractas.",
+      "tags": [
+        "Analogías",
+        "4º"
+      ]
+    },
+    {
+      "id": "sala-problemas",
+      "nombre": "Sala de Problemas",
+      "emoji": "🧠",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "problemas-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🧠",
+        "nombre": "Cerebrín"
+      },
+      "objetivo": "Resolver situaciones lógicas.",
+      "tags": [
+        "Problemas",
+        "Lógica"
+      ]
+    },
+    {
+      "id": "cima-torre",
+      "nombre": "Cima de la Torre",
+      "emoji": "🏰",
+      "mecanica": "lectura",
+      "total": 8,
+      "recompensa": {
+        "emoji": "🏰",
+        "nombre": "Enigma Mayor"
+      },
+      "objetivo": "Repaso global de lógica 4º.",
+      "tags": [
+        "Lógica 4º",
+        "Repaso"
+      ],
+      "tipo": "avanzada",
+      "siempreActiva": true
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "se1",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "¿Qué sigue? 2, 4, 8, 16, …",
+      "opciones": [
+        "32",
+        "24",
+        "18"
+      ],
+      "correcta": 0,
+      "pista": "Se multiplica por 2."
+    },
+    {
+      "id": "se2",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "¿Qué sigue? 1, 4, 9, 16, …",
+      "opciones": [
+        "25",
+        "20",
+        "18"
+      ],
+      "correcta": 0,
+      "pista": "Cuadrados: 1², 2², 3²…"
+    },
+    {
+      "id": "se3",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "Serie: 20, 17, 14, 11, …",
+      "opciones": [
+        "8",
+        "9",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Resta 3."
+    },
+    {
+      "id": "se4",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "1, 3, 6, 10, 15, … ¿siguiente?",
+      "opciones": [
+        "21",
+        "18",
+        "20"
+      ],
+      "correcta": 0,
+      "pista": "Suma 2, 3, 4, 5…"
+    },
+    {
+      "id": "se5",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "A, C, E, G, … ¿siguiente?",
+      "opciones": [
+        "I",
+        "H",
+        "J"
+      ],
+      "correcta": 0,
+      "pista": "Salta una letra."
+    },
+    {
+      "id": "se6",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "3, 3, 6, 6, 9, 9, … ¿siguiente?",
+      "opciones": [
+        "12",
+        "10",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Parejas que suben de 3."
+    },
+    {
+      "id": "se7",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "100, 90, 81, 73, … (resta 10, 9, 8…) ¿siguiente?",
+      "opciones": [
+        "66",
+        "64",
+        "70"
+      ],
+      "correcta": 0,
+      "pista": "Ahora resta 7."
+    },
+    {
+      "id": "d1",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Ana es mayor que Bea. Bea es mayor que Clara. ¿Quién es la mayor?",
+      "opciones": [
+        "Ana",
+        "Bea",
+        "Clara"
+      ],
+      "correcta": 0,
+      "pista": "Ana > Bea > Clara."
+    },
+    {
+      "id": "d2",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Todos los gatos del pueblo duermen de día. Misu es un gato del pueblo. ¿Qué puedes afirmar?",
+      "opciones": [
+        "Misu duerme de día",
+        "Misu caza de día",
+        "Misu no es un gato"
+      ],
+      "correcta": 0,
+      "pista": "Aplica la regla general."
+    },
+    {
+      "id": "d3",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Si llueve, la calle está mojada. La calle está seca. ¿Qué es verdad?",
+      "opciones": [
+        "No está lloviendo",
+        "Está lloviendo",
+        "Nieva seguro"
+      ],
+      "correcta": 0,
+      "pista": "Si estuviera lloviendo, estaría mojada."
+    },
+    {
+      "id": "d4",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Luis solo come fruta roja. Le ofrecen un plátano. ¿Lo come?",
+      "opciones": [
+        "No",
+        "Sí",
+        "No se sabe nada"
+      ],
+      "correcta": 0,
+      "pista": "El plátano no es rojo."
+    },
+    {
+      "id": "d5",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "En una fila, Pedro está delante de Sara y detrás de Lucía. ¿Quién va primero?",
+      "opciones": [
+        "Lucía",
+        "Pedro",
+        "Sara"
+      ],
+      "correcta": 0,
+      "pista": "Lucía → Pedro → Sara."
+    },
+    {
+      "id": "d6",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Hay 3 cajas: una con manzanas, una con peras y una mixta. La etiqueta 'manzanas' está mal. ¿Qué puede haber dentro?",
+      "opciones": [
+        "No manzanas solas (etiqueta falsa)",
+        "Solo manzanas seguro",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Si la etiqueta miente, no son solo manzanas."
+    },
+    {
+      "id": "a41",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Médico es a hospital como maestro es a…",
+      "opciones": [
+        "colegio",
+        "farmacia",
+        "estadio"
+      ],
+      "correcta": 0,
+      "pista": "Lugar de trabajo."
+    },
+    {
+      "id": "a42",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Hielo es a frío como fuego es a…",
+      "opciones": [
+        "calor",
+        "agua",
+        "noche"
+      ],
+      "correcta": 0,
+      "pista": "Sensación opuesta al hielo."
+    },
+    {
+      "id": "a43",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Autor es a libro como compositor es a…",
+      "opciones": [
+        "canción / música",
+        "pincel",
+        "mapa"
+      ],
+      "correcta": 0,
+      "pista": "Qué crea."
+    },
+    {
+      "id": "a44",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Minuto es a hora como día es a…",
+      "opciones": [
+        "semana / mes / año",
+        "segundo",
+        "reloj"
+      ],
+      "correcta": 0,
+      "pista": "Unidad mayor de tiempo."
+    },
+    {
+      "id": "a45",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Semilla es a árbol como larva es a…",
+      "opciones": [
+        "insecto / mariposa",
+        "hoja",
+        "nido"
+      ],
+      "correcta": 0,
+      "pista": "Etapa anterior."
+    },
+    {
+      "id": "a46",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Teclado es a ordenador como volante es a…",
+      "opciones": [
+        "coche",
+        "silla",
+        "libro"
+      ],
+      "correcta": 0,
+      "pista": "Para controlar/conducir."
+    },
+    {
+      "id": "pr1",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "En un cajón hay 3 calcetines rojos y 3 azules. ¿Cuántos debes sacar (mínimo) para asegurar un par del mismo color?",
+      "opciones": [
+        "3",
+        "2",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "En el peor caso: 1 rojo + 1 azul + 1 más."
+    },
+    {
+      "id": "pr2",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Un sapo sube 3 m de día y resbala 1 m de noche por un pozo de 5 m. ¿En cuántos días sale?",
+      "opciones": [
+        "2",
+        "3",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Día 1: llega a 3, noche 2; día 2 sube 3 y alcanza 5."
+    },
+    {
+      "id": "pr3",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Hay 4 sillas en fila. Ana no está en ningún extremo. Luis está a la derecha de Ana. ¿Quién puede estar a la izquierda de Ana?",
+      "opciones": [
+        "Cualquiera menos Luis (posiciones medias)",
+        "Solo Luis",
+        "Nadie"
+      ],
+      "correcta": 0,
+      "pista": "Ana en silla 2 o 3."
+    },
+    {
+      "id": "pr4",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Si hoy es martes, ¿qué día será dentro de 3 días?",
+      "opciones": [
+        "Viernes",
+        "Jueves",
+        "Sábado"
+      ],
+      "correcta": 0,
+      "pista": "Mar+1 mié, +2 jue, +3 vie."
+    },
+    {
+      "id": "pr5",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Un reloj marca las 3:00. ¿Qué ángulo hay entre las agujas?",
+      "opciones": [
+        "90 grados",
+        "180 grados",
+        "0 grados"
+      ],
+      "correcta": 0,
+      "pista": "En punto: manecillas en cruz a las 3."
+    },
+    {
+      "id": "pr6",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Tengo 2 monedas que suman 30 céntimos. Una no es de 10. ¿Qué monedas son?",
+      "opciones": [
+        "20 y 10",
+        "15 y 15",
+        "30 y 0"
+      ],
+      "correcta": 0,
+      "pista": "'Una' no es de 10, la otra sí puede serlo."
+    },
+    {
+      "id": "pr7",
+      "etiquetas": [
+        "problemas-4",
+        "deduccion"
+      ],
+      "texto": "Solo uno dice verdad. A: 'Yo lo hice'. B: 'A miente'. C: 'Fue B'. Si B dice verdad, ¿quién lo hizo?",
+      "opciones": [
+        "C",
+        "A",
+        "B"
+      ],
+      "correcta": 0,
+      "pista": "Si B verdad → A miente (A no lo hizo) y C miente (no fue B) → fue C."
+    }
+  ],
+  "puntosPorFase": {
+    "series-altas": 12,
+    "sala-deduccion": 14,
+    "sala-analogias": 14,
+    "sala-problemas": 16,
+    "cima-torre": 25
+  },
+  "mensajes": {
+    "acierto": [
+      "¡Enigma resuelto!",
+      "¡Excelente deducción!",
+      "¡Pensamiento afilado!"
+    ],
+    "error": [
+      "Revisa las pistas",
+      "Ordena los datos",
+      "Prueba otra vía"
+    ],
+    "ultima": [
+      "¡Último enigma de la torre!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}

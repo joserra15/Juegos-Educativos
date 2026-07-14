@@ -204,7 +204,8 @@ export function renderHistoriaBienvenida(manifest, containerId = "contenidoHisto
     <p>
       ✨ Solo alguien valiente y con ganas de aprender puede liberarlos.
       Hay aventuras de <strong>matemáticas</strong>, <strong>lengua</strong>,
-      <strong>ciencias</strong> y <strong>sociales</strong> para 3º y 4º de Primaria.
+      <strong>ciencias</strong>, <strong>sociales</strong>, <strong>inglés</strong>,
+      <strong>lógica</strong> y <strong>visoespacial</strong> para 3º y 4º de Primaria.
     </p>
     <p class="historia-intro-mundos">Estos son los mundos que puedes explorar:</p>
     <div class="historia-mundos-wrap">

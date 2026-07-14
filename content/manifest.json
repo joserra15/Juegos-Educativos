@@ -1,5 +1,5 @@
 {
-  "version": "3.4.0",
+  "version": "3.5.0",
   "appName": "Mundos Mágicos Educativos",
   "defaultMundo": "unicornios",
   "mundos": [
@@ -100,6 +100,54 @@
       }
     },
     {
+      "id": "ingles-3",
+      "nombre": "English Garden",
+      "emoji": "🇬🇧",
+      "curso": 3,
+      "area": "ingles",
+      "descripcion": "Colores, números, animales, colegio y saludos en inglés",
+      "disponible": true,
+      "totalFases": 6,
+      "contentFile": "ingles-3.json",
+      "tema": {
+        "colorPrimario": "#1565c0",
+        "colorSecundario": "#64b5f6",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "logica-3",
+      "nombre": "Laberinto de la Lógica",
+      "emoji": "🧩",
+      "curso": 3,
+      "area": "logica",
+      "descripcion": "Series, patrones, clasificación y analogías simples",
+      "disponible": true,
+      "totalFases": 5,
+      "contentFile": "logica-3.json",
+      "tema": {
+        "colorPrimario": "#6a1b9a",
+        "colorSecundario": "#ce93d8",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "visoespacial-3",
+      "nombre": "Isla de las Formas",
+      "emoji": "🔷",
+      "curso": 3,
+      "area": "visoespacial",
+      "descripcion": "Figuras, posiciones, conteo visual y simetría sencilla",
+      "disponible": true,
+      "totalFases": 5,
+      "contentFile": "visoespacial-3.json",
+      "tema": {
+        "colorPrimario": "#00838f",
+        "colorSecundario": "#4dd0e1",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
       "id": "calculo-4",
       "nombre": "Ciudad de los Números",
       "emoji": "🏙️",
@@ -176,6 +224,54 @@
       "tema": {
         "colorPrimario": "#bf360c",
         "colorSecundario": "#ff8a65",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "ingles-4",
+      "nombre": "English Castle",
+      "emoji": "🏰",
+      "curso": 4,
+      "area": "ingles",
+      "descripcion": "Vocabulario, presente simple, preguntas y lectura (4º)",
+      "disponible": true,
+      "totalFases": 5,
+      "contentFile": "ingles-4.json",
+      "tema": {
+        "colorPrimario": "#0d47a1",
+        "colorSecundario": "#42a5f5",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "logica-4",
+      "nombre": "Torre de Enigmas",
+      "emoji": "🕵️",
+      "curso": 4,
+      "area": "logica",
+      "descripcion": "Series avanzadas, deducción, analogías y problemas lógicos",
+      "disponible": true,
+      "totalFases": 5,
+      "contentFile": "logica-4.json",
+      "tema": {
+        "colorPrimario": "#4a148c",
+        "colorSecundario": "#ab47bc",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "visoespacial-4",
+      "nombre": "Ciudad Perspectiva",
+      "emoji": "🛰️",
+      "curso": 4,
+      "area": "visoespacial",
+      "descripcion": "Rotaciones, vistas, composición y simetría (4º)",
+      "disponible": true,
+      "totalFases": 5,
+      "contentFile": "visoespacial-4.json",
+      "tema": {
+        "colorPrimario": "#006064",
+        "colorSecundario": "#26c6da",
         "fondo": "fondo-magico.jpg"
       }
     }

@@ -1,0 +1,544 @@
+{
+  "id": "visoespacial-3",
+  "version": "3.5.0",
+  "nombre": "Isla de las Formas",
+  "tipoMundo": "lectura",
+  "curso": 3,
+  "area": "visoespacial",
+  "competencias": [
+    "STEM1",
+    "STEM2",
+    "CCEC1"
+  ],
+  "saberes": [
+    "figuras planas",
+    "posiciones en el espacio",
+    "conteo de formas",
+    "simetría sencilla"
+  ],
+  "tema": {
+    "colorPrimario": "#00838f",
+    "colorSecundario": "#4dd0e1",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "crab",
+    "recompensaLabel": "figura"
+  },
+  "etiquetaCurricular": "3º Primaria · Visoespacial · Percepción",
+  "textoCurricular": "Formas geométricas, posiciones, conteo visual y simetrías sencillas.",
+  "fases": [
+    {
+      "id": "playa-formas",
+      "nombre": "Playa de Formas",
+      "emoji": "⬜",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "formas"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "⬜",
+        "nombre": "Formín"
+      },
+      "objetivo": "Reconocer figuras planas básicas.",
+      "tags": [
+        "Figuras",
+        "Geometría"
+      ]
+    },
+    {
+      "id": "faro-posiciones",
+      "nombre": "Faro de Posiciones",
+      "emoji": "📍",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "posiciones"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "📍",
+        "nombre": "Ubika"
+      },
+      "objetivo": "Arriba, abajo, izquierda, derecha, dentro…",
+      "tags": [
+        "Posición",
+        "Orientación"
+      ]
+    },
+    {
+      "id": "cueva-conteo",
+      "nombre": "Cueva del Conteo",
+      "emoji": "🔭",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "conteo"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔭",
+        "nombre": "Contavis"
+      },
+      "objetivo": "Contar figuras en una escena descrita.",
+      "tags": [
+        "Conteo visual"
+      ]
+    },
+    {
+      "id": "espejo-suave",
+      "nombre": "Espejo Suave",
+      "emoji": "🪞",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "simetria"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🪞",
+        "nombre": "Simi"
+      },
+      "objetivo": "Identificar simetrías simples.",
+      "tags": [
+        "Simetría"
+      ]
+    },
+    {
+      "id": "tesoro-isla",
+      "nombre": "Tesoro de la Isla",
+      "emoji": "💎",
+      "mecanica": "lectura",
+      "total": 8,
+      "recompensa": {
+        "emoji": "💎",
+        "nombre": "Geomago"
+      },
+      "objetivo": "Repaso visoespacial de 3º.",
+      "tags": [
+        "Visoespacial 3º",
+        "Repaso"
+      ],
+      "tipo": "avanzada",
+      "siempreActiva": true
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "fo1",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "¿Cuántos lados tiene un triángulo?",
+      "opciones": [
+        "3",
+        "4",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Tri = tres."
+    },
+    {
+      "id": "fo2",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Un cuadrado tiene…",
+      "opciones": [
+        "4 lados iguales",
+        "3 lados",
+        "0 lados"
+      ],
+      "correcta": 0,
+      "pista": "Todos iguales y 4 ángulos."
+    },
+    {
+      "id": "fo3",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "¿Qué figura es redonda sin esquinas?",
+      "opciones": [
+        "Círculo",
+        "Cuadrado",
+        "Rectángulo"
+      ],
+      "correcta": 0,
+      "pista": "Como una rueda."
+    },
+    {
+      "id": "fo4",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Un rectángulo se parece a un…",
+      "opciones": [
+        "ladrillo / puerta",
+        "pelota",
+        "cono de helado"
+      ],
+      "correcta": 0,
+      "pista": "4 lados, no todos iguales necesariamente."
+    },
+    {
+      "id": "fo5",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "¿Cuántos vértices tiene un cuadrado?",
+      "opciones": [
+        "4",
+        "3",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Una esquina por vértice."
+    },
+    {
+      "id": "fo6",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "La figura con 5 lados se llama…",
+      "opciones": [
+        "Pentágono",
+        "Hexágono",
+        "Óvalo"
+      ],
+      "correcta": 0,
+      "pista": "Penta = 5."
+    },
+    {
+      "id": "fo7",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "¿Qué forma tiene normalmente una pelota?",
+      "opciones": [
+        "Esfera",
+        "Cubo",
+        "Pirámide"
+      ],
+      "correcta": 0,
+      "pista": "Cuerpo redondo."
+    },
+    {
+      "id": "po1",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "El sol está ___ del suelo.",
+      "opciones": [
+        "arriba",
+        "dentro",
+        "debajo"
+      ],
+      "correcta": 0,
+      "pista": "En el cielo."
+    },
+    {
+      "id": "po2",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Si miras un mapa, el norte suele estar…",
+      "opciones": [
+        "arriba",
+        "abajo",
+        "en el centro siempre"
+      ],
+      "correcta": 0,
+      "pista": "Convención de mapas."
+    },
+    {
+      "id": "po3",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Tu mano izquierda es la que…",
+      "opciones": [
+        "está al lado izquierdo de tu cuerpo",
+        "escribe siempre",
+        "no existe"
+      ],
+      "correcta": 0,
+      "pista": "Lado izquierdo."
+    },
+    {
+      "id": "po4",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Un pez dentro de una pecera está…",
+      "opciones": [
+        "dentro",
+        "No: fuera encima",
+        "Lejos del agua"
+      ],
+      "correcta": 0,
+      "pista": "Inside."
+    },
+    {
+      "id": "po5",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "El sofá está debajo de… ¿qué frase es correcta normalmente?",
+      "opciones": [
+        "El cuadro está encima del sofá",
+        "El sofá vuela encima del techo",
+        "El sofá está dentro de la lámpara"
+      ],
+      "correcta": 0,
+      "pista": "Cuadro sobre pared / zona alta."
+    },
+    {
+      "id": "po6",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Si caminas hacia adelante y giras a la derecha, miras…",
+      "opciones": [
+        "a tu derecha",
+        "hacia atrás seguro",
+        "al cielo solo"
+      ],
+      "correcta": 0,
+      "pista": "Giro a la derecha."
+    },
+    {
+      "id": "po7",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Entre dos casas, el árbol del medio está…",
+      "opciones": [
+        "en el centro / entre ellas",
+        "muy lejos en el mar",
+        "dentro de un libro"
+      ],
+      "correcta": 0,
+      "pista": "Posición intermedia."
+    },
+    {
+      "id": "co1",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "En una fila ves: ★ ★ ☆ ★ ★ ☆. ¿Cuántas estrellas negras (★) hay?",
+      "opciones": [
+        "4",
+        "2",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta solo ★."
+    },
+    {
+      "id": "co2",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Una ventana tiene 2 filas de 3 cristales. ¿Cuántos cristales?",
+      "opciones": [
+        "6",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "2×3."
+    },
+    {
+      "id": "co3",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Hay 3 casas. Cada una tiene 2 chimeneas. ¿Cuántas chimeneas en total?",
+      "opciones": [
+        "6",
+        "3",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "3×2."
+    },
+    {
+      "id": "co4",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "En un dibujo hay 5 círculos y 2 están tachados. ¿Cuántos círculos quedan sin tachar?",
+      "opciones": [
+        "3",
+        "5",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "5−2."
+    },
+    {
+      "id": "co5",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Un dado muestra 5 puntos. ¿Cuántos puntos ves en esa cara?",
+      "opciones": [
+        "5",
+        "6",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "La cara superior descrita."
+    },
+    {
+      "id": "co6",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Triángulos en una fila: △ △ △ △. ¿Cuántos?",
+      "opciones": [
+        "4",
+        "3",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta uno a uno."
+    },
+    {
+      "id": "co7",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Una estantería tiene 4 baldas y 2 libros en cada una. ¿Cuántos libros?",
+      "opciones": [
+        "8",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "4×2."
+    },
+    {
+      "id": "si1",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Si doblas un cuadrado por la mitad vertical, las dos partes…",
+      "opciones": [
+        "coinciden (es simétrico)",
+        "no pueden coincidir",
+        "desaparecen"
+      ],
+      "correcta": 0,
+      "pista": "El cuadrado tiene ejes de simetría."
+    },
+    {
+      "id": "si2",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "La letra 'O' es…",
+      "opciones": [
+        "simétrica",
+        "imposible de mirar",
+        "solo triangular"
+      ],
+      "correcta": 0,
+      "pista": "Igual a izquierda y derecha."
+    },
+    {
+      "id": "si3",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "¿Qué letra tiene simetría vertical típica?",
+      "opciones": [
+        "A",
+        "J",
+        "F"
+      ],
+      "correcta": 0,
+      "pista": "La A se refleja bien en vertical."
+    },
+    {
+      "id": "si4",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Un corazón dibujado centrado suele tener simetría…",
+      "opciones": [
+        "vertical",
+        "ninguna posible",
+        "solo de colores"
+      ],
+      "correcta": 0,
+      "pista": "Mitad izquierda ≈ derecha."
+    },
+    {
+      "id": "si5",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Si espejas la letra 'b' en un espejo vertical, se parece más a…",
+      "opciones": [
+        "d",
+        "q",
+        "p"
+      ],
+      "correcta": 0,
+      "pista": "La panza cambia de lado."
+    },
+    {
+      "id": "si6",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Una mariposa con alas iguales muestra…",
+      "opciones": [
+        "simetría",
+        "caos total",
+        "solo círculos"
+      ],
+      "correcta": 0,
+      "pista": "Alas espejo."
+    },
+    {
+      "id": "si7",
+      "etiquetas": [
+        "simetria",
+        "formas"
+      ],
+      "texto": "Un círculo tiene…",
+      "opciones": [
+        "infinitos ejes de simetría",
+        "ningún eje",
+        "solo 1 esquina"
+      ],
+      "correcta": 0,
+      "pista": "Cualquier diámetro."
+    }
+  ],
+  "puntosPorFase": {
+    "playa-formas": 10,
+    "faro-posiciones": 12,
+    "cueva-conteo": 12,
+    "espejo-suave": 14,
+    "tesoro-isla": 25
+  },
+  "mensajes": {
+    "acierto": [
+      "¡Buena vista!",
+      "¡Espacio dominado!",
+      "¡Forma perfecta!"
+    ],
+    "error": [
+      "Imagina la figura",
+      "Piensa la posición",
+      "Cuenta con calma"
+    ],
+    "ultima": [
+      "¡Última figura de la isla!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}

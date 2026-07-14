@@ -1,0 +1,546 @@
+{
+  "id": "logica-3",
+  "version": "3.5.0",
+  "nombre": "Laberinto de la Lógica",
+  "tipoMundo": "lectura",
+  "curso": 3,
+  "area": "logica",
+  "competencias": [
+    "STEM1",
+    "STEM3",
+    "CPSAA5"
+  ],
+  "saberes": [
+    "secuencias",
+    "patrones",
+    "clasificación",
+    "analogías simples"
+  ],
+  "tema": {
+    "colorPrimario": "#6a1b9a",
+    "colorSecundario": "#ce93d8",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "fox",
+    "recompensaLabel": "pieza"
+  },
+  "etiquetaCurricular": "3º Primaria · Lógica · Razonamiento",
+  "textoCurricular": "Patrones, series, clasificación y analogías sencillas para entrenar el pensamiento lógico.",
+  "fases": [
+    {
+      "id": "serie-piedras",
+      "nombre": "Sendero de Series",
+      "emoji": "🔢",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "secuencias"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔢",
+        "nombre": "Serión"
+      },
+      "objetivo": "Completar series numéricas y de formas.",
+      "tags": [
+        "Series",
+        "Patrones"
+      ]
+    },
+    {
+      "id": "patron-mosaico",
+      "nombre": "Mosaico de Patrones",
+      "emoji": "🧩",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "patrones"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🧩",
+        "nombre": "Motivo"
+      },
+      "objetivo": "Descubrir qué sigue en un patrón.",
+      "tags": [
+        "Patrones",
+        "Repetición"
+      ]
+    },
+    {
+      "id": "caja-clases",
+      "nombre": "Caja de Clasificación",
+      "emoji": "📦",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "clasificacion"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "📦",
+        "nombre": "Ordenín"
+      },
+      "objetivo": "Agrupar por atributos comunes.",
+      "tags": [
+        "Clasificar",
+        "Atributos"
+      ]
+    },
+    {
+      "id": "puente-analogias",
+      "nombre": "Puente de Analogías",
+      "emoji": "🌉",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "analogias"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🌉",
+        "nombre": "Nexo"
+      },
+      "objetivo": "Relacionar pares como A es a B.",
+      "tags": [
+        "Analogías",
+        "Relaciones"
+      ]
+    },
+    {
+      "id": "enigma-final",
+      "nombre": "Enigma del Laberinto",
+      "emoji": "🕵️",
+      "mecanica": "lectura",
+      "total": 8,
+      "recompensa": {
+        "emoji": "🕵️",
+        "nombre": "Lógico"
+      },
+      "objetivo": "Repaso de lógica de 3º.",
+      "tags": [
+        "Lógica 3º",
+        "Repaso"
+      ],
+      "tipo": "avanzada",
+      "siempreActiva": true
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "s1",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué número sigue? 2, 4, 6, 8, …",
+      "opciones": [
+        "10",
+        "9",
+        "12"
+      ],
+      "correcta": 0,
+      "pista": "Suma de 2 en 2."
+    },
+    {
+      "id": "s2",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué número sigue? 5, 10, 15, 20, …",
+      "opciones": [
+        "25",
+        "21",
+        "30"
+      ],
+      "correcta": 0,
+      "pista": "De 5 en 5."
+    },
+    {
+      "id": "s3",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Completa: 1, 2, 3, 1, 2, 3, 1, …",
+      "opciones": [
+        "2",
+        "3",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Se repite 1-2-3."
+    },
+    {
+      "id": "s4",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 10, 9, 8, 7, …",
+      "opciones": [
+        "6",
+        "5",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "resta 1."
+    },
+    {
+      "id": "s5",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Serie: 3, 6, 9, 12, …",
+      "opciones": [
+        "15",
+        "13",
+        "14"
+      ],
+      "correcta": 0,
+      "pista": "Tabla del 3."
+    },
+    {
+      "id": "s6",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "A, B, C, D, … ¿qué letra sigue?",
+      "opciones": [
+        "E",
+        "F",
+        "A"
+      ],
+      "correcta": 0,
+      "pista": "Orden del abecedario."
+    },
+    {
+      "id": "s7",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué falta? 2, 4, __, 8, 10",
+      "opciones": [
+        "6",
+        "5",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Pares."
+    },
+    {
+      "id": "p1",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "Patrón: 🔴🔵🔴🔵🔴… ¿qué sigue?",
+      "opciones": [
+        "🔵",
+        "🔴",
+        "🟢"
+      ],
+      "correcta": 0,
+      "pista": "Alterna rojo y azul."
+    },
+    {
+      "id": "p2",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "Patrón: ▲ ▲ ■ ▲ ▲ ■ ▲ … ¿qué sigue?",
+      "opciones": [
+        "▲",
+        "■",
+        "●"
+      ],
+      "correcta": 0,
+      "pista": "Dos triángulos y un cuadrado."
+    },
+    {
+      "id": "p3",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "Patrón: 1, 1, 2, 1, 1, 2, 1, 1, … ¿qué sigue?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Dos unos y un dos."
+    },
+    {
+      "id": "p4",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "Si el patrón es grande-pequeño-grande-pequeño, tras 'grande' va…",
+      "opciones": [
+        "pequeño",
+        "grande",
+        "mediano"
+      ],
+      "correcta": 0,
+      "pista": "Alterna."
+    },
+    {
+      "id": "p5",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "🎵 clap-clap-tap, clap-clap-tap… Después de dos clap va…",
+      "opciones": [
+        "tap",
+        "clap",
+        "silence"
+      ],
+      "correcta": 0,
+      "pista": "Mira el grupo de tres."
+    },
+    {
+      "id": "p6",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "Colores: amarillo, verde, amarillo, verde… El 5º es…",
+      "opciones": [
+        "amarillo",
+        "verde",
+        "azul"
+      ],
+      "correcta": 0,
+      "pista": "Posiciones impares = amarillo."
+    },
+    {
+      "id": "p7",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "Figuras: ○ □ ○ □ ○ … ¿la siguiente?",
+      "opciones": [
+        "□",
+        "○",
+        "△"
+      ],
+      "correcta": 0,
+      "pista": "Círculo y cuadrado se alternan."
+    },
+    {
+      "id": "c1",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué NO pertenece al grupo? perro, gato, zanahoria, conejo",
+      "opciones": [
+        "zanahoria",
+        "gato",
+        "perro"
+      ],
+      "correcta": 0,
+      "pista": "Uno no es animal."
+    },
+    {
+      "id": "c2",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué va con lápiz, goma y regla?",
+      "opciones": [
+        "Sacapuntas",
+        "Pelota",
+        "Sopa"
+      ],
+      "correcta": 0,
+      "pista": "Material escolar."
+    },
+    {
+      "id": "c3",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Elige el impar: redondo, cuadrado, triangular, feliz",
+      "opciones": [
+        "feliz",
+        "redondo",
+        "cuadrado"
+      ],
+      "correcta": 0,
+      "pista": "Uno no describe forma."
+    },
+    {
+      "id": "c4",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué agrupa mejor a rosa, tulipán y margarita?",
+      "opciones": [
+        "Flores",
+        "Árboles",
+        "Frutas"
+      ],
+      "correcta": 0,
+      "pista": "Plantas con flor."
+    },
+    {
+      "id": "c5",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Cuál NO es un medio de transporte?",
+      "opciones": [
+        "Silla",
+        "Bici",
+        "Tren"
+      ],
+      "correcta": 0,
+      "pista": "No te lleva de un sitio a otro."
+    },
+    {
+      "id": "c6",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Manzana, pera, plátano… son…",
+      "opciones": [
+        "Frutas",
+        "Verduras",
+        "Carnes"
+      ],
+      "correcta": 0,
+      "pista": "Se comen como postre a menudo."
+    },
+    {
+      "id": "c7",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué va aparte? lunes, martes, enero, miércoles",
+      "opciones": [
+        "enero",
+        "martes",
+        "lunes"
+      ],
+      "correcta": 0,
+      "pista": "Uno es un mes."
+    },
+    {
+      "id": "an1",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Día es a sol como noche es a…",
+      "opciones": [
+        "luna",
+        "lluvia",
+        "arena"
+      ],
+      "correcta": 0,
+      "pista": "Lo típico del cielo de noche."
+    },
+    {
+      "id": "an2",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Pájaro es a nido como persona es a…",
+      "opciones": [
+        "casa",
+        "ala",
+        "rama"
+      ],
+      "correcta": 0,
+      "pista": "Dónde vive."
+    },
+    {
+      "id": "an3",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Guante es a mano como zapato es a…",
+      "opciones": [
+        "pie",
+        "cabeza",
+        "brazo"
+      ],
+      "correcta": 0,
+      "pista": "Dónde se pone."
+    },
+    {
+      "id": "an4",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Lápiz es a escribir como tijeras son a…",
+      "opciones": [
+        "cortar",
+        "beber",
+        "dormir"
+      ],
+      "correcta": 0,
+      "pista": "Para qué sirven."
+    },
+    {
+      "id": "an5",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Ojo es a ver como oído es a…",
+      "opciones": [
+        "oír",
+        "hablar",
+        "correr"
+      ],
+      "correcta": 0,
+      "pista": "Sentido del oído."
+    },
+    {
+      "id": "an6",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Semilla es a planta como huevo es a…",
+      "opciones": [
+        "pájaro",
+        "nube",
+        "piedra"
+      ],
+      "correcta": 0,
+      "pista": "De dónde nace."
+    },
+    {
+      "id": "an7",
+      "etiquetas": [
+        "analogias",
+        "clasificacion"
+      ],
+      "texto": "Libro es a leer como canción es a…",
+      "opciones": [
+        "cantar / escuchar",
+        "dibujar",
+        "saltar"
+      ],
+      "correcta": 0,
+      "pista": "Qué hacemos con ella."
+    }
+  ],
+  "puntosPorFase": {
+    "serie-piedras": 10,
+    "patron-mosaico": 12,
+    "caja-clases": 12,
+    "puente-analogias": 14,
+    "enigma-final": 25
+  },
+  "mensajes": {
+    "acierto": [
+      "¡Razonamiento perfecto!",
+      "¡Bien pensado!",
+      "¡Lógica clara!"
+    ],
+    "error": [
+      "Mira el patrón otra vez",
+      "Piensa la relación",
+      "Usa la pista"
+    ],
+    "ultima": [
+      "¡Última pieza del laberinto!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}

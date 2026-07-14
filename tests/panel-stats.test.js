@@ -67,5 +67,8 @@ describe("PanelStats", () => {
     expect(etiquetaArea("lengua")).toBe("Lengua");
     expect(etiquetaArea("ciencias")).toBe("Ciencias");
     expect(etiquetaArea("sociales")).toBe("Sociales");
+    expect(etiquetaArea("ingles")).toBe("Inglés");
+    expect(etiquetaArea("logica")).toBe("Lógica");
+    expect(etiquetaArea("visoespacial")).toBe("Visoespacial");
   });
 });

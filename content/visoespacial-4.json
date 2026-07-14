@@ -1,0 +1,520 @@
+{
+  "id": "visoespacial-4",
+  "version": "3.5.0",
+  "nombre": "Ciudad Perspectiva",
+  "tipoMundo": "lectura",
+  "curso": 4,
+  "area": "visoespacial",
+  "competencias": [
+    "STEM1",
+    "STEM2",
+    "CCEC1",
+    "STEM4"
+  ],
+  "saberes": [
+    "rotaciones mentales",
+    "vistas y perspectivas",
+    "composición de figuras",
+    "simetría y espejo"
+  ],
+  "tema": {
+    "colorPrimario": "#006064",
+    "colorSecundario": "#26c6da",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "drone",
+    "recompensaLabel": "plano"
+  },
+  "etiquetaCurricular": "4º Primaria · Visoespacial · Percepción",
+  "textoCurricular": "Rotaciones, vistas, composición de figuras y simetría avanzada en 4º.",
+  "fases": [
+    {
+      "id": "plaza-giros",
+      "nombre": "Plaza de los Giros",
+      "emoji": "🔄",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "rotacion"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔄",
+        "nombre": "Gira"
+      },
+      "objetivo": "Imaginar figuras tras un giro.",
+      "tags": [
+        "Rotación",
+        "Mental"
+      ]
+    },
+    {
+      "id": "mirador-vistas",
+      "nombre": "Mirador de Vistas",
+      "emoji": "🏙️",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vistas"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🏙️",
+        "nombre": "Vista"
+      },
+      "objetivo": "Inferir vistas (arriba, frente, lado).",
+      "tags": [
+        "Perspectiva",
+        "Vistas"
+      ]
+    },
+    {
+      "id": "taller-composicion",
+      "nombre": "Taller de Composición",
+      "emoji": "🧱",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "composicion"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🧱",
+        "nombre": "Compón"
+      },
+      "objetivo": "Unir o descomponer figuras.",
+      "tags": [
+        "Composición",
+        "Partes"
+      ]
+    },
+    {
+      "id": "galeria-espejo",
+      "nombre": "Galería Espejo",
+      "emoji": "✨",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "espejo-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "✨",
+        "nombre": "Prisma"
+      },
+      "objetivo": "Reflexiones y simetrías más exigentes.",
+      "tags": [
+        "Espejo",
+        "Simetría"
+      ]
+    },
+    {
+      "id": "azotea-final",
+      "nombre": "Azotea Final",
+      "emoji": "🛰️",
+      "mecanica": "lectura",
+      "total": 8,
+      "recompensa": {
+        "emoji": "🛰️",
+        "nombre": "Perspectivo"
+      },
+      "objetivo": "Repaso visoespacial de 4º.",
+      "tags": [
+        "Visoespacial 4º",
+        "Repaso"
+      ],
+      "tipo": "avanzada",
+      "siempreActiva": true
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "ro1",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Si giras la letra 'N' un cuarto de vuelta (90°) hacia la derecha, se parece más a…",
+      "opciones": [
+        "Z",
+        "N igual",
+        "O"
+      ],
+      "correcta": 0,
+      "pista": "Las diagonales cambian de orientación."
+    },
+    {
+      "id": "ro2",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Un reloj marca las 12. Si la aguja gira 90° en sentido horario, ¿a qué número apunta?",
+      "opciones": [
+        "3",
+        "6",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "90° = un cuarto de círculo."
+    },
+    {
+      "id": "ro3",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Una flecha ▲ apunta arriba. Tras girar 180°, apunta…",
+      "opciones": [
+        "abajo",
+        "izquierda",
+        "arriba igual"
+      ],
+      "correcta": 0,
+      "pista": "Media vuelta."
+    },
+    {
+      "id": "ro4",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "La figura L girada 90° a la izquierda se parece a una…",
+      "opciones": [
+        "┓ (L tumbada al otro lado)",
+        "O",
+        "igual L sin cambios"
+      ],
+      "correcta": 0,
+      "pista": "El palo largo cambia de lado."
+    },
+    {
+      "id": "ro5",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Si un cuadrado gira 90°, ¿sigue pareciendo cuadrado?",
+      "opciones": [
+        "Sí",
+        "No, se vuelve círculo",
+        "Se vuelve triángulo"
+      ],
+      "correcta": 0,
+      "pista": "El cuadrado es invariante a giros de 90°."
+    },
+    {
+      "id": "ro6",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Girar un objeto 360° lo deja…",
+      "opciones": [
+        "igual que al inicio",
+        "al revés",
+        "desaparecido"
+      ],
+      "correcta": 0,
+      "pista": "Vuelta completa."
+    },
+    {
+      "id": "ro7",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Una manecilla en el 12 gira 180°. ¿Dónde queda?",
+      "opciones": [
+        "En el 6",
+        "En el 3",
+        "En el 9"
+      ],
+      "correcta": 0,
+      "pista": "Media vuelta opuesta."
+    },
+    {
+      "id": "vi1",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista desde arriba de un vaso cilindrico (sin asa) se parece a un…",
+      "opciones": [
+        "círculo",
+        "rectángulo",
+        "triángulo"
+      ],
+      "correcta": 0,
+      "pista": "Solo ves la boca redonda."
+    },
+    {
+      "id": "vi2",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista de frente de un libro cerrado de pie se parece a un…",
+      "opciones": [
+        "rectángulo",
+        "círculo",
+        "estrella"
+      ],
+      "correcta": 0,
+      "pista": "Portada rectangular."
+    },
+    {
+      "id": "vi3",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Si estás delante de una casa, ves la…",
+      "opciones": [
+        "fachada",
+        "tejado solo desde satélite",
+        "cimiento bajo tierra"
+      ],
+      "correcta": 0,
+      "pista": "Vista frontal."
+    },
+    {
+      "id": "vi4",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Un mapa de la calle es casi una vista…",
+      "opciones": [
+        "desde arriba",
+        "desde el sótano",
+        "desde dentro del ojo"
+      ],
+      "correcta": 0,
+      "pista": "Planta / cenital."
+    },
+    {
+      "id": "vi5",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista lateral de una mesa rectangular (con patas) muestra…",
+      "opciones": [
+        "altura y profundidad (perfil)",
+        "solo el círculo",
+        "ninguna pata jamás"
+      ],
+      "correcta": 0,
+      "pista": "Perfil."
+    },
+    {
+      "id": "vi6",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Desde un avión alto ves los coches como…",
+      "opciones": [
+        "rectángulos / puntos pequeños",
+        "gigantes",
+        "solo ruedas enormes"
+      ],
+      "correcta": 0,
+      "pista": "Vista aérea."
+    },
+    {
+      "id": "cm1",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Dos triángulos iguales unidos por un lado pueden formar un…",
+      "opciones": [
+        "rombo / cuadrilátero",
+        "círculo",
+        "óvalo"
+      ],
+      "correcta": 0,
+      "pista": "Base común."
+    },
+    {
+      "id": "cm2",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Un cuadrado se puede dividir en…",
+      "opciones": [
+        "2 triángulos rectángulos (diagonal)",
+        "0 triángulos",
+        "solo círculos"
+      ],
+      "correcta": 0,
+      "pista": "Traza una diagonal."
+    },
+    {
+      "id": "cm3",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "4 cuadrados iguales en 2×2 forman un…",
+      "opciones": [
+        "cuadrado mayor",
+        "triángulo",
+        "cilindro"
+      ],
+      "correcta": 0,
+      "pista": "Cuadrícula 2×2."
+    },
+    {
+      "id": "cm4",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Si quitas una esquina triangular a un rectángulo de papel, queda un…",
+      "opciones": [
+        "pentágono (5 lados)",
+        "sigue con 4 lados",
+        "círculo"
+      ],
+      "correcta": 0,
+      "pista": "Añades un lado nuevo."
+    },
+    {
+      "id": "cm5",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Un tangram arma figuras usando…",
+      "opciones": [
+        "piezas geométricas sin solapar",
+        "solo letras",
+        "agua"
+      ],
+      "correcta": 0,
+      "pista": "Puzzle clásico."
+    },
+    {
+      "id": "cm6",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Para formar un rectángulo con 2 cuadrados iguales, los pones…",
+      "opciones": [
+        "uno al lado del otro",
+        "en círculo",
+        "apilados en punta"
+      ],
+      "correcta": 0,
+      "pista": "Lado con lado."
+    },
+    {
+      "id": "es1",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "La reflexión horizontal de la letra 'b' se parece a…",
+      "opciones": [
+        "p",
+        "d",
+        "q"
+      ],
+      "correcta": 0,
+      "pista": "Espejo arriba-abajo."
+    },
+    {
+      "id": "es2",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Si un reloj se ve en un espejo y marca las 3:00, la imagen parece apuntar hacia…",
+      "opciones": [
+        "las 9",
+        "las 3 igual siempre",
+        "las 12"
+      ],
+      "correcta": 0,
+      "pista": "Izquierda y derecha se invierten."
+    },
+    {
+      "id": "es3",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Una flecha → reflejada en espejo vertical se convierte en…",
+      "opciones": [
+        "←",
+        "→ igual",
+        "↑"
+      ],
+      "correcta": 0,
+      "pista": "Cambia el sentido."
+    },
+    {
+      "id": "es4",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "La palabra 'BOO' en espejo vertical sigue leyéndose parecido porque…",
+      "opciones": [
+        "usa letras simétricas",
+        "no tiene letras",
+        "es un número"
+      ],
+      "correcta": 0,
+      "pista": "B y O tienen simetría (aprox. tipográfica)."
+    },
+    {
+      "id": "es5",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Un camino en forma de L, reflejado verticalmente, queda como…",
+      "opciones": [
+        "J / L al otro lado",
+        "O",
+        "igual sin cambios"
+      ],
+      "correcta": 0,
+      "pista": "El palo corto cambia de brazo."
+    },
+    {
+      "id": "es6",
+      "etiquetas": [
+        "espejo-4",
+        "rotacion"
+      ],
+      "texto": "Girar 180° NO es lo mismo que un espejo porque…",
+      "opciones": [
+        "el espejo invierte; el giro solo rota",
+        "son idénticos siempre",
+        "el espejo borra la figura"
+      ],
+      "correcta": 0,
+      "pista": "Reflexión ≠ rotación."
+    },
+    {
+      "id": "es7",
+      "etiquetas": [
+        "composicion",
+        "vistas"
+      ],
+      "texto": "Un cubo visto de frente (una cara) parece un…",
+      "opciones": [
+        "cuadrado",
+        "hexágono siempre",
+        "círculo"
+      ],
+      "correcta": 0,
+      "pista": "Una sola cara cuadrada."
+    }
+  ],
+  "puntosPorFase": {
+    "plaza-giros": 12,
+    "mirador-vistas": 14,
+    "taller-composicion": 14,
+    "galeria-espejo": 16,
+    "azotea-final": 25
+  },
+  "mensajes": {
+    "acierto": [
+      "¡Perspectiva clara!",
+      "¡Giro mental perfecto!",
+      "¡Vista aguda!"
+    ],
+    "error": [
+      "Rota la figura en la mente",
+      "Cambia el punto de vista",
+      "Usa la pista"
+    ],
+    "ultima": [
+      "¡Último reto de la ciudad!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}
