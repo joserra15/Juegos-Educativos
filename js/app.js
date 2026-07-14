@@ -69,6 +69,7 @@ import {
   avanzarTutorial,
   saltarTutorial,
   marcarTutorialCompletado,
+  tutorialCompletado,
 } from "./ui/Onboarding.js";
 import { renderTarjetasMundos } from "./ui/SelectorMundos.js";
 import { renderGraficosArea, exportarResumenJugador } from "./ui/PanelFamilias.js";
@@ -176,7 +177,7 @@ function sincronizarSiEsNecesario(){
 function cerrarHistoria(){
   localStorage.setItem("historiaVista", "true");
   mostrarSelectorMundos();
-  iniciarTutorialSiNecesario(mostrar);
+  iniciarTutorialSiNecesario(accionesTutorial());
 }
 
 
@@ -297,7 +298,7 @@ async function entrarMundo(id){
   actualizarHeaderMundo();
   actualizarHeaderNombre();
   actualizarPuntosUI();
-  mostrarMapa();
+  await mostrarMapa();
 }
 
 
@@ -1412,17 +1413,48 @@ function exportarResumenFamilia(){
   });
 }
 
+/** Acciones reales del tutorial: abren pantallas con contenido, no vistas vacías. */
+function accionesTutorial(){
+  return {
+    abrirSelector: () => {
+      mostrarSelectorMundos();
+    },
+    abrirMapaDemo: async () => {
+      if(mundoId && fases.length){
+        await mostrarMapa();
+        return;
+      }
+      const primero = (manifestCatalog?.mundos || []).find((m) => m.disponible !== false);
+      if(primero){
+        await entrarMundo(primero.id);
+      }else{
+        mostrar("mapa");
+      }
+    },
+    abrirMochila: () => {
+      mostrarMochila();
+    },
+  };
+}
+
 function avanzarTutorialUI(){
-  avanzarTutorial(mostrar);
+  avanzarTutorial(accionesTutorial());
+  // Al terminar, vuelve al selector para que elijan un mundo de verdad
+  if(tutorialCompletado()){
+    mostrarSelectorMundos();
+  }
 }
 
 function saltarTutorialUI(){
   saltarTutorial();
+  if(tutorialCompletado()){
+    mostrarSelectorMundos();
+  }
 }
 
 function reiniciarTutorial(){
   localStorage.removeItem("tutorialCompletado");
-  iniciarTutorialSiNecesario(mostrar);
+  iniciarTutorialSiNecesario(accionesTutorial());
 }
 
 /* =====================================================
@@ -1623,25 +1655,26 @@ function guardarEstado(){
    INICIO
 ===================================================== */
 function mostrarMapa(){
-try{
-
-cargarPuntosClase(() => {
-		//cargarPanelClase();
-      actualizarHeaderMundo();
-      construirMapa();
-      actualizarPanelCurricular();
-      actualizarPanelPractica();
-      poblarSelectorTabla();
-      bindAccessibilityControls();
-      applyAccessibilitySettings();
-      actualizarPuntosUI();
-      mostrar("mapa");
-    });
-  
-}catch(err){
-	alert(err);
-}
-
+  return new Promise((resolve) => {
+    try{
+      cargarPuntosClase(() => {
+        //cargarPanelClase();
+        actualizarHeaderMundo();
+        construirMapa();
+        actualizarPanelCurricular();
+        actualizarPanelPractica();
+        poblarSelectorTabla();
+        bindAccessibilityControls();
+        applyAccessibilitySettings();
+        actualizarPuntosUI();
+        mostrar("mapa");
+        resolve();
+      });
+    }catch(err){
+      alert(err);
+      resolve();
+    }
+  });
 }
 
 

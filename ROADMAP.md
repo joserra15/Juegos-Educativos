@@ -87,7 +87,7 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 
 - [x] Hero de bienvenida en selector de mundos
 - [x] Tarjetas mundo animadas con parallax y badges (Nuevo / Completado)
-- [x] Tutorial interactivo de 3 pasos (mundo → fase → mochila)
+- [x] Tutorial interactivo (mundo → fase → mochila → PIN) con pantallas reales abiertas
 - [x] Pantalla nombre como tarjeta de personaje con selector de avatar
 
 ### 🔜 Fase E — Navegación y accesibilidad (prioridad media)
