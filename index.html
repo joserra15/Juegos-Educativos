@@ -156,7 +156,11 @@
       🔐 <strong>Tu PIN secreto:</strong>
       <span id="pinJugadorUI"></span>
     </p>
-    <p class="texto-ayuda">El PIN es único para recuperar tu partida. Los logros y recompensas se ven mundo a mundo.</p>
+    <p class="texto-ayuda">
+      ¡Memoriza este PIN! Si cambias de dispositivo o de navegador y quieres continuar tu partida,
+      escribe el <strong>mismo nombre (o alias)</strong> y este PIN. Sin ellos no podrás recuperar tu progreso.
+      Los logros y recompensas se ven mundo a mundo.
+    </p>
   </div>
 
   <div id="mochilaVistaLista" class="mochila-vista">
@@ -512,14 +516,14 @@
   </div>
 </div>
 
-<div id="tutorialOverlay" class="tutorial-overlay" style="display:none" role="dialog" aria-labelledby="tutorialTitulo">
+<div id="tutorialOverlay" class="tutorial-overlay" style="display:none" role="dialog" aria-labelledby="tutorialTitulo" aria-describedby="tutorialTexto">
   <div class="tutorial-caja">
     <p id="tutorialIndicador" class="tutorial-indicador"></p>
     <h3 id="tutorialTitulo"></h3>
     <p id="tutorialTexto"></p>
     <div class="tutorial-botones">
       <button type="button" onclick="saltarTutorialUI()">Saltar</button>
-      <button type="button" class="boton-principal-tutorial" onclick="avanzarTutorialUI()">Siguiente</button>
+      <button type="button" id="tutorialBtnSiguiente" class="boton-principal-tutorial" onclick="avanzarTutorialUI()">Siguiente</button>
     </div>
   </div>
 </div>
