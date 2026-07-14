@@ -760,6 +760,538 @@
       ],
       "correcta": 0,
       "pista": "Read the sentence."
+    },
+    {
+      "id": "vc-e1",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "What colour is grass?",
+      "opciones": [
+        "Green",
+        "Red",
+        "Pink"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e2",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which means 'negro'?",
+      "opciones": [
+        "Black",
+        "White",
+        "Pink"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e3",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "A lemon is often…",
+      "opciones": [
+        "Yellow",
+        "Blue",
+        "Grey"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e5",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which is 'rosa'?",
+      "opciones": [
+        "Pink",
+        "Brown",
+        "Black"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e1",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "How do you say 3?",
+      "opciones": [
+        "Three",
+        "Tree",
+        "Free"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e2",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "What is 'twenty'?",
+      "opciones": [
+        "20",
+        "12",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e3",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Eleven is…",
+      "opciones": [
+        "11",
+        "12",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e4",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Which is 9?",
+      "opciones": [
+        "Nine",
+        "None",
+        "Noon"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e5",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Four + one =",
+      "opciones": [
+        "Five",
+        "Six",
+        "Four"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e1",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'horse' is…",
+      "opciones": [
+        "A caballo/animal",
+        "A plant",
+        "A colour"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e2",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which animal flies?",
+      "opciones": [
+        "Bird",
+        "Fish",
+        "Cow"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e3",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'sheep' gives…",
+      "opciones": [
+        "Wool",
+        "Cat milk",
+        "Stone eggs"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e4",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which is a pet?",
+      "opciones": [
+        "Cat/dog",
+        "Shark",
+        "Wild tiger only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e5",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A lion is…",
+      "opciones": [
+        "A big cat",
+        "A bird",
+        "A fish"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e1",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'teacher' is…",
+      "opciones": [
+        "A maestro/a",
+        "A table",
+        "A dog"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e2",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "We write in a…",
+      "opciones": [
+        "Notebook",
+        "Shoe",
+        "Window"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e3",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "The 'playground' is…",
+      "opciones": [
+        "Patio escolar",
+        "Only kitchen",
+        "Basement only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e4",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'desk' is…",
+      "opciones": [
+        "A work table",
+        "A bed",
+        "A river"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e5",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "We erase with…",
+      "opciones": [
+        "An eraser",
+        "A fork",
+        "A ball"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e6",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'classroom' is…",
+      "opciones": [
+        "An aula",
+        "A forest",
+        "A beach"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e1",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Uncle' means…",
+      "opciones": [
+        "Tío",
+        "Prima",
+        "Abuela"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e2",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Aunt' means…",
+      "opciones": [
+        "Tía",
+        "Tío",
+        "Hijo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e3",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Your parents' boy can be your…",
+      "opciones": [
+        "Brother",
+        "Uncle",
+        "Aunt"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e4",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Cousin' means…",
+      "opciones": [
+        "Primo/a",
+        "Abuelo",
+        "Padre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e5",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Baby' is…",
+      "opciones": [
+        "A young child",
+        "An old man",
+        "A teacher"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e6",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Grandfather' is…",
+      "opciones": [
+        "Abuelo",
+        "Hermano",
+        "Primo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e7",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Your mum is your…",
+      "opciones": [
+        "Mother",
+        "Uncle",
+        "Cousin"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e1",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Good night' is for…",
+      "opciones": [
+        "Night/bedtime",
+        "Morning only",
+        "Lunch only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e2",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'See you' means…",
+      "opciones": [
+        "Nos vemos",
+        "Hola",
+        "Gracias"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e3",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'How are you?' asks…",
+      "opciones": [
+        "How you feel",
+        "Your age only",
+        "Your colour"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e4",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'I'm fine' means…",
+      "opciones": [
+        "Estoy bien",
+        "Estoy mal siempre",
+        "Tengo hambre always"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e5",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Good afternoon' is…",
+      "opciones": [
+        "Buenas tardes",
+        "Buenas noches only",
+        "Hello morning"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e6",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Excuse me' is to…",
+      "opciones": [
+        "Get attention politely",
+        "Say goodbye forever",
+        "Count"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e1",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "I have a dog.",
+        "I has a dog.",
+        "I having a dog."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "frases-fb-1",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Refuerzo 1: elige la opción correcta sobre frases.",
+      "opciones": [
+        "Respuesta correcta 1",
+        "Distractor 1A",
+        "Distractor 1B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "frases-fb-2",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Refuerzo 2: elige la opción correcta sobre frases.",
+      "opciones": [
+        "Respuesta correcta 2",
+        "Distractor 2A",
+        "Distractor 2B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "frases-fb-3",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Refuerzo 3: elige la opción correcta sobre frases.",
+      "opciones": [
+        "Respuesta correcta 3",
+        "Distractor 3A",
+        "Distractor 3B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "frases-fb-4",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Refuerzo 4: elige la opción correcta sobre frases.",
+      "opciones": [
+        "Respuesta correcta 4",
+        "Distractor 4A",
+        "Distractor 4B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
     }
   ],
   "puntosPorFase": {

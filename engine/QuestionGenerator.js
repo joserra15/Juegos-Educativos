@@ -4,8 +4,14 @@
 
 import { calcularProporcionesDificultad } from "./Scoring.js";
 
+/** Fisher–Yates: mezcla uniforme sin el sesgo de sort+random. */
 function mezclar(arr) {
-  return [...arr].sort(() => Math.random() - 0.5);
+  const copia = [...arr];
+  for (let i = copia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copia[i], copia[j]] = [copia[j], copia[i]];
+  }
+  return copia;
 }
 
 function aplicarTexto(textos, a, b) {
@@ -22,6 +28,8 @@ function crearOperacionBasica(textos, a, b) {
     b,
     r: a * b,
     texto: aplicarTexto(textos, a, b),
+    clave: `${a}x${b}`,
+    claveCanonica: `${a}x${b}`,
   };
 }
 
@@ -44,6 +52,7 @@ function crearOperacionDivision(textos, divisor, cociente) {
     b: divisor,
     r: cociente,
     clave: `${total}div${divisor}`,
+    claveCanonica: `${total}div${divisor}`,
     texto: aplicarTextoDivision(textos, cociente, divisor),
   };
 }
@@ -58,6 +67,7 @@ function crearOperacionFraccion({ numerador, denominador, texto, pista, opciones
     r: respuesta,
     opciones: opts,
     clave: `${numerador}/${denominador}`,
+    claveCanonica: `${numerador}/${denominador}`,
     texto,
     pista,
   };
@@ -89,13 +99,15 @@ function textoFraccionParteTodo(num, den, variante) {
 }
 
 function crearOperacionLectura(pregunta) {
+  const clave = pregunta.id || pregunta.texto.slice(0, 40);
   return {
     tipo: "lectura",
     texto: pregunta.texto,
     opciones: pregunta.opciones,
     r: pregunta.correcta,
     pista: pregunta.pista,
-    clave: pregunta.id || pregunta.texto.slice(0, 40),
+    clave,
+    claveCanonica: clave,
   };
 }
 
@@ -468,6 +480,18 @@ export function getClaveOperacion(op) {
   return op.texto?.slice(0, 40) || "op";
 }
 
+/** Misma idea de canónica que SessionEngine (sin import circular). */
+export function getClaveCanonica(op) {
+  if (!op) return "";
+  if (op.claveCanonica) return String(op.claveCanonica);
+  if (op.tipo === "fraccion" || (op.numerador != null && op.denominador != null && op.tipo !== "lectura")) {
+    return `${op.numerador}/${op.denominador}`;
+  }
+  if (op.tipo === "division" && op.a != null && op.b != null) return `${op.a}div${op.b}`;
+  if (op.a != null && op.b != null && op.tipo !== "lectura") return `${op.a}x${op.b}`;
+  return String(op.clave || op.id || op.texto || "").replace(/-v\d+$/i, "").trim();
+}
+
 function ampliarBancoHasta(banco, minimo, generador) {
   const resultado = [...banco];
   const vistos = new Set(resultado.map((op) => getClaveOperacion(op)));
@@ -503,6 +527,7 @@ function generarBancoDivisionExtendido(fase, contexto, minimo) {
     const op = crearOperacionDivision(textos, divisor, cociente);
     op._dificultad = cociente + divisor + Math.floor(n / 12);
     op.clave = `${op.a}div${op.b}-v${n}`;
+    op.claveCanonica = `${op.a}div${op.b}`;
     return op;
   }).sort((a, b) => a._dificultad - b._dificultad);
 }
@@ -554,6 +579,7 @@ function generarBancoFraccionExtendido(fase, contexto, minimo) {
     // encima del set único para no saturar el inicio con repeticiones de 1/2.
     op._dificultad = 100 + den * 10 + num + Math.floor(n / denominadores.length);
     op.clave = `${num}/${den}-v${n}`;
+    op.claveCanonica = `${num}/${den}`;
     return op;
   });
 
@@ -590,36 +616,18 @@ function intercalarFraccionesPorDenominador(banco) {
   return [...intercaladas, ...resto];
 }
 
-function variarPreguntaLectura(pregunta, variante) {
-  const opciones = mezclar([...pregunta.opciones]);
-  const textoCorrecto = pregunta.opciones[pregunta.correcta];
-  const nuevaCorrecta = opciones.indexOf(textoCorrecto);
-  return crearOperacionLectura({
-    ...pregunta,
-    id: `${pregunta.id || "lec"}-v${variante}`,
-    opciones,
-    correcta: nuevaCorrecta,
-  });
-}
-
-function generarBancoLecturaExtendido(fase, contexto, minimo) {
+function generarBancoLecturaExtendido(fase, contexto, _minimo) {
   const { bancoLectura = [] } = contexto;
   const filtradas = bancoLectura.filter(
     (p) => !fase.etiquetasLectura || fase.etiquetasLectura.some((t) => p.etiquetas?.includes(t))
   );
   const fuente = filtradas.length > 0 ? filtradas : bancoLectura;
-  const base = fuente.map((p, i) => {
+  // Solo preguntas únicas: no clonar con opciones reordenadas (provocaba repeticiones).
+  return mezclar(fuente).map((p, i) => {
     const op = crearOperacionLectura(p);
     op._dificultad = i;
     return op;
   });
-
-  return ampliarBancoHasta(base, minimo, (n) => {
-    const pregunta = fuente[n % fuente.length];
-    const op = variarPreguntaLectura(pregunta, n);
-    op._dificultad = n;
-    return op;
-  }).sort((a, b) => a._dificultad - b._dificultad);
 }
 
 function generarBancoMultiplicacionExtendido(fase, contexto, minimo) {
@@ -632,7 +640,9 @@ function generarBancoMultiplicacionExtendido(fase, contexto, minimo) {
     const b = (n % 10) + 1;
     const op = crearOperacionBasica(contexto.textos, a, b);
     op._dificultad = a + b + Math.floor(n / 10);
+    // Clave única para el banco; canónica = producto real (anti-repeats en sesión).
     op.clave = `${a}x${b}-v${n}`;
+    op.claveCanonica = `${a}x${b}`;
     return op;
   }).sort((a, b) => a._dificultad - b._dificultad);
 }
@@ -671,17 +681,24 @@ export function generarBancoFase(fase, contexto, minimo = 50) {
       pista: op.pista,
       a: op.a,
       b: op.b,
+      clave: `${op.a}x${op.b}`,
+      claveCanonica: `${op.a}x${op.b}`,
       _dificultad: i,
     }));
-    return ampliarBancoHasta(todas, minimo, (n) => ({
-      tipo: "multiplicacion",
-      texto: `🧠 Calcula: ${10 + (n % 80)} × ${2 + (n % 9)}`,
-      a: 10 + (n % 80),
-      b: 2 + (n % 9),
-      r: (10 + (n % 80)) * (2 + (n % 9)),
-      _dificultad: n,
-      clave: `gig-v${n}`,
-    })).sort((a, b) => a._dificultad - b._dificultad);
+    return ampliarBancoHasta(todas, minimo, (n) => {
+      const a = 10 + (n % 80);
+      const b = 2 + (n % 9);
+      return {
+        tipo: "multiplicacion",
+        texto: `🧠 Calcula: ${a} × ${b}`,
+        a,
+        b,
+        r: a * b,
+        _dificultad: n,
+        clave: `${a}x${b}-v${n}`,
+        claveCanonica: `${a}x${b}`,
+      };
+    }).sort((a, b) => a._dificultad - b._dificultad);
   }
 
   if (mecanica === "combinadas" || fase.id === "torre-hechizo") {
@@ -693,6 +710,7 @@ export function generarBancoFase(fase, contexto, minimo = 50) {
       pista: op.pista,
       _dificultad: i,
       clave: `comb-${op.expr}`,
+      claveCanonica: `comb-${op.expr}`,
     }));
     return ampliarBancoHasta(todas, minimo, (n) => {
       const a = 4 + (n % 6);
@@ -705,7 +723,8 @@ export function generarBancoFase(fase, contexto, minimo = 50) {
         r: a * b + c,
         pista: `💡 ${a} × ${b} + ${c}`,
         _dificultad: n,
-        clave: `comb-v${n}`,
+        clave: `comb-${expr}-v${n}`,
+        claveCanonica: `comb-${expr}`,
       };
     }).sort((a, b) => a._dificultad - b._dificultad);
   }

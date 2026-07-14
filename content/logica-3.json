@@ -514,6 +514,272 @@
       ],
       "correcta": 0,
       "pista": "Qué hacemos con ella."
+    },
+    {
+      "id": "seq-e1",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 2,4,6,8,…",
+      "opciones": [
+        "10",
+        "9",
+        "12"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e2",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 5,10,15,20,…",
+      "opciones": [
+        "25",
+        "21",
+        "30"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e3",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Completa: 1,2,3,1,2,3,1,…",
+      "opciones": [
+        "2",
+        "4",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e4",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 10,9,8,7,…",
+      "opciones": [
+        "6",
+        "5",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e5",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Serie: 3,6,9,12,…",
+      "opciones": [
+        "15",
+        "13",
+        "14"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e1",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "🔴🔵🔴🔵… ¿sigue?",
+      "opciones": [
+        "🔵",
+        "🔴",
+        "🟢"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e2",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "▲▲■ ▲▲■ ▲… ¿sigue?",
+      "opciones": [
+        "▲",
+        "■",
+        "●"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e3",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "1,1,2,1,1,2,1,1… ¿sigue?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e4",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "grande-pequeño-grande… tras grande…",
+      "opciones": [
+        "pequeño",
+        "grande",
+        "mediano"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e5",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "clap-clap-tap… tras dos clap…",
+      "opciones": [
+        "tap",
+        "clap",
+        "silencio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e1",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué sobra? perro,gato,zanahoria,conejo",
+      "opciones": [
+        "zanahoria",
+        "gato",
+        "perro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e2",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué va con lápiz,goma,regla?",
+      "opciones": [
+        "Sacapuntas",
+        "Pelota",
+        "Sopa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e3",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué sobra? redondo,cuadrado,feliz",
+      "opciones": [
+        "feliz",
+        "redondo",
+        "cuadrado"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e4",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Rosa,tulipán,margarita son…",
+      "opciones": [
+        "Flores",
+        "Árboles",
+        "Frutas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e4",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Lápiz es a escribir como tijeras a…",
+      "opciones": [
+        "cortar",
+        "beber",
+        "dormir"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e5",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Ojo es a ver como oído a…",
+      "opciones": [
+        "oír",
+        "hablar",
+        "correr"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e6",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Semilla es a planta como huevo a…",
+      "opciones": [
+        "pájaro",
+        "nube",
+        "piedra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e7",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Libro es a leer como canción a…",
+      "opciones": [
+        "escuchar/cantar",
+        "dibujar",
+        "saltar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e8",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Dedo es a mano como dedo del pie a…",
+      "opciones": [
+        "pie",
+        "cabeza",
+        "oreja"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {

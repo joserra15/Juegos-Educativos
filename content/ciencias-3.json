@@ -5,7 +5,11 @@
   "tipoMundo": "lectura",
   "curso": 3,
   "area": "ciencias",
-  "competencias": ["STEM1", "STEM2", "STEM4"],
+  "competencias": [
+    "STEM1",
+    "STEM2",
+    "STEM4"
+  ],
   "saberes": [
     "seres vivos y no vivos",
     "animales y plantas",
@@ -28,55 +32,97 @@
       "nombre": "Sendero de los Vivos",
       "emoji": "🌱",
       "mecanica": "lectura",
-      "etiquetasLectura": ["seres-vivos"],
+      "etiquetasLectura": [
+        "seres-vivos"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🌱", "nombre": "Brotín" },
+      "recompensa": {
+        "emoji": "🌱",
+        "nombre": "Brotín"
+      },
       "objetivo": "Distinguir seres vivos y no vivos y sus necesidades.",
-      "tags": ["Seres vivos", "Necesidades"]
+      "tags": [
+        "Seres vivos",
+        "Necesidades"
+      ]
     },
     {
       "id": "claro-animales",
       "nombre": "Claro de los Animales",
       "emoji": "🐾",
       "mecanica": "lectura",
-      "etiquetasLectura": ["animales-plantas"],
+      "etiquetasLectura": [
+        "animales-plantas"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🦋", "nombre": "Alita" },
+      "recompensa": {
+        "emoji": "🦋",
+        "nombre": "Alita"
+      },
       "objetivo": "Clasificar animales y plantas según rasgos básicos.",
-      "tags": ["Animales", "Plantas"]
+      "tags": [
+        "Animales",
+        "Plantas"
+      ]
     },
     {
       "id": "cueva-cuerpo",
       "nombre": "Cueva del Cuerpo",
       "emoji": "🫀",
       "mecanica": "lectura",
-      "etiquetasLectura": ["cuerpo"],
+      "etiquetasLectura": [
+        "cuerpo"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "💪", "nombre": "Vital" },
+      "recompensa": {
+        "emoji": "💪",
+        "nombre": "Vital"
+      },
       "objetivo": "Conocer sentidos, huesos y hábitos saludables.",
-      "tags": ["Cuerpo humano", "Salud"]
+      "tags": [
+        "Cuerpo humano",
+        "Salud"
+      ]
     },
     {
       "id": "taller-materiales",
       "nombre": "Taller de Materiales",
       "emoji": "🧱",
       "mecanica": "lectura",
-      "etiquetasLectura": ["materiales"],
+      "etiquetasLectura": [
+        "materiales"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🔧", "nombre": "Matón" },
+      "recompensa": {
+        "emoji": "🔧",
+        "nombre": "Matón"
+      },
       "objetivo": "Identificar materiales y sus propiedades.",
-      "tags": ["Materiales", "Propiedades"]
+      "tags": [
+        "Materiales",
+        "Propiedades"
+      ]
     },
     {
       "id": "rio-elementos",
       "nombre": "Río de los Elementos",
       "emoji": "💧",
       "mecanica": "lectura",
-      "etiquetasLectura": ["agua-aire", "seres-vivos"],
+      "etiquetasLectura": [
+        "agua-aire",
+        "seres-vivos"
+      ],
       "total": 8,
-      "recompensa": { "emoji": "🌊", "nombre": "Gotín" },
+      "recompensa": {
+        "emoji": "🌊",
+        "nombre": "Gotín"
+      },
       "objetivo": "Relacionar agua, aire y seres vivos del entorno.",
-      "tags": ["Agua", "Aire", "Repaso"]
+      "tags": [
+        "Agua",
+        "Aire",
+        "Repaso"
+      ]
     },
     {
       "id": "torre-sabios",
@@ -86,187 +132,831 @@
       "total": 8,
       "tipo": "avanzada",
       "siempreActiva": true,
-      "recompensa": { "emoji": "🏅", "nombre": "Explorador" },
+      "recompensa": {
+        "emoji": "🏅",
+        "nombre": "Explorador"
+      },
       "objetivo": "Consolidar ciencias naturales de 3º.",
-      "tags": ["Ciencias 3º", "Repaso global"]
+      "tags": [
+        "Ciencias 3º",
+        "Repaso global"
+      ]
     }
   ],
   "bancoLectura": [
     {
       "id": "sv-1",
-      "etiquetas": ["seres-vivos"],
+      "etiquetas": [
+        "seres-vivos"
+      ],
       "texto": "Una piedra no come, no crece y no se reproduce. ¿Es un ser vivo?",
-      "opciones": ["No", "Sí", "Solo si está mojada"],
+      "opciones": [
+        "No",
+        "Sí",
+        "Solo si está mojada"
+      ],
       "correcta": 0,
       "pista": "Los seres vivos necesitan nutrición, relación y reproducción."
     },
     {
       "id": "sv-2",
-      "etiquetas": ["seres-vivos"],
+      "etiquetas": [
+        "seres-vivos"
+      ],
       "texto": "Las plantas fabrican su alimento con luz del Sol. ¿Cómo se llama ese proceso?",
-      "opciones": ["Fotosíntesis", "Respiración", "Digestión"],
+      "opciones": [
+        "Fotosíntesis",
+        "Respiración",
+        "Digestión"
+      ],
       "correcta": 0,
       "pista": "Usa la luz, el agua y el aire."
     },
     {
       "id": "sv-3",
-      "etiquetas": ["seres-vivos"],
+      "etiquetas": [
+        "seres-vivos"
+      ],
       "texto": "¿Cuál de estos es un ser vivo?",
-      "opciones": ["Un árbol", "Una mesa", "Un vaso"],
+      "opciones": [
+        "Un árbol",
+        "Una mesa",
+        "Un vaso"
+      ],
       "correcta": 0,
       "pista": "Nace, crece y se relaciona con el entorno."
     },
     {
       "id": "sv-4",
-      "etiquetas": ["seres-vivos"],
+      "etiquetas": [
+        "seres-vivos"
+      ],
       "texto": "Los seres vivos necesitan agua, alimento y…",
-      "opciones": ["Aire", "Plástico", "Metal"],
+      "opciones": [
+        "Aire",
+        "Plástico",
+        "Metal"
+      ],
       "correcta": 0,
       "pista": "Sin él no pueden respirar."
     },
     {
       "id": "ap-1",
-      "etiquetas": ["animales-plantas"],
+      "etiquetas": [
+        "animales-plantas"
+      ],
       "texto": "Los animales que se alimentan solo de plantas se llaman…",
-      "opciones": ["Herbívoros", "Carnívoros", "Omnívoros"],
+      "opciones": [
+        "Herbívoros",
+        "Carnívoros",
+        "Omnívoros"
+      ],
       "correcta": 0,
       "pista": "Como la vaca o el conejo."
     },
     {
       "id": "ap-2",
-      "etiquetas": ["animales-plantas"],
+      "etiquetas": [
+        "animales-plantas"
+      ],
       "texto": "¿Qué parte de la planta absorbe agua y sales minerales del suelo?",
-      "opciones": ["La raíz", "La flor", "La hoja"],
+      "opciones": [
+        "La raíz",
+        "La flor",
+        "La hoja"
+      ],
       "correcta": 0,
       "pista": "Está bajo tierra."
     },
     {
       "id": "ap-3",
-      "etiquetas": ["animales-plantas"],
+      "etiquetas": [
+        "animales-plantas"
+      ],
       "texto": "Un animal que nace de un huevo y tiene plumas es un…",
-      "opciones": ["Ave", "Pez", "Mamífero"],
+      "opciones": [
+        "Ave",
+        "Pez",
+        "Mamífero"
+      ],
       "correcta": 0,
       "pista": "Como el águila o el gorrión."
     },
     {
       "id": "ap-4",
-      "etiquetas": ["animales-plantas"],
+      "etiquetas": [
+        "animales-plantas"
+      ],
       "texto": "Los mamíferos alimentan a sus crías con…",
-      "opciones": ["Leche", "Semillas", "Néctar"],
+      "opciones": [
+        "Leche",
+        "Semillas",
+        "Néctar"
+      ],
       "correcta": 0,
       "pista": "Es un rasgo típico de este grupo."
     },
     {
       "id": "cu-1",
-      "etiquetas": ["cuerpo"],
+      "etiquetas": [
+        "cuerpo"
+      ],
       "texto": "¿Con qué sentido oímos la música?",
-      "opciones": ["El oído", "El gusto", "El olfato"],
+      "opciones": [
+        "El oído",
+        "El gusto",
+        "El olfato"
+      ],
       "correcta": 0,
       "pista": "Está en las orejas."
     },
     {
       "id": "cu-2",
-      "etiquetas": ["cuerpo"],
+      "etiquetas": [
+        "cuerpo"
+      ],
       "texto": "Los huesos forman el…",
-      "opciones": ["Esqueleto", "Estómago", "Cerebro"],
+      "opciones": [
+        "Esqueleto",
+        "Estómago",
+        "Cerebro"
+      ],
       "correcta": 0,
       "pista": "Sostienen el cuerpo."
     },
     {
       "id": "cu-3",
-      "etiquetas": ["cuerpo"],
+      "etiquetas": [
+        "cuerpo"
+      ],
       "texto": "Para cuidar la salud conviene…",
-      "opciones": ["Dormir bien y comer fruta", "No lavarse nunca", "Comer solo dulces"],
+      "opciones": [
+        "Dormir bien y comer fruta",
+        "No lavarse nunca",
+        "Comer solo dulces"
+      ],
       "correcta": 0,
       "pista": "Piensa en hábitos saludables."
     },
     {
       "id": "cu-4",
-      "etiquetas": ["cuerpo"],
+      "etiquetas": [
+        "cuerpo"
+      ],
       "texto": "El corazón bombea…",
-      "opciones": ["Sangre", "Aire a los pies", "Comida"],
+      "opciones": [
+        "Sangre",
+        "Aire a los pies",
+        "Comida"
+      ],
       "correcta": 0,
       "pista": "Recorre los vasos sanguíneos."
     },
     {
       "id": "ma-1",
-      "etiquetas": ["materiales"],
+      "etiquetas": [
+        "materiales"
+      ],
       "texto": "Un material que se puede doblar fácilmente sin romperse es…",
-      "opciones": ["Flexible", "Frágil", "Transparente"],
+      "opciones": [
+        "Flexible",
+        "Frágil",
+        "Transparente"
+      ],
       "correcta": 0,
       "pista": "Como una goma o un cable."
     },
     {
       "id": "ma-2",
-      "etiquetas": ["materiales"],
+      "etiquetas": [
+        "materiales"
+      ],
       "texto": "El vidrio de una ventana es…",
-      "opciones": ["Transparente", "Opaco", "Flexible"],
+      "opciones": [
+        "Transparente",
+        "Opaco",
+        "Flexible"
+      ],
       "correcta": 0,
       "pista": "Deja pasar la luz y se ve a través."
     },
     {
       "id": "ma-3",
-      "etiquetas": ["materiales"],
+      "etiquetas": [
+        "materiales"
+      ],
       "texto": "¿Qué material se obtiene de los árboles?",
-      "opciones": ["Madera", "Hierro", "Plástico"],
+      "opciones": [
+        "Madera",
+        "Hierro",
+        "Plástico"
+      ],
       "correcta": 0,
       "pista": "Se usa en mesas y sillas."
     },
     {
       "id": "ma-4",
-      "etiquetas": ["materiales"],
+      "etiquetas": [
+        "materiales"
+      ],
       "texto": "Un imán atrae objetos de…",
-      "opciones": ["Hierro", "Madera", "Papel"],
+      "opciones": [
+        "Hierro",
+        "Madera",
+        "Papel"
+      ],
       "correcta": 0,
       "pista": "Piensa en metales magnéticos."
     },
     {
       "id": "aa-1",
-      "etiquetas": ["agua-aire"],
+      "etiquetas": [
+        "agua-aire"
+      ],
       "texto": "El agua que cae del cielo en forma de lluvia forma parte del…",
-      "opciones": ["Ciclo del agua", "Ciclo del fuego", "Ciclo de las piedras"],
+      "opciones": [
+        "Ciclo del agua",
+        "Ciclo del fuego",
+        "Ciclo de las piedras"
+      ],
       "correcta": 0,
       "pista": "Evaporación, condensación y precipitación."
     },
     {
       "id": "aa-2",
-      "etiquetas": ["agua-aire"],
+      "etiquetas": [
+        "agua-aire"
+      ],
       "texto": "El aire que respiramos contiene mucho…",
-      "opciones": ["Oxígeno", "Aceite", "Arena"],
+      "opciones": [
+        "Oxígeno",
+        "Aceite",
+        "Arena"
+      ],
       "correcta": 0,
       "pista": "Los seres vivos lo necesitan para vivir."
     },
     {
       "id": "aa-3",
-      "etiquetas": ["agua-aire"],
+      "etiquetas": [
+        "agua-aire"
+      ],
       "texto": "Cuando el agua hierve pasa de líquido a…",
-      "opciones": ["Gas (vapor)", "Sólido", "Arena"],
+      "opciones": [
+        "Gas (vapor)",
+        "Sólido",
+        "Arena"
+      ],
       "correcta": 0,
       "pista": "Sale vapor de la olla."
     },
     {
       "id": "aa-4",
-      "etiquetas": ["agua-aire"],
+      "etiquetas": [
+        "agua-aire"
+      ],
       "texto": "El viento es…",
-      "opciones": ["Aire en movimiento", "Agua cayendo", "Luz del Sol"],
+      "opciones": [
+        "Aire en movimiento",
+        "Agua cayendo",
+        "Luz del Sol"
+      ],
       "correcta": 0,
       "pista": "Mueve las hojas de los árboles."
     },
     {
       "id": "mix-c3-1",
-      "etiquetas": ["seres-vivos", "agua-aire"],
+      "etiquetas": [
+        "seres-vivos",
+        "agua-aire"
+      ],
       "texto": "Las plantas necesitan agua, tierra, luz y aire para…",
-      "opciones": ["Crecer", "Correr", "Hablar"],
+      "opciones": [
+        "Crecer",
+        "Correr",
+        "Hablar"
+      ],
       "correcta": 0,
       "pista": "Son sus necesidades básicas."
     },
     {
       "id": "mix-c3-2",
-      "etiquetas": ["animales-plantas", "cuerpo"],
+      "etiquetas": [
+        "animales-plantas",
+        "cuerpo"
+      ],
       "texto": "Las personas somos animales…",
-      "opciones": ["Mamíferos", "Peces", "Insectos"],
+      "opciones": [
+        "Mamíferos",
+        "Peces",
+        "Insectos"
+      ],
       "correcta": 0,
       "pista": "Nacemos vivos y tomamos leche de madres."
+    },
+    {
+      "id": "ser-e1",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Qué necesitan casi todos los seres vivos?",
+      "opciones": [
+        "Agua, aire y alimento",
+        "Solo plástico",
+        "Solo TV"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e2",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Una piedra es un ser vivo?",
+      "opciones": [
+        "No",
+        "Sí",
+        "Solo de noche"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e3",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Las plantas fabrican alimento con…",
+      "opciones": [
+        "Luz solar",
+        "Piedras",
+        "Viento solo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e4",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Qué hace un ser vivo que una silla no?",
+      "opciones": [
+        "Crecer/reproducirse",
+        "Quedarse igual siempre",
+        "Ser de metal"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e5",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Cuál es un ser vivo?",
+      "opciones": [
+        "Una planta",
+        "Una mesa",
+        "Un coche"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e6",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Los seres vivos…",
+      "opciones": [
+        "Nacen, crecen y se reproducen",
+        "Se vuelven robots",
+        "Desaparecen al instante"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e7",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Muchos animales respiran…",
+      "opciones": [
+        "Aire/oxígeno",
+        "Aceite",
+        "Arena"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e1",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "¿Qué animal es herbívoro?",
+      "opciones": [
+        "Conejo",
+        "León",
+        "Tiburón"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e2",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Las raíces sirven para…",
+      "opciones": [
+        "Absorber agua",
+        "Volar",
+        "Hacer fotos"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e3",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Un pez respira con…",
+      "opciones": [
+        "Branquias",
+        "Alas",
+        "Pulmones de pájaro"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e4",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "¿Qué planta da frutos?",
+      "opciones": [
+        "Manzano",
+        "Musgo seco solo",
+        "Piedra verde"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e5",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Las aves suelen tener…",
+      "opciones": [
+        "Plumas",
+        "Aletas",
+        "Escamas de pez"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e6",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "El tallo…",
+      "opciones": [
+        "Sostiene la planta",
+        "Come insectos",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e7",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "¿Cuál pone huevos?",
+      "opciones": [
+        "Gallina",
+        "Gato",
+        "Perro"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e1",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "¿Con qué sentido oímos?",
+      "opciones": [
+        "Oído",
+        "Vista",
+        "Gusto"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e3",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "El corazón…",
+      "opciones": [
+        "Bombea la sangre",
+        "Digiere piedras",
+        "Hace fotos"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e4",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Para estar sano conviene…",
+      "opciones": [
+        "Comer bien y moverse",
+        "No beber agua",
+        "No dormir"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e5",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Los músculos sirven para…",
+      "opciones": [
+        "Movernos",
+        "Pensar solo",
+        "Ver colores"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e6",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "¿Con qué pensamos?",
+      "opciones": [
+        "Cerebro",
+        "Codo",
+        "Uña"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e7",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "La piel…",
+      "opciones": [
+        "Protege",
+        "Bombea sangre",
+        "Lee"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e8",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Los dientes sirven para…",
+      "opciones": [
+        "Masticar",
+        "Oír",
+        "Oler nubes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e1",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El cristal de ventana es…",
+      "opciones": [
+        "Frágil/transparente",
+        "Comestible",
+        "Líquido siempre"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e2",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "La madera viene de…",
+      "opciones": [
+        "Árboles",
+        "El mar",
+        "Las nubes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e3",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "¿Qué material es elástico?",
+      "opciones": [
+        "Goma",
+        "Cristal rígido",
+        "Roca"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e4",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El metal suele…",
+      "opciones": [
+        "Ser duro y conducir",
+        "Ser siempre blando",
+        "Derretirse al frío"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e5",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El papel se obtiene de…",
+      "opciones": [
+        "Celulosa/madera",
+        "Arena",
+        "Hielo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e6",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "Transparente deja…",
+      "opciones": [
+        "Pasar la luz",
+        "Comerse",
+        "Sonar fuerte"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e7",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "¿Qué flota más fácil?",
+      "opciones": [
+        "Madera/corcho",
+        "Piedra densa",
+        "Hierro macizo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e8",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "Un imán atrae…",
+      "opciones": [
+        "Hierro/metales",
+        "Madera",
+        "Papel"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e1",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Agua sólida =",
+      "opciones": [
+        "Hielo",
+        "Vapor",
+        "Arena"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e2",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Respiramos…",
+      "opciones": [
+        "Aire",
+        "Humo útil",
+        "Aceite"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e3",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El ciclo del agua incluye…",
+      "opciones": [
+        "Evaporación y lluvia",
+        "Solo fuego",
+        "Nieve en verano fija"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e5",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El vapor de agua es…",
+      "opciones": [
+        "Gas",
+        "Sólido",
+        "Metal"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e6",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Los ríos llevan agua hacia…",
+      "opciones": [
+        "El mar",
+        "El sol",
+        "La luna"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e7",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El aire ocupa…",
+      "opciones": [
+        "Espacio",
+        "Solo botellas",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e8",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Cuando llueve, el agua…",
+      "opciones": [
+        "Cae al suelo",
+        "Se vuelve metal",
+        "Desaparece siempre"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
     }
   ],
   "puntosPorFase": {
@@ -278,10 +968,23 @@
     "torre-sabios": 25
   },
   "mensajes": {
-    "acierto": ["¡Ciencia perfecta!", "¡Gran observación!", "¡Eres un científico!"],
-    "error": ["Observa otra vez", "Revisa la pista", "Prueba otra opción"],
-    "ultima": ["¡Última pregunta del bosque!"]
+    "acierto": [
+      "¡Ciencia perfecta!",
+      "¡Gran observación!",
+      "¡Eres un científico!"
+    ],
+    "error": [
+      "Observa otra vez",
+      "Revisa la pista",
+      "Prueba otra opción"
+    ],
+    "ultima": [
+      "¡Última pregunta del bosque!"
+    ]
   },
   "mensajesPredefinidos": {},
-  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }

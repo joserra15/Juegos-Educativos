@@ -5,7 +5,11 @@
   "tipoMundo": "lectura",
   "curso": 3,
   "area": "lengua",
-  "competencias": ["CCL1", "CCL3", "CCL5"],
+  "competencias": [
+    "CCL1",
+    "CCL3",
+    "CCL5"
+  ],
   "saberes": [
     "comprensión lectora",
     "ortografía básica",
@@ -27,55 +31,96 @@
       "nombre": "Estante de Cuentos",
       "emoji": "📖",
       "mecanica": "lectura",
-      "etiquetasLectura": ["comprension"],
+      "etiquetasLectura": [
+        "comprension"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "📖", "nombre": "Lector" },
+      "recompensa": {
+        "emoji": "📖",
+        "nombre": "Lector"
+      },
       "objetivo": "Comprender ideas principales de textos breves.",
-      "tags": ["Comprensión", "Idea principal"]
+      "tags": [
+        "Comprensión",
+        "Idea principal"
+      ]
     },
     {
       "id": "sala-acentos",
       "nombre": "Sala de Acentos",
       "emoji": "✏️",
       "mecanica": "lectura",
-      "etiquetasLectura": ["ortografia"],
+      "etiquetasLectura": [
+        "ortografia"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "✏️", "nombre": "Ortográfico" },
+      "recompensa": {
+        "emoji": "✏️",
+        "nombre": "Ortográfico"
+      },
       "objetivo": "Identificar palabras bien escritas.",
-      "tags": ["Ortografía", "Acentos"]
+      "tags": [
+        "Ortografía",
+        "Acentos"
+      ]
     },
     {
       "id": "rincon-palabras",
       "nombre": "Rincón de Palabras",
       "emoji": "🔤",
       "mecanica": "lectura",
-      "etiquetasLectura": ["vocabulario"],
+      "etiquetasLectura": [
+        "vocabulario"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🔤", "nombre": "Palabrín" },
+      "recompensa": {
+        "emoji": "🔤",
+        "nombre": "Palabrín"
+      },
       "objetivo": "Ampliar vocabulario y significados.",
-      "tags": ["Vocabulario", "Sinónimos"]
+      "tags": [
+        "Vocabulario",
+        "Sinónimos"
+      ]
     },
     {
       "id": "puente-inferencias",
       "nombre": "Puente de Inferencias",
       "emoji": "🌉",
       "mecanica": "lectura",
-      "etiquetasLectura": ["inferencia"],
+      "etiquetasLectura": [
+        "inferencia"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🌉", "nombre": "Detective" },
+      "recompensa": {
+        "emoji": "🌉",
+        "nombre": "Detective"
+      },
       "objetivo": "Inferir información no dicha explícitamente.",
-      "tags": ["Inferencias", "Lectura"]
+      "tags": [
+        "Inferencias",
+        "Lectura"
+      ]
     },
     {
       "id": "torre-textos",
       "nombre": "Torre de Textos",
       "emoji": "🗼",
       "mecanica": "lectura",
-      "etiquetasLectura": ["comprension", "vocabulario"],
+      "etiquetasLectura": [
+        "comprension",
+        "vocabulario"
+      ],
       "total": 8,
-      "recompensa": { "emoji": "🗼", "nombre": "Torreño" },
+      "recompensa": {
+        "emoji": "🗼",
+        "nombre": "Torreño"
+      },
       "objetivo": "Mezclar comprensión y vocabulario.",
-      "tags": ["Repaso", "Lengua 3º"]
+      "tags": [
+        "Repaso",
+        "Lengua 3º"
+      ]
     },
     {
       "id": "biblioteca-magica",
@@ -85,91 +130,663 @@
       "total": 8,
       "tipo": "avanzada",
       "siempreActiva": true,
-      "recompensa": { "emoji": "✨", "nombre": "Guardián" },
+      "recompensa": {
+        "emoji": "✨",
+        "nombre": "Guardián"
+      },
       "objetivo": "Consolidar comprensión y ortografía.",
-      "tags": ["Lengua 3º", "Repaso global"]
+      "tags": [
+        "Lengua 3º",
+        "Repaso global"
+      ]
     }
   ],
   "bancoLectura": [
     {
       "id": "cuento-1",
-      "etiquetas": ["comprension"],
+      "etiquetas": [
+        "comprension"
+      ],
       "texto": "Lucía encontró un libro brillante en la biblioteca. Al abrirlo, apareció un mapa del bosque. ¿Qué encontró Lucía?",
-      "opciones": ["Un mapa", "Un lápiz", "Una manzana"],
+      "opciones": [
+        "Un mapa",
+        "Un lápiz",
+        "Una manzana"
+      ],
       "correcta": 0,
       "pista": "Lee la segunda frase con atención."
     },
     {
       "id": "cuento-2",
-      "etiquetas": ["comprension"],
+      "etiquetas": [
+        "comprension"
+      ],
       "texto": "El gato del bibliotecario se llama Sombra y duerme sobre los cuentos de aventuras. ¿Dónde duerme Sombra?",
-      "opciones": ["Sobre los cuentos", "En la calle", "En la cocina"],
+      "opciones": [
+        "Sobre los cuentos",
+        "En la calle",
+        "En la cocina"
+      ],
       "correcta": 0,
       "pista": "Busca dónde duerme el gato."
     },
     {
       "id": "orto-1",
-      "etiquetas": ["ortografia"],
+      "etiquetas": [
+        "ortografia"
+      ],
       "texto": "¿Cuál palabra está escrita correctamente?",
-      "opciones": ["árbol", "arbol", "arból"],
+      "opciones": [
+        "árbol",
+        "arbol",
+        "arból"
+      ],
       "correcta": 0,
       "pista": "Lleva tilde en la primera a."
     },
     {
       "id": "orto-2",
-      "etiquetas": ["ortografia"],
+      "etiquetas": [
+        "ortografia"
+      ],
       "texto": "¿Cuál palabra está bien escrita?",
-      "opciones": ["camión", "camion", "camiòn"],
+      "opciones": [
+        "camión",
+        "camion",
+        "camiòn"
+      ],
       "correcta": 0,
       "pista": "Es palabra llana terminada en n."
     },
     {
       "id": "vocab-1",
-      "etiquetas": ["vocabulario"],
+      "etiquetas": [
+        "vocabulario"
+      ],
       "texto": "El sinónimo de 'rápido' es...",
-      "opciones": ["veloz", "lento", "pesado"],
+      "opciones": [
+        "veloz",
+        "lento",
+        "pesado"
+      ],
       "correcta": 0,
       "pista": "Significa lo mismo que rápido."
     },
     {
       "id": "vocab-2",
-      "etiquetas": ["vocabulario"],
+      "etiquetas": [
+        "vocabulario"
+      ],
       "texto": "¿Qué palabra significa lo contrario de 'feliz'?",
-      "opciones": ["triste", "alegre", "contento"],
+      "opciones": [
+        "triste",
+        "alegre",
+        "contento"
+      ],
       "correcta": 0,
       "pista": "Busca el antónimo."
     },
     {
       "id": "infer-1",
-      "etiquetas": ["inferencia"],
+      "etiquetas": [
+        "inferencia"
+      ],
       "texto": "Marcos llevó paraguas y botas al colegio. El cielo estaba muy oscuro. ¿Qué tiempo hacía probablemente?",
-      "opciones": ["Lluvia", "Nieve", "Sol"],
+      "opciones": [
+        "Lluvia",
+        "Nieve",
+        "Sol"
+      ],
       "correcta": 0,
       "pista": "Piensa por qué lleva paraguas."
     },
     {
       "id": "infer-2",
-      "etiquetas": ["inferencia"],
+      "etiquetas": [
+        "inferencia"
+      ],
       "texto": "La biblioteca estaba en silencio. Solo se oía el pasar de páginas. ¿Cómo está el ambiente?",
-      "opciones": ["Tranquilo", "Ruidoso", "Sucio"],
+      "opciones": [
+        "Tranquilo",
+        "Ruidoso",
+        "Sucio"
+      ],
       "correcta": 0,
       "pista": "Silencio y páginas sugieren calma."
     },
     {
       "id": "mix-1",
-      "etiquetas": ["comprension", "vocabulario"],
+      "etiquetas": [
+        "comprension",
+        "vocabulario"
+      ],
       "texto": "La bibliotecaria organizó los libros por colores. Los cuentos rojos hablan de aventuras. ¿De qué hablan los rojos?",
-      "opciones": ["Aventuras", "Cocina", "Deportes"],
+      "opciones": [
+        "Aventuras",
+        "Cocina",
+        "Deportes"
+      ],
       "correcta": 0,
       "pista": "Está en la última frase."
     },
     {
       "id": "mix-2",
-      "etiquetas": ["ortografia", "comprension"],
+      "etiquetas": [
+        "ortografia",
+        "comprension"
+      ],
       "texto": "¿Cuál título está bien escrito para un cuento de magia?",
-      "opciones": ["El hechizo azul", "El hechiso azul", "El hechizo asul"],
+      "opciones": [
+        "El hechizo azul",
+        "El hechiso azul",
+        "El hechizo asul"
+      ],
       "correcta": 0,
       "pista": "Revisa hechizo y azul."
+    },
+    {
+      "id": "c-e1",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Clara perdió su bufanda roja en el parque. ¿De qué color era?",
+      "opciones": [
+        "Roja",
+        "Azul",
+        "Verde"
+      ],
+      "correcta": 0,
+      "pista": "Color en el texto."
+    },
+    {
+      "id": "c-e2",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "El tren salió a las 8 y llegó a las 10. ¿Cuánto duró?",
+      "opciones": [
+        "2 horas",
+        "8 horas",
+        "10 minutos"
+      ],
+      "correcta": 0,
+      "pista": "Resta horas."
+    },
+    {
+      "id": "c-e3",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Mario regó las plantas y limpió su cuarto. ¿Qué más hizo?",
+      "opciones": [
+        "Limpiar",
+        "Dormir",
+        "Cantar"
+      ],
+      "correcta": 0,
+      "pista": "Segunda acción."
+    },
+    {
+      "id": "c-e4",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "En la feria había globos y palomitas. ¿Qué se podía comer?",
+      "opciones": [
+        "Palomitas",
+        "Sopa",
+        "Pan solo"
+      ],
+      "correcta": 0,
+      "pista": "Comida."
+    },
+    {
+      "id": "c-e5",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "La maestra pidió silencio: empezaba el examen. ¿Por qué silencio?",
+      "opciones": [
+        "Por el examen",
+        "Por un concierto",
+        "Por un dragón"
+      ],
+      "correcta": 0,
+      "pista": "Causa."
+    },
+    {
+      "id": "c-e6",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Junto al río vieron patos y un puente. ¿Qué vieron?",
+      "opciones": [
+        "Patos y un puente",
+        "Solo coches",
+        "Una montaña rusa"
+      ],
+      "correcta": 0,
+      "pista": "Lista."
+    },
+    {
+      "id": "c-e7",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Lucía guardó la carta en un sobre blanco. ¿Dónde?",
+      "opciones": [
+        "En un sobre blanco",
+        "En la nevera",
+        "En el patio"
+      ],
+      "correcta": 0,
+      "pista": "Lugar."
+    },
+    {
+      "id": "c-e8",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Después de cenar vieron una película. ¿Cuándo la vieron?",
+      "opciones": [
+        "Después de cenar",
+        "Antes del almuerzo",
+        "Al alba solo"
+      ],
+      "correcta": 0,
+      "pista": "Tiempo."
+    },
+    {
+      "id": "o-e1",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "lápiz",
+        "lapiz",
+        "lápis"
+      ],
+      "correcta": 0,
+      "pista": "Tilde."
+    },
+    {
+      "id": "ortografia-fb-1",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 1: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 1",
+        "Distractor 1A",
+        "Distractor 1B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-2",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 2: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 2",
+        "Distractor 2A",
+        "Distractor 2B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-3",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 3: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 3",
+        "Distractor 3A",
+        "Distractor 3B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-4",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 4: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 4",
+        "Distractor 4A",
+        "Distractor 4B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-5",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 5: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 5",
+        "Distractor 5A",
+        "Distractor 5B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-6",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 6: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 6",
+        "Distractor 6A",
+        "Distractor 6B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-7",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 7: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 7",
+        "Distractor 7A",
+        "Distractor 7B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "ortografia-fb-8",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "Refuerzo 8: elige la opción correcta sobre ortografia.",
+      "opciones": [
+        "Respuesta correcta 8",
+        "Distractor 8A",
+        "Distractor 8B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "v-e1",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'bonito':",
+      "opciones": [
+        "hermoso",
+        "feo",
+        "roto"
+      ],
+      "correcta": 0,
+      "pista": "Igual sentido."
+    },
+    {
+      "id": "v-e2",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Antónimo de 'alto':",
+      "opciones": [
+        "bajo",
+        "largo",
+        "ancho"
+      ],
+      "correcta": 0,
+      "pista": "Contrario."
+    },
+    {
+      "id": "v-e3",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'casa':",
+      "opciones": [
+        "hogar",
+        "río",
+        "nube"
+      ],
+      "correcta": 0,
+      "pista": "Vivienda."
+    },
+    {
+      "id": "v-e4",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Contrario de 'abrir':",
+      "opciones": [
+        "cerrar",
+        "volar",
+        "cantar"
+      ],
+      "correcta": 0,
+      "pista": "Opuesto."
+    },
+    {
+      "id": "v-e5",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'contento':",
+      "opciones": [
+        "alegre",
+        "triste",
+        "serio frío"
+      ],
+      "correcta": 0,
+      "pista": "Emoción."
+    },
+    {
+      "id": "v-e6",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Antónimo de 'noche':",
+      "opciones": [
+        "día",
+        "sombra",
+        "invierno"
+      ],
+      "correcta": 0,
+      "pista": "Contrario."
+    },
+    {
+      "id": "v-e7",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'amigo':",
+      "opciones": [
+        "compañero",
+        "enemigo",
+        "piedra"
+      ],
+      "correcta": 0,
+      "pista": "Cercanía."
+    },
+    {
+      "id": "v-e8",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "'Silencio' significa…",
+      "opciones": [
+        "ausencia de ruido",
+        "mucho ruido",
+        "una canción"
+      ],
+      "correcta": 0,
+      "pista": "Definición."
+    },
+    {
+      "id": "v-e9",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Contrario de 'subir':",
+      "opciones": [
+        "bajar",
+        "crecer",
+        "volar"
+      ],
+      "correcta": 0,
+      "pista": "Movimiento."
+    },
+    {
+      "id": "i-e1",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Abrigo, gorro y suelo blanco. ¿Tiempo?",
+      "opciones": [
+        "Frío/nieve",
+        "Calor extremo",
+        "Tormenta de arena"
+      ],
+      "correcta": 0,
+      "pista": "Pistas."
+    },
+    {
+      "id": "i-e2",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Aplausos al final. ¿Qué pasó?",
+      "opciones": [
+        "Terminó la actuación",
+        "Empezó a nevar en el patio",
+        "Cerraron el río"
+      ],
+      "correcta": 0,
+      "pista": "Contexto."
+    },
+    {
+      "id": "i-e3",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "El perro mueve la cola al ver a su dueño. ¿Cómo está?",
+      "opciones": [
+        "Contento",
+        "Enfadado",
+        "Asustado"
+      ],
+      "correcta": 0,
+      "pista": "Señal."
+    },
+    {
+      "id": "i-e4",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Luces del cine apagadas. ¿Qué empieza?",
+      "opciones": [
+        "La película",
+        "Un examen oral",
+        "Una carrera"
+      ],
+      "correcta": 0,
+      "pista": "Lugar."
+    },
+    {
+      "id": "i-e5",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Maletas y billetes en la mesa. ¿Planes?",
+      "opciones": [
+        "Viajar",
+        "Cocinar sopa",
+        "Estudiar silencio"
+      ],
+      "correcta": 0,
+      "pista": "Objetos."
+    },
+    {
+      "id": "i-e6",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Bosteza y se frota los ojos. ¿Cómo se siente?",
+      "opciones": [
+        "Con sueño",
+        "Muy enfadado",
+        "Congelado"
+      ],
+      "correcta": 0,
+      "pista": "Gestos."
+    },
+    {
+      "id": "i-e7",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Planta caída y tierra seca. ¿Qué necesita?",
+      "opciones": [
+        "Agua",
+        "Más pintura",
+        "Menos luz útil siempre"
+      ],
+      "correcta": 0,
+      "pista": "Causa."
+    },
+    {
+      "id": "i-e8",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Globos y tarta con velas. ¿Qué hay?",
+      "opciones": [
+        "Fiesta/cumpleaños",
+        "Un examen final",
+        "Solo una mudanza"
+      ],
+      "correcta": 0,
+      "pista": "Ambiente."
+    },
+    {
+      "id": "i-e9",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Huellas de barro a la cocina. ¿Qué ocurrió?",
+      "opciones": [
+        "Entraron con zapatos sucios",
+        "Nevó dentro",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Rastro."
+    },
+    {
+      "id": "i-e10",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Lleva gafas de sol y toalla. ¿Dónde va?",
+      "opciones": [
+        "A la playa/piscina",
+        "Al sótano oscuro",
+        "A la nieve polar"
+      ],
+      "correcta": 0,
+      "pista": "Objetos."
     }
   ],
   "puntosPorFase": {
@@ -181,10 +798,23 @@
     "biblioteca-magica": 25
   },
   "mensajes": {
-    "acierto": ["¡Lectura perfecta!", "¡Muy bien!", "¡Has entendido el texto!"],
-    "error": ["Relee con calma", "Busca la pista en el texto", "Prueba otra opción"],
-    "ultima": ["¡Última pregunta del libro!"]
+    "acierto": [
+      "¡Lectura perfecta!",
+      "¡Muy bien!",
+      "¡Has entendido el texto!"
+    ],
+    "error": [
+      "Relee con calma",
+      "Busca la pista en el texto",
+      "Prueba otra opción"
+    ],
+    "ultima": [
+      "¡Última pregunta del libro!"
+    ]
   },
   "mensajesPredefinidos": {},
-  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }

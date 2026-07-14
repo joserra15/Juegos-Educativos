@@ -488,6 +488,286 @@
       ],
       "correcta": 0,
       "pista": "Una sola cara cuadrada."
+    },
+    {
+      "id": "ro-e1",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Flecha ↑ + 180° apunta…",
+      "opciones": [
+        "abajo",
+        "izquierda",
+        "arriba igual"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e2",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Aguja en 12 + 90° horario…",
+      "opciones": [
+        "3",
+        "6",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e3",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Girar 360° deja la figura…",
+      "opciones": [
+        "igual",
+        "al revés",
+        "invisible"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e4",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Cuadrado rotado 90°…",
+      "opciones": [
+        "sigue cuadrado",
+        "círculo",
+        "triángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e1",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista arriba de vaso cilindrico…",
+      "opciones": [
+        "círculo",
+        "rectángulo",
+        "triángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e2",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista frontal de un libro…",
+      "opciones": [
+        "rectángulo",
+        "círculo",
+        "estrella"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e3",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Mapa ≈ vista…",
+      "opciones": [
+        "desde arriba",
+        "desde sótano",
+        "desde el oído"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e4",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Fachada = vista…",
+      "opciones": [
+        "delante",
+        "satélite",
+        "interior solo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e5",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Pelota desde cualquier lado…",
+      "opciones": [
+        "círculo",
+        "cubo",
+        "pirámide"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e1",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "2 triángulos unidos por un lado pueden formar…",
+      "opciones": [
+        "rombo/cuadrilátero",
+        "círculo",
+        "esfera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e2",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Cuadrado con diagonal =…",
+      "opciones": [
+        "2 triángulos",
+        "3 círculos",
+        "0 piezas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e3",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "4 cuadrados en 2×2 =…",
+      "opciones": [
+        "cuadrado mayor",
+        "triángulo",
+        "cilindro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e4",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Tangram usa…",
+      "opciones": [
+        "piezas geométricas",
+        "solo agua",
+        "solo letras"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e5",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Rectángulo por mitad corta →…",
+      "opciones": [
+        "2 rectángulos",
+        "5 esferas",
+        "1 círculo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e1",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Espejo vertical: → se ve…",
+      "opciones": [
+        "←",
+        "→ igual",
+        "↑"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e2",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "b reflejada vertical ≈",
+      "opciones": [
+        "d",
+        "q",
+        "p"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e3",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Reflexión ≠ rotación porque…",
+      "opciones": [
+        "invierte; rotar no refleja",
+        "son iguales",
+        "el espejo borra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e4",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "En espejo, izquierda parece…",
+      "opciones": [
+        "derecha",
+        "desaparecer",
+        "color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e5",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Hora 3:00 en espejo parece…",
+      "opciones": [
+        "cerca de las 9",
+        "las 3 exactas",
+        "las 12"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e6",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Reflejar ↑ da…",
+      "opciones": [
+        "↓",
+        "←",
+        "→"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {

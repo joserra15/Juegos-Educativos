@@ -1,0 +1,7528 @@
+{
+  "comprension": [
+    {
+      "id": "c-e1",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Clara perdió su bufanda roja en el parque. ¿De qué color era?",
+      "opciones": [
+        "Roja",
+        "Azul",
+        "Verde"
+      ],
+      "correcta": 0,
+      "pista": "Color en el texto."
+    },
+    {
+      "id": "c-e2",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "El tren salió a las 8 y llegó a las 10. ¿Cuánto duró?",
+      "opciones": [
+        "2 horas",
+        "8 horas",
+        "10 minutos"
+      ],
+      "correcta": 0,
+      "pista": "Resta horas."
+    },
+    {
+      "id": "c-e3",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Mario regó las plantas y limpió su cuarto. ¿Qué más hizo?",
+      "opciones": [
+        "Limpiar",
+        "Dormir",
+        "Cantar"
+      ],
+      "correcta": 0,
+      "pista": "Segunda acción."
+    },
+    {
+      "id": "c-e4",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "En la feria había globos y palomitas. ¿Qué se podía comer?",
+      "opciones": [
+        "Palomitas",
+        "Sopa",
+        "Pan solo"
+      ],
+      "correcta": 0,
+      "pista": "Comida."
+    },
+    {
+      "id": "c-e5",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "La maestra pidió silencio: empezaba el examen. ¿Por qué silencio?",
+      "opciones": [
+        "Por el examen",
+        "Por un concierto",
+        "Por un dragón"
+      ],
+      "correcta": 0,
+      "pista": "Causa."
+    },
+    {
+      "id": "c-e6",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Junto al río vieron patos y un puente. ¿Qué vieron?",
+      "opciones": [
+        "Patos y un puente",
+        "Solo coches",
+        "Una montaña rusa"
+      ],
+      "correcta": 0,
+      "pista": "Lista."
+    },
+    {
+      "id": "c-e7",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Lucía guardó la carta en un sobre blanco. ¿Dónde?",
+      "opciones": [
+        "En un sobre blanco",
+        "En la nevera",
+        "En el patio"
+      ],
+      "correcta": 0,
+      "pista": "Lugar."
+    },
+    {
+      "id": "c-e8",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Después de cenar vieron una película. ¿Cuándo la vieron?",
+      "opciones": [
+        "Después de cenar",
+        "Antes del almuerzo",
+        "Al alba solo"
+      ],
+      "correcta": 0,
+      "pista": "Tiempo."
+    },
+    {
+      "id": "c-e9",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "El faro guiaba a los barcos por la noche. ¿A quién guiaba?",
+      "opciones": [
+        "A los barcos",
+        "A los coches",
+        "A los aviones del texto"
+      ],
+      "correcta": 0,
+      "pista": "Complemento."
+    },
+    {
+      "id": "c-e10",
+      "etiquetas": [
+        "comprension"
+      ],
+      "texto": "Ana llegó tarde porque perdió el bus. ¿Por qué llegó tarde?",
+      "opciones": [
+        "Perdió el bus",
+        "Nevó en casa",
+        "Se durmió en clase"
+      ],
+      "correcta": 0,
+      "pista": "Porque…"
+    }
+  ],
+  "ortografia": [
+    {
+      "id": "o-e1",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "lápiz",
+        "lapiz",
+        "lápis"
+      ],
+      "correcta": 0,
+      "pista": "Tilde."
+    },
+    {
+      "id": "o-e2",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "música",
+        "musica",
+        "músicá"
+      ],
+      "correcta": 0,
+      "pista": "Esdrújula."
+    },
+    {
+      "id": "o-e3",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "rápido",
+        "rapido",
+        "ràpido"
+      ],
+      "correcta": 0,
+      "pista": "Tilde."
+    },
+    {
+      "id": "o-e4",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "héroe",
+        "heroe",
+        "heróe"
+      ],
+      "correcta": 0,
+      "pista": "Hiéroe."
+    },
+    {
+      "id": "o-e5",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "pájaro",
+        "pajaro",
+        "pàjaro"
+      ],
+      "correcta": 0,
+      "pista": "Tilde."
+    },
+    {
+      "id": "o-e6",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "médico",
+        "medico",
+        "mèdico"
+      ],
+      "correcta": 0,
+      "pista": "Esdrújula."
+    },
+    {
+      "id": "o-e7",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "también",
+        "tambien",
+        "tambíen"
+      ],
+      "correcta": 0,
+      "pista": "Adverbio."
+    },
+    {
+      "id": "o-e8",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "después",
+        "despues",
+        "despúes"
+      ],
+      "correcta": 0,
+      "pista": "Acento."
+    },
+    {
+      "id": "o-e9",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "número",
+        "numero",
+        "númeró"
+      ],
+      "correcta": 0,
+      "pista": "Esdrújula."
+    },
+    {
+      "id": "o-e10",
+      "etiquetas": [
+        "ortografia"
+      ],
+      "texto": "¿Cuál está bien?",
+      "opciones": [
+        "árbol",
+        "arbol",
+        "àrbol"
+      ],
+      "correcta": 0,
+      "pista": "Tilde."
+    }
+  ],
+  "vocabulario": [
+    {
+      "id": "v-e1",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'bonito':",
+      "opciones": [
+        "hermoso",
+        "feo",
+        "roto"
+      ],
+      "correcta": 0,
+      "pista": "Igual sentido."
+    },
+    {
+      "id": "v-e2",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Antónimo de 'alto':",
+      "opciones": [
+        "bajo",
+        "largo",
+        "ancho"
+      ],
+      "correcta": 0,
+      "pista": "Contrario."
+    },
+    {
+      "id": "v-e3",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'casa':",
+      "opciones": [
+        "hogar",
+        "río",
+        "nube"
+      ],
+      "correcta": 0,
+      "pista": "Vivienda."
+    },
+    {
+      "id": "v-e4",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Contrario de 'abrir':",
+      "opciones": [
+        "cerrar",
+        "volar",
+        "cantar"
+      ],
+      "correcta": 0,
+      "pista": "Opuesto."
+    },
+    {
+      "id": "v-e5",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'contento':",
+      "opciones": [
+        "alegre",
+        "triste",
+        "serio frío"
+      ],
+      "correcta": 0,
+      "pista": "Emoción."
+    },
+    {
+      "id": "v-e6",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Antónimo de 'noche':",
+      "opciones": [
+        "día",
+        "sombra",
+        "invierno"
+      ],
+      "correcta": 0,
+      "pista": "Contrario."
+    },
+    {
+      "id": "v-e7",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'amigo':",
+      "opciones": [
+        "compañero",
+        "enemigo",
+        "piedra"
+      ],
+      "correcta": 0,
+      "pista": "Cercanía."
+    },
+    {
+      "id": "v-e8",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "'Silencio' significa…",
+      "opciones": [
+        "ausencia de ruido",
+        "mucho ruido",
+        "una canción"
+      ],
+      "correcta": 0,
+      "pista": "Definición."
+    },
+    {
+      "id": "v-e9",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Contrario de 'subir':",
+      "opciones": [
+        "bajar",
+        "crecer",
+        "volar"
+      ],
+      "correcta": 0,
+      "pista": "Movimiento."
+    },
+    {
+      "id": "v-e10",
+      "etiquetas": [
+        "vocabulario"
+      ],
+      "texto": "Sinónimo de 'grande':",
+      "opciones": [
+        "enorme",
+        "mínimo",
+        "igual"
+      ],
+      "correcta": 0,
+      "pista": "Tamaño."
+    }
+  ],
+  "inferencia": [
+    {
+      "id": "i-e1",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Abrigo, gorro y suelo blanco. ¿Tiempo?",
+      "opciones": [
+        "Frío/nieve",
+        "Calor extremo",
+        "Tormenta de arena"
+      ],
+      "correcta": 0,
+      "pista": "Pistas."
+    },
+    {
+      "id": "i-e2",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Aplausos al final. ¿Qué pasó?",
+      "opciones": [
+        "Terminó la actuación",
+        "Empezó a nevar en el patio",
+        "Cerraron el río"
+      ],
+      "correcta": 0,
+      "pista": "Contexto."
+    },
+    {
+      "id": "i-e3",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "El perro mueve la cola al ver a su dueño. ¿Cómo está?",
+      "opciones": [
+        "Contento",
+        "Enfadado",
+        "Asustado"
+      ],
+      "correcta": 0,
+      "pista": "Señal."
+    },
+    {
+      "id": "i-e4",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Luces del cine apagadas. ¿Qué empieza?",
+      "opciones": [
+        "La película",
+        "Un examen oral",
+        "Una carrera"
+      ],
+      "correcta": 0,
+      "pista": "Lugar."
+    },
+    {
+      "id": "i-e5",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Maletas y billetes en la mesa. ¿Planes?",
+      "opciones": [
+        "Viajar",
+        "Cocinar sopa",
+        "Estudiar silencio"
+      ],
+      "correcta": 0,
+      "pista": "Objetos."
+    },
+    {
+      "id": "i-e6",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Bosteza y se frota los ojos. ¿Cómo se siente?",
+      "opciones": [
+        "Con sueño",
+        "Muy enfadado",
+        "Congelado"
+      ],
+      "correcta": 0,
+      "pista": "Gestos."
+    },
+    {
+      "id": "i-e7",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Planta caída y tierra seca. ¿Qué necesita?",
+      "opciones": [
+        "Agua",
+        "Más pintura",
+        "Menos luz útil siempre"
+      ],
+      "correcta": 0,
+      "pista": "Causa."
+    },
+    {
+      "id": "i-e8",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Globos y tarta con velas. ¿Qué hay?",
+      "opciones": [
+        "Fiesta/cumpleaños",
+        "Un examen final",
+        "Solo una mudanza"
+      ],
+      "correcta": 0,
+      "pista": "Ambiente."
+    },
+    {
+      "id": "i-e9",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Huellas de barro a la cocina. ¿Qué ocurrió?",
+      "opciones": [
+        "Entraron con zapatos sucios",
+        "Nevó dentro",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Rastro."
+    },
+    {
+      "id": "i-e10",
+      "etiquetas": [
+        "inferencia"
+      ],
+      "texto": "Lleva gafas de sol y toalla. ¿Dónde va?",
+      "opciones": [
+        "A la playa/piscina",
+        "Al sótano oscuro",
+        "A la nieve polar"
+      ],
+      "correcta": 0,
+      "pista": "Objetos."
+    }
+  ],
+  "comprension-4": [
+    {
+      "id": "c4e1",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Clara eligió el camino corto al museo. ¿Qué eligió?",
+      "opciones": [
+        "El camino corto",
+        "Quedarse en casa",
+        "Ir a la playa"
+      ],
+      "correcta": 0,
+      "pista": "Texto."
+    },
+    {
+      "id": "c4e2",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "El artículo habla de cómo se forman las nubes. ¿Tema?",
+      "opciones": [
+        "Las nubes",
+        "Los coches",
+        "Los deportes"
+      ],
+      "correcta": 0,
+      "pista": "Tema."
+    },
+    {
+      "id": "c4e3",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Antes del concierto afinaron. ¿Qué hicieron?",
+      "opciones": [
+        "Afinar instrumentos",
+        "Dormir",
+        "Vender sopa"
+      ],
+      "correcta": 0,
+      "pista": "Antes."
+    },
+    {
+      "id": "c4e4",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Hugo estudió y subió la nota. ¿Qué logró?",
+      "opciones": [
+        "Mejorar la nota",
+        "Perder el libro",
+        "Dejar el cole"
+      ],
+      "correcta": 0,
+      "pista": "Resultado."
+    },
+    {
+      "id": "c4e5",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Midieron la temperatura cada hora. ¿Qué midieron?",
+      "opciones": [
+        "Temperatura",
+        "El ruido",
+        "El color"
+      ],
+      "correcta": 0,
+      "pista": "Acción."
+    },
+    {
+      "id": "c4e6",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Entrevistó a tres vecinos. ¿A quiénes?",
+      "opciones": [
+        "Tres vecinos",
+        "Un astronauta",
+        "Nadie"
+      ],
+      "correcta": 0,
+      "pista": "Personas."
+    },
+    {
+      "id": "c4e7",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Describe un mercado lleno de olores. ¿Qué describe?",
+      "opciones": [
+        "Un mercado",
+        "Un desierto vacío",
+        "Una oficina sola"
+      ],
+      "correcta": 0,
+      "pista": "Lugar."
+    },
+    {
+      "id": "c4e8",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Aunque llovía, terminaron el partido. ¿Qué hicieron?",
+      "opciones": [
+        "Terminar el partido",
+        "Cancelar todo",
+        "Irse al minuto"
+      ],
+      "correcta": 0,
+      "pista": "Acción."
+    },
+    {
+      "id": "c4e9",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Compara ciudad antigua y moderna. ¿Qué hace?",
+      "opciones": [
+        "Comparar",
+        "Inventar recetas",
+        "Contar chistes"
+      ],
+      "correcta": 0,
+      "pista": "Acción del autor."
+    },
+    {
+      "id": "c4e10",
+      "etiquetas": [
+        "comprension-4"
+      ],
+      "texto": "Subrayó las ideas principales. ¿Qué subrayó?",
+      "opciones": [
+        "Ideas principales",
+        "Los dibujos",
+        "Las firmas"
+      ],
+      "correcta": 0,
+      "pista": "Detalle."
+    }
+  ],
+  "ortografia-4": [
+    {
+      "id": "o4e1",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "también",
+        "tambien",
+        "tambíen"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e2",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "después",
+        "despues",
+        "despúes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e3",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "así",
+        "asi",
+        "asì"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e4",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "césped",
+        "cesped",
+        "cespéd"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e5",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "ágil",
+        "agil",
+        "ágíl"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e6",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "próximo",
+        "proximo",
+        "próximó"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e7",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "rápidamente",
+        "rapídamente",
+        "rapida mente"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e8",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "músculo",
+        "musculo",
+        "muscúlo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e9",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige la correcta:",
+      "opciones": [
+        "cómic",
+        "comic",
+        "cómíc"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "o4e10",
+      "etiquetas": [
+        "ortografia-4"
+      ],
+      "texto": "Elige el plural correcto:",
+      "opciones": [
+        "lápices",
+        "lapices",
+        "lápizes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    }
+  ],
+  "gramatica": [
+    {
+      "id": "g4e1",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'Las flores huelen bien', el verbo es…",
+      "opciones": [
+        "huelen",
+        "flores",
+        "bien"
+      ],
+      "correcta": 0,
+      "pista": "Acción."
+    },
+    {
+      "id": "g4e2",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'Mi hermano corre', el sujeto es…",
+      "opciones": [
+        "Mi hermano",
+        "corre",
+        "Mi"
+      ],
+      "correcta": 0,
+      "pista": "Quién."
+    },
+    {
+      "id": "g4e3",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'casa blanca', blanca es…",
+      "opciones": [
+        "adjetivo",
+        "verbo",
+        "artículo"
+      ],
+      "correcta": 0,
+      "pista": "Describe."
+    },
+    {
+      "id": "g4e4",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "'Y' en 'pan y leche' es…",
+      "opciones": [
+        "conjunción",
+        "verbo",
+        "sustantivo"
+      ],
+      "correcta": 0,
+      "pista": "Une."
+    },
+    {
+      "id": "g4e5",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'Ellos cantan', el verbo está en…",
+      "opciones": [
+        "plural",
+        "infinitivo",
+        "yo singular"
+      ],
+      "correcta": 0,
+      "pista": "Concordancia."
+    },
+    {
+      "id": "g4e6",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "¿Cuál es sustantivo?",
+      "opciones": [
+        "mesa",
+        "rápido",
+        "muy"
+      ],
+      "correcta": 0,
+      "pista": "Nombre."
+    },
+    {
+      "id": "g4e7",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "En 'muy rápido', 'muy' es…",
+      "opciones": [
+        "adverbio",
+        "sustantivo",
+        "verbo"
+      ],
+      "correcta": 0,
+      "pista": "Intensifica."
+    },
+    {
+      "id": "g4e8",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "El artículo en 'el perro' es…",
+      "opciones": [
+        "el",
+        "perro",
+        "ninguno"
+      ],
+      "correcta": 0,
+      "pista": "Determinante."
+    },
+    {
+      "id": "g4e9",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "'Comimos ayer' indica tiempo…",
+      "opciones": [
+        "pasado",
+        "futuro",
+        "orden"
+      ],
+      "correcta": 0,
+      "pista": "Tiempo verbal."
+    },
+    {
+      "id": "g4e10",
+      "etiquetas": [
+        "gramatica"
+      ],
+      "texto": "¿Cuál es adjetivo?",
+      "opciones": [
+        "divertido",
+        "correr",
+        "ellos"
+      ],
+      "correcta": 0,
+      "pista": "Cualidad."
+    }
+  ],
+  "seres-vivos": [
+    {
+      "id": "ser-e1",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Qué necesitan casi todos los seres vivos?",
+      "opciones": [
+        "Agua, aire y alimento",
+        "Solo plástico",
+        "Solo TV"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e2",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Una piedra es un ser vivo?",
+      "opciones": [
+        "No",
+        "Sí",
+        "Solo de noche"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e3",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Las plantas fabrican alimento con…",
+      "opciones": [
+        "Luz solar",
+        "Piedras",
+        "Viento solo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e4",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Qué hace un ser vivo que una silla no?",
+      "opciones": [
+        "Crecer/reproducirse",
+        "Quedarse igual siempre",
+        "Ser de metal"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e5",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Cuál es un ser vivo?",
+      "opciones": [
+        "Una planta",
+        "Una mesa",
+        "Un coche"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e6",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Los seres vivos…",
+      "opciones": [
+        "Nacen, crecen y se reproducen",
+        "Se vuelven robots",
+        "Desaparecen al instante"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e7",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Muchos animales respiran…",
+      "opciones": [
+        "Aire/oxígeno",
+        "Aceite",
+        "Arena"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e8",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "Una semilla puede…",
+      "opciones": [
+        "Germinar",
+        "Volar sola",
+        "Cantar"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e9",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "El agua es importante porque…",
+      "opciones": [
+        "Los seres vivos la necesitan",
+        "Sobran siempre",
+        "Es de plástico"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ser-e10",
+      "etiquetas": [
+        "seres-vivos"
+      ],
+      "texto": "¿Qué NO es un ser vivo?",
+      "opciones": [
+        "Una piedra",
+        "Un pez",
+        "Un árbol"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    }
+  ],
+  "animales-plantas": [
+    {
+      "id": "ani-e1",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "¿Qué animal es herbívoro?",
+      "opciones": [
+        "Conejo",
+        "León",
+        "Tiburón"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e2",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Las raíces sirven para…",
+      "opciones": [
+        "Absorber agua",
+        "Volar",
+        "Hacer fotos"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e3",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Un pez respira con…",
+      "opciones": [
+        "Branquias",
+        "Alas",
+        "Pulmones de pájaro"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e4",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "¿Qué planta da frutos?",
+      "opciones": [
+        "Manzano",
+        "Musgo seco solo",
+        "Piedra verde"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e5",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Las aves suelen tener…",
+      "opciones": [
+        "Plumas",
+        "Aletas",
+        "Escamas de pez"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e6",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "El tallo…",
+      "opciones": [
+        "Sostiene la planta",
+        "Come insectos",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e7",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "¿Cuál pone huevos?",
+      "opciones": [
+        "Gallina",
+        "Gato",
+        "Perro"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e8",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Las hojas ayudan a…",
+      "opciones": [
+        "Fotosíntesis",
+        "Correr",
+        "Dormir"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e9",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Un carnívoro come…",
+      "opciones": [
+        "Carne/otros animales",
+        "Solo piedras",
+        "Solo aire"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "ani-e10",
+      "etiquetas": [
+        "animales-plantas"
+      ],
+      "texto": "Las abejas ayudan a…",
+      "opciones": [
+        "Polinizar",
+        "Cortar árboles",
+        "Apagar el sol"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    }
+  ],
+  "cuerpo": [
+    {
+      "id": "cue-e1",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "¿Con qué sentido oímos?",
+      "opciones": [
+        "Oído",
+        "Vista",
+        "Gusto"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e2",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Los huesos forman el…",
+      "opciones": [
+        "Esqueleto",
+        "Estómago",
+        "Cabello"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e3",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "El corazón…",
+      "opciones": [
+        "Bombea la sangre",
+        "Digiere piedras",
+        "Hace fotos"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e4",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Para estar sano conviene…",
+      "opciones": [
+        "Comer bien y moverse",
+        "No beber agua",
+        "No dormir"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e5",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Los músculos sirven para…",
+      "opciones": [
+        "Movernos",
+        "Pensar solo",
+        "Ver colores"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e6",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "¿Con qué pensamos?",
+      "opciones": [
+        "Cerebro",
+        "Codo",
+        "Uña"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e7",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "La piel…",
+      "opciones": [
+        "Protege",
+        "Bombea sangre",
+        "Lee"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e8",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Los dientes sirven para…",
+      "opciones": [
+        "Masticar",
+        "Oír",
+        "Oler nubes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e9",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "Dormir bien ayuda a…",
+      "opciones": [
+        "Descansar y crecer",
+        "Oxidarse",
+        "Olvidar útil"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "cue-e10",
+      "etiquetas": [
+        "cuerpo"
+      ],
+      "texto": "El estómago interviene en…",
+      "opciones": [
+        "La digestión",
+        "La vista",
+        "El oído"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    }
+  ],
+  "materiales": [
+    {
+      "id": "mat-e1",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El cristal de ventana es…",
+      "opciones": [
+        "Frágil/transparente",
+        "Comestible",
+        "Líquido siempre"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e2",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "La madera viene de…",
+      "opciones": [
+        "Árboles",
+        "El mar",
+        "Las nubes"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e3",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "¿Qué material es elástico?",
+      "opciones": [
+        "Goma",
+        "Cristal rígido",
+        "Roca"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e4",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El metal suele…",
+      "opciones": [
+        "Ser duro y conducir",
+        "Ser siempre blando",
+        "Derretirse al frío"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e5",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El papel se obtiene de…",
+      "opciones": [
+        "Celulosa/madera",
+        "Arena",
+        "Hielo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e6",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "Transparente deja…",
+      "opciones": [
+        "Pasar la luz",
+        "Comerse",
+        "Sonar fuerte"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e7",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "¿Qué flota más fácil?",
+      "opciones": [
+        "Madera/corcho",
+        "Piedra densa",
+        "Hierro macizo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e8",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "Un imán atrae…",
+      "opciones": [
+        "Hierro/metales",
+        "Madera",
+        "Papel"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e9",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "El plástico se usa porque…",
+      "opciones": [
+        "Es moldeable",
+        "Se come",
+        "Es un animal"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "mat-e10",
+      "etiquetas": [
+        "materiales"
+      ],
+      "texto": "¿Cuál es material natural?",
+      "opciones": [
+        "Madera/algodón",
+        "Plástico sintético",
+        "Vidrio industrial solo"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    }
+  ],
+  "agua-aire": [
+    {
+      "id": "agu-e1",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Agua sólida =",
+      "opciones": [
+        "Hielo",
+        "Vapor",
+        "Arena"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e2",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Respiramos…",
+      "opciones": [
+        "Aire",
+        "Humo útil",
+        "Aceite"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e3",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El ciclo del agua incluye…",
+      "opciones": [
+        "Evaporación y lluvia",
+        "Solo fuego",
+        "Nieve en verano fija"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e4",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El viento es…",
+      "opciones": [
+        "Aire en movimiento",
+        "Agua quieta",
+        "Roca"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e5",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El vapor de agua es…",
+      "opciones": [
+        "Gas",
+        "Sólido",
+        "Metal"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e6",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Los ríos llevan agua hacia…",
+      "opciones": [
+        "El mar",
+        "El sol",
+        "La luna"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e7",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El aire ocupa…",
+      "opciones": [
+        "Espacio",
+        "Solo botellas",
+        "Nada"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e8",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Cuando llueve, el agua…",
+      "opciones": [
+        "Cae al suelo",
+        "Se vuelve metal",
+        "Desaparece siempre"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e9",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "El hielo al calentarse…",
+      "opciones": [
+        "Se funde",
+        "Se vuelve piedra",
+        "Se vuelve fuego"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    },
+    {
+      "id": "agu-e10",
+      "etiquetas": [
+        "agua-aire"
+      ],
+      "texto": "Las nubes están formadas por…",
+      "opciones": [
+        "Gotitas de agua",
+        "Piedras",
+        "Hojas"
+      ],
+      "correcta": 0,
+      "pista": "Elige bien."
+    }
+  ],
+  "ecosistemas": [
+    {
+      "id": "eco-e1",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Las plantas en un ecosistema suelen ser…",
+      "opciones": [
+        "Productoras",
+        "Solo depredadoras",
+        "Rocas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e2",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Un depredador…",
+      "opciones": [
+        "Caza otros animales",
+        "Solo come piedras",
+        "Hace fotosíntesis"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e3",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "La cadena alimenticia suele empezar por…",
+      "opciones": [
+        "Plantas",
+        "Leones",
+        "El sol como comida"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e4",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Un bosque es un…",
+      "opciones": [
+        "Ecosistema",
+        "Planeta nuevo",
+        "Mineral"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e5",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Si faltan abejas, la polinización…",
+      "opciones": [
+        "Empeora",
+        "Mejora sola siempre",
+        "No cambia nunca"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e6",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Los descomponedores…",
+      "opciones": [
+        "Reciclan materia",
+        "Solo vuelan",
+        "Fabrican coches"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e7",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Pez + agua forman parte de…",
+      "opciones": [
+        "Ecosistema acuático",
+        "Una fábrica",
+        "Una nube seca"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e8",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Biodiversidad es…",
+      "opciones": [
+        "Variedad de seres vivos",
+        "Un solo animal",
+        "Solo piedras"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e9",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Hábitat es…",
+      "opciones": [
+        "Donde vive un ser",
+        "Una comida",
+        "Una canción"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e10",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Una amenaza es…",
+      "opciones": [
+        "La contaminación",
+        "La lluvia normal",
+        "El día"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "materia": [
+    {
+      "id": "mat-e1",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "La materia tiene…",
+      "opciones": [
+        "Masa y volumen",
+        "Solo color",
+        "Solo olor"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e2",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Un estado de la materia es…",
+      "opciones": [
+        "Sólido",
+        "Música",
+        "Silencio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e3",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Al calentar hielo…",
+      "opciones": [
+        "Pasa a líquido",
+        "Se vuelve madera",
+        "Desaparece siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e4",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "El aire es materia porque…",
+      "opciones": [
+        "Ocupa espacio",
+        "No existe",
+        "Es luz pura"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e5",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Una mezcla es…",
+      "opciones": [
+        "Combinación de sustancias",
+        "Un átomo",
+        "Una emoción"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e6",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Los sólidos…",
+      "opciones": [
+        "Tienen forma propia",
+        "Fluyen siempre",
+        "No pesan"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e7",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Los líquidos…",
+      "opciones": [
+        "Adaptan el recipiente",
+        "Forma fija de cubo",
+        "Son imanes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e8",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Evaporación es…",
+      "opciones": [
+        "Líquido a gas",
+        "A sólido",
+        "Romper metal"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e9",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Ejemplo de cambio físico…",
+      "opciones": [
+        "Romper papel",
+        "Quemar madera",
+        "Digestión completa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e10",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "La masa se mide en…",
+      "opciones": [
+        "g/kg",
+        "Metros solo",
+        "Colores"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "energia": [
+    {
+      "id": "en-e1",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "El Sol aporta…",
+      "opciones": [
+        "Energía/luz/calor",
+        "Solo silencio",
+        "Solo viento frío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e2",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Una bombilla convierte electricidad en…",
+      "opciones": [
+        "Luz (y calor)",
+        "Agua",
+        "Madera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e3",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Un coche al moverse usa…",
+      "opciones": [
+        "Energía",
+        "Solo sombra",
+        "Vacío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e4",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Ahorrar energía: ejemplo…",
+      "opciones": [
+        "Apagar luces",
+        "Dejar todo encendido",
+        "Romper bombillas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e5",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "El viento puede generar…",
+      "opciones": [
+        "Energía eólica",
+        "Petróleo",
+        "Hierro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e6",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "La comida aporta…",
+      "opciones": [
+        "Energía",
+        "Solo ruido",
+        "Electricidad de enchufe"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e7",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Una pila almacena…",
+      "opciones": [
+        "Energía química",
+        "Viento",
+        "Lluvia"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e8",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Frotar las manos produce…",
+      "opciones": [
+        "Calor",
+        "Hielo",
+        "Luz de sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e9",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Energía renovable…",
+      "opciones": [
+        "Solar",
+        "Carbón solo",
+        "Petróleo solo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e10",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Pedalear usa…",
+      "opciones": [
+        "Energía muscular",
+        "Solo gravedad mágica",
+        "Solo luz"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "planeta": [
+    {
+      "id": "pl-e1",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "La Tierra gira alrededor del…",
+      "opciones": [
+        "Sol",
+        "Luna solo",
+        "Marte"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e2",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "La Luna…",
+      "opciones": [
+        "Orbita la Tierra",
+        "Es una estrella",
+        "Es un planeta con ciudades"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e3",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Día y noche se deben a…",
+      "opciones": [
+        "Rotación terrestre",
+        "Que el Sol se apaga",
+        "Las nubes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e4",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Las estaciones se relacionan con…",
+      "opciones": [
+        "Inclinación/traslación",
+        "Solo lluvia",
+        "Solo viento"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e5",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Un planeta del Sistema Solar…",
+      "opciones": [
+        "Marte",
+        "La Estrella Polar",
+        "La Luna"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e6",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "La Tierra tiene…",
+      "opciones": [
+        "Atmósfera",
+        "Nada de aire",
+        "Solo lava fuera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e7",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Los polos son…",
+      "opciones": [
+        "Más fríos",
+        "Más cálidos siempre",
+        "Sin hielo jamás"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e8",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "El ecuador es…",
+      "opciones": [
+        "Más cálido en general",
+        "La zona más fría",
+        "Sin Sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e9",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "El Sol es…",
+      "opciones": [
+        "Una estrella",
+        "Un planeta",
+        "Un satélite"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e10",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Un satélite artificial…",
+      "opciones": [
+        "Gira alrededor de la Tierra",
+        "Es una estrella",
+        "Es un cometa siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "salud": [
+    {
+      "id": "sa-e1",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Lavarse las manos ayuda a…",
+      "opciones": [
+        "Evitar gérmenes",
+        "Correr más",
+        "Evitar el agua útil"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e2",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Dormir suficiente es…",
+      "opciones": [
+        "Saludable",
+        "Inútil",
+        "Peligroso siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e3",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Dieta equilibrada incluye…",
+      "opciones": [
+        "Variedad",
+        "Solo chuches",
+        "Solo refrescos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e4",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "El ejercicio…",
+      "opciones": [
+        "Fortalece",
+        "Debilita siempre",
+        "Quita el aire útil"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e5",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Cepillarse evita…",
+      "opciones": [
+        "Caries",
+        "Crecer",
+        "Leer"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e6",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Beber agua sirve para…",
+      "opciones": [
+        "Hidratar",
+        "Oxidarse",
+        "Dormir de pie"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e7",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Casco en bici…",
+      "opciones": [
+        "Protege la cabeza",
+        "Es solo moda",
+        "Impide ver"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e8",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Fumar es…",
+      "opciones": [
+        "Perjudicial",
+        "Obligatorio",
+        "Un deporte"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e9",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Las vacunas…",
+      "opciones": [
+        "Previenen enfermedades",
+        "Cambian el pelo",
+        "Hacen correr más"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e10",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Con pantallas conviene…",
+      "opciones": [
+        "Descansar la vista",
+        "Nunca pausar",
+        "Mejorar el sueño siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "localidad": [
+    {
+      "id": "lo-e1",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "El ayuntamiento está en…",
+      "opciones": [
+        "El municipio",
+        "La Luna",
+        "El océano"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e2",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Una calle forma parte de…",
+      "opciones": [
+        "La localidad",
+        "Otro planeta",
+        "El Sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e3",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Los vecinos viven en…",
+      "opciones": [
+        "La misma zona",
+        "Siempre otro país",
+        "El cielo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e4",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Un mapa local sirve para…",
+      "opciones": [
+        "Orientarse",
+        "Cocinar",
+        "Dormir"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e5",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "La plaza es…",
+      "opciones": [
+        "Espacio abierto del pueblo",
+        "Una montaña",
+        "Un río"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e6",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "El colegio está en…",
+      "opciones": [
+        "La localidad",
+        "Marte",
+        "El fondo del mar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e7",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Pueblo y ciudad son…",
+      "opciones": [
+        "Tipos de localidad",
+        "Planetas",
+        "Animales"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e8",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Las normas de convivencia…",
+      "opciones": [
+        "Ayudan a vivir juntos",
+        "Sirven para pelear",
+        "Ignoran a todos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e9",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "El transporte urbano…",
+      "opciones": [
+        "Mueve por la localidad",
+        "Vuela a la Luna",
+        "Planta soles"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "lo-e10",
+      "etiquetas": [
+        "localidad"
+      ],
+      "texto": "Un parque sirve para…",
+      "opciones": [
+        "Jugar y pasear",
+        "Conducir camiones",
+        "Cavar minas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "mapas": [
+    {
+      "id": "mp-e1",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "La leyenda de un mapa…",
+      "opciones": [
+        "Explica símbolos",
+        "Es un cuento",
+        "Es solo el título"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e2",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "El norte suele estar…",
+      "opciones": [
+        "Arriba",
+        "En el centro solo",
+        "Abajo siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e3",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Una brújula señala…",
+      "opciones": [
+        "El norte",
+        "La hora",
+        "El color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e4",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "La escala indica…",
+      "opciones": [
+        "Relación con la realidad",
+        "El precio",
+        "El clima"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e5",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Los ríos suelen dibujarse…",
+      "opciones": [
+        "En azul",
+        "Como cuadrados",
+        "Como casas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e6",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Un plano de la clase es…",
+      "opciones": [
+        "Un mapa sencillo",
+        "Una novela",
+        "Una receta"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e7",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "La rosa de los vientos muestra…",
+      "opciones": [
+        "Puntos cardinales",
+        "Comidas",
+        "Teléfonos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e8",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "El sur queda…",
+      "opciones": [
+        "Opuesto al norte",
+        "Igual que el este",
+        "En el Sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e9",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Un mapa político muestra…",
+      "opciones": [
+        "Países/regiones",
+        "Solo ríos",
+        "Solo animales"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mp-e10",
+      "etiquetas": [
+        "mapas"
+      ],
+      "texto": "Para llegar a un sitio usamos…",
+      "opciones": [
+        "Mapa o GPS",
+        "Solo oído",
+        "Solo olfato"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "pasado-presente": [
+    {
+      "id": "pp-e1",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Una foto antigua habla del…",
+      "opciones": [
+        "Pasado",
+        "Futuro lejano solo",
+        "Espacio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e2",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Antes usaban más…",
+      "opciones": [
+        "Cartas/teléfono fijo",
+        "Cohetes personales",
+        "Telepatía"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e3",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Un museo guarda objetos del…",
+      "opciones": [
+        "Pasado",
+        "Mañana solo",
+        "Vacío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e4",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Los abuelos pueden contar…",
+      "opciones": [
+        "Cómo era antes",
+        "El clima de Marte",
+        "El futuro exacto"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e5",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Una tradición se transmite…",
+      "opciones": [
+        "De generación en generación",
+        "Solo por wifi",
+        "Solo un día"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e6",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Comparar ayer y hoy sirve para…",
+      "opciones": [
+        "Ver cambios",
+        "Olvidar todo",
+        "Borrar mapas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e7",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "El presente es…",
+      "opciones": [
+        "El ahora",
+        "Hace 100 años",
+        "El año 3000"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e8",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Un calendario organiza…",
+      "opciones": [
+        "Días y meses",
+        "Solo comidas",
+        "Solo colores"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e9",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Estudiar historia ayuda a…",
+      "opciones": [
+        "Entender el presente",
+        "Volar",
+        "Cambiar la gravedad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pp-e10",
+      "etiquetas": [
+        "pasado-presente"
+      ],
+      "texto": "Las calles cambian porque…",
+      "opciones": [
+        "La sociedad evoluciona",
+        "El tiempo se detiene",
+        "Nunca cambian"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "oficios": [
+    {
+      "id": "of-e1",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un panadero…",
+      "opciones": [
+        "Hace pan",
+        "Apaga incendios siempre",
+        "Conduce trenes siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e2",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un médico…",
+      "opciones": [
+        "Cuida la salud",
+        "Construye casas",
+        "Vuela aviones siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e3",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un maestro…",
+      "opciones": [
+        "Enseña",
+        "Arregla coches solo",
+        "Pinta carreteras"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e4",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un bombero…",
+      "opciones": [
+        "Apaga incendios",
+        "Cocina postres siempre",
+        "Vende flores"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e5",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un agricultor…",
+      "opciones": [
+        "Cultiva",
+        "Dirige orquestas",
+        "Programa robots solo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e6",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un cartero…",
+      "opciones": [
+        "Reparte cartas",
+        "Cura dientes",
+        "Pinta cuadros"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e7",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Una enfermera…",
+      "opciones": [
+        "Ayuda en sanidad",
+        "Construye puentes",
+        "Arregla relojes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e8",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un policía…",
+      "opciones": [
+        "Cuida la seguridad",
+        "Siembra trigo siempre",
+        "Repara zapatos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e9",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Un cocinero…",
+      "opciones": [
+        "Prepara comida",
+        "Opera aviones",
+        "Diseña leyes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "of-e10",
+      "etiquetas": [
+        "oficios"
+      ],
+      "texto": "Una arquitecta…",
+      "opciones": [
+        "Diseña edificios",
+        "Pesca siempre",
+        "Canta ópera siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "convivencia": [
+    {
+      "id": "co-e1",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Respetar a los demás es…",
+      "opciones": [
+        "Clave para convivir",
+        "Inútil",
+        "Orden de pelear"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e2",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Ante un conflicto conviene…",
+      "opciones": [
+        "Hablar y acordar",
+        "Insultar",
+        "Ignorar siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e3",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Compartir en clase…",
+      "opciones": [
+        "Ayuda al grupo",
+        "Está prohibido siempre",
+        "Rompe la amistad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e4",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Las normas del cole sirven para…",
+      "opciones": [
+        "Orden y respeto",
+        "Hacer daño",
+        "Callar ideas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e5",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Escuchar al hablar es…",
+      "opciones": [
+        "Respetuoso",
+        "Mala educación",
+        "Innecesario"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e6",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Ayudar a un compañero…",
+      "opciones": [
+        "Fortalece la convivencia",
+        "Está mal",
+        "Pierde el tiempo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e7",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Tirar basura al suelo…",
+      "opciones": [
+        "Perjudica a todos",
+        "Es un premio",
+        "Limpia el parque"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e8",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Pedir perdón…",
+      "opciones": [
+        "Es de valientes",
+        "Es de débiles",
+        "Está prohibido"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e9",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Incluir a quien está solo…",
+      "opciones": [
+        "Es amable",
+        "Está mal",
+        "Da igual"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e10",
+      "etiquetas": [
+        "convivencia"
+      ],
+      "texto": "Esperar el turno…",
+      "opciones": [
+        "Es justo",
+        "Es perder",
+        "Es mentir"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "geografia": [
+    {
+      "id": "geo-e1",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "España está en…",
+      "opciones": [
+        "Europa",
+        "África",
+        "América"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e2",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una península está…",
+      "opciones": [
+        "Casi rodeada de agua",
+        "Totalmente isla",
+        "Nunca junto al mar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e3",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Madrid es…",
+      "opciones": [
+        "Capital de España",
+        "Un océano",
+        "Una cordillera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e4",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una frontera separa…",
+      "opciones": [
+        "Territorios",
+        "Solo nubes",
+        "Solo días"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e5",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "El Mediterráneo baña…",
+      "opciones": [
+        "Costas de España",
+        "Solo Galicia siempre",
+        "Solo Canarias"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e6",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una cordillera es…",
+      "opciones": [
+        "Conjunto de montañas",
+        "Un río",
+        "Una playa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e7",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Una llanura es…",
+      "opciones": [
+        "Poco elevada",
+        "Siempre volcán",
+        "Siempre glaciar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e8",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Baleares están en el…",
+      "opciones": [
+        "Mediterráneo",
+        "Pacífico",
+        "Índico"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e9",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Portugal es…",
+      "opciones": [
+        "Vecino de España",
+        "De Asia",
+        "De Oceanía"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "geo-e10",
+      "etiquetas": [
+        "geografia"
+      ],
+      "texto": "Canarias están en el…",
+      "opciones": [
+        "Atlántico",
+        "Mediterráneo solo",
+        "Un lago"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "comunidades": [
+    {
+      "id": "com-e1",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "España se organiza en…",
+      "opciones": [
+        "Comunidades autónomas",
+        "Continentes nuevos",
+        "Órbitas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e2",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Una CCAA tiene…",
+      "opciones": [
+        "Instituciones propias",
+        "Su planeta",
+        "Ninguna capital"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e3",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "La bandera de España es…",
+      "opciones": [
+        "Roja y gualda",
+        "Solo azul",
+        "Verde y negra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e4",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Cataluña o Andalucía son…",
+      "opciones": [
+        "Comunidades autónomas",
+        "Países distintos",
+        "Ríos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e5",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Ceuta y Melilla son…",
+      "opciones": [
+        "Ciudades autónomas",
+        "Montañas",
+        "Ríos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e6",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Lenguas cooficiales…",
+      "opciones": [
+        "Se hablan en algunas CCAA",
+        "No existen",
+        "Solo en Marte"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e7",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Las provincias agrupan…",
+      "opciones": [
+        "Municipios",
+        "Planetas",
+        "Estrellas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e8",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "Vivir en comunidad implica…",
+      "opciones": [
+        "Derechos y deberes",
+        "Solo derechos",
+        "Solo pelear"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e9",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "El Parlamento autonómico…",
+      "opciones": [
+        "Aprueba normas",
+        "Solo canta",
+        "Solo pesca"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "com-e10",
+      "etiquetas": [
+        "comunidades"
+      ],
+      "texto": "La capital de una comunidad es…",
+      "opciones": [
+        "Una ciudad importante",
+        "Un pueblo sin luces",
+        "El mar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "paisajes": [
+    {
+      "id": "pai-e1",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Un paisaje de costa tiene…",
+      "opciones": [
+        "Mar/playa",
+        "Solo desierto interior",
+        "Solo glaciares"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e2",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Montaña es…",
+      "opciones": [
+        "Elevada/pendiente",
+        "Totalmente plana",
+        "Solo ciudad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e3",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Paisaje agrario muestra…",
+      "opciones": [
+        "Campos",
+        "Solo fábricas",
+        "Solo océanos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e4",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Paisaje urbano tiene…",
+      "opciones": [
+        "Edificios y calles",
+        "Solo bosques",
+        "Solo desiertos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e5",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Proteger el paisaje ayuda a…",
+      "opciones": [
+        "Conservar",
+        "Contaminar más",
+        "Secar ríos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e6",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Una playa es de…",
+      "opciones": [
+        "Litoral",
+        "Alta montaña interior",
+        "Desierto de hielo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e7",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Un valle está…",
+      "opciones": [
+        "Entre montañas",
+        "En la cima siempre",
+        "En el espacio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e8",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Un embalse tiene…",
+      "opciones": [
+        "Agua embalsada",
+        "Solo desierto seco",
+        "Solo luna"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e9",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Un bosque tiene…",
+      "opciones": [
+        "Árboles",
+        "Solo asfalto",
+        "Solo cristal"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pai-e10",
+      "etiquetas": [
+        "paisajes"
+      ],
+      "texto": "Un parque natural protege…",
+      "opciones": [
+        "Naturaleza",
+        "Solo coches",
+        "Solo anuncios"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "historia": [
+    {
+      "id": "hi-e1",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "La prehistoria es anterior a…",
+      "opciones": [
+        "La escritura",
+        "Internet solo",
+        "Dinosaurios hoy en España"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e2",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Una fuente histórica puede ser…",
+      "opciones": [
+        "Documento o resto",
+        "Un deseo",
+        "Inventada sin base"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e3",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Los romanos dejaron…",
+      "opciones": [
+        "Calzadas/puentes",
+        "Solo rascacielos",
+        "Solo coches"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e4",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Edad Media sigue a…",
+      "opciones": [
+        "Edad Antigua",
+        "El futuro",
+        "Contemporánea antes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e5",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Un castillo es típico de…",
+      "opciones": [
+        "Edad Media",
+        "Solo prehistoria",
+        "Solo siglo XXI"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e6",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Investigar el pasado sirve para…",
+      "opciones": [
+        "Entender quiénes somos",
+        "Cambiar gravedad",
+        "Borrar el presente"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e7",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Una línea del tiempo ordena…",
+      "opciones": [
+        "Hechos",
+        "Colores al azar",
+        "Comidas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e8",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Los fósiles ayudan a conocer…",
+      "opciones": [
+        "Seres del pasado",
+        "El WiFi",
+        "Las apps"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e9",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Conservar monumentos es…",
+      "opciones": [
+        "Cuidar el patrimonio",
+        "Tirarlos",
+        "Ignorarlos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "hi-e10",
+      "etiquetas": [
+        "historia"
+      ],
+      "texto": "Una tradición popular viene del…",
+      "opciones": [
+        "Pasado cultural",
+        "Espacio",
+        "Azar puro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vocab-colores": [
+    {
+      "id": "vc-e1",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "What colour is grass?",
+      "opciones": [
+        "Green",
+        "Red",
+        "Pink"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e2",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which means 'negro'?",
+      "opciones": [
+        "Black",
+        "White",
+        "Pink"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e3",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "A lemon is often…",
+      "opciones": [
+        "Yellow",
+        "Blue",
+        "Grey"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e4",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Snow is…",
+      "opciones": [
+        "White",
+        "Brown",
+        "Red"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e5",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which is 'rosa'?",
+      "opciones": [
+        "Pink",
+        "Brown",
+        "Black"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e6",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Coal is usually…",
+      "opciones": [
+        "Black",
+        "Yellow",
+        "Pink"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e7",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "A frog can be…",
+      "opciones": [
+        "Green",
+        "Purple always",
+        "White always"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e8",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Strawberries are…",
+      "opciones": [
+        "Red",
+        "Blue",
+        "Grey"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e9",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which means 'gris'?",
+      "opciones": [
+        "Grey",
+        "Red",
+        "Yellow"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vc-e10",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "The sun looks…",
+      "opciones": [
+        "Yellow/orange",
+        "Blue",
+        "Green"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vocab-numeros": [
+    {
+      "id": "vn-e1",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "How do you say 3?",
+      "opciones": [
+        "Three",
+        "Tree",
+        "Free"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e2",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "What is 'twenty'?",
+      "opciones": [
+        "20",
+        "12",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e3",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Eleven is…",
+      "opciones": [
+        "11",
+        "12",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e4",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Which is 9?",
+      "opciones": [
+        "Nine",
+        "None",
+        "Noon"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e5",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Four + one =",
+      "opciones": [
+        "Five",
+        "Six",
+        "Four"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e6",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "How do you say 0?",
+      "opciones": [
+        "Zero",
+        "Hero",
+        "Near"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e7",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Thirteen is…",
+      "opciones": [
+        "13",
+        "30",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e8",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "What number is 'seven'?",
+      "opciones": [
+        "7",
+        "17",
+        "70"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e9",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Sixteen is…",
+      "opciones": [
+        "16",
+        "60",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vn-e10",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "How do you say 100?",
+      "opciones": [
+        "One hundred",
+        "Ten",
+        "One"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vocab-animales": [
+    {
+      "id": "va-e1",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'horse' is…",
+      "opciones": [
+        "A caballo/animal",
+        "A plant",
+        "A colour"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e2",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which animal flies?",
+      "opciones": [
+        "Bird",
+        "Fish",
+        "Cow"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e3",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'sheep' gives…",
+      "opciones": [
+        "Wool",
+        "Cat milk",
+        "Stone eggs"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e4",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which is a pet?",
+      "opciones": [
+        "Cat/dog",
+        "Shark",
+        "Wild tiger only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e5",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A lion is…",
+      "opciones": [
+        "A big cat",
+        "A bird",
+        "A fish"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e6",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "'Duck' means…",
+      "opciones": [
+        "Pato",
+        "Perro",
+        "Gato"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e7",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A bee makes…",
+      "opciones": [
+        "Honey",
+        "Wool",
+        "Milk"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e8",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which lives in the sea?",
+      "opciones": [
+        "Fish/dolphin",
+        "Chicken",
+        "Sheep"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e9",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'mouse' is…",
+      "opciones": [
+        "A small rodent",
+        "A horse",
+        "A cow"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "va-e10",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Cows give…",
+      "opciones": [
+        "Milk",
+        "Honey",
+        "Wool always"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vocab-colegio": [
+    {
+      "id": "vs-e1",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'teacher' is…",
+      "opciones": [
+        "A maestro/a",
+        "A table",
+        "A dog"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e2",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "We write in a…",
+      "opciones": [
+        "Notebook",
+        "Shoe",
+        "Window"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e3",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "The 'playground' is…",
+      "opciones": [
+        "Patio escolar",
+        "Only kitchen",
+        "Basement only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e4",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'desk' is…",
+      "opciones": [
+        "A work table",
+        "A bed",
+        "A river"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e5",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "We erase with…",
+      "opciones": [
+        "An eraser",
+        "A fork",
+        "A ball"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e6",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'classroom' is…",
+      "opciones": [
+        "An aula",
+        "A forest",
+        "A beach"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e7",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "'Homework' means…",
+      "opciones": [
+        "Deberes",
+        "Party",
+        "Sleep"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e8",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'ruler' is for…",
+      "opciones": [
+        "Measuring lines",
+        "Eating",
+        "Sleeping"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e9",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "The 'library' is for…",
+      "opciones": [
+        "Reading",
+        "Swimming",
+        "Cooking"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vs-e10",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "'Scissors' are for…",
+      "opciones": [
+        "Cutting",
+        "Drinking",
+        "Singing"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vocab-familia": [
+    {
+      "id": "vf-e1",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Uncle' means…",
+      "opciones": [
+        "Tío",
+        "Prima",
+        "Abuela"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e2",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Aunt' means…",
+      "opciones": [
+        "Tía",
+        "Tío",
+        "Hijo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e3",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Your parents' boy can be your…",
+      "opciones": [
+        "Brother",
+        "Uncle",
+        "Aunt"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e4",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Cousin' means…",
+      "opciones": [
+        "Primo/a",
+        "Abuelo",
+        "Padre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e5",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Baby' is…",
+      "opciones": [
+        "A young child",
+        "An old man",
+        "A teacher"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e6",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Grandfather' is…",
+      "opciones": [
+        "Abuelo",
+        "Hermano",
+        "Primo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e7",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Your mum is your…",
+      "opciones": [
+        "Mother",
+        "Uncle",
+        "Cousin"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e8",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Family' means…",
+      "opciones": [
+        "Familia",
+        "Escuela",
+        "Ciudad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e9",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "A 'daughter' is…",
+      "opciones": [
+        "A girl child",
+        "A boy uncle",
+        "A grandfather"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vf-e10",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Parents' are…",
+      "opciones": [
+        "Mum and dad",
+        "Only friends",
+        "Only teachers"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "saludos": [
+    {
+      "id": "sal-e1",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Good night' is for…",
+      "opciones": [
+        "Night/bedtime",
+        "Morning only",
+        "Lunch only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e2",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'See you' means…",
+      "opciones": [
+        "Nos vemos",
+        "Hola",
+        "Gracias"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e3",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'How are you?' asks…",
+      "opciones": [
+        "How you feel",
+        "Your age only",
+        "Your colour"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e4",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'I'm fine' means…",
+      "opciones": [
+        "Estoy bien",
+        "Estoy mal siempre",
+        "Tengo hambre always"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e5",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Good afternoon' is…",
+      "opciones": [
+        "Buenas tardes",
+        "Buenas noches only",
+        "Hello morning"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e6",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Excuse me' is to…",
+      "opciones": [
+        "Get attention politely",
+        "Say goodbye forever",
+        "Count"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e7",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Sorry' means…",
+      "opciones": [
+        "Lo siento",
+        "Hola",
+        "Adiós"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e8",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Welcome' means…",
+      "opciones": [
+        "Bienvenido/a",
+        "Adiós",
+        "Por favor"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e9",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Goodbye' means…",
+      "opciones": [
+        "Adiós",
+        "Hola",
+        "Gracias"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sal-e10",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Please' is…",
+      "opciones": [
+        "Polite (por favor)",
+        "A colour",
+        "A number"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "frases": [
+    {
+      "id": "fr-e1",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "I have a dog.",
+        "I has a dog.",
+        "I having a dog."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e2",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "She is my friend.",
+        "She are my friend.",
+        "She am my friend."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e3",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "They are students.",
+        "They is students.",
+        "They am students."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e4",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "We like pizza.",
+        "We likes pizza.",
+        "We liking pizza."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e5",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "It is a book.",
+        "It are a book.",
+        "It am a book."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e6",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "He can swim.",
+        "He cans swim.",
+        "He can to swim."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e7",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "This is my bag.",
+        "This are my bag.",
+        "This am my bag."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e8",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "I don't know.",
+        "I no know.",
+        "I doesn't know."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e9",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "Where is the ball?",
+        "Where the ball is?",
+        "Where are the ball is?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fr-e10",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "I am from Spain.",
+        "I is from Spain.",
+        "I are from Spain."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vocab-4": [
+    {
+      "id": "v4-e1",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Weather' means…",
+      "opciones": [
+        "Tiempo atmosférico",
+        "Dinero",
+        "Colegio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e2",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Dangerous' means…",
+      "opciones": [
+        "Peligroso",
+        "Seguro",
+        "Dulce"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e3",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Delicious' means…",
+      "opciones": [
+        "Delicioso",
+        "Horrible",
+        "Vacío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e4",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Always' means…",
+      "opciones": [
+        "Siempre",
+        "Nunca",
+        "Ayer"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e5",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Never' means…",
+      "opciones": [
+        "Nunca",
+        "Siempre",
+        "Hoy"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e6",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Usually' means…",
+      "opciones": [
+        "Normalmente",
+        "Nunca",
+        "Solo una vez"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e7",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Hobby' means…",
+      "opciones": [
+        "Afición",
+        "Enfermedad",
+        "Examen"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e8",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Busy' means…",
+      "opciones": [
+        "Ocupado",
+        "Libre siempre",
+        "Dormido"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e9",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Quiet' means…",
+      "opciones": [
+        "Tranquilo",
+        "Ruidoso",
+        "Enfadado"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e10",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Healthy' means…",
+      "opciones": [
+        "Saludable",
+        "Enfermo",
+        "Roto"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "grammar-4": [
+    {
+      "id": "gr-e1",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "He goes to school.",
+        "He go to school.",
+        "He going to school."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e2",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "They don't play.",
+        "They doesn't play.",
+        "They not play."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e3",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "Does she sing?",
+        "Do she sing?",
+        "She does sing?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e4",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "I am reading.",
+        "I is reading.",
+        "I are reading."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e5",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "We were happy.",
+        "We was happy.",
+        "We be happy."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e6",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "There is a cat.",
+        "There are a cat.",
+        "There be a cat."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e7",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "She has got a bike.",
+        "She have got a bike.",
+        "She got has a bike."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e8",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "Don't open it.",
+        "Doesn't open it.",
+        "Not open it you."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e9",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "Tom can dance.",
+        "Tom can to dance.",
+        "Tom cans dance."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e10",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "My friends live here.",
+        "My friends lives here.",
+        "My friends living here."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "questions-4": [
+    {
+      "id": "qu-e1",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "What is your name?",
+        "What your name is?",
+        "Your name what?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e2",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "Where do you live?",
+        "Where you live?",
+        "Where lives you?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e3",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "When is your birthday?",
+        "When your birthday is?",
+        "Your birthday when?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e4",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "Why are you sad?",
+        "Why you are sad?",
+        "Why sad you?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e5",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "Who is your teacher?",
+        "Who your teacher is?",
+        "Who teacher your?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e6",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "How do you go to school?",
+        "How you go to school?",
+        "How goes you?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e7",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "Which colour do you prefer?",
+        "Which colour you prefer?",
+        "Which you colour?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e8",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "Whose bag is this?",
+        "Whose bag this is?",
+        "Whose is bag this?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e9",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Reply to 'What time is it?':",
+      "opciones": [
+        "It's three o'clock.",
+        "I am fine.",
+        "Yes, I do."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e10",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Reply to 'Can you help me?':",
+      "opciones": [
+        "Yes, of course.",
+        "I am 8.",
+        "It's blue."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "reading-4": [
+    {
+      "id": "rd-e1",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Lucy waters plants every evening. When?",
+      "opciones": [
+        "Every evening",
+        "At noon only",
+        "Never"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e2",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Dad cooks pasta on Fridays. What?",
+      "opciones": [
+        "Pasta",
+        "Pizza only",
+        "Soup only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e3",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Museum opens at nine. When?",
+      "opciones": [
+        "At nine",
+        "At midnight only",
+        "At two only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e4",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Sam forgot his hat on the bus. Where?",
+      "opciones": [
+        "On the bus",
+        "At school",
+        "In the river"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e5",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "After lunch they play chess. What after lunch?",
+      "opciones": [
+        "Play chess",
+        "Sleep all day",
+        "Swim"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e6",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Puppy sleeps under the table. Where?",
+      "opciones": [
+        "Under the table",
+        "On the roof",
+        "In a tree"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e7",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Nora writes to her cousin. Who?",
+      "opciones": [
+        "Her cousin",
+        "Her dog only",
+        "A robot"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e8",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "It snowed, so school closed. Why?",
+      "opciones": [
+        "Because it snowed",
+        "Because it was sunny",
+        "Because of pizza"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e9",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Ben buys milk. What?",
+      "opciones": [
+        "Milk",
+        "Books only",
+        "Tickets only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e10",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "They visit grandma in summer. When?",
+      "opciones": [
+        "In summer",
+        "In winter only",
+        "Every hour"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "secuencias": [
+    {
+      "id": "seq-e1",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 2,4,6,8,…",
+      "opciones": [
+        "10",
+        "9",
+        "12"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e2",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 5,10,15,20,…",
+      "opciones": [
+        "25",
+        "21",
+        "30"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e3",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Completa: 1,2,3,1,2,3,1,…",
+      "opciones": [
+        "2",
+        "4",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e4",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué sigue? 10,9,8,7,…",
+      "opciones": [
+        "6",
+        "5",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e5",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Serie: 3,6,9,12,…",
+      "opciones": [
+        "15",
+        "13",
+        "14"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e6",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "A,B,C,D,… ¿siguiente?",
+      "opciones": [
+        "E",
+        "F",
+        "A"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e7",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "¿Qué falta? 2,4,_,8,10",
+      "opciones": [
+        "6",
+        "5",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e8",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "4,8,12,16,…",
+      "opciones": [
+        "20",
+        "18",
+        "22"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e9",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "Cuenta atrás: 9,8,7,…",
+      "opciones": [
+        "6",
+        "5",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "seq-e10",
+      "etiquetas": [
+        "secuencias"
+      ],
+      "texto": "1,3,5,7,…",
+      "opciones": [
+        "9",
+        "8",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "patrones": [
+    {
+      "id": "pat-e1",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "🔴🔵🔴🔵… ¿sigue?",
+      "opciones": [
+        "🔵",
+        "🔴",
+        "🟢"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e2",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "▲▲■ ▲▲■ ▲… ¿sigue?",
+      "opciones": [
+        "▲",
+        "■",
+        "●"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e3",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "1,1,2,1,1,2,1,1… ¿sigue?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e4",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "grande-pequeño-grande… tras grande…",
+      "opciones": [
+        "pequeño",
+        "grande",
+        "mediano"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e5",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "clap-clap-tap… tras dos clap…",
+      "opciones": [
+        "tap",
+        "clap",
+        "silencio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e6",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "amarillo,verde,amarillo… el 5º…",
+      "opciones": [
+        "amarillo",
+        "verde",
+        "azul"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e7",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "○□○□○… siguiente…",
+      "opciones": [
+        "□",
+        "○",
+        "△"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e8",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "A B A B… siguiente…",
+      "opciones": [
+        "A",
+        "C",
+        "D"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e9",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "do re mi do re… tras re…",
+      "opciones": [
+        "mi",
+        "fa",
+        "do"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pat-e10",
+      "etiquetas": [
+        "patrones"
+      ],
+      "texto": "L L N L L N… siguiente…",
+      "opciones": [
+        "L",
+        "M",
+        "O"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "clasificacion": [
+    {
+      "id": "cla-e1",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué sobra? perro,gato,zanahoria,conejo",
+      "opciones": [
+        "zanahoria",
+        "gato",
+        "perro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e2",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué va con lápiz,goma,regla?",
+      "opciones": [
+        "Sacapuntas",
+        "Pelota",
+        "Sopa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e3",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué sobra? redondo,cuadrado,feliz",
+      "opciones": [
+        "feliz",
+        "redondo",
+        "cuadrado"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e4",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Rosa,tulipán,margarita son…",
+      "opciones": [
+        "Flores",
+        "Árboles",
+        "Frutas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e5",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué NO es transporte?",
+      "opciones": [
+        "Silla",
+        "Bici",
+        "Tren"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e6",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Manzana,pera,plátano son…",
+      "opciones": [
+        "Frutas",
+        "Verduras",
+        "Carnes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e7",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué sobra? lunes,martes,enero,miércoles",
+      "opciones": [
+        "enero",
+        "martes",
+        "lunes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e8",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "¿Qué sobra? mesa,silla,sofá,plátano",
+      "opciones": [
+        "plátano",
+        "mesa",
+        "silla"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e9",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Oro,plata,hierro son…",
+      "opciones": [
+        "Metales",
+        "Frutas",
+        "Días"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cla-e10",
+      "etiquetas": [
+        "clasificacion"
+      ],
+      "texto": "Flauta,piano,guitarra son…",
+      "opciones": [
+        "Instrumentos",
+        "Frutas",
+        "Colores"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "analogias": [
+    {
+      "id": "ana-e1",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Día es a sol como noche es a…",
+      "opciones": [
+        "luna",
+        "lluvia",
+        "arena"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e2",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Pájaro es a nido como persona es a…",
+      "opciones": [
+        "casa",
+        "ala",
+        "rama"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e3",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Guante es a mano como zapato es a…",
+      "opciones": [
+        "pie",
+        "cabeza",
+        "brazo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e4",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Lápiz es a escribir como tijeras a…",
+      "opciones": [
+        "cortar",
+        "beber",
+        "dormir"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e5",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Ojo es a ver como oído a…",
+      "opciones": [
+        "oír",
+        "hablar",
+        "correr"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e6",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Semilla es a planta como huevo a…",
+      "opciones": [
+        "pájaro",
+        "nube",
+        "piedra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e7",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Libro es a leer como canción a…",
+      "opciones": [
+        "escuchar/cantar",
+        "dibujar",
+        "saltar"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e8",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Dedo es a mano como dedo del pie a…",
+      "opciones": [
+        "pie",
+        "cabeza",
+        "oreja"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e9",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Abeja es a miel como vaca a…",
+      "opciones": [
+        "leche",
+        "lana solo",
+        "miel"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ana-e10",
+      "etiquetas": [
+        "analogias"
+      ],
+      "texto": "Volante es a coche como manillar a…",
+      "opciones": [
+        "bici",
+        "casa",
+        "sopa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "series-4": [
+    {
+      "id": "se4-e1",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "2,4,8,16,…",
+      "opciones": [
+        "32",
+        "24",
+        "18"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e2",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "1,4,9,16,…",
+      "opciones": [
+        "25",
+        "20",
+        "18"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e3",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "20,17,14,11,…",
+      "opciones": [
+        "8",
+        "9",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e4",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "1,3,6,10,15,…",
+      "opciones": [
+        "21",
+        "18",
+        "20"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e5",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "A,C,E,G,…",
+      "opciones": [
+        "I",
+        "H",
+        "J"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e6",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "100,90,81,73,… (resta 10,9,8…)",
+      "opciones": [
+        "66",
+        "64",
+        "70"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e7",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "3,3,6,6,9,9,…",
+      "opciones": [
+        "12",
+        "10",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e8",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "5,10,20,40,…",
+      "opciones": [
+        "80",
+        "50",
+        "60"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e9",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "9,7,5,3,…",
+      "opciones": [
+        "1",
+        "2",
+        "0"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "se4-e10",
+      "etiquetas": [
+        "series-4"
+      ],
+      "texto": "6,12,18,24,…",
+      "opciones": [
+        "30",
+        "28",
+        "26"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "deduccion": [
+    {
+      "id": "ded-e1",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Todos los peces nadan. Nemo es pez. ¿Nada?",
+      "opciones": [
+        "Sí",
+        "No",
+        "Imposible"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e2",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Ana > Bea > Clara. ¿Quién es mayor?",
+      "opciones": [
+        "Ana",
+        "Bea",
+        "Clara"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e3",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Si llueve, mojado. Calle seca. ¿Llueve?",
+      "opciones": [
+        "No",
+        "Sí",
+        "Seguro que sí"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e4",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Luis solo come fruta roja. ¿Come plátano?",
+      "opciones": [
+        "No",
+        "Sí",
+        "No se sabe"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e5",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Pedro delante de Sara y detrás de Lucía. ¿Primero?",
+      "opciones": [
+        "Lucía",
+        "Pedro",
+        "Sara"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e6",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Ningún gato ladra. Misu es gato. ¿Ladra?",
+      "opciones": [
+        "No",
+        "Sí",
+        "A veces"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e7",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Entra A o B, no ambos. Entró A. ¿B?",
+      "opciones": [
+        "No",
+        "Sí",
+        "Los dos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e8",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Todos los cuadrados son rectángulos. Esto es cuadrado. ¿Rectángulo?",
+      "opciones": [
+        "Sí",
+        "No",
+        "Solo a veces"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e9",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Hoy no hay cole. La regla: si lunes, hay cole. ¿Es lunes?",
+      "opciones": [
+        "No",
+        "Sí seguro",
+        "Tal vez"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ded-e10",
+      "etiquetas": [
+        "deduccion"
+      ],
+      "texto": "Tengo más cromos que tú (tú 5). ¿Puedo tener 4?",
+      "opciones": [
+        "No",
+        "Sí",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "analogias-4": [
+    {
+      "id": "a4-e1",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Médico es a hospital como maestro a…",
+      "opciones": [
+        "colegio",
+        "farmacia",
+        "estadio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e2",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Hielo es a frío como fuego a…",
+      "opciones": [
+        "calor",
+        "agua",
+        "noche"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e3",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Autor es a libro como compositor a…",
+      "opciones": [
+        "canción",
+        "pincel",
+        "mapa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e4",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Minuto es a hora como día a…",
+      "opciones": [
+        "semana/mes",
+        "segundo",
+        "reloj"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e5",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Semilla es a árbol como larva a…",
+      "opciones": [
+        "insecto",
+        "hoja",
+        "nido"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e6",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Teclado es a ordenador como volante a…",
+      "opciones": [
+        "coche",
+        "silla",
+        "libro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e7",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Río es a cauce como tren a…",
+      "opciones": [
+        "vía",
+        "nube",
+        "sopa"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e8",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Pintor es a cuadro como escritor a…",
+      "opciones": [
+        "libro",
+        "pincel",
+        "coche"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e9",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Doctor es a clínica como chef a…",
+      "opciones": [
+        "cocina",
+        "hospital solo",
+        "estadio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "a4-e10",
+      "etiquetas": [
+        "analogias-4"
+      ],
+      "texto": "Brújula es a orientación como termómetro a…",
+      "opciones": [
+        "temperatura",
+        "color",
+        "música"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "problemas-4": [
+    {
+      "id": "pr4-e1",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Calcetines rojo/azul. ¿Mínimo para asegurar par igual?",
+      "opciones": [
+        "3",
+        "2",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e2",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Hoy martes. ¿Día en 3 días?",
+      "opciones": [
+        "Viernes",
+        "Jueves",
+        "Sábado"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e3",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "2 monedas = 30 cént.; una no es de 10. ¿Cuáles?",
+      "opciones": [
+        "20 y 10",
+        "15 y 15",
+        "30 y 0"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e4",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Reloj 3:00. ¿Ángulo aproximado?",
+      "opciones": [
+        "90°",
+        "180°",
+        "0°"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e5",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Ana tiene 6; yo el doble. ¿Cuántos tengo?",
+      "opciones": [
+        "12",
+        "6",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e6",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "3 niños, 1 tarta justa. ¿Parte cada uno?",
+      "opciones": [
+        "1/3",
+        "1/2",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e7",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Salgo a las 3, llego en 2 h. ¿Hora?",
+      "opciones": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e8",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Número entre 10 y 20 divisible por 3 y 4…",
+      "opciones": [
+        "12",
+        "11",
+        "13"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e9",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "A delante de B; C delante de A. ¿Primero?",
+      "opciones": [
+        "C",
+        "B",
+        "A"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pr4-e10",
+      "etiquetas": [
+        "problemas-4"
+      ],
+      "texto": "Reloj 6:00. Ángulo…",
+      "opciones": [
+        "180°",
+        "90°",
+        "45°"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "formas": [
+    {
+      "id": "fo-e1",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Lados de un hexágono…",
+      "opciones": [
+        "6",
+        "5",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e2",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Un óvalo se parece a…",
+      "opciones": [
+        "elipse/huevo",
+        "cuadrado",
+        "cubo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e3",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Ángulos rectos en un cuadrado…",
+      "opciones": [
+        "4",
+        "3",
+        "0"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e4",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Figura sin lados rectos…",
+      "opciones": [
+        "círculo",
+        "cuadrado",
+        "rectángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e5",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Caras de un cubo…",
+      "opciones": [
+        "6 cuadradas",
+        "Solo triángulos",
+        "Redondas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e6",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Triángulo equilátero: lados…",
+      "opciones": [
+        "iguales",
+        "todos distintos",
+        "infinitos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e7",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Diagonales de un cuadrado…",
+      "opciones": [
+        "2",
+        "0",
+        "10"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e8",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Un pentágono tiene…",
+      "opciones": [
+        "5 lados",
+        "3",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e9",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Una esfera…",
+      "opciones": [
+        "redonda sin aristas",
+        "6 caras",
+        "4 lados"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "fo-e10",
+      "etiquetas": [
+        "formas"
+      ],
+      "texto": "Un rombo tiene lados…",
+      "opciones": [
+        "iguales",
+        "solo 1",
+        "circulares"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "posiciones": [
+    {
+      "id": "po-e1",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Pelota debajo de mesa → mesa está…",
+      "opciones": [
+        "Encima",
+        "Debajo",
+        "Dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e2",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Contrario de izquierda…",
+      "opciones": [
+        "derecha",
+        "arriba",
+        "dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e3",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Dentro de una caja está…",
+      "opciones": [
+        "algo interior",
+        "el techo del cielo",
+        "la calle"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e4",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "3.er piso respecto al 2.º…",
+      "opciones": [
+        "arriba",
+        "abajo",
+        "dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e5",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Delante de la fila está…",
+      "opciones": [
+        "el primero",
+        "el último",
+        "nadie"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e6",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "B entre A y C → B está…",
+      "opciones": [
+        "en medio",
+        "fuera",
+        "en Marte"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e7",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Norte en mapa suele…",
+      "opciones": [
+        "arriba",
+        "abajo",
+        "centro fijo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e8",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Fuera del recreo…",
+      "opciones": [
+        "entorno/calle",
+        "interior del aula",
+        "núcleo Tierra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e9",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Sobre la estantería…",
+      "opciones": [
+        "pueden haber libros",
+        "peces de mar",
+        "nubes dentro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "po-e10",
+      "etiquetas": [
+        "posiciones"
+      ],
+      "texto": "Detrás del sofá…",
+      "opciones": [
+        "puede haber espacio",
+        "la Luna fija",
+        "el Sur fijo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "conteo": [
+    {
+      "id": "co-e1",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "3 filas × 2 sillas. ¿Sillas?",
+      "opciones": [
+        "6",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e2",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "★ ★ ☆ ★ ¿Cuántas ★?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e3",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "4 baldas × 3 libros. ¿Libros?",
+      "opciones": [
+        "12",
+        "7",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e4",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "2 manos × 5 dedos. ¿Dedos?",
+      "opciones": [
+        "10",
+        "5",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e5",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Ventana 3×3. ¿Cristales?",
+      "opciones": [
+        "9",
+        "6",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e6",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "De 9 quito 2. ¿Quedan?",
+      "opciones": [
+        "7",
+        "9",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e7",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "Cara del dado con 4 puntos…",
+      "opciones": [
+        "4",
+        "6",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e8",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "5 triángulos, tachado 1. ¿Quedan?",
+      "opciones": [
+        "4",
+        "5",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e9",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "3 bicis × 2 ruedas. ¿Ruedas?",
+      "opciones": [
+        "6",
+        "3",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "co-e10",
+      "etiquetas": [
+        "conteo"
+      ],
+      "texto": "4 cajas × 6 lápices. ¿Lápices?",
+      "opciones": [
+        "24",
+        "10",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "simetria": [
+    {
+      "id": "si-e1",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "La letra O es…",
+      "opciones": [
+        "simétrica",
+        "imposible",
+        "solo triangular"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e2",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "¿Qué letra suele tener simetría vertical?",
+      "opciones": [
+        "A",
+        "J",
+        "F"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e3",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Un corazón centrado suele tener simetría…",
+      "opciones": [
+        "vertical",
+        "ninguna",
+        "solo de color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e4",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Espejo vertical de b ≈",
+      "opciones": [
+        "d",
+        "q",
+        "p"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e5",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Una mariposa con alas iguales muestra…",
+      "opciones": [
+        "simetría",
+        "caos",
+        "solo círculos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e6",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Un círculo tiene…",
+      "opciones": [
+        "infinitos ejes",
+        "ningún eje",
+        "1 esquina"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e7",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "La letra H tiene…",
+      "opciones": [
+        "simetría",
+        "0 ejes",
+        "solo color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e8",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Al doblar simétrico, las mitades…",
+      "opciones": [
+        "coinciden",
+        "se alejan",
+        "desaparecen"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e9",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "La letra F…",
+      "opciones": [
+        "no es simétrica típica",
+        "es un círculo",
+        "tiene 10 ejes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "si-e10",
+      "etiquetas": [
+        "simetria"
+      ],
+      "texto": "Rectángulo (no cuadrado) tiene…",
+      "opciones": [
+        "ejes típicos",
+        "0 ejes",
+        "infinitos lados"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "rotacion": [
+    {
+      "id": "ro-e1",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Flecha ↑ + 180° apunta…",
+      "opciones": [
+        "abajo",
+        "izquierda",
+        "arriba igual"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e2",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Aguja en 12 + 90° horario…",
+      "opciones": [
+        "3",
+        "6",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e3",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Girar 360° deja la figura…",
+      "opciones": [
+        "igual",
+        "al revés",
+        "invisible"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e4",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Cuadrado rotado 90°…",
+      "opciones": [
+        "sigue cuadrado",
+        "círculo",
+        "triángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e5",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Media vuelta a → da…",
+      "opciones": [
+        "←",
+        "→ igual",
+        "↑"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e6",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Dos giros de 180°…",
+      "opciones": [
+        "como al inicio",
+        "a 90°",
+        "desaparece"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e7",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Rotar un círculo 40°…",
+      "opciones": [
+        "sigue círculo",
+        "cuadrado",
+        "triángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e8",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Aguja en 12 + 180°…",
+      "opciones": [
+        "6",
+        "3",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e9",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "Girar 0°…",
+      "opciones": [
+        "no cambia",
+        "salta",
+        "se vuelve 3"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "ro-e10",
+      "etiquetas": [
+        "rotacion"
+      ],
+      "texto": "L girada 90°…",
+      "opciones": [
+        "cambia orientación",
+        "igual absoluta",
+        "se vuelve O"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "vistas": [
+    {
+      "id": "vi-e1",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista arriba de vaso cilindrico…",
+      "opciones": [
+        "círculo",
+        "rectángulo",
+        "triángulo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e2",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista frontal de un libro…",
+      "opciones": [
+        "rectángulo",
+        "círculo",
+        "estrella"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e3",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Mapa ≈ vista…",
+      "opciones": [
+        "desde arriba",
+        "desde sótano",
+        "desde el oído"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e4",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Fachada = vista…",
+      "opciones": [
+        "delante",
+        "satélite",
+        "interior solo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e5",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Pelota desde cualquier lado…",
+      "opciones": [
+        "círculo",
+        "cubo",
+        "pirámide"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e6",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Desde avión los coches se ven…",
+      "opciones": [
+        "pequeños",
+        "como edificios",
+        "invisibles siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e7",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Cubo de frente (1 cara)…",
+      "opciones": [
+        "cuadrado",
+        "hexágono obligatorio",
+        "círculo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e8",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Perfil de mesa muestra…",
+      "opciones": [
+        "altura/fondo",
+        "solo un punto",
+        "solo el Sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e9",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista posterior es…",
+      "opciones": [
+        "desde atrás",
+        "norte del Sol",
+        "igual frontal siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "vi-e10",
+      "etiquetas": [
+        "vistas"
+      ],
+      "texto": "Vista arriba de embudo…",
+      "opciones": [
+        "círculo",
+        "rectángulo",
+        "estrella"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "composicion": [
+    {
+      "id": "cm-e1",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "2 triángulos unidos por un lado pueden formar…",
+      "opciones": [
+        "rombo/cuadrilátero",
+        "círculo",
+        "esfera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e2",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Cuadrado con diagonal =…",
+      "opciones": [
+        "2 triángulos",
+        "3 círculos",
+        "0 piezas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e3",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "4 cuadrados en 2×2 =…",
+      "opciones": [
+        "cuadrado mayor",
+        "triángulo",
+        "cilindro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e4",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Tangram usa…",
+      "opciones": [
+        "piezas geométricas",
+        "solo agua",
+        "solo letras"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e5",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Rectángulo por mitad corta →…",
+      "opciones": [
+        "2 rectángulos",
+        "5 esferas",
+        "1 círculo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e6",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Quitar esquina a rectángulo →…",
+      "opciones": [
+        "pentágono",
+        "3 lados",
+        "círculo"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e7",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "2 semicírculos pueden formar…",
+      "opciones": [
+        "círculo",
+        "cubo",
+        "tetraedro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e8",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Componer es…",
+      "opciones": [
+        "unir piezas",
+        "borrar papel",
+        "pintar sin forma"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e9",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Descomponer es…",
+      "opciones": [
+        "partir en piezas",
+        "inflar",
+        "fundir"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "cm-e10",
+      "etiquetas": [
+        "composicion"
+      ],
+      "texto": "Un mosaico…",
+      "opciones": [
+        "cubre con figuras",
+        "es un sonido",
+        "es un olor"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ],
+  "espejo-4": [
+    {
+      "id": "es4-e1",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Espejo vertical: → se ve…",
+      "opciones": [
+        "←",
+        "→ igual",
+        "↑"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e2",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "b reflejada vertical ≈",
+      "opciones": [
+        "d",
+        "q",
+        "p"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e3",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Reflexión ≠ rotación porque…",
+      "opciones": [
+        "invierte; rotar no refleja",
+        "son iguales",
+        "el espejo borra"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e4",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "En espejo, izquierda parece…",
+      "opciones": [
+        "derecha",
+        "desaparecer",
+        "color"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e5",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Hora 3:00 en espejo parece…",
+      "opciones": [
+        "cerca de las 9",
+        "las 3 exactas",
+        "las 12"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e6",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Reflejar ↑ da…",
+      "opciones": [
+        "↓",
+        "←",
+        "→"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e7",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Espejo horizontal de b ≈",
+      "opciones": [
+        "p",
+        "d",
+        "q"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e8",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Tu mano derecha en espejo parece…",
+      "opciones": [
+        "la izquierda",
+        "también derecha",
+        "ninguna"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e9",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Camino en L reflejado…",
+      "opciones": [
+        "al otro lado",
+        "se vuelve O",
+        "igual exacta"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "es4-e10",
+      "etiquetas": [
+        "espejo-4"
+      ],
+      "texto": "Simetría especular invierte…",
+      "opciones": [
+        "orientación L/R",
+        "el tiempo",
+        "la gravedad"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    }
+  ]
+}

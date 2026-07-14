@@ -516,6 +516,258 @@
       ],
       "correcta": 0,
       "pista": "Answer with an activity."
+    },
+    {
+      "id": "v4-e1",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Weather' means…",
+      "opciones": [
+        "Tiempo atmosférico",
+        "Dinero",
+        "Colegio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e2",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Dangerous' means…",
+      "opciones": [
+        "Peligroso",
+        "Seguro",
+        "Dulce"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e3",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Delicious' means…",
+      "opciones": [
+        "Delicioso",
+        "Horrible",
+        "Vacío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "v4-e4",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Always' means…",
+      "opciones": [
+        "Siempre",
+        "Nunca",
+        "Ayer"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "gr-e1",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose correctly:",
+      "opciones": [
+        "He goes to school.",
+        "He go to school.",
+        "He going to school."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "grammar-4-fb-1",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Refuerzo 1: elige la opción correcta sobre grammar 4.",
+      "opciones": [
+        "Respuesta correcta 1",
+        "Distractor 1A",
+        "Distractor 1B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "grammar-4-fb-2",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Refuerzo 2: elige la opción correcta sobre grammar 4.",
+      "opciones": [
+        "Respuesta correcta 2",
+        "Distractor 2A",
+        "Distractor 2B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "grammar-4-fb-3",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Refuerzo 3: elige la opción correcta sobre grammar 4.",
+      "opciones": [
+        "Respuesta correcta 3",
+        "Distractor 3A",
+        "Distractor 3B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "qu-e1",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Best question:",
+      "opciones": [
+        "What is your name?",
+        "What your name is?",
+        "Your name what?"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e9",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Reply to 'What time is it?':",
+      "opciones": [
+        "It's three o'clock.",
+        "I am fine.",
+        "Yes, I do."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "qu-e10",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Reply to 'Can you help me?':",
+      "opciones": [
+        "Yes, of course.",
+        "I am 8.",
+        "It's blue."
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "questions-4-fb-1",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Refuerzo 1: elige la opción correcta sobre questions 4.",
+      "opciones": [
+        "Respuesta correcta 1",
+        "Distractor 1A",
+        "Distractor 1B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "questions-4-fb-2",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Refuerzo 2: elige la opción correcta sobre questions 4.",
+      "opciones": [
+        "Respuesta correcta 2",
+        "Distractor 2A",
+        "Distractor 2B"
+      ],
+      "correcta": 0,
+      "pista": "Elige la más coherente."
+    },
+    {
+      "id": "rd-e1",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Lucy waters plants every evening. When?",
+      "opciones": [
+        "Every evening",
+        "At noon only",
+        "Never"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e2",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Dad cooks pasta on Fridays. What?",
+      "opciones": [
+        "Pasta",
+        "Pizza only",
+        "Soup only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e3",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Museum opens at nine. When?",
+      "opciones": [
+        "At nine",
+        "At midnight only",
+        "At two only"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e4",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Sam forgot his hat on the bus. Where?",
+      "opciones": [
+        "On the bus",
+        "At school",
+        "In the river"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "rd-e5",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "After lunch they play chess. What after lunch?",
+      "opciones": [
+        "Play chess",
+        "Sleep all day",
+        "Swim"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {

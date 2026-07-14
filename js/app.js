@@ -56,6 +56,7 @@ import {
   calcularProgresoRevelado,
   nivelDificultadSesion,
   elegirPreguntaDelBanco,
+  claveCanonica,
   faseSuperada,
   debeReiniciarFase,
 } from "../engine/SessionEngine.js";
@@ -132,6 +133,8 @@ let bancoSesion = [];
 let preguntaActual = null;
 let aciertosSesion = 0;
 let recientesSesion = [];
+/** Claves canónicas ya mostradas en la fase (anti-repetición hasta agotar). */
+let usadasSesion = [];
 let rachaActual = 0;
 let pantallaAnteriorId = null;
 const mundos = () => fases.map(f => getFaseLabel(f));
@@ -803,13 +806,12 @@ function actualizarContadorFallosUI(){
 
 function prepararPreguntaSesion(){
   const nivel = nivelDificultadSesion(aciertosSesion, fallosActual);
-  preguntaActual = elegirPreguntaDelBanco(bancoSesion, nivel, recientesSesion);
+  preguntaActual = elegirPreguntaDelBanco(bancoSesion, nivel, recientesSesion, usadasSesion);
   if (preguntaActual) {
-    const clave =
-      preguntaActual.tipo === "fraccion"
-        ? `${preguntaActual.numerador}/${preguntaActual.denominador}`
-        : (preguntaActual.clave || `${preguntaActual.a}x${preguntaActual.b}`);
-    recientesSesion = [...recientesSesion, clave].slice(-5);
+    const clave = claveCanonica(preguntaActual);
+    usadasSesion = [...usadasSesion, clave];
+    // Ventana reciente: suficiente para espaciar si hay que reciclar el banco.
+    recientesSesion = [...recientesSesion, clave].slice(-Math.max(5, Math.min(12, Math.floor(bancoSesion.length / 2) || 5)));
   }
   operaciones = preguntaActual ? [preguntaActual] : [];
   opcionSeleccionada = null;
@@ -820,6 +822,7 @@ function reiniciarSesionExtendida(){
   fallosActual = 0;
   rachaActual = 0;
   recientesSesion = [];
+  usadasSesion = [];
   resetearReveladoRecompensa();
   prepararPreguntaSesion();
   actualizarRachaUI();
@@ -855,6 +858,7 @@ fallosActual = 0;
 erroresEnSesion = 0;
 aciertosSesion = 0;
 recientesSesion = [];
+usadasSesion = [];
 rachaActual = 0;
 modoSesionExtendida = usaSesionExtendida(mundoId) && !modoRepaso;
 

@@ -5,7 +5,11 @@
   "tipoMundo": "lectura",
   "curso": 4,
   "area": "ciencias",
-  "competencias": ["STEM1", "STEM2", "STEM5"],
+  "competencias": [
+    "STEM1",
+    "STEM2",
+    "STEM5"
+  ],
   "saberes": [
     "ecosistemas y cadenas alimentarias",
     "estados de la materia",
@@ -28,33 +32,57 @@
       "nombre": "Selva de Ecosistemas",
       "emoji": "🌳",
       "mecanica": "lectura",
-      "etiquetasLectura": ["ecosistemas"],
+      "etiquetasLectura": [
+        "ecosistemas"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🦜", "nombre": "Biótico" },
+      "recompensa": {
+        "emoji": "🦜",
+        "nombre": "Biótico"
+      },
       "objetivo": "Comprender ecosistemas y relaciones entre seres vivos.",
-      "tags": ["Ecosistemas", "Cadenas"]
+      "tags": [
+        "Ecosistemas",
+        "Cadenas"
+      ]
     },
     {
       "id": "camara-materia",
       "nombre": "Cámara de la Materia",
       "emoji": "❄️",
       "mecanica": "lectura",
-      "etiquetasLectura": ["materia"],
+      "etiquetasLectura": [
+        "materia"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "⚗️", "nombre": "Átomo" },
+      "recompensa": {
+        "emoji": "⚗️",
+        "nombre": "Átomo"
+      },
       "objetivo": "Identificar sólidos, líquidos, gases y cambios.",
-      "tags": ["Materia", "Estados"]
+      "tags": [
+        "Materia",
+        "Estados"
+      ]
     },
     {
       "id": "sala-energia",
       "nombre": "Sala de la Energía",
       "emoji": "⚡",
       "mecanica": "lectura",
-      "etiquetasLectura": ["energia"],
+      "etiquetasLectura": [
+        "energia"
+      ],
       "total": 6,
-      "recompensa": { "emoji": "🔆", "nombre": "Voltín" },
+      "recompensa": {
+        "emoji": "🔆",
+        "nombre": "Voltín"
+      },
       "objetivo": "Reconocer formas de energía y fuerzas sencillas.",
-      "tags": ["Energía", "Fuerzas"]
+      "tags": [
+        "Energía",
+        "Fuerzas"
+      ]
     },
     {
       "id": "observatorio-final",
@@ -64,155 +92,779 @@
       "total": 8,
       "tipo": "avanzada",
       "siempreActiva": true,
-      "recompensa": { "emoji": "🌎", "nombre": "Planeta" },
+      "recompensa": {
+        "emoji": "🌎",
+        "nombre": "Planeta"
+      },
       "objetivo": "Consolidar ciencias naturales de 4º.",
-      "tags": ["Ciencias 4º", "Repaso global"]
+      "tags": [
+        "Ciencias 4º",
+        "Repaso global"
+      ]
     }
   ],
   "bancoLectura": [
     {
       "id": "eco-1",
-      "etiquetas": ["ecosistemas"],
+      "etiquetas": [
+        "ecosistemas"
+      ],
       "texto": "Un ecosistema está formado por seres vivos y…",
-      "opciones": ["El medio físico donde viven", "Solo edificios", "Solo juguetes"],
+      "opciones": [
+        "El medio físico donde viven",
+        "Solo edificios",
+        "Solo juguetes"
+      ],
       "correcta": 0,
       "pista": "Incluye agua, suelo, luz y clima."
     },
     {
       "id": "eco-2",
-      "etiquetas": ["ecosistemas"],
+      "etiquetas": [
+        "ecosistemas"
+      ],
       "texto": "En una cadena alimentaria, las plantas son…",
-      "opciones": ["Productores", "Carnívoros finales", "Desiertos"],
+      "opciones": [
+        "Productores",
+        "Carnívoros finales",
+        "Desiertos"
+      ],
       "correcta": 0,
       "pista": "Elaboran su propio alimento."
     },
     {
       "id": "eco-3",
-      "etiquetas": ["ecosistemas"],
+      "etiquetas": [
+        "ecosistemas"
+      ],
       "texto": "Un lobo que come conejos es un…",
-      "opciones": ["Consumidor", "Productor", "Mineral"],
+      "opciones": [
+        "Consumidor",
+        "Productor",
+        "Mineral"
+      ],
       "correcta": 0,
       "pista": "Se alimenta de otros seres vivos."
     },
     {
       "id": "eco-4",
-      "etiquetas": ["ecosistemas"],
+      "etiquetas": [
+        "ecosistemas"
+      ],
       "texto": "Los hongos y bacterias que descomponen restos se llaman…",
-      "opciones": ["Descomponedores", "Productores soleados", "Planetas"],
+      "opciones": [
+        "Descomponedores",
+        "Productores soleados",
+        "Planetas"
+      ],
       "correcta": 0,
       "pista": "Devuelven nutrientes al suelo."
     },
     {
       "id": "mat-1",
-      "etiquetas": ["materia"],
+      "etiquetas": [
+        "materia"
+      ],
       "texto": "El hielo es agua en estado…",
-      "opciones": ["Sólido", "Gaseoso", "Líquido"],
+      "opciones": [
+        "Sólido",
+        "Gaseoso",
+        "Líquido"
+      ],
       "correcta": 0,
       "pista": "Mantiene forma fija."
     },
     {
       "id": "mat-2",
-      "etiquetas": ["materia"],
+      "etiquetas": [
+        "materia"
+      ],
       "texto": "Cuando el hielo se derrite ocurre una…",
-      "opciones": ["Fusión", "Congelación", "Sublimación invertida falsa"],
+      "opciones": [
+        "Fusión",
+        "Congelación",
+        "Sublimación invertida falsa"
+      ],
       "correcta": 0,
       "pista": "Pasa de sólido a líquido."
     },
     {
       "id": "mat-3",
-      "etiquetas": ["materia"],
+      "etiquetas": [
+        "materia"
+      ],
       "texto": "El vapor de agua es un…",
-      "opciones": ["Gas", "Sólido duro", "Metal"],
+      "opciones": [
+        "Gas",
+        "Sólido duro",
+        "Metal"
+      ],
       "correcta": 0,
       "pista": "No tiene forma fija ni volumen fijo."
     },
     {
       "id": "mat-4",
-      "etiquetas": ["materia"],
+      "etiquetas": [
+        "materia"
+      ],
       "texto": "Mezclar arena y limaduras de hierro y separarlas con un imán es…",
-      "opciones": ["Una separación de una mezcla", "Crear un nuevo planeta", "Fotosíntesis"],
+      "opciones": [
+        "Una separación de una mezcla",
+        "Crear un nuevo planeta",
+        "Fotosíntesis"
+      ],
       "correcta": 0,
       "pista": "Los materiales no se han transformado en otro distinto."
     },
     {
       "id": "en-1",
-      "etiquetas": ["energia"],
+      "etiquetas": [
+        "energia"
+      ],
       "texto": "La energía del Sol que calienta la Tierra es…",
-      "opciones": ["Luz y calor", "Solo sonido", "Solo viento"],
+      "opciones": [
+        "Luz y calor",
+        "Solo sonido",
+        "Solo viento"
+      ],
       "correcta": 0,
       "pista": "Llega en forma de luz y calor."
     },
     {
       "id": "en-2",
-      "etiquetas": ["energia"],
+      "etiquetas": [
+        "energia"
+      ],
       "texto": "Una pelota que rueda tiene energía…",
-      "opciones": ["Cinética (de movimiento)", "De sueño", "De silencio"],
+      "opciones": [
+        "Cinética (de movimiento)",
+        "De sueño",
+        "De silencio"
+      ],
       "correcta": 0,
       "pista": "Está en movimiento."
     },
     {
       "id": "en-3",
-      "etiquetas": ["energia"],
+      "etiquetas": [
+        "energia"
+      ],
       "texto": "Para mover un objeto pesado aplicamos una…",
-      "opciones": ["Fuerza", "Sombra", "Canción"],
+      "opciones": [
+        "Fuerza",
+        "Sombra",
+        "Canción"
+      ],
       "correcta": 0,
       "pista": "Empujar o tirar son ejemplos."
     },
     {
       "id": "en-4",
-      "etiquetas": ["energia"],
+      "etiquetas": [
+        "energia"
+      ],
       "texto": "Una bombilla convierte energía eléctrica en…",
-      "opciones": ["Luz (y calor)", "Solo agua", "Solo viento"],
+      "opciones": [
+        "Luz (y calor)",
+        "Solo agua",
+        "Solo viento"
+      ],
       "correcta": 0,
       "pista": "Ilumina la habitación."
     },
     {
       "id": "plan-1",
-      "etiquetas": ["planeta", "ecosistemas"],
+      "etiquetas": [
+        "planeta",
+        "ecosistemas"
+      ],
       "texto": "La Tierra gira alrededor del Sol. Ese movimiento se llama…",
-      "opciones": ["Traslación", "Fotosíntesis", "Evaporación"],
+      "opciones": [
+        "Traslación",
+        "Fotosíntesis",
+        "Evaporación"
+      ],
       "correcta": 0,
       "pista": "Dura aproximadamente un año."
     },
     {
       "id": "plan-2",
-      "etiquetas": ["planeta", "materia"],
+      "etiquetas": [
+        "planeta",
+        "materia"
+      ],
       "texto": "El día y la noche se deben principalmente a…",
-      "opciones": ["La rotación de la Tierra", "Que el Sol se apaga", "Que la Luna come luz"],
+      "opciones": [
+        "La rotación de la Tierra",
+        "Que el Sol se apaga",
+        "Que la Luna come luz"
+      ],
       "correcta": 0,
       "pista": "La Tierra gira sobre sí misma."
     },
     {
       "id": "sal-1",
-      "etiquetas": ["salud", "energia"],
+      "etiquetas": [
+        "salud",
+        "energia"
+      ],
       "texto": "Hacer ejercicio y dormir bien ayuda a…",
-      "opciones": ["Mantener una buena salud", "Romper más cosas", "Evitar beber agua"],
+      "opciones": [
+        "Mantener una buena salud",
+        "Romper más cosas",
+        "Evitar beber agua"
+      ],
       "correcta": 0,
       "pista": "Son hábitos saludables."
     },
     {
       "id": "sal-2",
-      "etiquetas": ["salud", "ecosistemas"],
+      "etiquetas": [
+        "salud",
+        "ecosistemas"
+      ],
       "texto": "Cuidar el agua y no contaminar los ríos protege…",
-      "opciones": ["Los ecosistemas y nuestra salud", "Solo los metales", "Solo las sombras"],
+      "opciones": [
+        "Los ecosistemas y nuestra salud",
+        "Solo los metales",
+        "Solo las sombras"
+      ],
       "correcta": 0,
       "pista": "El entorno limpio beneficia a todos."
     },
     {
       "id": "mix-c4-1",
-      "etiquetas": ["ecosistemas", "materia"],
+      "etiquetas": [
+        "ecosistemas",
+        "materia"
+      ],
       "texto": "En un estanque, el agua (medio) y los peces (seres vivos) forman parte de un…",
-      "opciones": ["Ecosistema", "Imán", "Planeta inventado"],
+      "opciones": [
+        "Ecosistema",
+        "Imán",
+        "Planeta inventado"
+      ],
       "correcta": 0,
       "pista": "Hay componentes vivos e inertes."
     },
     {
       "id": "mix-c4-2",
-      "etiquetas": ["energia", "planeta"],
+      "etiquetas": [
+        "energia",
+        "planeta"
+      ],
       "texto": "Las plantas usan la energía solar para fabricar alimento. Ese proceso es la…",
-      "opciones": ["Fotosíntesis", "Rotación", "Magnetismo"],
+      "opciones": [
+        "Fotosíntesis",
+        "Rotación",
+        "Magnetismo"
+      ],
       "correcta": 0,
       "pista": "Necesitan luz del Sol."
+    },
+    {
+      "id": "eco-e1",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Las plantas en un ecosistema suelen ser…",
+      "opciones": [
+        "Productoras",
+        "Solo depredadoras",
+        "Rocas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e2",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Un depredador…",
+      "opciones": [
+        "Caza otros animales",
+        "Solo come piedras",
+        "Hace fotosíntesis"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e3",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "La cadena alimenticia suele empezar por…",
+      "opciones": [
+        "Plantas",
+        "Leones",
+        "El sol como comida"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e4",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Un bosque es un…",
+      "opciones": [
+        "Ecosistema",
+        "Planeta nuevo",
+        "Mineral"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "eco-e5",
+      "etiquetas": [
+        "ecosistemas"
+      ],
+      "texto": "Si faltan abejas, la polinización…",
+      "opciones": [
+        "Empeora",
+        "Mejora sola siempre",
+        "No cambia nunca"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e1",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "La materia tiene…",
+      "opciones": [
+        "Masa y volumen",
+        "Solo color",
+        "Solo olor"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e2",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Un estado de la materia es…",
+      "opciones": [
+        "Sólido",
+        "Música",
+        "Silencio"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e3",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Al calentar hielo…",
+      "opciones": [
+        "Pasa a líquido",
+        "Se vuelve madera",
+        "Desaparece siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e4",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "El aire es materia porque…",
+      "opciones": [
+        "Ocupa espacio",
+        "No existe",
+        "Es luz pura"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e5",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Una mezcla es…",
+      "opciones": [
+        "Combinación de sustancias",
+        "Un átomo",
+        "Una emoción"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "mat-e6",
+      "etiquetas": [
+        "materia"
+      ],
+      "texto": "Los sólidos…",
+      "opciones": [
+        "Tienen forma propia",
+        "Fluyen siempre",
+        "No pesan"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e1",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "El Sol aporta…",
+      "opciones": [
+        "Energía/luz/calor",
+        "Solo silencio",
+        "Solo viento frío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e2",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Una bombilla convierte electricidad en…",
+      "opciones": [
+        "Luz (y calor)",
+        "Agua",
+        "Madera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e3",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Un coche al moverse usa…",
+      "opciones": [
+        "Energía",
+        "Solo sombra",
+        "Vacío"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e4",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "Ahorrar energía: ejemplo…",
+      "opciones": [
+        "Apagar luces",
+        "Dejar todo encendido",
+        "Romper bombillas"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e5",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "El viento puede generar…",
+      "opciones": [
+        "Energía eólica",
+        "Petróleo",
+        "Hierro"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "en-e6",
+      "etiquetas": [
+        "energia"
+      ],
+      "texto": "La comida aporta…",
+      "opciones": [
+        "Energía",
+        "Solo ruido",
+        "Electricidad de enchufe"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e1",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "La Tierra gira alrededor del…",
+      "opciones": [
+        "Sol",
+        "Luna solo",
+        "Marte"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e2",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "La Luna…",
+      "opciones": [
+        "Orbita la Tierra",
+        "Es una estrella",
+        "Es un planeta con ciudades"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e3",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Día y noche se deben a…",
+      "opciones": [
+        "Rotación terrestre",
+        "Que el Sol se apaga",
+        "Las nubes"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e4",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Las estaciones se relacionan con…",
+      "opciones": [
+        "Inclinación/traslación",
+        "Solo lluvia",
+        "Solo viento"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e5",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Un planeta del Sistema Solar…",
+      "opciones": [
+        "Marte",
+        "La Estrella Polar",
+        "La Luna"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e6",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "La Tierra tiene…",
+      "opciones": [
+        "Atmósfera",
+        "Nada de aire",
+        "Solo lava fuera"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e7",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "Los polos son…",
+      "opciones": [
+        "Más fríos",
+        "Más cálidos siempre",
+        "Sin hielo jamás"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e8",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "El ecuador es…",
+      "opciones": [
+        "Más cálido en general",
+        "La zona más fría",
+        "Sin Sol"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "pl-e9",
+      "etiquetas": [
+        "planeta"
+      ],
+      "texto": "El Sol es…",
+      "opciones": [
+        "Una estrella",
+        "Un planeta",
+        "Un satélite"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e1",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Lavarse las manos ayuda a…",
+      "opciones": [
+        "Evitar gérmenes",
+        "Correr más",
+        "Evitar el agua útil"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e2",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Dormir suficiente es…",
+      "opciones": [
+        "Saludable",
+        "Inútil",
+        "Peligroso siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e3",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Dieta equilibrada incluye…",
+      "opciones": [
+        "Variedad",
+        "Solo chuches",
+        "Solo refrescos"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e4",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "El ejercicio…",
+      "opciones": [
+        "Fortalece",
+        "Debilita siempre",
+        "Quita el aire útil"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e5",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Cepillarse evita…",
+      "opciones": [
+        "Caries",
+        "Crecer",
+        "Leer"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e6",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Beber agua sirve para…",
+      "opciones": [
+        "Hidratar",
+        "Oxidarse",
+        "Dormir de pie"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e7",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Casco en bici…",
+      "opciones": [
+        "Protege la cabeza",
+        "Es solo moda",
+        "Impide ver"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e8",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Fumar es…",
+      "opciones": [
+        "Perjudicial",
+        "Obligatorio",
+        "Un deporte"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e9",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Las vacunas…",
+      "opciones": [
+        "Previenen enfermedades",
+        "Cambian el pelo",
+        "Hacen correr más"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
+    },
+    {
+      "id": "sa-e10",
+      "etiquetas": [
+        "salud"
+      ],
+      "texto": "Con pantallas conviene…",
+      "opciones": [
+        "Descansar la vista",
+        "Nunca pausar",
+        "Mejorar el sueño siempre"
+      ],
+      "correcta": 0,
+      "pista": "Piensa."
     }
   ],
   "puntosPorFase": {
@@ -222,10 +874,23 @@
     "observatorio-final": 28
   },
   "mensajes": {
-    "acierto": ["¡Laboratorio listo!", "¡Descubrimiento genial!", "¡Ciencia de 4º!"],
-    "error": ["Vuelve a experimentar", "Revisa la pista", "Prueba otra opción"],
-    "ultima": ["¡Última pregunta del laboratorio!"]
+    "acierto": [
+      "¡Laboratorio listo!",
+      "¡Descubrimiento genial!",
+      "¡Ciencia de 4º!"
+    ],
+    "error": [
+      "Vuelve a experimentar",
+      "Revisa la pista",
+      "Prueba otra opción"
+    ],
+    "ultima": [
+      "¡Última pregunta del laboratorio!"
+    ]
   },
   "mensajesPredefinidos": {},
-  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }
