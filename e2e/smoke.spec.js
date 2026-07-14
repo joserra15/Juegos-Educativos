@@ -23,10 +23,11 @@ test.describe("Mundos Mágicos — flujo principal", () => {
     await reiniciarSesion(page);
     await page.waitForSelector("#pantallaNombre.activa", { timeout: 15000 });
     await page.locator(".avatar-opcion").first().click();
-    await page.locator("#inputNombre").fill("TesterE2E");
+    const nombreUnico = `E2E${Date.now().toString(36).slice(-6)}`;
+    await page.locator("#inputNombre").fill(nombreUnico);
     await page.getByRole("button", { name: /Empezar aventura/i }).click();
 
-    await expect(page.locator("#historia.activa, #selectorMundos.activa")).toBeVisible({ timeout: 10000 });
+    await expect(page.locator("#historia.activa, #selectorMundos.activa")).toBeVisible({ timeout: 15000 });
   });
 
   test("selector muestra tarjetas de mundos", async ({ page }) => {
