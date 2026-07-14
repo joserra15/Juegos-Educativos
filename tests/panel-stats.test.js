@@ -52,10 +52,14 @@ describe("PanelStats", () => {
       intentosTotales: 45,
       manifest: manifestMock,
       mundosStates: { unicornios: { liberadas: [0], puntosMundo: 120 } },
+      ciudad: "Córdoba",
+      colegio: "CEIP Sol",
     });
     expect(texto).toContain("Lucía");
     expect(texto).toContain("120");
     expect(texto).toContain("Matemáticas");
+    expect(texto).toContain("Córdoba");
+    expect(texto).toContain("CEIP Sol");
   });
 
   it("etiqueta áreas en español", () => {

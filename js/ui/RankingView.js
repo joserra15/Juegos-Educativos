@@ -1,5 +1,5 @@
 /**
- * Fase F — Ranking amigable y panel global narrativo.
+ * Ranking: vista global de puntos + filtro por mundo (puntos y tiempos medios).
  */
 
 import { formatearTiempo } from "../../engine/QuestionGenerator.js";
@@ -8,9 +8,19 @@ import {
   obtenerHitoHechizo,
   OBJETIVO_GLOBAL,
 } from "../../engine/PanelStats.js";
-import { getFaseLabel } from "../../engine/ContentLoader.js";
 
 const SNAPSHOT_KEY = "recordSnapshotTiempos";
+
+/** Filtro UI: "global" o id de mundo */
+let rankingFiltro = "global";
+
+export function getRankingFiltro() {
+  return rankingFiltro;
+}
+
+export function setRankingFiltro(filtro) {
+  rankingFiltro = filtro || "global";
+}
 
 export function guardarSnapshotRecords(tiemposMejores) {
   try {
@@ -114,4 +124,119 @@ export function renderRankingConMarcas(listaEl, snapshot, nombreJugador, fases, 
 
 export function actualizarSnapshotAlSalir(tiemposMejores) {
   guardarSnapshotRecords(tiemposMejores);
+}
+
+/**
+ * Puntos a mostrar en ranking según filtro.
+ * Global → puntos totales; mundo → puntosPorMundo[id] (o state del mundo).
+ */
+export function obtenerPuntosRanking(data, filtro) {
+  if (!data) return 0;
+  if (!filtro || filtro === "global") {
+    return data.puntos || 0;
+  }
+  const porMundo = data.puntosPorMundo?.[filtro];
+  if (porMundo !== undefined && porMundo !== null) return porMundo;
+  return data.mundos?.[filtro]?.puntosMundo || 0;
+}
+
+/**
+ * Ordena jugadores por puntos del filtro y limita a top N.
+ */
+export function ordenarJugadoresRanking(players, filtro, limite = 20) {
+  return [...(players || [])]
+    .map((p) => ({
+      ...p,
+      puntosRanking: obtenerPuntosRanking(p, filtro),
+    }))
+    .sort((a, b) => b.puntosRanking - a.puntosRanking)
+    .slice(0, limite);
+}
+
+export function renderSelectorRanking({
+  container,
+  manifest,
+  filtroActual,
+  onCambiar,
+}) {
+  if (!container) return;
+
+  container.innerHTML = "";
+  container.setAttribute("role", "tablist");
+  container.setAttribute("aria-label", "Elegir ranking global o por mundo");
+
+  const mkChip = (id, label, emoji = "") => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "ranking-chip" + (filtroActual === id ? " activa" : "");
+    btn.dataset.filtro = id;
+    btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-selected", filtroActual === id ? "true" : "false");
+    btn.textContent = emoji ? `${emoji} ${label}` : label;
+    btn.onclick = () => onCambiar?.(id);
+    return btn;
+  };
+
+  container.appendChild(mkChip("global", "Global", "🌍"));
+
+  (manifest?.mundos || [])
+    .filter((m) => m.disponible !== false)
+    .forEach((m) => {
+      container.appendChild(mkChip(m.id, m.nombre.replace(/^El |^La |^Los |^Las /, ""), m.emoji));
+    });
+}
+
+export function renderListaRankingPuntos({
+  listaEl,
+  players,
+  filtro,
+  nombreJugador,
+  etiquetaMundo = "",
+}) {
+  if (!listaEl) return;
+
+  const ordenados = ordenarJugadoresRanking(players, filtro, 20);
+  listaEl.innerHTML = "";
+
+  if (!ordenados.length) {
+    listaEl.innerHTML = "<li>Aún no hay datos</li>";
+    return;
+  }
+
+  ordenados.forEach((data, idx) => {
+    const puesto = idx + 1;
+    const li = document.createElement("li");
+    const esActual = data.nombre === nombreJugador;
+    const pts = data.puntosRanking ?? obtenerPuntosRanking(data, filtro);
+
+    if (filtro === "global") {
+      li.textContent = esActual
+        ? `👉 ${puesto}. ${data.nombre} — ${pts} ⭐`
+        : `${puesto}. ${data.nombre} — ${pts} ⭐`;
+    } else {
+      const extraGlobal =
+        data.puntos !== undefined ? ` · ${data.puntos} ⭐ totales` : "";
+      li.textContent = esActual
+        ? `👉 ${puesto}. ${data.nombre} — ${pts} ⭐${etiquetaMundo ? ` en ${etiquetaMundo}` : ""}${extraGlobal}`
+        : `${puesto}. ${data.nombre} — ${pts} ⭐`;
+    }
+
+    if (esActual) li.classList.add("jugador-actual");
+    listaEl.appendChild(li);
+  });
+}
+
+/** Muestra u oculta bloques específicos del mundo seleccionado. */
+export function aplicarVisibilidadRanking(filtro) {
+  const esGlobal = !filtro || filtro === "global";
+  const bloqueMundo = document.getElementById("bloqueRankingPorMundo");
+  const tituloPuntos = document.getElementById("tituloRankingPuntos");
+
+  if (bloqueMundo) bloqueMundo.hidden = esGlobal;
+
+  if (tituloPuntos) {
+    tituloPuntos.textContent = esGlobal
+      ? "🏆 Ranking global de puntos"
+      : "🏆 Ranking de puntos del mundo";
+  }
 }

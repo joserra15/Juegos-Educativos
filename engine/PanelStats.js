@@ -100,6 +100,8 @@ export function generarResumenExportable({
   mundosStates,
   manifest,
   intentosTotales,
+  ciudad = "",
+  colegio = "",
   fecha = new Date(),
 }) {
   const lineas = [
@@ -108,12 +110,16 @@ export function generarResumenExportable({
     "═══════════════════════════════════════",
     "",
     `Jugador: ${nombreJugador}`,
+  ];
+  if (ciudad) lineas.push(`Ciudad: ${ciudad}`);
+  if (colegio) lineas.push(`Colegio: ${colegio}`);
+  lineas.push(
     `Fecha: ${fecha.toLocaleDateString("es-ES")} ${fecha.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}`,
     `Puntos totales: ${puntos} ⭐`,
     `Intentos: ${intentosTotales}`,
     "",
     "── Progreso por mundo ──",
-  ];
+  );
 
   for (const entry of manifest?.mundos || []) {
     const st = mundosStates[entry.id] || {};

@@ -180,11 +180,14 @@ describe("ProgressStore", () => {
       { puntos: 10, puntosPorMundo: { unicornios: 10 }, intentosTotales: 5 },
       allMundosStates,
       "unicornios",
-      "1234"
+      "1234",
+      { ciudad: "Granada", colegio: "CEIP Luna" }
     );
     expect(payload.mundos.unicornios).toBeDefined();
     expect(payload.liberadas).toEqual([0]);
     expect(payload.puntosPorMundo.unicornios).toBe(10);
+    expect(payload.ciudad).toBe("Granada");
+    expect(payload.colegio).toBe("CEIP Luna");
   });
 
   it("fusiona si remoto tiene más puntos", () => {

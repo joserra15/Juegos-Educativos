@@ -171,12 +171,21 @@ export function buildFirebasePayload(
   globalState,
   allMundosStates,
   mundoActivo = MUNDO_LEGACY,
-  pin = null
+  pin = null,
+  perfil = null
 ) {
   const pinValue = pin ?? (typeof localStorage !== "undefined" ? localStorage.getItem("pinJugador") : null);
   const legacy = allMundosStates[MUNDO_LEGACY] || createDefaultMundoState();
+  const ciudad =
+    (perfil?.ciudad ??
+      (typeof localStorage !== "undefined" ? localStorage.getItem("ciudadJugador") : null)) ||
+    null;
+  const colegio =
+    (perfil?.colegio ??
+      (typeof localStorage !== "undefined" ? localStorage.getItem("colegioJugador") : null)) ||
+    null;
 
-  return {
+  const payload = {
     nombre: nombreJugador,
     pin: pinValue,
     puntos: globalState.puntos,
@@ -188,6 +197,11 @@ export function buildFirebasePayload(
     fallosPorOperacion: legacy.fallosPorOperacion,
     ultimaActualizacion: Date.now(),
   };
+
+  if (ciudad) payload.ciudad = ciudad;
+  if (colegio) payload.colegio = colegio;
+
+  return payload;
 }
 
 export function parseFirebaseData(data, mundoId = MUNDO_LEGACY) {
