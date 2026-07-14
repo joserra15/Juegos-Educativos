@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.4.0",
   "appName": "Mundos Mágicos Educativos",
   "defaultMundo": "unicornios",
   "mundos": [
@@ -68,6 +68,38 @@
       }
     },
     {
+      "id": "ciencias-3",
+      "nombre": "Bosque Científico",
+      "emoji": "🔬",
+      "curso": 3,
+      "area": "ciencias",
+      "descripcion": "Seres vivos, cuerpo humano, materiales y entorno",
+      "disponible": true,
+      "totalFases": 6,
+      "contentFile": "ciencias-3.json",
+      "tema": {
+        "colorPrimario": "#2e7d32",
+        "colorSecundario": "#81c784",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "sociales-3",
+      "nombre": "Villa de las Historias",
+      "emoji": "🗺️",
+      "curso": 3,
+      "area": "sociales",
+      "descripcion": "Municipio, mapas, pasado-presente y convivencia",
+      "disponible": true,
+      "totalFases": 6,
+      "contentFile": "sociales-3.json",
+      "tema": {
+        "colorPrimario": "#1565c0",
+        "colorSecundario": "#64b5f6",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
       "id": "calculo-4",
       "nombre": "Ciudad de los Números",
       "emoji": "🏙️",
@@ -112,6 +144,38 @@
       "tema": {
         "colorPrimario": "#7b1fa2",
         "colorSecundario": "#ba68c8",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "ciencias-4",
+      "nombre": "Laboratorio del Planeta",
+      "emoji": "🌍",
+      "curso": 4,
+      "area": "ciencias",
+      "descripcion": "Ecosistemas, materia, energía y planeta Tierra (4º)",
+      "disponible": true,
+      "totalFases": 4,
+      "contentFile": "ciencias-4.json",
+      "tema": {
+        "colorPrimario": "#00695c",
+        "colorSecundario": "#4db6ac",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "sociales-4",
+      "nombre": "Cronópolis",
+      "emoji": "🏛️",
+      "curso": 4,
+      "area": "sociales",
+      "descripcion": "Geografía de España, paisajes e historia (4º)",
+      "disponible": true,
+      "totalFases": 4,
+      "contentFile": "sociales-4.json",
+      "tema": {
+        "colorPrimario": "#bf360c",
+        "colorSecundario": "#ff8a65",
         "fondo": "fondo-magico.jpg"
       }
     }

@@ -1,0 +1,231 @@
+{
+  "id": "sociales-4",
+  "version": "3.4.0",
+  "nombre": "Cronópolis",
+  "tipoMundo": "lectura",
+  "curso": 4,
+  "area": "sociales",
+  "competencias": ["CC1", "CC2", "CC3"],
+  "saberes": [
+    "geografía de España",
+    "comunidades autónomas",
+    "paisajes y clima",
+    "historia básica de España",
+    "organización territorial"
+  ],
+  "tema": {
+    "colorPrimario": "#bf360c",
+    "colorSecundario": "#ff8a65",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "viajero",
+    "recompensaLabel": "medalla"
+  },
+  "etiquetaCurricular": "4º Primaria · Ciencias Sociales · LOMLOE",
+  "textoCurricular": "Geografía de España, paisajes e introducción histórica en 4º de Primaria.",
+  "fases": [
+    {
+      "id": "mirador-espana",
+      "nombre": "Mirador de España",
+      "emoji": "🇪🇸",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["geografia"],
+      "total": 6,
+      "recompensa": { "emoji": "🏔️", "nombre": "Cumbre" },
+      "objetivo": "Situar accidentes geográficos y mares de España.",
+      "tags": ["Geografía", "Relieve"]
+    },
+    {
+      "id": "ruta-comunidades",
+      "nombre": "Ruta de las Comunidades",
+      "emoji": "🧭",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["comunidades"],
+      "total": 6,
+      "recompensa": { "emoji": "🗺️", "nombre": "Autónomo" },
+      "objetivo": "Conocer comunidades autónomas y capitales clave.",
+      "tags": ["CC. AA.", "Territorio"]
+    },
+    {
+      "id": "sendero-paisajes",
+      "nombre": "Sendero de Paisajes",
+      "emoji": "🌄",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["paisajes"],
+      "total": 6,
+      "recompensa": { "emoji": "🌾", "nombre": "Paisaje" },
+      "objetivo": "Relacionar clima, relieve y formas de vida.",
+      "tags": ["Paisaje", "Clima"]
+    },
+    {
+      "id": "archivo-cronopolis",
+      "nombre": "Archivo de Cronópolis",
+      "emoji": "🏺",
+      "mecanica": "lectura",
+      "total": 8,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "👑", "nombre": "Cronista Mayor" },
+      "objetivo": "Consolidar ciencias sociales de 4º.",
+      "tags": ["Sociales 4º", "Repaso global"]
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "geo-1",
+      "etiquetas": ["geografia"],
+      "texto": "España está en el suroeste de Europa, en la península…",
+      "opciones": ["Ibérica", "Itálica", "Escandinava"],
+      "correcta": 0,
+      "pista": "La comparten España y Portugal."
+    },
+    {
+      "id": "geo-2",
+      "etiquetas": ["geografia"],
+      "texto": "El mar que baña la costa este de España es el…",
+      "opciones": ["Mediterráneo", "Báltico", "Caspio"],
+      "correcta": 0,
+      "pista": "Baña Cataluña, Valencia y Murcia, entre otras."
+    },
+    {
+      "id": "geo-3",
+      "etiquetas": ["geografia"],
+      "texto": "Los Pirineos son una cordillera entre España y…",
+      "opciones": ["Francia", "Marruecos", "Italia"],
+      "correcta": 0,
+      "pista": "Están al norte."
+    },
+    {
+      "id": "geo-4",
+      "etiquetas": ["geografia"],
+      "texto": "Las Islas Canarias se encuentran en el océano…",
+      "opciones": ["Atlántico", "Índico", "Ártico"],
+      "correcta": 0,
+      "pista": "Al oeste de África."
+    },
+    {
+      "id": "ccaa-1",
+      "etiquetas": ["comunidades"],
+      "texto": "Madrid es la capital de España y también de la Comunidad de…",
+      "opciones": ["Madrid", "Andalucía", "Galicia"],
+      "correcta": 0,
+      "pista": "Coincide el nombre."
+    },
+    {
+      "id": "ccaa-2",
+      "etiquetas": ["comunidades"],
+      "texto": "Sevilla es una ciudad importante de…",
+      "opciones": ["Andalucía", "Asturias", "La Rioja"],
+      "correcta": 0,
+      "pista": "Está en el sur de España."
+    },
+    {
+      "id": "ccaa-3",
+      "etiquetas": ["comunidades"],
+      "texto": "España se organiza en comunidades autónomas y…",
+      "opciones": ["Ciudades autónomas (Ceuta y Melilla)", "Solo reinos antiguos", "Solo islas inventadas"],
+      "correcta": 0,
+      "pista": "Hay dos ciudades autónomas en el norte de África."
+    },
+    {
+      "id": "ccaa-4",
+      "etiquetas": ["comunidades"],
+      "texto": "Cataluña, País Vasco y Galicia son ejemplos de…",
+      "opciones": ["Comunidades autónomas", "Países distintos", "Continentes"],
+      "correcta": 0,
+      "pista": "Forman parte del Estado español."
+    },
+    {
+      "id": "pai-1",
+      "etiquetas": ["paisajes"],
+      "texto": "Un paisaje de altas montañas y nieve es típico de un clima…",
+      "opciones": ["De montaña", "Desértico tropical", "Ecuatorial de selva"],
+      "correcta": 0,
+      "pista": "Hace frío y hay relieve elevado."
+    },
+    {
+      "id": "pai-2",
+      "etiquetas": ["paisajes"],
+      "texto": "En la costa mediterránea suele hacer veranos…",
+      "opciones": ["Cálidos y secos", "Helados polares", "Siempre lluviosos como la selva"],
+      "correcta": 0,
+      "pista": "Clima mediterráneo."
+    },
+    {
+      "id": "pai-3",
+      "etiquetas": ["paisajes"],
+      "texto": "Los pueblos de campos de cereal en meseta suelen estar en…",
+      "opciones": ["Paisajes de interior", "Solo volcanes", "Solo glaciares"],
+      "correcta": 0,
+      "pista": "Meseta Central."
+    },
+    {
+      "id": "pai-4",
+      "etiquetas": ["paisajes"],
+      "texto": "El turismo de playa es importante en muchas zonas…",
+      "opciones": ["Costeras", "Solo de alta montaña sin mar", "Del Polo Norte"],
+      "correcta": 0,
+      "pista": "Cerca del mar."
+    },
+    {
+      "id": "hist-1",
+      "etiquetas": ["historia", "geografia"],
+      "texto": "Los restos de murallas o castillos nos ayudan a conocer…",
+      "opciones": ["El pasado histórico", "Solo el clima de mañana", "Las tablas del 7"],
+      "correcta": 0,
+      "pista": "Son fuentes históricas."
+    },
+    {
+      "id": "hist-2",
+      "etiquetas": ["historia", "comunidades"],
+      "texto": "Una línea del tiempo sirve para…",
+      "opciones": ["Ordenar hechos del pasado", "Medir la lluvia", "Calcular divisiones"],
+      "correcta": 0,
+      "pista": "Coloca acontecimientos en orden."
+    },
+    {
+      "id": "hist-3",
+      "etiquetas": ["historia", "paisajes"],
+      "texto": "Antes de las ciudades grandes, muchas personas vivían de…",
+      "opciones": ["La agricultura y la ganadería", "Solo videojuegos", "Viajes espaciales"],
+      "correcta": 0,
+      "pista": "Actividades del campo."
+    },
+    {
+      "id": "org-1",
+      "etiquetas": ["comunidades", "historia"],
+      "texto": "Las leyes más importantes de España están en la…",
+      "opciones": ["Constitución", "Receta del cocido", "Guía del Zoo"],
+      "correcta": 0,
+      "pista": "Es la norma fundamental del Estado."
+    },
+    {
+      "id": "mix-s4-1",
+      "etiquetas": ["geografia", "paisajes"],
+      "texto": "El océano Atlántico baña, entre otras, las costas de Galicia y…",
+      "opciones": ["Andalucía (oeste) y Canarias", "Solo el Himalaya", "Solo el Mar Negro"],
+      "correcta": 0,
+      "pista": "Piensa en el oeste y en las islas."
+    },
+    {
+      "id": "mix-s4-2",
+      "etiquetas": ["comunidades", "paisajes"],
+      "texto": "Un mapa político de España muestra…",
+      "opciones": ["Comunidades y provincias", "Solo climas sin nombres", "Solo ríos sin fronteras"],
+      "correcta": 0,
+      "pista": "Divide el territorio administrativo."
+    }
+  ],
+  "puntosPorFase": {
+    "mirador-espana": 12,
+    "ruta-comunidades": 14,
+    "sendero-paisajes": 14,
+    "archivo-cronopolis": 28
+  },
+  "mensajes": {
+    "acierto": ["¡Cronópolis te aplaude!", "¡Gran explorador!", "¡Sociales de 4º!"],
+    "error": ["Consulta el mapa otra vez", "Revisa la pista", "Prueba otra opción"],
+    "ultima": ["¡Última pregunta del archivo!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

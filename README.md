@@ -2,22 +2,26 @@
 
 Plataforma de juegos educativos para **3º y 4º de Primaria** (España), alineada con LOMLOE.
 
-## Mundos disponibles (v3.0)
+## Mundos disponibles (v3.4)
 
 ### 3º de Primaria
-| Mundo | Área | Contenido |
-|-------|------|-----------|
-| 🦄 Unicornios | Matemáticas | Tablas de multiplicar del 1 al 10 |
-| 🦕 Dinosaurios | Matemáticas | División como reparto equitativo |
-| 🍕 Fracciones | Matemáticas | Fracciones propias, comparación y recta |
-| 📚 Biblioteca | Lengua | Comprensión lectora y ortografía |
+| Mundo | Área | Contenido | Fases |
+|-------|------|-----------|-------|
+| 🦄 Unicornios | Matemáticas | Tablas de multiplicar del 1 al 10 | 8 |
+| 🦕 Dinosaurios | Matemáticas | División como reparto equitativo | 6 |
+| 🍕 Fracciones | Matemáticas | Fracciones propias, comparación y recta | 6 |
+| 📚 Biblioteca | Lengua | Comprensión lectora y ortografía | 6 |
+| 🔬 Bosque Científico | Ciencias | Seres vivos, cuerpo, materiales y entorno | 6 |
+| 🗺️ Villa de las Historias | Sociales | Municipio, mapas, pasado-presente y convivencia | 6 |
 
 ### 4º de Primaria
-| Mundo | Área | Contenido |
-|-------|------|-----------|
-| 🏙️ Ciudad de los Números | Matemáticas | Tablas hasta 12, productos 2 cifras, división |
-| 👑 Imperio de las Fracciones | Matemáticas | Equivalencia, suma y comparación |
-| ✍️ Atelier de la Lengua | Lengua | Comprensión, ortografía y gramática |
+| Mundo | Área | Contenido | Fases |
+|-------|------|-----------|-------|
+| 🏙️ Ciudad de los Números | Matemáticas | Tablas hasta 12, productos 2 cifras, división | 5 |
+| 👑 Imperio de las Fracciones | Matemáticas | Equivalencia, suma y comparación | 4 |
+| ✍️ Atelier de la Lengua | Lengua | Comprensión, ortografía y gramática | 4 |
+| 🌍 Laboratorio del Planeta | Ciencias | Ecosistemas, materia, energía y planeta | 4 |
+| 🏛️ Cronópolis | Sociales | Geografía de España, paisajes e historia | 4 |
 
 ## Estructura
 

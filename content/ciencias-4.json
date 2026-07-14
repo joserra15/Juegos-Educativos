@@ -1,0 +1,231 @@
+{
+  "id": "ciencias-4",
+  "version": "3.4.0",
+  "nombre": "Laboratorio del Planeta",
+  "tipoMundo": "lectura",
+  "curso": 4,
+  "area": "ciencias",
+  "competencias": ["STEM1", "STEM2", "STEM5"],
+  "saberes": [
+    "ecosistemas y cadenas alimentarias",
+    "estados de la materia",
+    "energía y fuerzas",
+    "el planeta Tierra y el Sol",
+    "salud y prevención"
+  ],
+  "tema": {
+    "colorPrimario": "#00695c",
+    "colorSecundario": "#4db6ac",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "astro",
+    "recompensaLabel": "insignia"
+  },
+  "etiquetaCurricular": "4º Primaria · Ciencias Naturales · LOMLOE",
+  "textoCurricular": "Ecosistemas, materia, energía y planeta Tierra en 4º de Primaria.",
+  "fases": [
+    {
+      "id": "selva-ecosistemas",
+      "nombre": "Selva de Ecosistemas",
+      "emoji": "🌳",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["ecosistemas"],
+      "total": 6,
+      "recompensa": { "emoji": "🦜", "nombre": "Biótico" },
+      "objetivo": "Comprender ecosistemas y relaciones entre seres vivos.",
+      "tags": ["Ecosistemas", "Cadenas"]
+    },
+    {
+      "id": "camara-materia",
+      "nombre": "Cámara de la Materia",
+      "emoji": "❄️",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["materia"],
+      "total": 6,
+      "recompensa": { "emoji": "⚗️", "nombre": "Átomo" },
+      "objetivo": "Identificar sólidos, líquidos, gases y cambios.",
+      "tags": ["Materia", "Estados"]
+    },
+    {
+      "id": "sala-energia",
+      "nombre": "Sala de la Energía",
+      "emoji": "⚡",
+      "mecanica": "lectura",
+      "etiquetasLectura": ["energia"],
+      "total": 6,
+      "recompensa": { "emoji": "🔆", "nombre": "Voltín" },
+      "objetivo": "Reconocer formas de energía y fuerzas sencillas.",
+      "tags": ["Energía", "Fuerzas"]
+    },
+    {
+      "id": "observatorio-final",
+      "nombre": "Observatorio Final",
+      "emoji": "🔭",
+      "mecanica": "lectura",
+      "total": 8,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": { "emoji": "🌎", "nombre": "Planeta" },
+      "objetivo": "Consolidar ciencias naturales de 4º.",
+      "tags": ["Ciencias 4º", "Repaso global"]
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "eco-1",
+      "etiquetas": ["ecosistemas"],
+      "texto": "Un ecosistema está formado por seres vivos y…",
+      "opciones": ["El medio físico donde viven", "Solo edificios", "Solo juguetes"],
+      "correcta": 0,
+      "pista": "Incluye agua, suelo, luz y clima."
+    },
+    {
+      "id": "eco-2",
+      "etiquetas": ["ecosistemas"],
+      "texto": "En una cadena alimentaria, las plantas son…",
+      "opciones": ["Productores", "Carnívoros finales", "Desiertos"],
+      "correcta": 0,
+      "pista": "Elaboran su propio alimento."
+    },
+    {
+      "id": "eco-3",
+      "etiquetas": ["ecosistemas"],
+      "texto": "Un lobo que come conejos es un…",
+      "opciones": ["Consumidor", "Productor", "Mineral"],
+      "correcta": 0,
+      "pista": "Se alimenta de otros seres vivos."
+    },
+    {
+      "id": "eco-4",
+      "etiquetas": ["ecosistemas"],
+      "texto": "Los hongos y bacterias que descomponen restos se llaman…",
+      "opciones": ["Descomponedores", "Productores soleados", "Planetas"],
+      "correcta": 0,
+      "pista": "Devuelven nutrientes al suelo."
+    },
+    {
+      "id": "mat-1",
+      "etiquetas": ["materia"],
+      "texto": "El hielo es agua en estado…",
+      "opciones": ["Sólido", "Gaseoso", "Líquido"],
+      "correcta": 0,
+      "pista": "Mantiene forma fija."
+    },
+    {
+      "id": "mat-2",
+      "etiquetas": ["materia"],
+      "texto": "Cuando el hielo se derrite ocurre una…",
+      "opciones": ["Fusión", "Congelación", "Sublimación invertida falsa"],
+      "correcta": 0,
+      "pista": "Pasa de sólido a líquido."
+    },
+    {
+      "id": "mat-3",
+      "etiquetas": ["materia"],
+      "texto": "El vapor de agua es un…",
+      "opciones": ["Gas", "Sólido duro", "Metal"],
+      "correcta": 0,
+      "pista": "No tiene forma fija ni volumen fijo."
+    },
+    {
+      "id": "mat-4",
+      "etiquetas": ["materia"],
+      "texto": "Mezclar arena y limaduras de hierro y separarlas con un imán es…",
+      "opciones": ["Una separación de una mezcla", "Crear un nuevo planeta", "Fotosíntesis"],
+      "correcta": 0,
+      "pista": "Los materiales no se han transformado en otro distinto."
+    },
+    {
+      "id": "en-1",
+      "etiquetas": ["energia"],
+      "texto": "La energía del Sol que calienta la Tierra es…",
+      "opciones": ["Luz y calor", "Solo sonido", "Solo viento"],
+      "correcta": 0,
+      "pista": "Llega en forma de luz y calor."
+    },
+    {
+      "id": "en-2",
+      "etiquetas": ["energia"],
+      "texto": "Una pelota que rueda tiene energía…",
+      "opciones": ["Cinética (de movimiento)", "De sueño", "De silencio"],
+      "correcta": 0,
+      "pista": "Está en movimiento."
+    },
+    {
+      "id": "en-3",
+      "etiquetas": ["energia"],
+      "texto": "Para mover un objeto pesado aplicamos una…",
+      "opciones": ["Fuerza", "Sombra", "Canción"],
+      "correcta": 0,
+      "pista": "Empujar o tirar son ejemplos."
+    },
+    {
+      "id": "en-4",
+      "etiquetas": ["energia"],
+      "texto": "Una bombilla convierte energía eléctrica en…",
+      "opciones": ["Luz (y calor)", "Solo agua", "Solo viento"],
+      "correcta": 0,
+      "pista": "Ilumina la habitación."
+    },
+    {
+      "id": "plan-1",
+      "etiquetas": ["planeta", "ecosistemas"],
+      "texto": "La Tierra gira alrededor del Sol. Ese movimiento se llama…",
+      "opciones": ["Traslación", "Fotosíntesis", "Evaporación"],
+      "correcta": 0,
+      "pista": "Dura aproximadamente un año."
+    },
+    {
+      "id": "plan-2",
+      "etiquetas": ["planeta", "materia"],
+      "texto": "El día y la noche se deben principalmente a…",
+      "opciones": ["La rotación de la Tierra", "Que el Sol se apaga", "Que la Luna come luz"],
+      "correcta": 0,
+      "pista": "La Tierra gira sobre sí misma."
+    },
+    {
+      "id": "sal-1",
+      "etiquetas": ["salud", "energia"],
+      "texto": "Hacer ejercicio y dormir bien ayuda a…",
+      "opciones": ["Mantener una buena salud", "Romper más cosas", "Evitar beber agua"],
+      "correcta": 0,
+      "pista": "Son hábitos saludables."
+    },
+    {
+      "id": "sal-2",
+      "etiquetas": ["salud", "ecosistemas"],
+      "texto": "Cuidar el agua y no contaminar los ríos protege…",
+      "opciones": ["Los ecosistemas y nuestra salud", "Solo los metales", "Solo las sombras"],
+      "correcta": 0,
+      "pista": "El entorno limpio beneficia a todos."
+    },
+    {
+      "id": "mix-c4-1",
+      "etiquetas": ["ecosistemas", "materia"],
+      "texto": "En un estanque, el agua (medio) y los peces (seres vivos) forman parte de un…",
+      "opciones": ["Ecosistema", "Imán", "Planeta inventado"],
+      "correcta": 0,
+      "pista": "Hay componentes vivos e inertes."
+    },
+    {
+      "id": "mix-c4-2",
+      "etiquetas": ["energia", "planeta"],
+      "texto": "Las plantas usan la energía solar para fabricar alimento. Ese proceso es la…",
+      "opciones": ["Fotosíntesis", "Rotación", "Magnetismo"],
+      "correcta": 0,
+      "pista": "Necesitan luz del Sol."
+    }
+  ],
+  "puntosPorFase": {
+    "selva-ecosistemas": 12,
+    "camara-materia": 14,
+    "sala-energia": 14,
+    "observatorio-final": 28
+  },
+  "mensajes": {
+    "acierto": ["¡Laboratorio listo!", "¡Descubrimiento genial!", "¡Ciencia de 4º!"],
+    "error": ["Vuelve a experimentar", "Revisa la pista", "Prueba otra opción"],
+    "ultima": ["¡Última pregunta del laboratorio!"]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": { "maxMensajesDia": 10, "puntosPorMensaje": 250 }
+}

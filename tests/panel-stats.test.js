@@ -61,5 +61,7 @@ describe("PanelStats", () => {
   it("etiqueta áreas en español", () => {
     expect(etiquetaArea("matematicas")).toBe("Matemáticas");
     expect(etiquetaArea("lengua")).toBe("Lengua");
+    expect(etiquetaArea("ciencias")).toBe("Ciencias");
+    expect(etiquetaArea("sociales")).toBe("Sociales");
   });
 });
