@@ -70,6 +70,9 @@ export function etiquetaArea(area) {
     lengua: "Lengua",
     ciencias: "Ciencias",
     sociales: "Sociales",
+    ingles: "Inglés",
+    logica: "Lógica",
+    visoespacial: "Visoespacial",
     general: "General",
   };
   return mapa[area] || area;

@@ -1,0 +1,549 @@
+{
+  "id": "ingles-4",
+  "version": "3.5.0",
+  "nombre": "English Castle",
+  "tipoMundo": "lectura",
+  "curso": 4,
+  "area": "ingles",
+  "competencias": [
+    "CCL1",
+    "CP1",
+    "CP2",
+    "CP3"
+  ],
+  "saberes": [
+    "vocabulario ampliado",
+    "presente simple",
+    "preguntas y respuestas",
+    "comprensión de textos cortos"
+  ],
+  "tema": {
+    "colorPrimario": "#0d47a1",
+    "colorSecundario": "#42a5f5",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "owl",
+    "recompensaLabel": "badge"
+  },
+  "etiquetaCurricular": "4º Primaria · Inglés · LOMLOE",
+  "textoCurricular": "Vocabulario ampliado, presente simple, preguntas y comprensión lectora breve en inglés.",
+  "fases": [
+    {
+      "id": "vocab-tower",
+      "nombre": "Vocab Tower",
+      "emoji": "🗼",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vocab-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🗼",
+        "nombre": "Wordy"
+      },
+      "objetivo": "Ampliar vocabulario de diaria vida.",
+      "tags": [
+        "Vocabulary",
+        "Daily life"
+      ]
+    },
+    {
+      "id": "grammar-hall",
+      "nombre": "Grammar Hall",
+      "emoji": "📘",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "grammar-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "📘",
+        "nombre": "Grammy"
+      },
+      "objetivo": "Presente simple y estructuras básicas.",
+      "tags": [
+        "Present simple",
+        "Grammar"
+      ]
+    },
+    {
+      "id": "question-court",
+      "nombre": "Question Court",
+      "emoji": "❓",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "questions-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "❓",
+        "nombre": "Asker"
+      },
+      "objetivo": "Formular y entender preguntas.",
+      "tags": [
+        "Questions",
+        "Wh-"
+      ]
+    },
+    {
+      "id": "story-keep",
+      "nombre": "Story Keep",
+      "emoji": "📖",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "reading-4"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "📖",
+        "nombre": "Reader"
+      },
+      "objetivo": "Comprender textos cortos en inglés.",
+      "tags": [
+        "Reading",
+        "Comprehension"
+      ]
+    },
+    {
+      "id": "castle-crown",
+      "nombre": "Castle Crown",
+      "emoji": "👑",
+      "mecanica": "lectura",
+      "total": 8,
+      "recompensa": {
+        "emoji": "👑",
+        "nombre": "Knight"
+      },
+      "objetivo": "Repaso global de inglés de 4º.",
+      "tags": [
+        "Inglés 4º",
+        "Repaso"
+      ],
+      "tipo": "avanzada",
+      "siempreActiva": true
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "v41",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "Which word means 'biblioteca'?",
+      "opciones": [
+        "Library",
+        "Bookshop only",
+        "Kitchen"
+      ],
+      "correcta": 0,
+      "pista": "A place with many books to borrow."
+    },
+    {
+      "id": "v42",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "Someone who cooks food is a…",
+      "opciones": [
+        "Chef",
+        "Pilot",
+        "Dentist"
+      ],
+      "correcta": 0,
+      "pista": "In a restaurant kitchen."
+    },
+    {
+      "id": "v43",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "We use an umbrella when it…",
+      "opciones": [
+        "Rains",
+        "Snows only",
+        "Is sunny always"
+      ],
+      "correcta": 0,
+      "pista": "Wet weather."
+    },
+    {
+      "id": "v44",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "'Hungry' means…",
+      "opciones": [
+        "Con hambre",
+        "Con sueño",
+        "Con frío"
+      ],
+      "correcta": 0,
+      "pista": "You want food."
+    },
+    {
+      "id": "v45",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "The opposite of 'big' is…",
+      "opciones": [
+        "Small",
+        "Tall",
+        "Long"
+      ],
+      "correcta": 0,
+      "pista": "Not large."
+    },
+    {
+      "id": "v46",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "A 'weekend' is…",
+      "opciones": [
+        "Saturday and Sunday",
+        "Only Monday",
+        "Every night"
+      ],
+      "correcta": 0,
+      "pista": "Days off school usually."
+    },
+    {
+      "id": "v47",
+      "etiquetas": [
+        "vocab-4"
+      ],
+      "texto": "Which word means 'temprano'?",
+      "opciones": [
+        "Early",
+        "Late",
+        "Never"
+      ],
+      "correcta": 0,
+      "pista": "Before the usual time."
+    },
+    {
+      "id": "g41",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Choose the correct sentence:",
+      "opciones": [
+        "She plays football.",
+        "She play football.",
+        "She playing football."
+      ],
+      "correcta": 0,
+      "pista": "He/She/It + -s."
+    },
+    {
+      "id": "g42",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "I ___ to school every day.",
+      "opciones": [
+        "go",
+        "goes",
+        "going"
+      ],
+      "correcta": 0,
+      "pista": "I/you/we/they → base form."
+    },
+    {
+      "id": "g43",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "They ___ happy today.",
+      "opciones": [
+        "are",
+        "is",
+        "am"
+      ],
+      "correcta": 0,
+      "pista": "Plural subject."
+    },
+    {
+      "id": "g44",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "He ___ a blue bike.",
+      "opciones": [
+        "has",
+        "have",
+        "having"
+      ],
+      "correcta": 0,
+      "pista": "He/She/It → has."
+    },
+    {
+      "id": "g45",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Negative: She ___ like spinach.",
+      "opciones": [
+        "doesn't",
+        "don't",
+        "isn't"
+      ],
+      "correcta": 0,
+      "pista": "doesn't + verb."
+    },
+    {
+      "id": "g46",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "We ___ English on Mondays.",
+      "opciones": [
+        "study",
+        "studies",
+        "studying"
+      ],
+      "correcta": 0,
+      "pista": "We → base form."
+    },
+    {
+      "id": "g47",
+      "etiquetas": [
+        "grammar-4"
+      ],
+      "texto": "Correct form:",
+      "opciones": [
+        "It is cold.",
+        "It are cold.",
+        "It am cold."
+      ],
+      "correcta": 0,
+      "pista": "It + is."
+    },
+    {
+      "id": "q41",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Choose the correct question:",
+      "opciones": [
+        "Where do you live?",
+        "Where you live?",
+        "Where lives you?"
+      ],
+      "correcta": 0,
+      "pista": "Do/Does + subject."
+    },
+    {
+      "id": "q42",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "To ask about age we say…",
+      "opciones": [
+        "How old are you?",
+        "How years you have?",
+        "What age you?"
+      ],
+      "correcta": 0,
+      "pista": "How old…"
+    },
+    {
+      "id": "q43",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "'What's your favourite colour?' asks about…",
+      "opciones": [
+        "A colour you like best",
+        "Your age",
+        "Your school"
+      ],
+      "correcta": 0,
+      "pista": "Favourite = preferido."
+    },
+    {
+      "id": "q44",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Choose the short answer: Do you like pizza? → …",
+      "opciones": [
+        "Yes, I do.",
+        "Yes, I am.",
+        "Yes, I like."
+      ],
+      "correcta": 0,
+      "pista": "Do → do."
+    },
+    {
+      "id": "q45",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Which question asks for a place?",
+      "opciones": [
+        "Where is the park?",
+        "When is the park?",
+        "Who is the park?"
+      ],
+      "correcta": 0,
+      "pista": "Where = dónde."
+    },
+    {
+      "id": "q46",
+      "etiquetas": [
+        "questions-4"
+      ],
+      "texto": "Does he play tennis? → Yes, …",
+      "opciones": [
+        "he does",
+        "he do",
+        "he is"
+      ],
+      "correcta": 0,
+      "pista": "Does → does."
+    },
+    {
+      "id": "r41",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Tom has a red backpack. He puts books and a sandwich in it. What is in Tom's backpack?",
+      "opciones": [
+        "Books and a sandwich",
+        "Only toys",
+        "A cat"
+      ],
+      "correcta": 0,
+      "pista": "Read the second sentence."
+    },
+    {
+      "id": "r42",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Emma wakes up at seven. She eats breakfast and goes to school by bus. How does Emma go to school?",
+      "opciones": [
+        "By bus",
+        "By bike",
+        "On foot"
+      ],
+      "correcta": 0,
+      "pista": "Last part of the text."
+    },
+    {
+      "id": "r43",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "On Saturdays, Leo plays football with his friends in the park. When does Leo play football?",
+      "opciones": [
+        "On Saturdays",
+        "On Mondays",
+        "Every night"
+      ],
+      "correcta": 0,
+      "pista": "First words."
+    },
+    {
+      "id": "r44",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "Mia's cat is small and white. It sleeps on the sofa. What colour is Mia's cat?",
+      "opciones": [
+        "White",
+        "Black",
+        "Brown"
+      ],
+      "correcta": 0,
+      "pista": "Small and…"
+    },
+    {
+      "id": "r45",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "It is raining. Sara takes her umbrella and boots. Why does Sara take an umbrella?",
+      "opciones": [
+        "Because it is raining",
+        "Because it is sunny",
+        "Because she is hungry"
+      ],
+      "correcta": 0,
+      "pista": "First sentence."
+    },
+    {
+      "id": "r46",
+      "etiquetas": [
+        "reading-4"
+      ],
+      "texto": "The class visits the library. They read quiet stories about animals. Where is the class?",
+      "opciones": [
+        "In the library",
+        "At the beach",
+        "In the kitchen"
+      ],
+      "correcta": 0,
+      "pista": "First sentence."
+    },
+    {
+      "id": "r47",
+      "etiquetas": [
+        "reading-4",
+        "vocab-4"
+      ],
+      "texto": "Ben is tired after football. He wants to rest. How does Ben feel?",
+      "opciones": [
+        "Tired",
+        "Hungry only",
+        "Angry"
+      ],
+      "correcta": 0,
+      "pista": "First sentence."
+    },
+    {
+      "id": "r48",
+      "etiquetas": [
+        "grammar-4",
+        "questions-4"
+      ],
+      "texto": "Choose the best reply: What do you do on Sundays? → …",
+      "opciones": [
+        "I visit my grandparents.",
+        "I am Sundays.",
+        "Yes, I do Sundays."
+      ],
+      "correcta": 0,
+      "pista": "Answer with an activity."
+    }
+  ],
+  "puntosPorFase": {
+    "vocab-tower": 12,
+    "grammar-hall": 14,
+    "question-court": 14,
+    "story-keep": 16,
+    "castle-crown": 25
+  },
+  "mensajes": {
+    "acierto": [
+      "Brilliant!",
+      "Well done!",
+      "¡Fantástico!",
+      "Correct!"
+    ],
+    "error": [
+      "Not quite",
+      "Read carefully",
+      "Check the hint"
+    ],
+    "ultima": [
+      "Final challenge!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}

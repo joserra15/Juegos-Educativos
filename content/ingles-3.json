@@ -1,0 +1,794 @@
+{
+  "id": "ingles-3",
+  "version": "3.5.0",
+  "nombre": "English Garden",
+  "tipoMundo": "lectura",
+  "curso": 3,
+  "area": "ingles",
+  "competencias": [
+    "CCL1",
+    "CP1",
+    "CP2"
+  ],
+  "saberes": [
+    "vocabulario básico",
+    "colores y números",
+    "familia y colegio",
+    "saludos y frases simples"
+  ],
+  "tema": {
+    "colorPrimario": "#1565c0",
+    "colorSecundario": "#64b5f6",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "parrot",
+    "recompensaLabel": "badge"
+  },
+  "etiquetaCurricular": "3º Primaria · Inglés · LOMLOE",
+  "textoCurricular": "Vocabulario esencial, números, colores, familia, colegio y saludos en inglés.",
+  "fases": [
+    {
+      "id": "color-meadow",
+      "nombre": "Color Meadow",
+      "emoji": "🎨",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vocab-colores"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🎨",
+        "nombre": "Painter"
+      },
+      "objetivo": "Reconocer colores en inglés.",
+      "tags": [
+        "Colours",
+        "Vocab"
+      ]
+    },
+    {
+      "id": "number-bridge",
+      "nombre": "Number Bridge",
+      "emoji": "🔢",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vocab-numeros"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔢",
+        "nombre": "Counter"
+      },
+      "objetivo": "Contar y reconocer números del 1 al 20.",
+      "tags": [
+        "Numbers",
+        "1-20"
+      ]
+    },
+    {
+      "id": "animal-trail",
+      "nombre": "Animal Trail",
+      "emoji": "🐶",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vocab-animales"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🐶",
+        "nombre": "Buddy"
+      },
+      "objetivo": "Nombrar animales comunes en inglés.",
+      "tags": [
+        "Animals",
+        "Vocab"
+      ]
+    },
+    {
+      "id": "school-path",
+      "nombre": "School Path",
+      "emoji": "🏫",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vocab-colegio",
+        "vocab-familia"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🏫",
+        "nombre": "Pupil"
+      },
+      "objetivo": "Vocabulario de colegio y familia.",
+      "tags": [
+        "School",
+        "Family"
+      ]
+    },
+    {
+      "id": "hello-plaza",
+      "nombre": "Hello Plaza",
+      "emoji": "👋",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "saludos",
+        "frases"
+      ],
+      "total": 8,
+      "recompensa": {
+        "emoji": "👋",
+        "nombre": "Greeter"
+      },
+      "objetivo": "Saludos y frases muy simples.",
+      "tags": [
+        "Greetings",
+        "Phrases"
+      ]
+    },
+    {
+      "id": "garden-gate",
+      "nombre": "Garden Gate",
+      "emoji": "🚪",
+      "mecanica": "lectura",
+      "total": 8,
+      "recompensa": {
+        "emoji": "🌟",
+        "nombre": "Explorer"
+      },
+      "objetivo": "Repaso global de inglés de 3º.",
+      "tags": [
+        "Inglés 3º",
+        "Repaso"
+      ],
+      "tipo": "avanzada",
+      "siempreActiva": true
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "c1",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "What colour is the sky on a sunny day?",
+      "opciones": [
+        "Blue",
+        "Green",
+        "Black"
+      ],
+      "correcta": 0,
+      "pista": "Think of a bright clear day."
+    },
+    {
+      "id": "c2",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which word means 'rojo' in English?",
+      "opciones": [
+        "Red",
+        "Yellow",
+        "Purple"
+      ],
+      "correcta": 0,
+      "pista": "Like a strawberry."
+    },
+    {
+      "id": "c3",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "A banana is usually…",
+      "opciones": [
+        "Yellow",
+        "Blue",
+        "Pink"
+      ],
+      "correcta": 0,
+      "pista": "Think of the fruit colour."
+    },
+    {
+      "id": "c4",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Grass is…",
+      "opciones": [
+        "Green",
+        "Orange",
+        "Grey"
+      ],
+      "correcta": 0,
+      "pista": "Like leaves in spring."
+    },
+    {
+      "id": "c5",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Snow is…",
+      "opciones": [
+        "White",
+        "Brown",
+        "Red"
+      ],
+      "correcta": 0,
+      "pista": "Cold and bright."
+    },
+    {
+      "id": "c6",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "Which colour is 'naranja'?",
+      "opciones": [
+        "Orange",
+        "Blue",
+        "Black"
+      ],
+      "correcta": 0,
+      "pista": "Like the fruit."
+    },
+    {
+      "id": "c7",
+      "etiquetas": [
+        "vocab-colores"
+      ],
+      "texto": "A ripe tomato is often…",
+      "opciones": [
+        "Red",
+        "Blue",
+        "White"
+      ],
+      "correcta": 0,
+      "pista": "Salad fruit colour."
+    },
+    {
+      "id": "n1",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "How do you say '5' in English?",
+      "opciones": [
+        "Five",
+        "Four",
+        "Nine"
+      ],
+      "correcta": 0,
+      "pista": "After four."
+    },
+    {
+      "id": "n2",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "What number is 'ten'?",
+      "opciones": [
+        "10",
+        "2",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Two hands."
+    },
+    {
+      "id": "n3",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Choose the correct number for 'eight':",
+      "opciones": [
+        "8",
+        "3",
+        "11"
+      ],
+      "correcta": 0,
+      "pista": "Spider legs."
+    },
+    {
+      "id": "n4",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "What comes after 'six'?",
+      "opciones": [
+        "Seven",
+        "Five",
+        "Nine"
+      ],
+      "correcta": 0,
+      "pista": "6 + 1."
+    },
+    {
+      "id": "n5",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "How do you write 12 in English?",
+      "opciones": [
+        "Twelve",
+        "Twenty",
+        "Two"
+      ],
+      "correcta": 0,
+      "pista": "A dozen."
+    },
+    {
+      "id": "n6",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "Which word means 'uno'?",
+      "opciones": [
+        "One",
+        "Once",
+        "Only"
+      ],
+      "correcta": 0,
+      "pista": "The first number."
+    },
+    {
+      "id": "n7",
+      "etiquetas": [
+        "vocab-numeros"
+      ],
+      "texto": "'Fifteen' is…",
+      "opciones": [
+        "15",
+        "50",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Ten + five."
+    },
+    {
+      "id": "a1",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which animal says 'meow'?",
+      "opciones": [
+        "Cat",
+        "Dog",
+        "Cow"
+      ],
+      "correcta": 0,
+      "pista": "A pet that climbs trees."
+    },
+    {
+      "id": "a2",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'dog' in Spanish is…",
+      "opciones": [
+        "Perro",
+        "Gato",
+        "Pájaro"
+      ],
+      "correcta": 0,
+      "pista": "Man's best friend."
+    },
+    {
+      "id": "a3",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which animal is a bird?",
+      "opciones": [
+        "Parrot",
+        "Fish",
+        "Horse"
+      ],
+      "correcta": 0,
+      "pista": "It can fly and talk."
+    },
+    {
+      "id": "a4",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A 'fish' lives in…",
+      "opciones": [
+        "Water",
+        "Air",
+        "Sand only"
+      ],
+      "correcta": 0,
+      "pista": "Rivers and seas."
+    },
+    {
+      "id": "a5",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which word means 'vaca'?",
+      "opciones": [
+        "Cow",
+        "Pig",
+        "Sheep"
+      ],
+      "correcta": 0,
+      "pista": "Gives milk."
+    },
+    {
+      "id": "a6",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "A rabbit likes…",
+      "opciones": [
+        "Carrots",
+        "Bones",
+        "Fish"
+      ],
+      "correcta": 0,
+      "pista": "Orange vegetable."
+    },
+    {
+      "id": "a7",
+      "etiquetas": [
+        "vocab-animales"
+      ],
+      "texto": "Which animal is wild and orange with black stripes?",
+      "opciones": [
+        "Tiger",
+        "Duck",
+        "Goat"
+      ],
+      "correcta": 0,
+      "pista": "Big cat."
+    },
+    {
+      "id": "s1",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "Where do students learn?",
+      "opciones": [
+        "School",
+        "Beach",
+        "Cinema"
+      ],
+      "correcta": 0,
+      "pista": "With teachers."
+    },
+    {
+      "id": "s2",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "You write with a…",
+      "opciones": [
+        "Pencil",
+        "Shoe",
+        "Plate"
+      ],
+      "correcta": 0,
+      "pista": "On paper."
+    },
+    {
+      "id": "s3",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "A 'book' is a…",
+      "opciones": [
+        "Libro",
+        "Mesa",
+        "Silla"
+      ],
+      "correcta": 0,
+      "pista": "You read it."
+    },
+    {
+      "id": "s4",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "The teacher writes on the…",
+      "opciones": [
+        "Board",
+        "Pillow",
+        "Carpet"
+      ],
+      "correcta": 0,
+      "pista": "In the classroom."
+    },
+    {
+      "id": "s5",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "Which word means 'mochila'?",
+      "opciones": [
+        "Bagpack",
+        "Window",
+        "Door"
+      ],
+      "correcta": 0,
+      "pista": "You carry books in it."
+    },
+    {
+      "id": "s6",
+      "etiquetas": [
+        "vocab-colegio"
+      ],
+      "texto": "At school we sit on a…",
+      "opciones": [
+        "Chair",
+        "Cloud",
+        "Bike"
+      ],
+      "correcta": 0,
+      "pista": "Next to a desk."
+    },
+    {
+      "id": "f1",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Your mother's mother is your…",
+      "opciones": [
+        "Grandmother",
+        "Sister",
+        "Uncle"
+      ],
+      "correcta": 0,
+      "pista": "Granny."
+    },
+    {
+      "id": "f2",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "How do you say 'hermano'?",
+      "opciones": [
+        "Brother",
+        "Father",
+        "Cousin"
+      ],
+      "correcta": 0,
+      "pista": "A boy sibling."
+    },
+    {
+      "id": "f3",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Your dad is your…",
+      "opciones": [
+        "Father",
+        "Nephew",
+        "Aunt"
+      ],
+      "correcta": 0,
+      "pista": "Male parent."
+    },
+    {
+      "id": "f4",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "'Sister' means…",
+      "opciones": [
+        "Hermana",
+        "Prima",
+        "Abuela"
+      ],
+      "correcta": 0,
+      "pista": "A girl sibling."
+    },
+    {
+      "id": "f5",
+      "etiquetas": [
+        "vocab-familia"
+      ],
+      "texto": "Mum and dad are your…",
+      "opciones": [
+        "Parents",
+        "Friends",
+        "Teachers"
+      ],
+      "correcta": 0,
+      "pista": "Family adults."
+    },
+    {
+      "id": "g1",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "How do you say 'hola'?",
+      "opciones": [
+        "Hello",
+        "Bye",
+        "Thanks"
+      ],
+      "correcta": 0,
+      "pista": "A friendly greeting."
+    },
+    {
+      "id": "g2",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "In the morning we say…",
+      "opciones": [
+        "Good morning",
+        "Good night",
+        "See you"
+      ],
+      "correcta": 0,
+      "pista": "Before noon."
+    },
+    {
+      "id": "g3",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "How do you say goodbye?",
+      "opciones": [
+        "Bye",
+        "Hello",
+        "Please"
+      ],
+      "correcta": 0,
+      "pista": "When you leave."
+    },
+    {
+      "id": "g4",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "'Thank you' means…",
+      "opciones": [
+        "Gracias",
+        "Perdón",
+        "Hola"
+      ],
+      "correcta": 0,
+      "pista": "Polite word."
+    },
+    {
+      "id": "g5",
+      "etiquetas": [
+        "saludos"
+      ],
+      "texto": "To be polite when asking, we say…",
+      "opciones": [
+        "Please",
+        "Never",
+        "Later"
+      ],
+      "correcta": 0,
+      "pista": "Por favor."
+    },
+    {
+      "id": "p1",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose the correct sentence:",
+      "opciones": [
+        "I am happy.",
+        "I happy am.",
+        "Happy I am is."
+      ],
+      "correcta": 0,
+      "pista": "Subject + verb."
+    },
+    {
+      "id": "p2",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "What is your name? → …",
+      "opciones": [
+        "My name is Ana.",
+        "I name Ana.",
+        "Ana is name my."
+      ],
+      "correcta": 0,
+      "pista": "My name is…"
+    },
+    {
+      "id": "p3",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "How old are you? → …",
+      "opciones": [
+        "I am eight.",
+        "I have eight years.",
+        "I is eight."
+      ],
+      "correcta": 0,
+      "pista": "I am + age."
+    },
+    {
+      "id": "p4",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "Choose the correct question:",
+      "opciones": [
+        "What is this?",
+        "What this is?",
+        "This what is?"
+      ],
+      "correcta": 0,
+      "pista": "What + is."
+    },
+    {
+      "id": "p5",
+      "etiquetas": [
+        "frases"
+      ],
+      "texto": "'I like apples' means…",
+      "opciones": [
+        "Me gustan las manzanas",
+        "Odio las manzanas",
+        "Como pan"
+      ],
+      "correcta": 0,
+      "pista": "like = gustar."
+    },
+    {
+      "id": "p6",
+      "etiquetas": [
+        "frases",
+        "saludos"
+      ],
+      "texto": "Nice to meet you means…",
+      "opciones": [
+        "Encantado de conocerte",
+        "Hasta luego",
+        "Buenas noches"
+      ],
+      "correcta": 0,
+      "pista": "When you meet someone."
+    },
+    {
+      "id": "p7",
+      "etiquetas": [
+        "frases",
+        "vocab-colores"
+      ],
+      "texto": "I see a red car. What colour is the car?",
+      "opciones": [
+        "Red",
+        "Blue",
+        "Green"
+      ],
+      "correcta": 0,
+      "pista": "Read the sentence."
+    }
+  ],
+  "puntosPorFase": {
+    "color-meadow": 10,
+    "number-bridge": 12,
+    "animal-trail": 12,
+    "school-path": 14,
+    "hello-plaza": 16,
+    "garden-gate": 25
+  },
+  "mensajes": {
+    "acierto": [
+      "Great job!",
+      "¡Muy bien!",
+      "Excellent!",
+      "You did it!"
+    ],
+    "error": [
+      "Try again",
+      "Look at the hint",
+      "Almost! Think again"
+    ],
+    "ultima": [
+      "Last question of this round!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}
