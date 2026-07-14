@@ -34,7 +34,8 @@
     </button>
     <span id="avatarJugadorHeader" class="avatar-emoji-header" aria-hidden="true">🧒</span>
     <div>
-      <div id="nombreJugadorHeader" class="nombre-jugador">Lucía</div>
+      <div id="nombreJugadorHeader" class="nombre-jugador"></div>
+      <div id="metaJugadorHeader" class="meta-jugador" hidden></div>
       <div class="puntos">⭐ <span id="puntos">0</span></div>
     </div>
   </div>
@@ -249,11 +250,34 @@
       maxlength="12"
       class="input-nombre-personaje"
       aria-label="Tu nombre o apodo"
+      autocomplete="nickname"
     >
+
+    <div class="campos-opcionales-perfil">
+      <p class="texto-ayuda">Opcional: ciudad y colegio</p>
+      <input
+        id="inputCiudad"
+        type="text"
+        placeholder="Ciudad (opcional)"
+        maxlength="40"
+        class="input-perfil-opcional"
+        aria-label="Ciudad (opcional)"
+        autocomplete="address-level2"
+      >
+      <input
+        id="inputColegio"
+        type="text"
+        placeholder="Colegio (opcional)"
+        maxlength="60"
+        class="input-perfil-opcional"
+        aria-label="Colegio (opcional)"
+        autocomplete="organization"
+      >
+    </div>
 
     <p id="errorNombre" class="error-nombre" style="display:none"></p>
 
-    <button type="button" onclick="guardarNombre()">Empezar aventura 🦄</button>
+    <button type="button" onclick="guardarNombre()">Empezar aventura 🌈</button>
   </div>
 </div>
 
@@ -339,30 +363,12 @@
 
 
 <div id="historia" class="pantalla">
-  <div class="tarjeta">
+  <div class="tarjeta tarjeta-historia">
     <h2>🌈 Mundos Mágicos</h2>
-
-    <p>
-      🦄 Hace mucho tiempo, criaturas mágicas vivían libres en sus mundos,
-      pero un hechizo las ha atrapado 😢
-    </p>
-
-    <p>
-      ✨ Solo alguien valiente y con ganas de aprender puede liberarlas.
-      Cada mundo es un reto de matemáticas, lengua, ciencias o sociales,
-      y cada reto te acerca a devolver la magia.
-    </p>
-
-    <p>
-      🏆 Podrás comparar tus avances con tus compañeros de clase
-      y repetir las fases para mejorar tu tiempo y batir récords.
-    </p>
-
-    <p>
-      💫 ¿Nos ayudas a devolver la magia a todos los mundos?
-    </p>
-
-    <button onclick="cerrarHistoria()">🦄 ¡Empezar la aventura!</button>
+    <div id="contenidoHistoria">
+      <!-- Se rellena con los mundos del manifiesto -->
+    </div>
+    <button type="button" onclick="cerrarHistoria()">🌈 ¡Empezar la aventura!</button>
   </div>
 </div>
 
@@ -531,20 +537,19 @@
     </a>
   </p>
   <p>
-    v 3.4.0
+    v 3.4.1
   </p>
 <p><br></p>
 </footer>
 
 
-<nav class="bottom-nav">
+<nav id="bottomNav" class="bottom-nav" hidden aria-hidden="true">
   <button onclick="mostrarSelectorMundos()" title="Mundos">🌍</button>
   <button onclick="mostrarMapa()" title="Mapa">🗺️</button>
   <button onclick="mostrarMochila()" title="Mochila">🎒</button>
-	<button onclick="mostrarMural()" 
-title="Mural">🌈</button>
+  <button onclick="mostrarMural()" title="Mural">🌈</button>
   <button onclick="mostrarRanking()" title="Ranking">🏆</button>
-  <button onclick="mostrarPanel()" title="Familia">👨‍👩‍👧</button>
+  <button onclick="mostrarPanel()" title="Familia">👨‍👨‍👩‍👧</button>
 </nav>
 
 

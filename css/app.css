@@ -2116,3 +2116,80 @@ body{
     transition: none;
   }
 }
+
+/* ===== Onboarding: sin nombre, perfil opcional, historia multi-mundo ===== */
+
+.bottom-nav[hidden],
+body.sin-jugador .bottom-nav{
+  display: none !important;
+}
+
+body.sin-jugador .pantalla{
+  padding-bottom: 24px;
+}
+
+.meta-jugador{
+  font-size: 0.72rem;
+  color: var(--mm-text-soft);
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nombre-jugador:empty::before{
+  content: "Tu aventura";
+  opacity: 0.55;
+  font-weight: 600;
+}
+
+.campos-opcionales-perfil{
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 4px;
+  text-align: left;
+}
+
+.input-perfil-opcional{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(126, 87, 194, 0.25);
+  font: inherit;
+  background: #fff;
+}
+
+.input-perfil-opcional:focus{
+  outline: none;
+  border-color: #7e57c2;
+}
+
+.tarjeta-historia .historia-mundos-wrap{
+  display: grid;
+  gap: 12px;
+  margin: 12px 0 16px;
+}
+
+.historia-curso h3{
+  margin: 0 0 6px;
+  font-family: var(--mm-font-display);
+  font-size: 1.05rem;
+}
+
+.historia-lista-mundos{
+  margin: 0;
+  padding-left: 1.1em;
+  text-align: left;
+}
+
+.historia-lista-mundos li{
+  margin: 4px 0;
+}
+
+.historia-intro-mundos{
+  font-weight: 700;
+  margin-bottom: 4px;
+}

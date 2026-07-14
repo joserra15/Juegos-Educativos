@@ -53,6 +53,8 @@ export function exportarResumenJugador({
   mundosStates,
   manifest,
   intentosTotales,
+  ciudad = "",
+  colegio = "",
 }) {
   const texto = generarResumenExportable({
     nombreJugador,
@@ -60,6 +62,8 @@ export function exportarResumenJugador({
     mundosStates: mundosStates,
     manifest,
     intentosTotales,
+    ciudad,
+    colegio,
   });
   const slug = (nombreJugador || "jugador").replace(/\s+/g, "-").toLowerCase();
   descargarResumen(texto, `resumen-${slug}.txt`);

@@ -63,6 +63,8 @@ import {
   initTarjetaPersonaje,
   actualizarAvatarHeader,
   renderHeroBienvenida,
+  renderHistoriaBienvenida,
+  mensajeBienvenidaMural,
   iniciarTutorialSiNecesario,
   avanzarTutorial,
   saltarTutorial,
@@ -1398,12 +1400,15 @@ function mostrarPanel(){
 }
 
 function exportarResumenFamilia(){
+  const perfil = leerPerfilOpcional();
   exportarResumenJugador({
     nombreJugador,
     puntos,
     mundosStates: loadAllMundosStates(),
     manifest: manifestCatalog,
     intentosTotales,
+    ciudad: perfil.ciudad,
+    colegio: perfil.colegio,
   });
 }
 
@@ -1437,6 +1442,8 @@ if(!confirm("¿Seguro que quieres reiniciar todo el juego?")) return;
   localStorage.removeItem("mundoActivo");
 
 localStorage.removeItem("historiaVista");
+  localStorage.removeItem("ciudadJugador");
+  localStorage.removeItem("colegioJugador");
 
   // Reiniciar estado en memoria
   puntos = 0;
@@ -1543,6 +1550,12 @@ function mostrar(id){
  document.getElementById(id).classList.add("activa");
  pantallaAnteriorId = id;
 
+  if(id === "historia"){
+    renderHistoriaBienvenida(manifestCatalog);
+  }
+
+  actualizarVisibilidadNavegacion();
+
   window.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -1550,6 +1563,35 @@ function mostrar(id){
 
 sincronizarSiEsNecesario();
 
+}
+
+/** Menú inferior solo visible cuando ya hay nombre de jugador. */
+function actualizarVisibilidadNavegacion(){
+  const nav = document.getElementById("bottomNav") || document.querySelector(".bottom-nav");
+  const conNombre = !!nombreJugador;
+  if(nav){
+    nav.hidden = !conNombre;
+    nav.setAttribute("aria-hidden", conNombre ? "false" : "true");
+  }
+  document.body.classList.toggle("sin-jugador", !conNombre);
+}
+
+function leerPerfilOpcional(){
+  const ciudadInput = document.getElementById("inputCiudad");
+  const colegioInput = document.getElementById("inputColegio");
+  const ciudad = (ciudadInput?.value || localStorage.getItem("ciudadJugador") || "").trim();
+  const colegio = (colegioInput?.value || localStorage.getItem("colegioJugador") || "").trim();
+  return { ciudad, colegio };
+}
+
+function guardarPerfilOpcional(perfil){
+  const ciudad = (perfil?.ciudad || "").trim();
+  const colegio = (perfil?.colegio || "").trim();
+  if(ciudad) localStorage.setItem("ciudadJugador", ciudad);
+  else localStorage.removeItem("ciudadJugador");
+  if(colegio) localStorage.setItem("colegioJugador", colegio);
+  else localStorage.removeItem("colegioJugador");
+  return { ciudad, colegio };
 }
 
 
@@ -1628,12 +1670,27 @@ function lanzarConfeti(){
 }
 
 
+function finalizarAltaJugadorNuevo(nombre, perfil){
+  nombreJugador = nombre;
+  puntos = 0;
+  guardarPerfilOpcional(perfil);
+  localStorage.setItem("nombreJugador", nombreJugador);
+  localStorage.setItem("puntos", puntos);
+  agregarMensajeSistema(mensajeBienvenidaMural(nombreJugador));
+  actualizarHeaderNombre();
+  actualizarPuntosUI();
+  actualizarVisibilidadNavegacion();
+  mostrar("historia");
+}
+
 function guardarNombre(){
   const input = document.getElementById("inputNombre");
   const error = document.getElementById("errorNombre");
-
   const nombre = input.value.trim();
-const id = nombre.toLowerCase();
+  const perfil = {
+    ciudad: (document.getElementById("inputCiudad")?.value || "").trim(),
+    colegio: (document.getElementById("inputColegio")?.value || "").trim(),
+  };
 
   error.style.display = "none";
 
@@ -1645,14 +1702,7 @@ const id = nombre.toLowerCase();
 
   // Si Firebase no está disponible, dejamos pasar
   if(!db){
-    nombreJugador = nombre;
-
-agregarMensajeSistema(
-  `✨ ${nombreJugador} se ha unido al Reino de los Unicornios`
-);
-    localStorage.setItem("nombreJugador", nombreJugador);
-    actualizarHeaderNombre();
-    mostrar("historia");
+    finalizarAltaJugadorNuevo(nombre, perfil);
     return;
   }
 
@@ -1662,87 +1712,89 @@ agregarMensajeSistema(
     .get()
     .then(doc => {
       if(doc.exists){
-        
-			if(doc.exists){
-  const pinGuardado = doc.data().pin;
-  const pinIntroducido = prompt(
-    "Este jugador ya existe.\nIntroduce tu PIN secreto. Lo tienes en la mochila de la partida anterior:"
-  );
+        const pinGuardado = doc.data().pin;
+        const pinIntroducido = prompt(
+          "Este jugador ya existe.\nIntroduce tu PIN secreto. Lo tienes en la mochila de la partida anterior:"
+        );
 
-  if(pinIntroducido === pinGuardado){
-    // PIN correcto → cargar datos
-    const data = doc.data();
+        if(pinIntroducido === pinGuardado){
+          const data = doc.data();
+          nombreJugador = nombre;
+          cargarProgresoDesdeFirebase();
 
-    nombreJugador = nombre;
-    cargarProgresoDesdeFirebase();
+          localStorage.setItem("nombreJugador", nombreJugador);
+          localStorage.setItem("puntos", puntos);
+          localStorage.setItem("pinJugador", pinGuardado);
 
-    localStorage.setItem("nombreJugador", nombreJugador);
-    localStorage.setItem("puntos", puntos);
-    localStorage.setItem("pinJugador", pinGuardado);
+          // Conservar ciudad/colegio del perfil remoto o de lo escrito ahora
+          guardarPerfilOpcional({
+            ciudad: perfil.ciudad || data.ciudad || "",
+            colegio: perfil.colegio || data.colegio || "",
+          });
 
-    actualizarHeaderNombre();
-    actualizarPuntosUI();
-    mostrarSelectorMundos();
-  }else{
-    error.textContent =
-      "PIN incorrecto ❌ Prueba con otro nombre";
-    error.style.display = "block";
-  }
-}
-
-
-			
-
+          actualizarHeaderNombre();
+          actualizarPuntosUI();
+          actualizarVisibilidadNavegacion();
+          mostrarSelectorMundos();
+        }else{
+          error.textContent = "PIN incorrecto ❌ Prueba con otro nombre";
+          error.style.display = "block";
+        }
       }else{
-        // Nombre libre → continuar
-        
+        const pin = generarPIN();
+        nombreJugador = nombre;
+        puntos = 0;
+        guardarPerfilOpcional(perfil);
+        localStorage.setItem("nombreJugador", nombreJugador);
+        localStorage.setItem("puntos", puntos);
+        localStorage.setItem("pinJugador", pin);
 
-// Nombre libre → crear jugador nuevo
-const pin = generarPIN();
+        agregarMensajeSistema(mensajeBienvenidaMural(nombreJugador));
 
-nombreJugador = nombre;
-puntos = 0;
+        db.collection("players")
+          .doc(nombreJugador)
+          .set(buildFirebasePayload(
+            nombreJugador,
+            { puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap },
+            loadAllMundosStates(),
+            mundoId,
+            pin,
+            perfil
+          ));
 
-agregarMensajeSistema(
-  `✨ ${nombreJugador} se ha unido al Reino de los Unicornios`
-);
-
-localStorage.setItem("nombreJugador", nombreJugador);
-localStorage.setItem("puntos", puntos);
-localStorage.setItem("pinJugador", pin);
-
-db.collection("players")
-  .doc(nombreJugador)
-  .set(buildFirebasePayload(nombreJugador, { puntos, intentosTotales, puntosPorMundo: puntosPorMundoMap }, loadAllMundosStates(), mundoId, pin));
-
-actualizarHeaderNombre();
-actualizarPuntosUI();
-mostrar("historia");
-//mostrarMapa();
-
-
+        actualizarHeaderNombre();
+        actualizarPuntosUI();
+        actualizarVisibilidadNavegacion();
+        mostrar("historia");
       }
     })
     .catch(err => {
       console.log("JA 😂 Error comprobando nombre");
       console.error(err);
-
-      // En caso de error, dejamos continuar
-      nombreJugador = nombre;
-      localStorage.setItem("nombreJugador", nombreJugador);
-      actualizarHeaderNombre();
-		mostrar("historia");
-      //mostrarMapa();
+      finalizarAltaJugadorNuevo(nombre, perfil);
     });
 }
-
-
 
 function actualizarHeaderNombre(){
   const zona = document.getElementById("nombreJugadorHeader");
   const zonaFinal = document.getElementById("nombreJugadorFinal");
-  if(zona) zona.textContent = nombreJugador;
-  if(zonaFinal) zonaFinal.textContent = nombreJugador;
+  const meta = document.getElementById("metaJugadorHeader");
+  if(zona) zona.textContent = nombreJugador || "";
+  if(zonaFinal) zonaFinal.textContent = nombreJugador || "";
+
+  if(meta){
+    const perfil = leerPerfilOpcional();
+    const partes = [];
+    if(perfil.colegio) partes.push(perfil.colegio);
+    if(perfil.ciudad) partes.push(perfil.ciudad);
+    if(partes.length && nombreJugador){
+      meta.textContent = partes.join(" · ");
+      meta.hidden = false;
+    }else{
+      meta.textContent = "";
+      meta.hidden = true;
+    }
+  }
 }
 
 
@@ -1897,14 +1949,21 @@ function cargarProgresoDesdeFirebase(){
   db.collection("players").doc(nombreJugador).get()
     .then(async doc => {
       if(!doc.exists) return;
-      const parsed = parseFirebaseData(doc.data(), mundoId);
+      const data = doc.data();
+      const parsed = parseFirebaseData(data, mundoId);
       for(const [id, state] of Object.entries(parsed.allMundosStates)){
         saveMundoState(id, state);
       }
       if(parsed.mundoActivo) setMundoActivoId(parsed.mundoActivo);
+      guardarPerfilOpcional({
+        ciudad: data.ciudad || localStorage.getItem("ciudadJugador") || "",
+        colegio: data.colegio || localStorage.getItem("colegioJugador") || "",
+      });
       await cargarMundoContenido(getMundoActivoId());
       guardarEstado();
+      actualizarHeaderNombre();
       actualizarPuntosUI();
+      actualizarVisibilidadNavegacion();
       mostrarSelectorMundos();
     })
     .catch(err => { console.log("JA 😂 Error cargando progreso"); console.error(err); });
@@ -2575,7 +2634,10 @@ async function initApp(){
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });
 
+    actualizarVisibilidadNavegacion();
+
     if(!nombreJugador){
+      actualizarHeaderNombre();
       mostrar("pantallaNombre");
     }else{
       actualizarHeaderNombre();

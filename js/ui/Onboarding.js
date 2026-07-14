@@ -25,7 +25,23 @@ const TUTORIAL_PASOS = [
   },
 ];
 
-let avatarSeleccionado = localStorage.getItem("avatarJugador") || AVATARES[0];
+function leerStorage(clave) {
+  try {
+    return typeof localStorage !== "undefined" ? localStorage.getItem(clave) : null;
+  } catch {
+    return null;
+  }
+}
+
+function escribirStorage(clave, valor) {
+  try {
+    if (typeof localStorage !== "undefined") localStorage.setItem(clave, valor);
+  } catch {
+    /* ignorar */
+  }
+}
+
+let avatarSeleccionado = leerStorage("avatarJugador") || AVATARES[0];
 let pasoTutorial = 0;
 
 export function getAvatarJugador() {
@@ -34,7 +50,7 @@ export function getAvatarJugador() {
 
 export function setAvatarJugador(emoji) {
   avatarSeleccionado = emoji;
-  localStorage.setItem("avatarJugador", emoji);
+  escribirStorage("avatarJugador", emoji);
 }
 
 export function initTarjetaPersonaje() {
@@ -85,11 +101,11 @@ export function renderHeroBienvenida(nombreJugador) {
 }
 
 export function tutorialCompletado() {
-  return localStorage.getItem("tutorialCompletado") === "true";
+  return leerStorage("tutorialCompletado") === "true";
 }
 
 export function marcarTutorialCompletado() {
-  localStorage.setItem("tutorialCompletado", "true");
+  escribirStorage("tutorialCompletado", "true");
   ocultarTutorial();
 }
 
@@ -150,4 +166,59 @@ export function avanzarTutorial(mostrarFn) {
 
 export function saltarTutorial() {
   marcarTutorialCompletado();
+}
+
+/** Texto de bienvenida adaptado a todos los mundos del manifiesto. */
+export function renderHistoriaBienvenida(manifest, containerId = "contenidoHistoria") {
+  const cont = document.getElementById(containerId);
+  if (!cont) return;
+
+  const mundos = (manifest?.mundos || []).filter((m) => m.disponible !== false);
+  const porCurso = {};
+  mundos.forEach((m) => {
+    const curso = m.curso || "?";
+    if (!porCurso[curso]) porCurso[curso] = [];
+    porCurso[curso].push(m);
+  });
+
+  const bloquesCurso = Object.keys(porCurso)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((curso) => {
+      const lista = porCurso[curso]
+        .map((m) => `<li><span aria-hidden="true">${m.emoji}</span> ${m.nombre}</li>`)
+        .join("");
+      return `
+        <div class="historia-curso">
+          <h3>${curso}º de Primaria</h3>
+          <ul class="historia-lista-mundos">${lista}</ul>
+        </div>
+      `;
+    })
+    .join("");
+
+  cont.innerHTML = `
+    <p>
+      Hace mucho tiempo, criaturas y tesoros mágicos vivían libres en muchos mundos,
+      pero un hechizo los ha atrapado 😢
+    </p>
+    <p>
+      ✨ Solo alguien valiente y con ganas de aprender puede liberarlos.
+      Hay aventuras de <strong>matemáticas</strong>, <strong>lengua</strong>,
+      <strong>ciencias</strong> y <strong>sociales</strong> para 3º y 4º de Primaria.
+    </p>
+    <p class="historia-intro-mundos">Estos son los mundos que puedes explorar:</p>
+    <div class="historia-mundos-wrap">
+      ${bloquesCurso || "<p class='texto-ayuda'>Los mundos se cargarán en un momento…</p>"}
+    </div>
+    <p>
+      🏆 Compara tus avances, mejora tus tiempos y suma magia con tus compañeros.
+    </p>
+    <p>
+      💫 ¿Nos ayudas a devolver la magia a <strong>todos</strong> los mundos?
+    </p>
+  `;
+}
+
+export function mensajeBienvenidaMural(nombre) {
+  return `✨ ${nombre} se ha unido a Mundos Mágicos`;
 }

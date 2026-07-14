@@ -17,6 +17,10 @@ test.describe("Mundos Mágicos — flujo principal", () => {
     await expect(page.locator("#pantallaNombre.activa")).toBeVisible({ timeout: 15000 });
     await expect(page.locator("#gridAvatares .avatar-opcion").first()).toBeVisible();
     await expect(page.locator("#inputNombre")).toBeVisible();
+    await expect(page.locator("#inputCiudad")).toBeVisible();
+    await expect(page.locator("#inputColegio")).toBeVisible();
+    await expect(page.locator("#bottomNav")).toBeHidden();
+    await expect(page.locator("#nombreJugadorHeader")).toHaveText("");
   });
 
   test("permite crear personaje y llegar a la historia", async ({ page }) => {
@@ -25,9 +29,13 @@ test.describe("Mundos Mágicos — flujo principal", () => {
     await page.locator(".avatar-opcion").first().click();
     const nombreUnico = `E2E${Date.now().toString(36).slice(-6)}`;
     await page.locator("#inputNombre").fill(nombreUnico);
+    await page.locator("#inputCiudad").fill("Sevilla");
+    await page.locator("#inputColegio").fill("CEIP Magia");
     await page.getByRole("button", { name: /Empezar aventura/i }).click();
 
     await expect(page.locator("#historia.activa, #selectorMundos.activa")).toBeVisible({ timeout: 15000 });
+    await expect(page.locator("#bottomNav")).toBeVisible();
+    await expect(page.locator("#contenidoHistoria")).toContainText(/Primaria/i);
   });
 
   test("selector muestra tarjetas de mundos", async ({ page }) => {
