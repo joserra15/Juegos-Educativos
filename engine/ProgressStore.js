@@ -207,12 +207,23 @@ export function buildFirebasePayload(
 export function parseFirebaseData(data, mundoId = MUNDO_LEGACY) {
   const allMundos = { ...(data.mundos || {}) };
 
-  if (!allMundos[MUNDO_LEGACY] && (data.liberadas || data.tiemposMejores)) {
+  if (!allMundos[MUNDO_LEGACY] && (data.liberadas || data.tiemposMejores || data.puntos)) {
     allMundos[MUNDO_LEGACY] = {
       ...createDefaultMundoState(),
       liberadas: data.liberadas || [0],
       tiemposMejores: data.tiemposMejores || {},
       fallosPorOperacion: data.fallosPorOperacion || {},
+      puntosMundo: data.puntos || 0,
+    };
+  } else if (
+    allMundos[MUNDO_LEGACY] &&
+    typeof allMundos[MUNDO_LEGACY].puntosMundo !== "number" &&
+    data.puntos
+  ) {
+    // Documento a medias: existe mundos.unicornios pero sin puntosMundo
+    allMundos[MUNDO_LEGACY] = {
+      ...createDefaultMundoState(),
+      ...allMundos[MUNDO_LEGACY],
       puntosMundo: data.puntos || 0,
     };
   }

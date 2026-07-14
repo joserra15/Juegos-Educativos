@@ -55,6 +55,23 @@ describe("Ranking — puntos globales vs por mundo", () => {
     expect(obtenerPuntosRanking(players[2], "unicornios")).toBe(50);
   });
 
+  it("usa puntos top-level legacy en unicornios si no hay desglose", () => {
+    const legacy = { nombre: "Old", puntos: 150, liberadas: [0, 1, 2] };
+    expect(obtenerPuntosRanking(legacy, "unicornios")).toBe(150);
+    expect(obtenerPuntosRanking(legacy, "global")).toBe(150);
+    expect(obtenerPuntosRanking(legacy, "dinosaurios")).toBe(0);
+  });
+
+  it("no pisa un puntosMundo 0 explícito con el total global de otro mundo", () => {
+    const multi = {
+      nombre: "Nueva",
+      puntos: 70,
+      puntosPorMundo: { unicornios: 0, dinosaurios: 70 },
+    };
+    expect(obtenerPuntosRanking(multi, "unicornios")).toBe(0);
+    expect(obtenerPuntosRanking(multi, "dinosaurios")).toBe(70);
+  });
+
   it("ordena ranking por mundo seleccionado", () => {
     const top = ordenarJugadoresRanking(players, "unicornios", 10);
     expect(top.map((p) => p.nombre)).toEqual(["Luis", "Mia", "Ana"]);
@@ -64,5 +81,15 @@ describe("Ranking — puntos globales vs por mundo", () => {
   it("ordena ranking global por puntos totales", () => {
     const top = ordenarJugadoresRanking(players, "global", 10);
     expect(top.map((p) => p.nombre)).toEqual(["Ana", "Luis", "Mia"]);
+  });
+
+  it("mete jugadores legacy en el ranking de unicornios con sus puntos", () => {
+    const mezcla = [
+      ...players,
+      { nombre: "Legacy", puntos: 200, liberadas: [0] },
+    ];
+    const top = ordenarJugadoresRanking(mezcla, "unicornios", 10);
+    expect(top[0].nombre).toBe("Legacy");
+    expect(top[0].puntosRanking).toBe(200);
   });
 });
