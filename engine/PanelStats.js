@@ -9,28 +9,28 @@ export const HITOS_HECHIZO = [
     texto: "Una niebla mágica cubre los mundos. Cada respuesta correcta debilita el hechizo.",
   },
   {
-    puntos: 10000,
+    puntos: 50000,
     titulo: "✨ Primera grieta",
     texto: "¡La magia vuelve a brillar! Los primeros portales se abren entre mundos.",
   },
   {
-    puntos: 25000,
+    puntos: 150000,
     titulo: "🌈 Puentes de luz",
     texto: "El grupo ha tejido puentes de conocimiento. Las criaturas empiezan a despertar.",
   },
   {
-    puntos: 40000,
+    puntos: 300000,
     titulo: "🔮 Torre despierta",
     texto: "Los retos avanzados parpadean. Solo los más valientes los alcanzan.",
   },
   {
-    puntos: 60000,
+    puntos: 500000,
     titulo: "🦄 Hechizo roto",
     texto: "¡Hazaña colectiva! El hechizo se rompe y nuevos retos mágicos aparecen.",
   },
 ];
 
-export const OBJETIVO_GLOBAL = 60000;
+export const OBJETIVO_GLOBAL = 500000;
 
 /** Progreso agregado por área curricular (matematicas, lengua…). */
 export function calcularProgresoPorArea(manifest, allStates) {

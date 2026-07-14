@@ -175,28 +175,56 @@ export function renderSelectorRanking({
   if (!container) return;
 
   container.innerHTML = "";
-  container.setAttribute("role", "tablist");
-  container.setAttribute("aria-label", "Elegir ranking global o por mundo");
+  container.removeAttribute("role");
 
-  const mkChip = (id, label, emoji = "") => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "ranking-chip" + (filtroActual === id ? " activa" : "");
-    btn.dataset.filtro = id;
-    btn.setAttribute("role", "tab");
-    btn.setAttribute("aria-selected", filtroActual === id ? "true" : "false");
-    btn.textContent = emoji ? `${emoji} ${label}` : label;
-    btn.onclick = () => onCambiar?.(id);
-    return btn;
+  const label = document.createElement("label");
+  label.htmlFor = "comboRankingMundo";
+  label.className = "ranking-combo-label";
+  label.textContent = "Ver ranking de";
+
+  const select = document.createElement("select");
+  select.id = "comboRankingMundo";
+  select.className = "ranking-combo";
+  select.setAttribute("aria-label", "Elegir ranking global o por mundo");
+
+  const addOption = (id, texto) => {
+    const opt = document.createElement("option");
+    opt.value = id;
+    opt.textContent = texto;
+    select.appendChild(opt);
   };
 
-  container.appendChild(mkChip("global", "Global", "🌍"));
+  addOption("global", "🌍 Global");
 
   (manifest?.mundos || [])
     .filter((m) => m.disponible !== false)
     .forEach((m) => {
-      container.appendChild(mkChip(m.id, m.nombre.replace(/^El |^La |^Los |^Las /, ""), m.emoji));
+      const corto = m.nombre.replace(/^El |^La |^Los |^Las /, "");
+      addOption(m.id, `${m.emoji || ""} ${corto}`.trim());
     });
+
+  const valor = filtroActual || "global";
+  if ([...select.options].some((o) => o.value === valor)) {
+    select.value = valor;
+  } else {
+    select.value = "global";
+  }
+
+  select.onchange = () => onCambiar?.(select.value);
+
+  container.appendChild(label);
+  container.appendChild(select);
+}
+
+/** Texto de una fila del ranking (un solo número; sin totales globales al filtrar por mundo). */
+export function formatearFilaRanking({
+  puesto,
+  nombre,
+  puntos,
+  esActual = false,
+}) {
+  const marca = esActual ? "👉 " : "";
+  return `${marca}${puesto}. ${nombre} — ${puntos} ⭐`;
 }
 
 export function renderListaRankingPuntos({
@@ -204,7 +232,6 @@ export function renderListaRankingPuntos({
   players,
   filtro,
   nombreJugador,
-  etiquetaMundo = "",
 }) {
   if (!listaEl) return;
 
@@ -222,17 +249,12 @@ export function renderListaRankingPuntos({
     const esActual = data.nombre === nombreJugador;
     const pts = data.puntosRanking ?? obtenerPuntosRanking(data, filtro);
 
-    if (filtro === "global") {
-      li.textContent = esActual
-        ? `👉 ${puesto}. ${data.nombre} — ${pts} ⭐`
-        : `${puesto}. ${data.nombre} — ${pts} ⭐`;
-    } else {
-      const extraGlobal =
-        data.puntos !== undefined ? ` · ${data.puntos} ⭐ totales` : "";
-      li.textContent = esActual
-        ? `👉 ${puesto}. ${data.nombre} — ${pts} ⭐${etiquetaMundo ? ` en ${etiquetaMundo}` : ""}${extraGlobal}`
-        : `${puesto}. ${data.nombre} — ${pts} ⭐`;
-    }
+    li.textContent = formatearFilaRanking({
+      puesto,
+      nombre: data.nombre,
+      puntos: pts,
+      esActual,
+    });
 
     if (esActual) li.classList.add("jugador-actual");
     listaEl.appendChild(li);
