@@ -4,24 +4,43 @@
 
 export const AVATARES = ["🧒", "👧", "🧑", "👦", "🦸", "🧙", "🦄", "🐉", "🌟", "🦊", "🐱", "🐻"];
 
-const TUTORIAL_PASOS = [
+/**
+ * Pasos del tutorial guiado.
+ * `accion` se resuelve en app.js (abrirSelector, abrirMapaDemo, abrirMochila)
+ * para que cada paso muestre contenido real, no pantallas vacías.
+ */
+export const TUTORIAL_PASOS = [
   {
+    id: "mundos",
     titulo: "1. Elige tu mundo",
-    texto: "Pulsa una tarjeta del mapa de mundos para empezar tu aventura.",
+    texto:
+      "Estas son las aventuras disponibles. En cada tarjeta verás el curso y la asignatura. Cuando termines el tutorial, pulsa una para empezar.",
     target: "#tarjetasMundos",
-    pantalla: "selectorMundos",
+    accion: "abrirSelector",
   },
   {
+    id: "mapa",
     titulo: "2. Supera un reto",
-    texto: "En el mapa, elige una fase y responde bien para liberar criaturas.",
+    texto:
+      "Así se ve el mapa de un mundo: cada botón es una fase. Responde bien para liberar criaturas y desbloquear la siguiente.",
     target: "#botonesFases",
-    pantalla: "mapa",
+    accion: "abrirMapaDemo",
   },
   {
-    titulo: "3. Revisa tu mochila",
-    texto: "En la mochila elige un mundo para ver dónde estás, tus logros y criaturas de ese mundo.",
-    target: ".bottom-nav button[title='Mochila']",
-    pantalla: null,
+    id: "mochila",
+    titulo: "3. Tu mochila",
+    texto:
+      "En la mochila eliges un mundo para ver dónde estás, tus logros y las criaturas que has liberado — sin mezclar información entre mundos.",
+    target: "#mochilaListaMundos",
+    accion: "abrirMochila",
+  },
+  {
+    id: "pin",
+    titulo: "4. Tu PIN secreto",
+    texto:
+      "¡Memoriza tu PIN! Si cambias de dispositivo o de navegador y quieres continuar tu partida, tendrás que escribir el mismo nombre (o alias) y este PIN. Sin el PIN no podrás recuperar tu progreso.",
+    target: ".mochila-pin-panel",
+    accion: "abrirMochila",
   },
 ];
 
@@ -112,35 +131,64 @@ export function marcarTutorialCompletado() {
 export function ocultarTutorial() {
   const overlay = document.getElementById("tutorialOverlay");
   if (overlay) overlay.style.display = "none";
+  document.querySelectorAll(".tutorial-highlight").forEach((el) => {
+    el.classList.remove("tutorial-highlight");
+  });
 }
 
-export function iniciarTutorialSiNecesario(mostrarFn) {
+export function getPasoTutorialActual() {
+  return pasoTutorial;
+}
+
+export function iniciarTutorialSiNecesario(acciones) {
   if (tutorialCompletado()) return;
   pasoTutorial = 0;
-  mostrarPasoTutorial(mostrarFn);
+  mostrarPasoTutorial(acciones);
 }
 
-function mostrarPasoTutorial(mostrarFn) {
+function pintarContenidoPaso(paso) {
   const overlay = document.getElementById("tutorialOverlay");
   const titulo = document.getElementById("tutorialTitulo");
   const texto = document.getElementById("tutorialTexto");
   const indicador = document.getElementById("tutorialIndicador");
-  if (!overlay || pasoTutorial >= TUTORIAL_PASOS.length) {
-    marcarTutorialCompletado();
-    return;
-  }
-
-  const paso = TUTORIAL_PASOS[pasoTutorial];
-  if (paso.pantalla && mostrarFn) mostrarFn(paso.pantalla);
+  const btnSiguiente = document.getElementById("tutorialBtnSiguiente");
 
   if (titulo) titulo.textContent = paso.titulo;
   if (texto) texto.textContent = paso.texto;
   if (indicador) {
     indicador.textContent = `Paso ${pasoTutorial + 1} de ${TUTORIAL_PASOS.length}`;
   }
-
-  overlay.style.display = "flex";
+  if (btnSiguiente) {
+    const esUltimo = pasoTutorial >= TUTORIAL_PASOS.length - 1;
+    btnSiguiente.textContent = esUltimo ? "¡Entendido!" : "Siguiente";
+  }
+  if (overlay) overlay.style.display = "flex";
   resaltarTarget(paso.target);
+}
+
+function mostrarPasoTutorial(acciones = {}) {
+  if (pasoTutorial >= TUTORIAL_PASOS.length) {
+    marcarTutorialCompletado();
+    return;
+  }
+
+  const paso = TUTORIAL_PASOS[pasoTutorial];
+  const accionFn = paso.accion && typeof acciones[paso.accion] === "function"
+    ? acciones[paso.accion]
+    : null;
+
+  const continuar = () => pintarContenidoPaso(paso);
+
+  if (accionFn) {
+    Promise.resolve(accionFn())
+      .then(continuar)
+      .catch((err) => {
+        console.error("Error en acción del tutorial", err);
+        continuar();
+      });
+  } else {
+    continuar();
+  }
 }
 
 function resaltarTarget(selector) {
@@ -155,12 +203,12 @@ function resaltarTarget(selector) {
   }
 }
 
-export function avanzarTutorial(mostrarFn) {
+export function avanzarTutorial(acciones) {
   pasoTutorial += 1;
   if (pasoTutorial >= TUTORIAL_PASOS.length) {
     marcarTutorialCompletado();
   } else {
-    mostrarPasoTutorial(mostrarFn);
+    mostrarPasoTutorial(acciones);
   }
 }
 

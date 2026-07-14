@@ -1677,22 +1677,27 @@ body{
 .tutorial-overlay{
   position: fixed;
   inset: 0;
-  background: rgba(30, 10, 50, 0.55);
+  /* El atenuado lo hace .tutorial-highlight; el overlay solo captura clics */
+  background: transparent;
   z-index: 3000;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding: 20px;
+  pointer-events: auto;
 }
 
 .tutorial-caja{
+  position: relative;
+  z-index: 3010;
   background: white;
   border-radius: var(--mm-radius-lg);
   padding: 20px;
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
   box-shadow: var(--mm-shadow-soft);
   animation: entradaPopup 0.35s ease;
+  pointer-events: auto;
 }
 
 .tutorial-indicador{
@@ -1717,12 +1722,16 @@ body{
   background: var(--mm-gradient-magic);
 }
 
+/* Foco del tutorial: elemento legible; clics bloqueados hasta pulsar Siguiente */
 .tutorial-highlight{
   outline: 3px solid var(--color-acento);
   outline-offset: 4px;
   border-radius: var(--mm-radius-sm);
   position: relative;
-  z-index: 2500;
+  z-index: 3005;
+  box-shadow: 0 0 0 9999px rgba(30, 10, 50, 0.55);
+  background-color: var(--mm-surface, #fff);
+  pointer-events: none;
 }
 
 /* ===== Fase F: Panel familias y ranking ===== */

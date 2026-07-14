@@ -1,4 +1,4 @@
-const CACHE_NAME = "mundos-magicos-v15";
+const CACHE_NAME = "mundos-magicos-v16";
 
 const FILES_TO_CACHE = [
   "./",
