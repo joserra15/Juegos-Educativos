@@ -162,6 +162,16 @@ describe("ProgressStore", () => {
   it("migra datos legacy de Firebase", () => {
     const parsed = parseFirebaseData({ puntos: 50, liberadas: [0, 2] });
     expect(parsed.mundoState.liberadas).toEqual([0, 2]);
+    expect(parsed.mundoState.puntosMundo).toBe(50);
+  });
+
+  it("rellena puntosMundo de unicornios si el documento legacy no lo trae", () => {
+    const parsed = parseFirebaseData({
+      puntos: 120,
+      mundos: { unicornios: { liberadas: [0, 1], tiemposMejores: {}, fallosPorOperacion: {} } },
+    });
+    expect(parsed.puntosPorMundo.unicornios).toBe(120);
+    expect(parsed.mundoState.puntosMundo).toBe(120);
   });
 
   it("construye payload con mundos y campos legacy", () => {

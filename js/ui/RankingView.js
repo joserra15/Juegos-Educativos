@@ -8,6 +8,7 @@ import {
   obtenerHitoHechizo,
   OBJETIVO_GLOBAL,
 } from "../../engine/PanelStats.js";
+import { MUNDO_LEGACY } from "../../engine/ProgressStore.js";
 
 const SNAPSHOT_KEY = "recordSnapshotTiempos";
 
@@ -129,6 +130,8 @@ export function actualizarSnapshotAlSalir(tiemposMejores) {
 /**
  * Puntos a mostrar en ranking según filtro.
  * Global → puntos totales; mundo → puntosPorMundo[id] (o state del mundo).
+ * Jugadores antiguos solo tenían `puntos` top-level del mundo unicornios:
+ * si el filtro es ese mundo y no hay desglose, usamos esos puntos.
  */
 export function obtenerPuntosRanking(data, filtro) {
   if (!data) return 0;
@@ -136,8 +139,18 @@ export function obtenerPuntosRanking(data, filtro) {
     return data.puntos || 0;
   }
   const porMundo = data.puntosPorMundo?.[filtro];
-  if (porMundo !== undefined && porMundo !== null) return porMundo;
-  return data.mundos?.[filtro]?.puntosMundo || 0;
+  if (porMundo !== undefined && porMundo !== null) return Number(porMundo) || 0;
+
+  const estadoMundo = data.mundos?.[filtro];
+  if (estadoMundo && typeof estadoMundo.puntosMundo === "number") {
+    return estadoMundo.puntosMundo;
+  }
+
+  // Legacy: progreso solo en el primer mundo (unicornios), sin mundos.*
+  if (filtro === MUNDO_LEGACY) {
+    return Number(data.puntos) || 0;
+  }
+  return 0;
 }
 
 /**
