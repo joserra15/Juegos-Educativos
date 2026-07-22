@@ -279,7 +279,8 @@ describe("QuestionGenerator mundos ampliados", () => {
     );
     expect(ops[0].tipo).toBe("lectura");
     expect(ops[0].opciones).toHaveLength(3);
-    expect(ops[0].r).toBe(1);
+    expect(ops[0].opciones[ops[0].r]).toBe("B");
+    expect(ops[0].textoCorrecto).toBe("B");
   });
 
   it("genera claves estables por tipo de operación", () => {

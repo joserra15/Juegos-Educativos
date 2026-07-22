@@ -13,6 +13,8 @@ import {
   formatearTiempo,
   getClaveOperacion,
   generarBancoFase,
+  barajarOpcionesOperacion,
+  esSeleccionCorrecta,
 } from "../engine/QuestionGenerator.js";
 import {
   puntosPorFase,
@@ -898,7 +900,8 @@ function pintarOpcionesSeleccion(op){
   const input = document.getElementById("respuesta");
   if(!cont) return;
 
-  const usaOpciones = (op?.tipo === "lectura" || op?.tipo === "fraccion") && op.opciones?.length;
+  const usaOpciones = Array.isArray(op?.opciones) && op.opciones.length > 0
+    && (op?.tipo === "lectura" || op?.tipo === "fraccion" || op.textoCorrecto != null);
 
   if(!usaOpciones){
     cont.style.display = "none";
@@ -908,6 +911,9 @@ function pintarOpcionesSeleccion(op){
     return;
   }
 
+  // Baraja en cada visualización para que la correcta no quede fija en la 1ª posición.
+  barajarOpcionesOperacion(op);
+
   if(input) input.style.display = "none";
   cont.style.display = "flex";
   cont.innerHTML = "";
@@ -916,7 +922,9 @@ function pintarOpcionesSeleccion(op){
   op.opciones.forEach((texto, idx) => {
     const btn = document.createElement("button");
     btn.className = "opcion-lectura";
+    btn.type = "button";
     btn.textContent = texto;
+    btn.dataset.opcionIdx = String(idx);
     btn.onclick = () => responderOpcion(idx);
     cont.appendChild(btn);
   });
@@ -928,7 +936,11 @@ function responderOpcion(idx){
 }
 
 function esRespuestaCorrecta(op, val){
-  if(op?.tipo === "lectura" || op?.tipo === "fraccion") return opcionSeleccionada === op.r;
+  // Selección múltiple: nunca usar el input numérico vacío (0) como acierto.
+  if (Array.isArray(op?.opciones) && op.opciones.length > 0
+      && (op?.tipo === "lectura" || op?.tipo === "fraccion" || op.textoCorrecto != null || opcionSeleccionada != null)) {
+    return esSeleccionCorrecta(op, opcionSeleccionada);
+  }
   return val === op.r;
 }
 

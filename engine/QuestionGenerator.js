@@ -5,13 +5,110 @@
 import { calcularProporcionesDificultad } from "./Scoring.js";
 
 /** Fisher–Yates: mezcla uniforme sin el sesgo de sort+random. */
-function mezclar(arr) {
+export function mezclar(arr) {
   const copia = [...arr];
   for (let i = copia.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [copia[i], copia[j]] = [copia[j], copia[i]];
   }
   return copia;
+}
+
+/**
+ * Normaliza opciones de selección múltiple:
+ * - conserva exactamente una respuesta correcta (por índice o texto)
+ * - elimina duplicados (case-insensitive) manteniendo la correcta
+ * - baraja las opciones para que la correcta no quede siempre primera
+ *
+ * @returns {{ opciones: string[], r: number, textoCorrecto: string }}
+ */
+export function normalizarYBarajarOpciones(opcionesEntrada, correcta, { barajar = true } = {}) {
+  const crudas = Array.isArray(opcionesEntrada) ? opcionesEntrada.map((o) => String(o ?? "").trim()) : [];
+  if (!crudas.length) {
+    throw new Error("La pregunta de selección debe tener opciones");
+  }
+
+  let textoCorrecto;
+  if (typeof correcta === "number" && Number.isInteger(correcta) && correcta >= 0 && correcta < crudas.length) {
+    textoCorrecto = crudas[correcta];
+  } else if (correcta != null && String(correcta).trim() !== "") {
+    const comoTexto = String(correcta).trim();
+    const idx = crudas.findIndex((o) => o.toLowerCase() === comoTexto.toLowerCase());
+    textoCorrecto = idx >= 0 ? crudas[idx] : comoTexto;
+  } else {
+    textoCorrecto = crudas[0];
+  }
+
+  if (!textoCorrecto) {
+    throw new Error("La pregunta de selección no tiene texto de respuesta correcta");
+  }
+
+  const unicas = [];
+  const vistos = new Set();
+  for (const opt of crudas) {
+    if (!opt) continue;
+    const key = opt.toLowerCase();
+    if (vistos.has(key)) continue;
+    vistos.add(key);
+    unicas.push(opt);
+  }
+
+  if (!unicas.some((o) => o.toLowerCase() === textoCorrecto.toLowerCase())) {
+    unicas.unshift(textoCorrecto);
+  } else {
+    // Mantener la grafía original de la correcta si hubiera diferencias de mayúsculas.
+    const idxCorrecta = unicas.findIndex((o) => o.toLowerCase() === textoCorrecto.toLowerCase());
+    textoCorrecto = unicas[idxCorrecta];
+  }
+
+  if (unicas.length < 2) {
+    throw new Error("La pregunta de selección necesita al menos 2 opciones distintas");
+  }
+
+  const lista = barajar ? mezclar(unicas) : [...unicas];
+  const r = lista.findIndex((o) => o.toLowerCase() === textoCorrecto.toLowerCase());
+  return { opciones: lista, r, textoCorrecto: lista[r] };
+}
+
+/** Reordena opciones de una operación ya creada y actualiza `r`. */
+export function barajarOpcionesOperacion(op) {
+  if (!op?.opciones?.length) return op;
+  const textoCorrecto =
+    op.textoCorrecto != null
+      ? String(op.textoCorrecto)
+      : typeof op.r === "number" && op.opciones[op.r] != null
+        ? String(op.opciones[op.r])
+        : null;
+  if (textoCorrecto == null) return op;
+
+  const { opciones, r, textoCorrecto: texto } = normalizarYBarajarOpciones(
+    op.opciones,
+    textoCorrecto,
+    { barajar: true }
+  );
+  op.opciones = opciones;
+  op.r = r;
+  op.textoCorrecto = texto;
+  return op;
+}
+
+/**
+ * Evalúa si el índice elegido es la única respuesta correcta.
+ * No acepta input numérico ni índices fuera de rango.
+ */
+export function esSeleccionCorrecta(op, indiceSeleccionado) {
+  if (!Array.isArray(op?.opciones) || op.opciones.length === 0) return false;
+  if (indiceSeleccionado == null || !Number.isInteger(indiceSeleccionado)) return false;
+  if (indiceSeleccionado < 0 || indiceSeleccionado >= op.opciones.length) return false;
+
+  const elegida = String(op.opciones[indiceSeleccionado]);
+  if (op.textoCorrecto != null) {
+    return elegida === String(op.textoCorrecto);
+  }
+  if (typeof op.r === "number") {
+    return indiceSeleccionado === op.r && elegida === String(op.opciones[op.r]);
+  }
+  return false;
 }
 
 function aplicarTexto(textos, a, b) {
@@ -58,14 +155,21 @@ function crearOperacionDivision(textos, divisor, cociente) {
 }
 
 function crearOperacionFraccion({ numerador, denominador, texto, pista, opciones, r }) {
-  const opts = opciones || generarOpcionesFraccion(numerador, denominador).opciones;
-  const respuesta = typeof r === "number" ? r : opts.indexOf(`${numerador}/${denominador}`);
+  const textoCorrectoEsperado = `${numerador}/${denominador}`;
+  const normalizadas = opciones?.length
+    ? normalizarYBarajarOpciones(
+        opciones,
+        typeof r === "number" && opciones[r] != null ? opciones[r] : textoCorrectoEsperado,
+        { barajar: true }
+      )
+    : generarOpcionesFraccion(numerador, denominador);
   return {
     tipo: "fraccion",
     numerador,
     denominador,
-    r: respuesta,
-    opciones: opts,
+    r: normalizadas.r,
+    opciones: normalizadas.opciones,
+    textoCorrecto: normalizadas.textoCorrecto ?? textoCorrectoEsperado,
     clave: `${numerador}/${denominador}`,
     claveCanonica: `${numerador}/${denominador}`,
     texto,
@@ -84,8 +188,12 @@ export function generarOpcionesFraccion(numerador, denominador, cantidad = 4) {
     opciones.add(`${num}/${den}`);
   }
 
-  const lista = mezclar([...opciones]);
-  return { opciones: lista, r: lista.indexOf(correcta) };
+  const { opciones: lista, r, textoCorrecto } = normalizarYBarajarOpciones(
+    [...opciones],
+    correcta,
+    { barajar: true }
+  );
+  return { opciones: lista, r, textoCorrecto };
 }
 
 function textoFraccionParteTodo(num, den, variante) {
@@ -100,11 +208,17 @@ function textoFraccionParteTodo(num, den, variante) {
 
 function crearOperacionLectura(pregunta) {
   const clave = pregunta.id || pregunta.texto.slice(0, 40);
+  const { opciones, r, textoCorrecto } = normalizarYBarajarOpciones(
+    pregunta.opciones,
+    pregunta.correcta ?? pregunta.textoCorrecto,
+    { barajar: true }
+  );
   return {
     tipo: "lectura",
     texto: pregunta.texto,
-    opciones: pregunta.opciones,
-    r: pregunta.correcta,
+    opciones,
+    r,
+    textoCorrecto,
     pista: pregunta.pista,
     clave,
     claveCanonica: clave,
@@ -231,14 +345,16 @@ function generarFraccionesAvanzadas(fase, contexto) {
     return mezclar(bancoFracciones).slice(0, fase.total).map((item) => {
       const num = item.numerador ?? item.r;
       const den = item.denominador ?? 4;
-      const { opciones, r } = generarOpcionesFraccion(num, den);
+      const { opciones, r, textoCorrecto } = generarOpcionesFraccion(num, den);
       return {
         tipo: "fraccion",
         texto: item.texto.replace(/Escribe el numerador\.?/gi, "Selecciona la fracción correcta."),
         r: opciones.indexOf(`${num}/${den}`) >= 0 ? opciones.indexOf(`${num}/${den}`) : r,
         opciones,
+        textoCorrecto: textoCorrecto ?? `${num}/${den}`,
         pista: item.pista,
         clave: item.id || item.texto.slice(0, 30),
+        claveCanonica: item.id || `${num}/${den}`,
         numerador: num,
         denominador: den,
       };
@@ -255,14 +371,16 @@ function generarFraccionesAvanzadas(fase, contexto) {
 
   while (ops.length < (fase.total || 8)) {
     const [n1, d1, n2, d2] = pares[ops.length % pares.length];
-    const { opciones, r } = generarOpcionesFraccion(n2, d1);
+    const { opciones, r, textoCorrecto } = generarOpcionesFraccion(n2, d1);
     ops.push({
       tipo: "fraccion",
       texto: `¿Cuánto es ${n1}/${d1} + ${n2 - n1}/${d1}? Selecciona el resultado.`,
       r: opciones.indexOf(`${n2}/${d1}`) >= 0 ? opciones.indexOf(`${n2}/${d1}`) : r,
       opciones,
+      textoCorrecto: textoCorrecto ?? `${n2}/${d1}`,
       pista: `Suma los numeradores: ${n1} + ${n2 - n1} = ${n2}`,
       clave: `suma-${n1}-${d1}-${n2}`,
+      claveCanonica: `suma-${n1}-${d1}-${n2}`,
       numerador: n2,
       denominador: d1,
     });
@@ -396,8 +514,11 @@ export function generarOperacionesRepaso(fallosPorOperacion, textos, max = 8, ti
     return {
       tipo: "lectura",
       texto: `Repasa esta idea: ${clave}`,
-      opciones: ["Opción A", "Opción B", "Opción C"],
+      opciones: ["Repasar", "Otra idea", "Saltar"],
       r: 0,
+      textoCorrecto: "Repasar",
+      clave: `repaso-${clave}`,
+      claveCanonica: `repaso-${clave}`,
     };
   });
 }
