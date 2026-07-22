@@ -48,6 +48,8 @@ describe("Mundos nuevos — inglés, lógica y visoespacial", () => {
           expect(op.opciones.length).toBeGreaterThanOrEqual(2);
           expect(op.r).toBeGreaterThanOrEqual(0);
           expect(op.r).toBeLessThan(op.opciones.length);
+          expect(op.textoCorrecto).toBe(op.opciones[op.r]);
+          expect(new Set(op.opciones.map(String)).size).toBe(op.opciones.length);
         }
       }
     }
