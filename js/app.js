@@ -75,6 +75,7 @@ import {
   tutorialCompletado,
 } from "./ui/Onboarding.js";
 import { renderTarjetasMundos } from "./ui/SelectorMundos.js";
+import { initPwaInstall } from "./ui/PwaInstall.js";
 import { renderGraficosArea, exportarResumenJugador } from "./ui/PanelFamilias.js";
 import {
   renderMejoraPersonal,
@@ -2669,6 +2670,13 @@ async function initApp(){
       navigator.serviceWorker.register("./service-worker.js").catch(console.error);
     }
 
+    const pwaInstall = initPwaInstall({
+      bannerId: "pwaInstallBanner",
+      modalId: "pwaInstallModal",
+      triggerId: "btnInstalarPwa",
+      autoShowDelayMs: 2800,
+    });
+
     initTarjetaPersonaje();
     actualizarAvatarHeader();
 
@@ -2677,6 +2685,7 @@ async function initApp(){
       responder, responderOpcion, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
       iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido,
       avanzarTutorialUI, saltarTutorialUI, reiniciarTutorial, exportarResumenFamilia,
+      abrirInstalarPwa: () => pwaInstall.showModal(true),
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });
 

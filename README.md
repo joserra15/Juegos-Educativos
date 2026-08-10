@@ -47,3 +47,12 @@ npx serve .
 ```
 
 Push a `main` despliega en GitHub Pages con tests automáticos.
+
+## Instalar como app (PWA)
+
+La web es una **Progressive Web App** instalable:
+
+- En **Chrome / Edge / Android** aparece el botón nativo «Instalar app» cuando el navegador lo permite.
+- En **iPhone / iPad** se muestran instrucciones (Compartir → Añadir a pantalla de inicio).
+- En el pie de página hay un enlace **Instalar app** con las instrucciones según tu dispositivo.
+- El service worker cachea la app para uso offline tras la primera visita.

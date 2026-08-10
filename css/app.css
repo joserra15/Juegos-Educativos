@@ -2207,3 +2207,217 @@ body.sin-jugador .pantalla{
   font-weight: 700;
   margin-bottom: 4px;
 }
+
+/* ===== PWA install ===== */
+
+.pie-btn-instalar{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: #6a1b9a;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pie-btn-instalar:hover{
+  color: #4a148c;
+}
+
+.pie-btn-instalar[hidden]{
+  display: none !important;
+}
+
+.pwa-install-banner{
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  z-index: 2500;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.pwa-install-banner[hidden]{
+  display: none !important;
+}
+
+.pwa-install-banner .pwa-install-caja{
+  pointer-events: auto;
+  max-width: 440px;
+  width: 100%;
+  background: var(--mm-surface);
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-soft);
+  padding: 14px 16px;
+  border: 2px solid rgba(179, 136, 255, 0.35);
+  animation: entradaPopup 0.35s ease;
+}
+
+.pwa-install-modal{
+  position: fixed;
+  inset: 0;
+  z-index: 2600;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(30, 10, 50, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.pwa-install-modal[hidden]{
+  display: none !important;
+}
+
+.pwa-install-modal .pwa-install-caja{
+  background: white;
+  border-radius: var(--mm-radius-lg);
+  box-shadow: var(--mm-shadow-soft);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  animation: entradaPopup 0.35s ease;
+  text-align: left;
+}
+
+.pwa-install-cabecera{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pwa-install-cabecera h3{
+  margin: 0;
+  font-family: var(--mm-font-display);
+  font-size: 1.25rem;
+  color: var(--mm-text);
+}
+
+.pwa-install-icon{
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid white;
+  box-shadow: 0 4px 12px rgba(58, 0, 102, 0.15);
+  flex-shrink: 0;
+}
+
+.pwa-install-device{
+  margin: 2px 0 0;
+  font-size: 0.8em;
+  color: var(--mm-text-soft);
+  font-weight: 700;
+}
+
+.pwa-install-summary{
+  margin: 0 0 12px;
+  color: var(--mm-text-soft);
+  font-size: 0.95em;
+}
+
+.pwa-install-steps{
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.pwa-install-steps li{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.92em;
+  line-height: 1.35;
+}
+
+.pwa-step-num{
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mm-gradient-magic);
+  color: white;
+  font-size: 0.75em;
+  font-weight: 800;
+}
+
+.pwa-install-acciones{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.pwa-btn-instalar{
+  background: var(--mm-gradient-magic);
+  color: white;
+  border: none;
+  border-radius: var(--mm-radius-md);
+  padding: 10px 16px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--mm-shadow-card);
+}
+
+.pwa-btn-secundario{
+  background: #ede7f6;
+  color: var(--mm-text);
+  border: none;
+  border-radius: var(--mm-radius-md);
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pwa-btn-texto{
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--mm-text-soft);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.pwa-install-banner-caja .pwa-install-steps{
+  display: none;
+}
+
+.pwa-install-banner-caja .pwa-install-summary{
+  margin-bottom: 10px;
+}
+
+@media (max-width: 520px){
+  .pwa-install-banner{
+    left: 8px;
+    right: 8px;
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .pwa-install-acciones{
+    justify-content: stretch;
+  }
+
+  .pwa-install-acciones button{
+    flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pwa-install-banner .pwa-install-caja,
+  .pwa-install-modal .pwa-install-caja{
+    animation: none;
+  }
+}
