@@ -73,9 +73,20 @@ export function etiquetaArea(area) {
     ingles: "Inglés",
     logica: "Lógica",
     visoespacial: "Visoespacial",
+    infantil: "Infantil",
     general: "General",
   };
   return mapa[area] || area;
+}
+
+/** Etiqueta legible del curso (0 = último de Infantil). */
+export function etiquetaCurso(curso, { corto = false } = {}) {
+  const n = Number(curso);
+  if (n === 0) return corto ? "Infantil" : "Último curso de Infantil";
+  if (Number.isFinite(n) && n > 0) {
+    return corto ? `${n}º` : `${n}º de Primaria`;
+  }
+  return corto ? String(curso ?? "?") : `${curso ?? "?"}º de Primaria`;
 }
 
 /** Compara tiempos actuales vs snapshot anterior por fase. */

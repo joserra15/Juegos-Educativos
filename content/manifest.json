@@ -1,8 +1,24 @@
 {
-  "version": "3.5.0",
+  "version": "3.6.0",
   "appName": "Mundos Mágicos Educativos",
   "defaultMundo": "unicornios",
   "mundos": [
+    {
+      "id": "bosque-luna",
+      "nombre": "El Bosque de Luna",
+      "emoji": "🌙",
+      "curso": 0,
+      "area": "infantil",
+      "descripcion": "Contar, sumar y leer desde cero en el último curso de Infantil",
+      "disponible": true,
+      "totalFases": 8,
+      "contentFile": "bosque-luna.json",
+      "tema": {
+        "colorPrimario": "#43a047",
+        "colorSecundario": "#81c784",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
     {
       "id": "unicornios",
       "nombre": "El Mundo de los Unicornios",

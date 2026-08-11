@@ -1,4 +1,4 @@
-const CACHE_NAME = "mundos-magicos-v21";
+const CACHE_NAME = "mundos-magicos-v22";
 
 const FILES_TO_CACHE = [
   "./",
@@ -14,6 +14,7 @@ const FILES_TO_CACHE = [
   "./js/ui/PwaInstall.js",
   "./manifest.json",
   "./content/manifest.json",
+  "./content/bosque-luna.json",
   "./content/unicornios.json",
   "./content/dinosaurios.json",
   "./content/fracciones.json",

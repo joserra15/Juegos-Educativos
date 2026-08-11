@@ -88,7 +88,7 @@ import {
   renderListaRankingPuntos,
   aplicarVisibilidadRanking,
 } from "./ui/RankingView.js";
-import { OBJETIVO_GLOBAL } from "../engine/PanelStats.js";
+import { OBJETIVO_GLOBAL, etiquetaCurso } from "../engine/PanelStats.js";
 import {
   setMochilaMundoSeleccionado,
   renderPinMochila,
@@ -1388,7 +1388,7 @@ function pintarResumenCursos(){
     }, 0);
     const row = document.createElement("div");
     row.className = "resumen-curso-item";
-    row.innerHTML = `<span>${curso}º Primaria</span><strong>${fasesCurso} fases · ${puntosCurso}⭐</strong>`;
+    row.innerHTML = `<span>${etiquetaCurso(curso, { corto: true })}</span><strong>${fasesCurso} fases · ${puntosCurso}⭐</strong>`;
     cont.appendChild(row);
   });
 }
