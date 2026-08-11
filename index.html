@@ -4,11 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundos Mágicos Educativos</title>
-<link rel="icon" type="image/png" href="avatar.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff80ab">
+<meta name="description" content="Juegos educativos para primaria: tablas de multiplicar y más. Instálala como app en tu dispositivo.">
+<meta name="mobile-web-app-capable" content="yes">
 
-<link rel="apple-touch-icon" href="avatar.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Mundos mágicos">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mundos Mágicos">
 
 
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
@@ -541,12 +546,29 @@
     <a href="#" onclick="mostrar('avisoLegal')">
       Aviso legal
     </a>
+    ·
+    <button type="button" id="btnInstalarPwa" class="pie-btn-instalar" hidden>
+      📲 Instalar app
+    </button>
   </p>
   <p>
-    v 3.4.1
+    v 3.5.0
   </p>
 <p><br></p>
 </footer>
+
+<!-- PWA: banner e instrucciones de instalación -->
+<div id="pwaInstallBanner" class="pwa-install-banner" hidden aria-hidden="true"></div>
+
+<div
+  id="pwaInstallModal"
+  class="pwa-install-modal"
+  hidden
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="pwaInstallTitulo"
+></div>
 
 
 <nav id="bottomNav" class="bottom-nav" hidden aria-hidden="true">

@@ -1,23 +1,36 @@
 {
+  "id": "./",
   "name": "Mundos Mágicos Educativos",
   "short_name": "Mundos Mágicos",
   "description": "Juegos educativos para primaria: tablas de multiplicar y más",
+  "lang": "es",
+  "dir": "ltr",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "browser"],
   "background_color": "#f3e5f5",
   "theme_color": "#ff80ab",
-  "orientation": "portrait",
+  "orientation": "any",
+  "categories": ["education", "games", "kids"],
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ],
-  "version": null
+  ]
 }
