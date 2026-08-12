@@ -4,7 +4,7 @@
 
 export function puntosPorFase(fase, puntosMap) {
   if (!fase) return 10;
-  return puntosMap[fase.id] ?? 10;
+  return puntosMap?.[fase.id] ?? 10;
 }
 
 export function calcularPenalizacion(puntosBase) {
