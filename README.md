@@ -2,7 +2,7 @@
 
 Plataforma de juegos educativos para **Infantil (5 años)** y **3º y 4º de Primaria** (España), alineada con LOMLOE.
 
-## Mundos disponibles (v3.6)
+## Mundos disponibles (v3.6.1)
 
 ### Infantil (último curso)
 | Mundo | Área | Contenido | Fases |

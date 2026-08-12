@@ -6,7 +6,7 @@ import {
   calcularProgresoPorArea,
   etiquetaArea,
   generarResumenExportable,
-} from "../../engine/PanelStats.js";
+} from "../../engine/PanelStats.js?v=3.6.1";
 
 export function renderGraficosArea(manifest, allStates, containerId) {
   const cont = document.getElementById(containerId);

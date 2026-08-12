@@ -2,8 +2,8 @@
  * Fase D — Selector de mundos con tarjetas animadas y badges.
  */
 
-import { getProgresoMundo } from "../../engine/WorldManager.js";
-import { etiquetaArea, etiquetaCurso } from "../../engine/PanelStats.js";
+import { getProgresoMundo } from "../../engine/WorldManager.js?v=3.6.1";
+import { etiquetaArea, etiquetaCurso } from "../../engine/PanelStats.js?v=3.6.1";
 
 export function getBadgeMundo(state, totalFases) {
   const completadas = state?.liberadas?.length || 0;

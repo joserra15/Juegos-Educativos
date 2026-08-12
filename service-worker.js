@@ -1,7 +1,12 @@
-const CACHE_NAME = "mundos-magicos-v22";
+const APP_VERSION = "3.6.1";
+const CACHE_NAME = `mundos-magicos-v${APP_VERSION}`;
 
-const FILES_TO_CACHE = [
-  "./",
+function withVersion(url) {
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}v=${APP_VERSION}`;
+}
+
+const VERSIONED_FILES = [
   "./index.html",
   "./css/app.css",
   "./js/app.js",
@@ -41,6 +46,14 @@ const FILES_TO_CACHE = [
   "./engine/PhaseProgress.js",
   "./engine/SessionEngine.js",
   "./engine/PanelStats.js",
+  "./service-worker.js",
+].map(withVersion);
+
+const FILES_TO_CACHE = [
+  "./",
+  "./index.html",
+  withVersion("./index.html"),
+  ...VERSIONED_FILES,
   "./avatar.png",
   "./unicornios.png",
   "./unicornio1.png",
@@ -55,7 +68,6 @@ const FILES_TO_CACHE = [
   "./icon-192.png",
   "./icon-512.png",
   "./apple-touch-icon.png",
-  "./service-worker.js"
 ];
 
 self.addEventListener("install", (event) => {
@@ -77,13 +89,34 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
+  const request = event.request;
+  const isNavigation = request.mode === "navigate" || request.destination === "document";
+
+  if (isNavigation) {
+    event.respondWith(
+      fetch(request)
         .then((response) => {
           if (response && response.status === 200) {
             const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        })
+        .catch(async () => {
+          const cached = await caches.match(request);
+          return cached || caches.match(withVersion("./index.html")) || caches.match("./index.html");
+        })
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      const network = fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
           }
           return response;
         })
