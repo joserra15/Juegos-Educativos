@@ -1440,5 +1440,35 @@
       "correcta": 0,
       "pista": "Empieza por u."
     }
-  ]
+  ],
+  "puntosPorFase": {
+    "claro-conteo": 10,
+    "sendero-diez": 10,
+    "puente-sumas": 12,
+    "pradera-sumar": 12,
+    "claro-vocales": 12,
+    "camino-silabas": 14,
+    "cueva-palabras": 14,
+    "fiesta-bosque": 20
+  },
+  "mensajes": {
+    "acierto": [
+      "¡Muy bien!",
+      "¡Lo has conseguido!",
+      "¡Sigue contando y leyendo!"
+    ],
+    "error": [
+      "Cuenta despacio otra vez",
+      "Mira las opciones con calma",
+      "Puedes usar la pista"
+    ],
+    "ultima": [
+      "¡Última pregunta del bosque!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
 }

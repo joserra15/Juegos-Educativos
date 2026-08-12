@@ -40,6 +40,13 @@ describe("Mundo Infantil — El Bosque de Luna", () => {
     expect(idsFase).toContain("fiesta-bosque");
   });
 
+  it("incluye metadatos mínimos para abrir el mundo en la app", () => {
+    expect(content.mensajes?.acierto?.length).toBeGreaterThan(0);
+    expect(content.mensajes?.error?.length).toBeGreaterThan(0);
+    expect(content.puntosPorFase).toBeTruthy();
+    expect(content.configMural).toBeTruthy();
+  });
+
   it("genera preguntas válidas de opción múltiple por fase", () => {
     for (const fase of content.fases) {
       const ops = generarOperacionesLectura(fase, { bancoLectura: content.bancoLectura });
