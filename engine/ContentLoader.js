@@ -2,7 +2,10 @@
  * Carga contenido de mundos desde JSON externos.
  */
 
-const CONTENT_VERSION = "3.6.1";
+const CONTENT_VERSION =
+  new URL(import.meta.url).searchParams.get("v")
+  || globalThis.MM_APP_VERSION
+  || "dev";
 
 function withVersion(url) {
   const sep = url.includes("?") ? "&" : "?";

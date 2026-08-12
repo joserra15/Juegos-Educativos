@@ -3,11 +3,11 @@
  * Vista lista → detalle del mundo elegido (progreso, tiempos, recompensas).
  */
 
-import { getProgresoMundo } from "../../engine/WorldManager.js?v=3.6.1";
-import { etiquetaArea, etiquetaCurso } from "../../engine/PanelStats.js?v=3.6.1";
-import { getFaseLabel, migrateTiempoKeys } from "../../engine/ContentLoader.js?v=3.6.1";
-import { formatearTiempo } from "../../engine/QuestionGenerator.js?v=3.6.1";
-import { normalizarLiberadas } from "../../engine/ProgressStore.js?v=3.6.1";
+import { getProgresoMundo } from "@engine/WorldManager";
+import { etiquetaArea, etiquetaCurso } from "@engine/PanelStats";
+import { getFaseLabel, migrateTiempoKeys } from "@engine/ContentLoader";
+import { formatearTiempo } from "@engine/QuestionGenerator";
+import { normalizarLiberadas } from "@engine/ProgressStore";
 
 /** Estado de navegación de la mochila (solo UI). */
 let mochilaMundoSeleccionado = null;

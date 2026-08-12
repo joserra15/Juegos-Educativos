@@ -3,7 +3,7 @@
  * Extraído de app.js para tests de regresión funcionales.
  */
 
-import { getFaseLabel } from "./ContentLoader.js?v=3.6.1";
+import { getFaseLabel } from "@engine/ContentLoader";
 
 /** Fase secuencial disponible si su índice ≤ número de fases ya completadas. */
 export function indiceFaseDisponible(liberadas, indice) {

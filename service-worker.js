@@ -1,4 +1,4 @@
-const APP_VERSION = "3.6.1";
+const APP_VERSION = new URL(self.location.href).searchParams.get("v") || "dev";
 const CACHE_NAME = `mundos-magicos-v${APP_VERSION}`;
 
 function withVersion(url) {

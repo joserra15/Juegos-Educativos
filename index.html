@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundos Mágicos Educativos</title>
 <link rel="icon" type="image/png" href="icon-192.png">
-<link rel="manifest" href="manifest.json?v=3.6.1">
+<meta name="app-version" content="3.6.2">
 <meta name="theme-color" content="#ff80ab">
 <meta name="description" content="Juegos educativos para primaria: tablas de multiplicar y más. Instálala como app en tu dispositivo.">
 <meta name="mobile-web-app-capable" content="yes">
@@ -21,7 +21,53 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="css/app.css?v=3.6.1">
+<script>
+  (() => {
+    const version =
+      document.querySelector('meta[name="app-version"]')?.content?.trim() || "dev";
+    const withVersion = (url) => `${url}${url.includes("?") ? "&" : "?"}v=${encodeURIComponent(version)}`;
+    window.MM_APP_VERSION = version;
+
+    const manifestLink = document.createElement("link");
+    manifestLink.rel = "manifest";
+    manifestLink.href = withVersion("manifest.json");
+    document.head.appendChild(manifestLink);
+
+    const stylesheet = document.createElement("link");
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = withVersion("css/app.css");
+    document.head.appendChild(stylesheet);
+
+    const importMap = document.createElement("script");
+    importMap.type = "importmap";
+    importMap.textContent = JSON.stringify({
+      imports: {
+        "@engine/ContentLoader": withVersion("./engine/ContentLoader.js"),
+        "@engine/QuestionGenerator": withVersion("./engine/QuestionGenerator.js"),
+        "@engine/Scoring": withVersion("./engine/Scoring.js"),
+        "@engine/Hints": withVersion("./engine/Hints.js"),
+        "@engine/ProgressStore": withVersion("./engine/ProgressStore.js"),
+        "@engine/WorldManager": withVersion("./engine/WorldManager.js"),
+        "@engine/PhaseProgress": withVersion("./engine/PhaseProgress.js"),
+        "@engine/SessionEngine": withVersion("./engine/SessionEngine.js"),
+        "@engine/PanelStats": withVersion("./engine/PanelStats.js"),
+        "@ui/Onboarding": withVersion("./js/ui/Onboarding.js"),
+        "@ui/SelectorMundos": withVersion("./js/ui/SelectorMundos.js"),
+        "@ui/PwaInstall": withVersion("./js/ui/PwaInstall.js"),
+        "@ui/PanelFamilias": withVersion("./js/ui/PanelFamilias.js"),
+        "@ui/RankingView": withVersion("./js/ui/RankingView.js"),
+        "@ui/MochilaView": withVersion("./js/ui/MochilaView.js"),
+        "@ui/LazyAssets": withVersion("./js/ui/LazyAssets.js")
+      }
+    });
+    document.head.appendChild(importMap);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const versionLabel = document.getElementById("appVersionFooter");
+      if (versionLabel) versionLabel.textContent = `v ${version}`;
+    });
+  })();
+</script>
 </head>
 
 <body>
@@ -465,7 +511,10 @@
 
 
 
-<script type="module" src="js/app.js?v=3.6.1"></script>
+<script type="module">
+  const version = window.MM_APP_VERSION || "dev";
+  import(`./js/app.js?v=${encodeURIComponent(version)}`);
+</script>
 
 
 <div id="confeti"></div>
@@ -555,7 +604,7 @@
     </button>
   </p>
   <p>
-    v 3.6.1
+    <span id="appVersionFooter"></span>
   </p>
 <p><br></p>
 </footer>
