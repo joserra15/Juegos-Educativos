@@ -1,24 +1,27 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
+
+const fromRoot = (path) => fileURLToPath(new URL(path, import.meta.url));
 
 export default defineConfig({
   resolve: {
     alias: {
-      "@engine/ContentLoader": "/workspace/engine/ContentLoader.js",
-      "@engine/QuestionGenerator": "/workspace/engine/QuestionGenerator.js",
-      "@engine/Scoring": "/workspace/engine/Scoring.js",
-      "@engine/Hints": "/workspace/engine/Hints.js",
-      "@engine/ProgressStore": "/workspace/engine/ProgressStore.js",
-      "@engine/WorldManager": "/workspace/engine/WorldManager.js",
-      "@engine/PhaseProgress": "/workspace/engine/PhaseProgress.js",
-      "@engine/SessionEngine": "/workspace/engine/SessionEngine.js",
-      "@engine/PanelStats": "/workspace/engine/PanelStats.js",
-      "@ui/Onboarding": "/workspace/js/ui/Onboarding.js",
-      "@ui/SelectorMundos": "/workspace/js/ui/SelectorMundos.js",
-      "@ui/PwaInstall": "/workspace/js/ui/PwaInstall.js",
-      "@ui/PanelFamilias": "/workspace/js/ui/PanelFamilias.js",
-      "@ui/RankingView": "/workspace/js/ui/RankingView.js",
-      "@ui/MochilaView": "/workspace/js/ui/MochilaView.js",
-      "@ui/LazyAssets": "/workspace/js/ui/LazyAssets.js",
+      "@engine/ContentLoader": fromRoot("./engine/ContentLoader.js"),
+      "@engine/QuestionGenerator": fromRoot("./engine/QuestionGenerator.js"),
+      "@engine/Scoring": fromRoot("./engine/Scoring.js"),
+      "@engine/Hints": fromRoot("./engine/Hints.js"),
+      "@engine/ProgressStore": fromRoot("./engine/ProgressStore.js"),
+      "@engine/WorldManager": fromRoot("./engine/WorldManager.js"),
+      "@engine/PhaseProgress": fromRoot("./engine/PhaseProgress.js"),
+      "@engine/SessionEngine": fromRoot("./engine/SessionEngine.js"),
+      "@engine/PanelStats": fromRoot("./engine/PanelStats.js"),
+      "@ui/Onboarding": fromRoot("./js/ui/Onboarding.js"),
+      "@ui/SelectorMundos": fromRoot("./js/ui/SelectorMundos.js"),
+      "@ui/PwaInstall": fromRoot("./js/ui/PwaInstall.js"),
+      "@ui/PanelFamilias": fromRoot("./js/ui/PanelFamilias.js"),
+      "@ui/RankingView": fromRoot("./js/ui/RankingView.js"),
+      "@ui/MochilaView": fromRoot("./js/ui/MochilaView.js"),
+      "@ui/LazyAssets": fromRoot("./js/ui/LazyAssets.js"),
     },
   },
   test: {
