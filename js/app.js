@@ -3,7 +3,7 @@ import {
   loadMundoContent,
   getFaseLabel,
   migrateTiempoKeys
-} from "../engine/ContentLoader.js";
+} from "@engine/ContentLoader";
 import {
   generarOperacionesFase,
   generarOperacionesRepaso,
@@ -15,13 +15,13 @@ import {
   generarBancoFase,
   barajarOpcionesOperacion,
   esSeleccionCorrecta,
-} from "../engine/QuestionGenerator.js";
+} from "@engine/QuestionGenerator";
 import {
   puntosPorFase,
   calcularPenalizacion,
   calcularNivelAdaptativo
-} from "../engine/Scoring.js";
-import { getHint } from "../engine/Hints.js";
+} from "@engine/Scoring";
+import { getHint } from "@engine/Hints";
 import {
   MUNDO_LEGACY,
   loadMundoState,
@@ -36,19 +36,19 @@ import {
   setMundoActivoId,
   getTiemposMundoFromFirebase,
   normalizarLiberadas,
-} from "../engine/ProgressStore.js";
+} from "@engine/ProgressStore";
 import {
   getMundoEntry,
   aplicarTemaMundo,
   getEtiquetaRecompensa,
   getProgresoMundo
-} from "../engine/WorldManager.js";
+} from "@engine/WorldManager";
 import {
   evaluarEstadoFase,
   crearContextoRanking,
   combinarTiemposJugador,
   obtenerTiempoFase,
-} from "../engine/PhaseProgress.js";
+} from "@engine/PhaseProgress";
 import {
   usaSesionExtendida,
   esFaseFinal,
@@ -61,7 +61,7 @@ import {
   claveCanonica,
   faseSuperada,
   debeReiniciarFase,
-} from "../engine/SessionEngine.js";
+} from "@engine/SessionEngine";
 import {
   initTarjetaPersonaje,
   actualizarAvatarHeader,
@@ -73,10 +73,10 @@ import {
   saltarTutorial,
   marcarTutorialCompletado,
   tutorialCompletado,
-} from "./ui/Onboarding.js";
-import { renderTarjetasMundos } from "./ui/SelectorMundos.js";
-import { initPwaInstall } from "./ui/PwaInstall.js";
-import { renderGraficosArea, exportarResumenJugador } from "./ui/PanelFamilias.js";
+} from "@ui/Onboarding";
+import { renderTarjetasMundos } from "@ui/SelectorMundos";
+import { initPwaInstall } from "@ui/PwaInstall";
+import { renderGraficosArea, exportarResumenJugador } from "@ui/PanelFamilias";
 import {
   renderMejoraPersonal,
   renderNarrativaHechizo,
@@ -87,16 +87,21 @@ import {
   renderSelectorRanking,
   renderListaRankingPuntos,
   aplicarVisibilidadRanking,
-} from "./ui/RankingView.js";
-import { OBJETIVO_GLOBAL, etiquetaCurso } from "../engine/PanelStats.js";
+} from "@ui/RankingView";
+import { OBJETIVO_GLOBAL, etiquetaCurso } from "@engine/PanelStats";
 import {
   setMochilaMundoSeleccionado,
   renderPinMochila,
   renderListaMundosMochila,
   renderDetalleMochilaMundo,
   mostrarVistaMochila,
-} from "./ui/MochilaView.js";
-import { setImagenConLazy, aplicarLazyEnContenedor, prefetchAsset } from "./ui/LazyAssets.js";
+} from "@ui/MochilaView";
+import { setImagenConLazy, aplicarLazyEnContenedor, prefetchAsset } from "@ui/LazyAssets";
+
+const APP_VERSION =
+  globalThis.MM_APP_VERSION
+  || new URL(import.meta.url).searchParams.get("v")
+  || "dev";
 
 
 let puntos = 0;
@@ -2667,7 +2672,10 @@ async function initApp(){
     await cargarMundoContenido(getMundoActivoId());
 
     if("serviceWorker" in navigator){
-      navigator.serviceWorker.register("./service-worker.js").catch(console.error);
+      navigator.serviceWorker
+        .register(`./service-worker.js?v=${encodeURIComponent(APP_VERSION)}`)
+        .then((registration) => registration.update())
+        .catch(console.error);
     }
 
     const pwaInstall = initPwaInstall({

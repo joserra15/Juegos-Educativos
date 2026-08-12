@@ -2,7 +2,7 @@
  * Fase D — Onboarding: hero, tutorial interactivo y tarjeta de personaje.
  */
 
-import { etiquetaCurso } from "../../engine/PanelStats.js";
+import { etiquetaCurso } from "@engine/PanelStats";
 
 export const AVATARES = ["🧒", "👧", "🧑", "👦", "🦸", "🧙", "🦄", "🐉", "🌟", "🦊", "🐱", "🐻"];
 

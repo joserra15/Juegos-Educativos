@@ -2,7 +2,7 @@
  * Generación de preguntas y bancos procedimentales.
  */
 
-import { calcularProporcionesDificultad } from "./Scoring.js";
+import { calcularProporcionesDificultad } from "@engine/Scoring";
 
 /** Fisher–Yates: mezcla uniforme sin el sesgo de sort+random. */
 export function mezclar(arr) {

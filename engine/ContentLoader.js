@@ -2,8 +2,18 @@
  * Carga contenido de mundos desde JSON externos.
  */
 
+const CONTENT_VERSION =
+  new URL(import.meta.url).searchParams.get("v")
+  || globalThis.MM_APP_VERSION
+  || "dev";
+
+function withVersion(url) {
+  const sep = url.includes("?") ? "&" : "?";
+  return `${url}${sep}v=${CONTENT_VERSION}`;
+}
+
 export async function loadManifest() {
-  const res = await fetch("./content/manifest.json");
+  const res = await fetch(withVersion("./content/manifest.json"));
   if (!res.ok) throw new Error("No se pudo cargar el manifiesto de mundos");
   return res.json();
 }
@@ -13,7 +23,7 @@ export async function loadMundoContent(mundoId) {
   const entry = manifest.mundos.find((m) => m.id === mundoId);
   if (!entry) throw new Error(`Mundo desconocido: ${mundoId}`);
 
-  const res = await fetch(`./content/${entry.contentFile || `${mundoId}.json`}`);
+  const res = await fetch(withVersion(`./content/${entry.contentFile || `${mundoId}.json`}`));
   if (!res.ok) throw new Error(`No se pudo cargar el contenido de ${mundoId}`);
   return res.json();
 }

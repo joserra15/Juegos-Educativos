@@ -2,13 +2,13 @@
  * Ranking: vista global de puntos + filtro por mundo (puntos y tiempos medios).
  */
 
-import { formatearTiempo } from "../../engine/QuestionGenerator.js";
+import { formatearTiempo } from "@engine/QuestionGenerator";
 import {
   calcularMejorasPersonales,
   obtenerHitoHechizo,
   OBJETIVO_GLOBAL,
-} from "../../engine/PanelStats.js";
-import { MUNDO_LEGACY } from "../../engine/ProgressStore.js";
+} from "@engine/PanelStats";
+import { MUNDO_LEGACY } from "@engine/ProgressStore";
 
 const SNAPSHOT_KEY = "recordSnapshotTiempos";
 

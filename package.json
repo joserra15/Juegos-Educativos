@@ -1,9 +1,10 @@
 {
   "name": "mundos-magicos-educativos",
-  "version": "3.5.0",
+  "version": "3.6.2",
   "private": true,
   "type": "module",
   "scripts": {
+    "version:sync": "node scripts/sync-version.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
