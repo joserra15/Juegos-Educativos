@@ -4,7 +4,7 @@
  */
 
 import { getProgresoMundo } from "../../engine/WorldManager.js";
-import { etiquetaArea } from "../../engine/PanelStats.js";
+import { etiquetaArea, etiquetaCurso } from "../../engine/PanelStats.js";
 import { getFaseLabel, migrateTiempoKeys } from "../../engine/ContentLoader.js";
 import { formatearTiempo } from "../../engine/QuestionGenerator.js";
 import { normalizarLiberadas } from "../../engine/ProgressStore.js";
@@ -116,7 +116,7 @@ export function renderListaMundosMochila({
       <span class="mochila-card-emoji">${entry.emoji}</span>
       <span class="mochila-card-body">
         <strong>${entry.nombre}</strong>
-        <span class="mochila-card-meta">${entry.curso}º · ${etiquetaArea(entry.area)}</span>
+        <span class="mochila-card-meta">${etiquetaCurso(entry.curso, { corto: true })} · ${etiquetaArea(entry.area)}</span>
         <span class="mochila-card-donde">${ubicacion} · ${progreso.puntosMundo} ⭐</span>
         <span class="mochila-card-barra" aria-hidden="true">
           <span class="mochila-card-barra-fill" style="width:${pct}%"></span>
@@ -163,7 +163,7 @@ export function renderDetalleMochilaMundo({
       <span class="mochila-detalle-emoji">${entry.emoji}</span>
       <div>
         <h3>${entry.nombre}</h3>
-        <p class="mochila-card-meta">${entry.curso}º · ${etiquetaArea(entry.area)}</p>
+        <p class="mochila-card-meta">${etiquetaCurso(entry.curso, { corto: true })} · ${etiquetaArea(entry.area)}</p>
       </div>
     </header>
 

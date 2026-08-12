@@ -5,6 +5,7 @@ import {
   calcularMejorasPersonales,
   generarResumenExportable,
   etiquetaArea,
+  etiquetaCurso,
   OBJETIVO_GLOBAL,
 } from "../engine/PanelStats.js";
 
@@ -70,5 +71,13 @@ describe("PanelStats", () => {
     expect(etiquetaArea("ingles")).toBe("Inglés");
     expect(etiquetaArea("logica")).toBe("Lógica");
     expect(etiquetaArea("visoespacial")).toBe("Visoespacial");
+    expect(etiquetaArea("infantil")).toBe("Infantil");
+  });
+
+  it("etiqueta cursos de Infantil y Primaria", () => {
+    expect(etiquetaCurso(0)).toBe("Último curso de Infantil");
+    expect(etiquetaCurso(0, { corto: true })).toBe("Infantil");
+    expect(etiquetaCurso(3)).toBe("3º de Primaria");
+    expect(etiquetaCurso(4, { corto: true })).toBe("4º");
   });
 });

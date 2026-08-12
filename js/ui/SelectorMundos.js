@@ -3,7 +3,7 @@
  */
 
 import { getProgresoMundo } from "../../engine/WorldManager.js";
-import { etiquetaArea } from "../../engine/PanelStats.js";
+import { etiquetaArea, etiquetaCurso } from "../../engine/PanelStats.js";
 
 export function getBadgeMundo(state, totalFases) {
   const completadas = state?.liberadas?.length || 0;
@@ -28,7 +28,7 @@ export function renderTarjetasMundos({
   cursos.forEach((curso) => {
     const titulo = document.createElement("h2");
     titulo.className = "titulo-curso-selector";
-    titulo.textContent = `${curso}º de Primaria`;
+    titulo.textContent = etiquetaCurso(curso);
     container.appendChild(titulo);
 
     manifest.mundos
@@ -49,7 +49,7 @@ export function renderTarjetasMundos({
           <span class="badge-mundo badge-${badge.tipo}">${badge.texto}</span>
           <span class="emoji-mundo emoji-parallax">${entry.emoji}</span>
           <strong>${entry.nombre}</strong>
-          <p class="meta-mundo">${entry.curso}º · ${etiquetaArea(entry.area)}</p>
+          <p class="meta-mundo">${etiquetaCurso(entry.curso, { corto: true })} · ${etiquetaArea(entry.area)}</p>
           <div class="tarjeta-progreso-mini">
             <div class="tarjeta-progreso-fill" style="width:${pct}%"></div>
           </div>

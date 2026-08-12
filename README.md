@@ -1,8 +1,13 @@
 # Mundos Mágicos Educativos
 
-Plataforma de juegos educativos para **3º y 4º de Primaria** (España), alineada con LOMLOE.
+Plataforma de juegos educativos para **Infantil (5 años)** y **3º y 4º de Primaria** (España), alineada con LOMLOE.
 
-## Mundos disponibles (v3.5)
+## Mundos disponibles (v3.6)
+
+### Infantil (último curso)
+| Mundo | Área | Contenido | Fases |
+|-------|------|-----------|-------|
+| 🌙 El Bosque de Luna | Infantil | Contar 1–10, sumar y leer desde cero (vocales, sílabas, palabras) | 8 |
 
 ### 3º de Primaria
 | Mundo | Área | Contenido | Fases |

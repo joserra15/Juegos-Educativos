@@ -2,6 +2,8 @@
  * Fase D — Onboarding: hero, tutorial interactivo y tarjeta de personaje.
  */
 
+import { etiquetaCurso } from "../../engine/PanelStats.js";
+
 export const AVATARES = ["🧒", "👧", "🧑", "👦", "🦸", "🧙", "🦄", "🐉", "🌟", "🦊", "🐱", "🐻"];
 
 /**
@@ -224,7 +226,7 @@ export function renderHistoriaBienvenida(manifest, containerId = "contenidoHisto
   const mundos = (manifest?.mundos || []).filter((m) => m.disponible !== false);
   const porCurso = {};
   mundos.forEach((m) => {
-    const curso = m.curso || "?";
+    const curso = m.curso ?? "?";
     if (!porCurso[curso]) porCurso[curso] = [];
     porCurso[curso].push(m);
   });
@@ -237,7 +239,7 @@ export function renderHistoriaBienvenida(manifest, containerId = "contenidoHisto
         .join("");
       return `
         <div class="historia-curso">
-          <h3>${curso}º de Primaria</h3>
+          <h3>${etiquetaCurso(curso)}</h3>
           <ul class="historia-lista-mundos">${lista}</ul>
         </div>
       `;
@@ -251,9 +253,9 @@ export function renderHistoriaBienvenida(manifest, containerId = "contenidoHisto
     </p>
     <p>
       ✨ Solo alguien valiente y con ganas de aprender puede liberarlos.
-      Hay aventuras de <strong>matemáticas</strong>, <strong>lengua</strong>,
-      <strong>ciencias</strong>, <strong>sociales</strong>, <strong>inglés</strong>,
-      <strong>lógica</strong> y <strong>visoespacial</strong> para 3º y 4º de Primaria.
+      Hay aventuras para <strong>Infantil</strong> (contar, sumar y leer) y para
+      <strong>3º y 4º de Primaria</strong>: matemáticas, lengua, ciencias, sociales,
+      inglés, lógica y visoespacial.
     </p>
     <p class="historia-intro-mundos">Estos son los mundos que puedes explorar:</p>
     <div class="historia-mundos-wrap">

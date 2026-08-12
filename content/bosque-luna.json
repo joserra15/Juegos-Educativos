@@ -1,0 +1,1444 @@
+{
+  "id": "bosque-luna",
+  "version": "1.0.0",
+  "nombre": "El Bosque de Luna",
+  "tipoMundo": "lectura",
+  "curso": 0,
+  "area": "infantil",
+  "competencias": [
+    "STEM1",
+    "CCL1",
+    "CPSAA5"
+  ],
+  "saberes": [
+    "conteo 1-10",
+    "suma sencilla",
+    "vocales",
+    "sílabas directas",
+    "palabras de uso frecuente"
+  ],
+  "tema": {
+    "colorPrimario": "#43a047",
+    "colorSecundario": "#81c784",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "luciernaga",
+    "recompensaLabel": "luz"
+  },
+  "etiquetaCurricular": "Infantil (5 años) · Contar · Sumar · Leer",
+  "textoCurricular": "Último curso de Educación Infantil: conteo, suma inicial y aprendizaje de la lectura desde cero.",
+  "fases": [
+    {
+      "id": "claro-conteo",
+      "nombre": "Claro del Conteo",
+      "emoji": "🔢",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "conteo-5"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "✨",
+        "nombre": "Luciérnaga"
+      },
+      "objetivo": "Contar colecciones de 1 a 5 objetos.",
+      "tags": [
+        "Contar 1-5",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "sendero-diez",
+      "nombre": "Sendero hasta Diez",
+      "emoji": "🔟",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "conteo-10"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🌟",
+        "nombre": "Estrellita"
+      },
+      "objetivo": "Contar hasta 10 con apoyo visual.",
+      "tags": [
+        "Contar 1-10",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "puente-sumas",
+      "nombre": "Puente de las Sumas",
+      "emoji": "➕",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "suma-5"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🌉",
+        "nombre": "Puentecito"
+      },
+      "objetivo": "Sumar cantidades pequeñas (resultado hasta 5).",
+      "tags": [
+        "Sumar",
+        "Hasta 5"
+      ]
+    },
+    {
+      "id": "pradera-sumar",
+      "nombre": "Pradera de Sumar",
+      "emoji": "🌼",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "suma-10"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🌼",
+        "nombre": "Margarita"
+      },
+      "objetivo": "Sumar con resultados hasta 10.",
+      "tags": [
+        "Sumar",
+        "Hasta 10"
+      ]
+    },
+    {
+      "id": "claro-vocales",
+      "nombre": "Claro de las Vocales",
+      "emoji": "🔤",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "vocales"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🔤",
+        "nombre": "Vocalín"
+      },
+      "objetivo": "Reconocer las vocales a, e, i, o, u.",
+      "tags": [
+        "Vocales",
+        "Lectura"
+      ]
+    },
+    {
+      "id": "camino-silabas",
+      "nombre": "Camino de Sílabas",
+      "emoji": "🗣️",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "silabas"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🗣️",
+        "nombre": "Silabín"
+      },
+      "objetivo": "Leer sílabas directas y unirlas.",
+      "tags": [
+        "Sílabas",
+        "Lectura"
+      ]
+    },
+    {
+      "id": "cueva-palabras",
+      "nombre": "Cueva de las Palabras",
+      "emoji": "📖",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "palabras"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "📖",
+        "nombre": "Cuentista"
+      },
+      "objetivo": "Leer primeras palabras cortas.",
+      "tags": [
+        "Palabras",
+        "Lectura"
+      ]
+    },
+    {
+      "id": "fiesta-bosque",
+      "nombre": "Fiesta del Bosque",
+      "emoji": "🌙",
+      "mecanica": "lectura",
+      "total": 8,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": {
+        "emoji": "🌙",
+        "nombre": "Lunita"
+      },
+      "objetivo": "Repasar contar, sumar y leer en el bosque mágico.",
+      "tags": [
+        "Repaso",
+        "Infantil"
+      ]
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "c5-1",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🍎🍎\n¿Cuántas manzanas hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-2",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "⭐⭐⭐\n¿Cuántas estrellas hay?",
+      "opciones": [
+        "3",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-3",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🦋\n¿Cuántas mariposas hay?",
+      "opciones": [
+        "1",
+        "2",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-4",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🌻🌻🌻🌻\n¿Cuántas flores hay?",
+      "opciones": [
+        "4",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-5",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🐸🐸🐸🐸🐸\n¿Cuántas ranas hay?",
+      "opciones": [
+        "5",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-6",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🎈🎈🎈\n¿Cuántas globos hay?",
+      "opciones": [
+        "3",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-7",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🦆🦆\n¿Cuántas patitos hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-8",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🌙🌙🌙🌙\n¿Cuántas lunas hay?",
+      "opciones": [
+        "4",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-9",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🐝\n¿Cuántas abejas hay?",
+      "opciones": [
+        "1",
+        "2",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-10",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🐟🐟🐟🐟🐟\n¿Cuántas peces hay?",
+      "opciones": [
+        "5",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-11",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🍓🍓🍓\n¿Cuántas fresas hay?",
+      "opciones": [
+        "3",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c5-12",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🌳🌳\n¿Cuántas árboles hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…"
+    },
+    {
+      "id": "c10-1",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🥕🥕🥕🥕🥕🥕\n¿Cuántas zanahorias hay?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-2",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "⭐⭐⭐⭐⭐⭐⭐\n¿Cuántas estrellas hay?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-3",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🦋🦋🦋🦋🦋🦋🦋🦋\n¿Cuántas mariposas hay?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-4",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🍎🍎🍎🍎🍎\n¿Cuántas manzanas hay?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-5",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🔵🔵🔵🔵🔵🔵🔵🔵🔵\n¿Cuántas bolitas hay?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-6",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🐣🐣🐣🐣\n¿Cuántas pollitos hay?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-7",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸\n¿Cuántas flores hay?",
+      "opciones": [
+        "10",
+        "9",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-8",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🦊🦊🦊\n¿Cuántas zorros hay?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-9",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🍀🍀🍀🍀🍀🍀🍀\n¿Cuántas tréboles hay?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-10",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "💎💎💎💎💎💎\n¿Cuántas gemas hay?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-11",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🐇🐇🐇🐇🐇🐇🐇🐇\n¿Cuántas conejos hay?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "c10-12",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🍬🍬🍬🍬🍬🍬🍬🍬🍬\n¿Cuántas caramelos hay?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas."
+    },
+    {
+      "id": "s5-1",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 🍎 y encuentras 1 🍎 más.\n🍎 + 🍎\n¿Cuántas hay en total?",
+      "opciones": [
+        "2",
+        "3",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 1."
+    },
+    {
+      "id": "s5-2",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 🎈 y encuentras 2 🎈 más.\n🎈 + 🎈🎈\n¿Cuántas hay en total?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 2."
+    },
+    {
+      "id": "s5-3",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🐸 y encuentras 1 🐸 más.\n🐸🐸 + 🐸\n¿Cuántas hay en total?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 1."
+    },
+    {
+      "id": "s5-4",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🦋 y encuentras 2 🦋 más.\n🦋🦋 + 🦋🦋\n¿Cuántas hay en total?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 2."
+    },
+    {
+      "id": "s5-5",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 ⭐ y encuentras 3 ⭐ más.\n⭐ + ⭐⭐⭐\n¿Cuántas hay en total?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 3."
+    },
+    {
+      "id": "s5-6",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 3 🍎 y encuentras 1 🍎 más.\n🍎🍎🍎 + 🍎\n¿Cuántas hay en total?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 3 + 1."
+    },
+    {
+      "id": "s5-7",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🎈 y encuentras 3 🎈 más.\n🎈🎈 + 🎈🎈🎈\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 3."
+    },
+    {
+      "id": "s5-8",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 3 🐸 y encuentras 2 🐸 más.\n🐸🐸🐸 + 🐸🐸\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 3 + 2."
+    },
+    {
+      "id": "s5-9",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 🦋 y encuentras 4 🦋 más.\n🦋 + 🦋🦋🦋🦋\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 4."
+    },
+    {
+      "id": "s5-10",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 4 ⭐ y encuentras 1 ⭐ más.\n⭐⭐⭐⭐ + ⭐\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 4 + 1."
+    },
+    {
+      "id": "s5-11",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🍎 y encuentras 3 🍎 más.\n🍎🍎 + 🍎🍎🍎\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 3."
+    },
+    {
+      "id": "s5-12",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 4 🎈 y encuentras 1 🎈 más.\n🎈🎈🎈🎈 + 🎈\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 4 + 1."
+    },
+    {
+      "id": "s10-1",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 3 🍎 y se añaden 3 🍎.\n¿Cuánto es 3 + 3?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 3: 4, 5…"
+    },
+    {
+      "id": "s10-2",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 4 🎈 y se añaden 2 🎈.\n¿Cuánto es 4 + 2?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 4: 5, 6…"
+    },
+    {
+      "id": "s10-3",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 5 🐸 y se añaden 2 🐸.\n¿Cuánto es 5 + 2?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 5: 6, 7…"
+    },
+    {
+      "id": "s10-4",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 4 🦋 y se añaden 4 🦋.\n¿Cuánto es 4 + 4?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 4: 5, 6…"
+    },
+    {
+      "id": "s10-5",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 5 ⭐ y se añaden 3 ⭐.\n¿Cuánto es 5 + 3?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 5: 6, 7…"
+    },
+    {
+      "id": "s10-6",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 6 🍎 y se añaden 2 🍎.\n¿Cuánto es 6 + 2?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 6: 7, 8…"
+    },
+    {
+      "id": "s10-7",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 7 🎈 y se añaden 1 🎈.\n¿Cuánto es 7 + 1?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 7: 8, 9…"
+    },
+    {
+      "id": "s10-8",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 3 🐸 y se añaden 5 🐸.\n¿Cuánto es 3 + 5?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 3: 4, 5…"
+    },
+    {
+      "id": "s10-9",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 4 🦋 y se añaden 5 🦋.\n¿Cuánto es 4 + 5?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 4: 5, 6…"
+    },
+    {
+      "id": "s10-10",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 6 ⭐ y se añaden 3 ⭐.\n¿Cuánto es 6 + 3?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 6: 7, 8…"
+    },
+    {
+      "id": "s10-11",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 5 🍎 y se añaden 5 🍎.\n¿Cuánto es 5 + 5?",
+      "opciones": [
+        "10",
+        "11",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 5: 6, 7…"
+    },
+    {
+      "id": "s10-12",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 8 🎈 y se añaden 2 🎈.\n¿Cuánto es 8 + 2?",
+      "opciones": [
+        "10",
+        "11",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 8: 9, 10…"
+    },
+    {
+      "id": "voc-1",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Cuál de estas letras es una vocal?",
+      "opciones": [
+        "a",
+        "m",
+        "t"
+      ],
+      "correcta": 0,
+      "pista": "Las vocales son a, e, i, o, u."
+    },
+    {
+      "id": "voc-2",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Cuál es una vocal?",
+      "opciones": [
+        "e",
+        "p",
+        "l"
+      ],
+      "correcta": 0,
+      "pista": "La e es una vocal."
+    },
+    {
+      "id": "voc-3",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Cuál letra es vocal?",
+      "opciones": [
+        "i",
+        "n",
+        "b"
+      ],
+      "correcta": 0,
+      "pista": "La i es una vocal."
+    },
+    {
+      "id": "voc-4",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Cuál es vocal?",
+      "opciones": [
+        "o",
+        "s",
+        "d"
+      ],
+      "correcta": 0,
+      "pista": "La o es una vocal."
+    },
+    {
+      "id": "voc-5",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Cuál es una vocal?",
+      "opciones": [
+        "u",
+        "r",
+        "c"
+      ],
+      "correcta": 0,
+      "pista": "La u es una vocal."
+    },
+    {
+      "id": "voc-6",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "En la palabra SOL, ¿qué vocal hay?",
+      "opciones": [
+        "o",
+        "s",
+        "l"
+      ],
+      "correcta": 0,
+      "pista": "S-O-L: la del medio."
+    },
+    {
+      "id": "voc-7",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "En la palabra LUNA, ¿cuántas vocales hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "U y A."
+    },
+    {
+      "id": "voc-8",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Qué vocal falta? M _ SA (mesa)",
+      "opciones": [
+        "e",
+        "a",
+        "u"
+      ],
+      "correcta": 0,
+      "pista": "Se lee me-sa."
+    },
+    {
+      "id": "voc-9",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Qué vocal falta? P _ TO (pato)",
+      "opciones": [
+        "a",
+        "i",
+        "e"
+      ],
+      "correcta": 0,
+      "pista": "Se lee pa-to."
+    },
+    {
+      "id": "voc-10",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Qué vocal falta? L _ NA (luna)",
+      "opciones": [
+        "u",
+        "o",
+        "e"
+      ],
+      "correcta": 0,
+      "pista": "Se lee lu-na."
+    },
+    {
+      "id": "voc-11",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "¿Cuál palabra empieza por vocal?",
+      "opciones": [
+        "oso",
+        "mesa",
+        "sol"
+      ],
+      "correcta": 0,
+      "pista": "Oso empieza por o."
+    },
+    {
+      "id": "voc-12",
+      "etiquetas": [
+        "vocales",
+        "lectura"
+      ],
+      "texto": "Las vocales son…",
+      "opciones": [
+        "a e i o u",
+        "m n p t",
+        "b c d f"
+      ],
+      "correcta": 0,
+      "pista": "Cántalas: a, e, i, o, u."
+    },
+    {
+      "id": "sil-1",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cómo se lee esta sílaba? MA",
+      "opciones": [
+        "ma",
+        "am",
+        "me"
+      ],
+      "correcta": 0,
+      "pista": "La m con la a suena ma."
+    },
+    {
+      "id": "sil-2",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cómo se lee? SA",
+      "opciones": [
+        "sa",
+        "as",
+        "se"
+      ],
+      "correcta": 0,
+      "pista": "S + A = sa."
+    },
+    {
+      "id": "sil-3",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cómo se lee? LI",
+      "opciones": [
+        "li",
+        "il",
+        "la"
+      ],
+      "correcta": 0,
+      "pista": "L + I = li."
+    },
+    {
+      "id": "sil-4",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cómo se lee? NO",
+      "opciones": [
+        "no",
+        "on",
+        "na"
+      ],
+      "correcta": 0,
+      "pista": "N + O = no."
+    },
+    {
+      "id": "sil-5",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cómo se lee? TU",
+      "opciones": [
+        "tu",
+        "ut",
+        "ta"
+      ],
+      "correcta": 0,
+      "pista": "T + U = tu."
+    },
+    {
+      "id": "sil-6",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "Une: PE + RA =",
+      "opciones": [
+        "pera",
+        "pare",
+        "repa"
+      ],
+      "correcta": 0,
+      "pista": "Primero pe, luego ra."
+    },
+    {
+      "id": "sil-7",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "Une: GA + TO =",
+      "opciones": [
+        "gato",
+        "toga",
+        "ago"
+      ],
+      "correcta": 0,
+      "pista": "Ga y to forman gato."
+    },
+    {
+      "id": "sil-8",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "Une: SO + FA =",
+      "opciones": [
+        "sofa",
+        "faso",
+        "asof"
+      ],
+      "correcta": 0,
+      "pista": "So + fa."
+    },
+    {
+      "id": "sil-9",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Qué sílaba empieza la palabra MAMA?",
+      "opciones": [
+        "ma",
+        "am",
+        "na"
+      ],
+      "correcta": 0,
+      "pista": "MA-ma."
+    },
+    {
+      "id": "sil-10",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cuántas sílabas tiene SO-PA?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "So y pa: dos golpes."
+    },
+    {
+      "id": "sil-11",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cuál es la primera sílaba de LUNA?",
+      "opciones": [
+        "lu",
+        "na",
+        "un"
+      ],
+      "correcta": 0,
+      "pista": "LU-na."
+    },
+    {
+      "id": "sil-12",
+      "etiquetas": [
+        "silabas",
+        "lectura"
+      ],
+      "texto": "¿Cuál sílaba falta? CA _ A (casa)",
+      "opciones": [
+        "sa",
+        "ma",
+        "la"
+      ],
+      "correcta": 0,
+      "pista": "Ca-sa."
+    },
+    {
+      "id": "pal-1",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "¿Qué pone aquí? ☀️",
+      "opciones": [
+        "sol",
+        "sal",
+        "los"
+      ],
+      "correcta": 0,
+      "pista": "La palabra del sol."
+    },
+    {
+      "id": "pal-2",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "¿Qué animal es? 🐱",
+      "opciones": [
+        "gato",
+        "pato",
+        "rato"
+      ],
+      "correcta": 0,
+      "pista": "El animal maúlla."
+    },
+    {
+      "id": "pal-3",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Lee la palabra: CASA",
+      "opciones": [
+        "casa",
+        "saca",
+        "asca"
+      ],
+      "correcta": 0,
+      "pista": "Ca-sa."
+    },
+    {
+      "id": "pal-4",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Lee: LUNA 🌙",
+      "opciones": [
+        "luna",
+        "nula",
+        "ulan"
+      ],
+      "correcta": 0,
+      "pista": "Lu-na."
+    },
+    {
+      "id": "pal-5",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Lee: MESA",
+      "opciones": [
+        "mesa",
+        "mase",
+        "ames"
+      ],
+      "correcta": 0,
+      "pista": "Me-sa."
+    },
+    {
+      "id": "pal-6",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "¿Cuál palabra nombra a un animal?",
+      "opciones": [
+        "oso",
+        "sol",
+        "pan"
+      ],
+      "correcta": 0,
+      "pista": "Vive en el bosque."
+    },
+    {
+      "id": "pal-7",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "¿Cuál se come?",
+      "opciones": [
+        "pan",
+        "mar",
+        "sol"
+      ],
+      "correcta": 0,
+      "pista": "Es comida."
+    },
+    {
+      "id": "pal-8",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Une las sílabas: MA + MÁ",
+      "opciones": [
+        "mamá",
+        "amá",
+        "mama"
+      ],
+      "correcta": 0,
+      "pista": "Ma-má."
+    },
+    {
+      "id": "pal-9",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Une: PA + PÁ",
+      "opciones": [
+        "papá",
+        "apá",
+        "papa"
+      ],
+      "correcta": 0,
+      "pista": "Pa-pá."
+    },
+    {
+      "id": "pal-10",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "¿Qué palabra es? 🐝",
+      "opciones": [
+        "abeja",
+        "ojo",
+        "ala"
+      ],
+      "correcta": 0,
+      "pista": "A-be-ja."
+    },
+    {
+      "id": "pal-11",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Lee: PATO 🦆",
+      "opciones": [
+        "pato",
+        "tapa",
+        "apto"
+      ],
+      "correcta": 0,
+      "pista": "Pa-to."
+    },
+    {
+      "id": "pal-12",
+      "etiquetas": [
+        "palabras",
+        "lectura"
+      ],
+      "texto": "Lee: UVA 🍇",
+      "opciones": [
+        "uva",
+        "avu",
+        "vau"
+      ],
+      "correcta": 0,
+      "pista": "Empieza por u."
+    }
+  ]
+}
