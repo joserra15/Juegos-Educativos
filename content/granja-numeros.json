@@ -8,13 +8,13 @@
   "leerEnVozAlta": true,
   "competencias": [
     "STEM1",
-    "CCL1",
+    "STEM3",
     "CPSAA5"
   ],
   "saberes": [
-    "comparar cantidades",
-    "más, menos e igual",
-    "cardinalidad 1-10",
+    "conteo 1-10",
+    "comparar más, menos e igual",
+    "suma sencilla",
     "quitar y restar"
   ],
   "tema": {
@@ -24,9 +24,49 @@
     "criatura": "granjero",
     "recompensaLabel": "animalito"
   },
-  "etiquetaCurricular": "Infantil (5 años) · Comparar · Contar · Quitar",
-  "textoCurricular": "Mundo visual para el último curso de Infantil: comparar cantidades, asociar número y cantidad, y quitar objetos. Pensado para quienes aún no leen, con apoyo de voz.",
+  "etiquetaCurricular": "Infantil (5 años) · Contar · Comparar · Sumar · Quitar",
+  "textoCurricular": "Matemáticas de Infantil: contar, comparar cantidades, sumar y quitar. Pensado para quienes aún no leen, con apoyo visual y voz.",
   "fases": [
+    {
+      "id": "claro-conteo",
+      "nombre": "Corral del Conteo",
+      "emoji": "🔢",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "conteo-5"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🐣",
+        "nombre": "Pollito"
+      },
+      "objetivo": "Contar colecciones de 1 a 5 objetos.",
+      "tags": [
+        "Contar 1-5",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "huerto-numeros",
+      "nombre": "Huerto de los Números",
+      "emoji": "🥕",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "conteo-10",
+        "cardinalidad"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🥕",
+        "nombre": "Zanahoria"
+      },
+      "objetivo": "Contar hasta 10 y asociar cantidad con número.",
+      "tags": [
+        "Contar 1-10",
+        "Números",
+        "Infantil"
+      ]
+    },
     {
       "id": "corral-mas",
       "nombre": "Corral de los Más",
@@ -88,23 +128,41 @@
       ]
     },
     {
-      "id": "huerto-numeros",
-      "nombre": "Huerto de los Números",
-      "emoji": "🥕",
+      "id": "puente-sumas",
+        "nombre": "Puente de las Sumas",
+      "emoji": "➕",
       "mecanica": "lectura",
       "etiquetasLectura": [
-        "cardinalidad"
+        "suma-5"
       ],
       "total": 6,
       "recompensa": {
-        "emoji": "🥕",
-        "nombre": "Zanahoria"
+        "emoji": "🌉",
+        "nombre": "Puentecito"
       },
-      "objetivo": "Asociar una cantidad con su número.",
+      "objetivo": "Sumar cantidades pequeñas (resultado hasta 5).",
       "tags": [
-        "Contar",
-        "Números",
-        "Infantil"
+        "Sumar",
+        "Hasta 5"
+      ]
+    },
+    {
+      "id": "pradera-sumar",
+      "nombre": "Pradera de Sumar",
+      "emoji": "🌼",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "suma-10"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🌼",
+        "nombre": "Margarita"
+      },
+      "objetivo": "Sumar con resultados hasta 10.",
+      "tags": [
+        "Sumar",
+        "Hasta 10"
       ]
     },
     {
@@ -139,9 +197,10 @@
         "emoji": "🎉",
         "nombre": "Granjero"
       },
-      "objetivo": "Repasar comparar, contar y quitar en la granja.",
+      "objetivo": "Repasar contar, comparar, sumar y quitar.",
       "tags": [
         "Repaso",
+        "Matemáticas",
         "Infantil"
       ]
     }
@@ -1106,13 +1165,784 @@
       ],
       "correcta": 0,
       "pista": "Quita 2 y cuenta las que quedan."
+    },
+    {
+      "id": "c5-1",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🍎🍎\n¿Cuántas manzanas hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas manzanas hay?"
+    },
+    {
+      "id": "c5-2",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "⭐⭐⭐\n¿Cuántas estrellas hay?",
+      "opciones": [
+        "3",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "⭐⭐⭐. ¿Cuántas estrellas hay?"
+    },
+    {
+      "id": "c5-3",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🦋\n¿Cuántas mariposas hay?",
+      "opciones": [
+        "1",
+        "2",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas mariposas hay?"
+    },
+    {
+      "id": "c5-4",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🌻🌻🌻🌻\n¿Cuántas flores hay?",
+      "opciones": [
+        "4",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas flores hay?"
+    },
+    {
+      "id": "c5-5",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🐸🐸🐸🐸🐸\n¿Cuántas ranas hay?",
+      "opciones": [
+        "5",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas ranas hay?"
+    },
+    {
+      "id": "c5-6",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🎈🎈🎈\n¿Cuántas globos hay?",
+      "opciones": [
+        "3",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas globos hay?"
+    },
+    {
+      "id": "c5-7",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🦆🦆\n¿Cuántas patitos hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas patitos hay?"
+    },
+    {
+      "id": "c5-8",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🌙🌙🌙🌙\n¿Cuántas lunas hay?",
+      "opciones": [
+        "4",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas lunas hay?"
+    },
+    {
+      "id": "c5-9",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🐝\n¿Cuántas abejas hay?",
+      "opciones": [
+        "1",
+        "2",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas abejas hay?"
+    },
+    {
+      "id": "c5-10",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🐟🐟🐟🐟🐟\n¿Cuántas peces hay?",
+      "opciones": [
+        "5",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas peces hay?"
+    },
+    {
+      "id": "c5-11",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🍓🍓🍓\n¿Cuántas fresas hay?",
+      "opciones": [
+        "3",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas fresas hay?"
+    },
+    {
+      "id": "c5-12",
+      "etiquetas": [
+        "conteo-5",
+        "conteo"
+      ],
+      "texto": "🌳🌳\n¿Cuántas árboles hay?",
+      "opciones": [
+        "2",
+        "1",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta despacio: 1, 2, 3…",
+      "textoVoz": "¿Cuántas árboles hay?"
+    },
+    {
+      "id": "c10-1",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🥕🥕🥕🥕🥕🥕\n¿Cuántas zanahorias hay?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas zanahorias hay?"
+    },
+    {
+      "id": "c10-2",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "⭐⭐⭐⭐⭐⭐⭐\n¿Cuántas estrellas hay?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "⭐⭐⭐⭐⭐⭐⭐. ¿Cuántas estrellas hay?"
+    },
+    {
+      "id": "c10-3",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🦋🦋🦋🦋🦋🦋🦋🦋\n¿Cuántas mariposas hay?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas mariposas hay?"
+    },
+    {
+      "id": "c10-4",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🍎🍎🍎🍎🍎\n¿Cuántas manzanas hay?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas manzanas hay?"
+    },
+    {
+      "id": "c10-5",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🔵🔵🔵🔵🔵🔵🔵🔵🔵\n¿Cuántas bolitas hay?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas bolitas hay?"
+    },
+    {
+      "id": "c10-6",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🐣🐣🐣🐣\n¿Cuántas pollitos hay?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas pollitos hay?"
+    },
+    {
+      "id": "c10-7",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸\n¿Cuántas flores hay?",
+      "opciones": [
+        "10",
+        "9",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas flores hay?"
+    },
+    {
+      "id": "c10-8",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🦊🦊🦊\n¿Cuántas zorros hay?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas zorros hay?"
+    },
+    {
+      "id": "c10-9",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🍀🍀🍀🍀🍀🍀🍀\n¿Cuántas tréboles hay?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas tréboles hay?"
+    },
+    {
+      "id": "c10-10",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "💎💎💎💎💎💎\n¿Cuántas gemas hay?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas gemas hay?"
+    },
+    {
+      "id": "c10-11",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🐇🐇🐇🐇🐇🐇🐇🐇\n¿Cuántas conejos hay?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas conejos hay?"
+    },
+    {
+      "id": "c10-12",
+      "etiquetas": [
+        "conteo-10",
+        "conteo"
+      ],
+      "texto": "🍬🍬🍬🍬🍬🍬🍬🍬🍬\n¿Cuántas caramelos hay?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada una con el dedo mientras cuentas.",
+      "textoVoz": "¿Cuántas caramelos hay?"
+    },
+    {
+      "id": "s5-1",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 🍎 y encuentras 1 🍎 más.\n🍎 + 🍎\n¿Cuántas hay en total?",
+      "opciones": [
+        "2",
+        "3",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 1.",
+      "textoVoz": "Tienes 1 y encuentras 1 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-2",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 🎈 y encuentras 2 🎈 más.\n🎈 + 🎈🎈\n¿Cuántas hay en total?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 2.",
+      "textoVoz": "Tienes 1 y encuentras 2 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-3",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🐸 y encuentras 1 🐸 más.\n🐸🐸 + 🐸\n¿Cuántas hay en total?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 1.",
+      "textoVoz": "Tienes 2 y encuentras 1 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-4",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🦋 y encuentras 2 🦋 más.\n🦋🦋 + 🦋🦋\n¿Cuántas hay en total?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 2.",
+      "textoVoz": "Tienes 2 y encuentras 2 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-5",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 ⭐ y encuentras 3 ⭐ más.\n⭐ + ⭐⭐⭐\n¿Cuántas hay en total?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 3.",
+      "textoVoz": "Tienes 1 ⭐ y encuentras 3 ⭐ más.. ⭐ + ⭐⭐⭐. ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-6",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 3 🍎 y encuentras 1 🍎 más.\n🍎🍎🍎 + 🍎\n¿Cuántas hay en total?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 3 + 1.",
+      "textoVoz": "Tienes 3 y encuentras 1 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-7",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🎈 y encuentras 3 🎈 más.\n🎈🎈 + 🎈🎈🎈\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 3.",
+      "textoVoz": "Tienes 2 y encuentras 3 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-8",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 3 🐸 y encuentras 2 🐸 más.\n🐸🐸🐸 + 🐸🐸\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 3 + 2.",
+      "textoVoz": "Tienes 3 y encuentras 2 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-9",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 1 🦋 y encuentras 4 🦋 más.\n🦋 + 🦋🦋🦋🦋\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 1 + 4.",
+      "textoVoz": "Tienes 1 y encuentras 4 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-10",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 4 ⭐ y encuentras 1 ⭐ más.\n⭐⭐⭐⭐ + ⭐\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 4 + 1.",
+      "textoVoz": "Tienes 4 ⭐ y encuentras 1 ⭐ más.. ⭐⭐⭐⭐ + ⭐. ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-11",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 2 🍎 y encuentras 3 🍎 más.\n🍎🍎 + 🍎🍎🍎\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 2 + 3.",
+      "textoVoz": "Tienes 2 y encuentras 3 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s5-12",
+      "etiquetas": [
+        "suma-5",
+        "suma"
+      ],
+      "texto": "Tienes 4 🎈 y encuentras 1 🎈 más.\n🎈🎈🎈🎈 + 🎈\n¿Cuántas hay en total?",
+      "opciones": [
+        "5",
+        "4",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Junta las dos cantidades: 4 + 1.",
+      "textoVoz": "Tienes 4 y encuentras 1 más.. + . ¿Cuántas hay en total?"
+    },
+    {
+      "id": "s10-1",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 3 🍎 y se añaden 3 🍎.\n¿Cuánto es 3 + 3?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 3: 4, 5…",
+      "textoVoz": "Hay 3 y se añaden 3 .. ¿Cuánto es 3 + 3?"
+    },
+    {
+      "id": "s10-2",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 4 🎈 y se añaden 2 🎈.\n¿Cuánto es 4 + 2?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 4: 5, 6…",
+      "textoVoz": "Hay 4 y se añaden 2 .. ¿Cuánto es 4 + 2?"
+    },
+    {
+      "id": "s10-3",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 5 🐸 y se añaden 2 🐸.\n¿Cuánto es 5 + 2?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 5: 6, 7…",
+      "textoVoz": "Hay 5 y se añaden 2 .. ¿Cuánto es 5 + 2?"
+    },
+    {
+      "id": "s10-4",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 4 🦋 y se añaden 4 🦋.\n¿Cuánto es 4 + 4?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 4: 5, 6…",
+      "textoVoz": "Hay 4 y se añaden 4 .. ¿Cuánto es 4 + 4?"
+    },
+    {
+      "id": "s10-5",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 5 ⭐ y se añaden 3 ⭐.\n¿Cuánto es 5 + 3?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 5: 6, 7…",
+      "textoVoz": "Hay 5 ⭐ y se añaden 3 ⭐.. ¿Cuánto es 5 + 3?"
+    },
+    {
+      "id": "s10-6",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 6 🍎 y se añaden 2 🍎.\n¿Cuánto es 6 + 2?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 6: 7, 8…",
+      "textoVoz": "Hay 6 y se añaden 2 .. ¿Cuánto es 6 + 2?"
+    },
+    {
+      "id": "s10-7",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 7 🎈 y se añaden 1 🎈.\n¿Cuánto es 7 + 1?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 7: 8, 9…",
+      "textoVoz": "Hay 7 y se añaden 1 .. ¿Cuánto es 7 + 1?"
+    },
+    {
+      "id": "s10-8",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 3 🐸 y se añaden 5 🐸.\n¿Cuánto es 3 + 5?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 3: 4, 5…",
+      "textoVoz": "Hay 3 y se añaden 5 .. ¿Cuánto es 3 + 5?"
+    },
+    {
+      "id": "s10-9",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 4 🦋 y se añaden 5 🦋.\n¿Cuánto es 4 + 5?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 4: 5, 6…",
+      "textoVoz": "Hay 4 y se añaden 5 .. ¿Cuánto es 4 + 5?"
+    },
+    {
+      "id": "s10-10",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 6 ⭐ y se añaden 3 ⭐.\n¿Cuánto es 6 + 3?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 6: 7, 8…",
+      "textoVoz": "Hay 6 ⭐ y se añaden 3 ⭐.. ¿Cuánto es 6 + 3?"
+    },
+    {
+      "id": "s10-11",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 5 🍎 y se añaden 5 🍎.\n¿Cuánto es 5 + 5?",
+      "opciones": [
+        "10",
+        "11",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 5: 6, 7…",
+      "textoVoz": "Hay 5 y se añaden 5 .. ¿Cuánto es 5 + 5?"
+    },
+    {
+      "id": "s10-12",
+      "etiquetas": [
+        "suma-10",
+        "suma"
+      ],
+      "texto": "Hay 8 🎈 y se añaden 2 🎈.\n¿Cuánto es 8 + 2?",
+      "opciones": [
+        "10",
+        "11",
+        "9"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta desde 8: 9, 10…",
+      "textoVoz": "Hay 8 y se añaden 2 .. ¿Cuánto es 8 + 2?"
     }
   ],
   "puntosPorFase": {
-    "corral-mas": 10,
-    "establo-menos": 10,
+    "claro-conteo": 10,
+    "huerto-numeros": 10,
+    "corral-mas": 12,
+    "establo-menos": 12,
     "gallinero-igual": 12,
-    "huerto-numeros": 12,
+    "puente-sumas": 12,
+    "pradera-sumar": 14,
     "granero-resta": 14,
     "fiesta-granja": 20
   },

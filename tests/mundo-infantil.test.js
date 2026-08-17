@@ -15,29 +15,34 @@ describe("Mundo Infantil — El Bosque de Luna", () => {
     expect(entry.disponible).toBe(true);
     expect(entry.curso).toBe(0);
     expect(entry.area).toBe("infantil");
-    expect(entry.totalFases).toBe(8);
+    expect(entry.totalFases).toBe(5);
     expect(entry.contentFile).toBe("bosque-luna.json");
     expect(etiquetaArea(entry.area)).toBe("Infantil");
     expect(etiquetaCurso(0)).toBe("Último curso de Infantil");
     expect(etiquetaCurso(0, { corto: true })).toBe("Infantil");
   });
 
-  it("cubre conteo, suma y lectura inicial", () => {
+  it("cubre solo lectura inicial, no matemáticas", () => {
     expect(content.tipoMundo).toBe("lectura");
     expect(content.curso).toBe(0);
-    expect(content.fases.length).toBe(8);
-    expect(content.bancoLectura.length).toBeGreaterThanOrEqual(60);
+    expect(content.fases.length).toBe(5);
+    expect(content.bancoLectura.length).toBeGreaterThanOrEqual(30);
 
     const tags = new Set(content.bancoLectura.flatMap((p) => p.etiquetas || []));
-    for (const t of ["conteo-5", "conteo-10", "suma-5", "suma-10", "vocales", "silabas", "palabras"]) {
+    for (const t of ["vocales", "silabas", "palabras"]) {
       expect(tags.has(t), t).toBe(true);
+    }
+    for (const t of ["conteo-5", "suma-5", "resta"]) {
+      expect(tags.has(t), t).toBe(false);
     }
 
     const idsFase = content.fases.map((f) => f.id);
-    expect(idsFase).toContain("claro-conteo");
-    expect(idsFase).toContain("puente-sumas");
     expect(idsFase).toContain("claro-vocales");
+    expect(idsFase).toContain("camino-silabas");
+    expect(idsFase).toContain("cueva-palabras");
     expect(idsFase).toContain("fiesta-bosque");
+    expect(idsFase).not.toContain("claro-conteo");
+    expect(idsFase).not.toContain("puente-sumas");
   });
 
   it("incluye metadatos mínimos para abrir el mundo en la app", () => {
