@@ -253,7 +253,7 @@ export function renderHistoriaBienvenida(manifest, containerId = "contenidoHisto
     </p>
     <p>
       ✨ Solo alguien valiente y con ganas de aprender puede liberarlos.
-      Hay aventuras para <strong>Infantil</strong> (contar, sumar y leer) y para
+      Hay aventuras para <strong>Infantil</strong> (matemáticas y aprender a leer) y para
       <strong>3º y 4º de Primaria</strong>: matemáticas, lengua, ciencias, sociales,
       inglés, lógica y visoespacial.
     </p>

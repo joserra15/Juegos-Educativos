@@ -15,22 +15,25 @@ describe("Mundo Infantil — La Granja de los Números", () => {
     expect(entry.disponible).toBe(true);
     expect(entry.curso).toBe(0);
     expect(entry.area).toBe("infantil");
-    expect(entry.totalFases).toBe(6);
+    expect(entry.totalFases).toBe(9);
     expect(entry.contentFile).toBe("granja-numeros.json");
     expect(etiquetaArea(entry.area)).toBe("Infantil");
     expect(etiquetaCurso(0, { corto: true })).toBe("Infantil");
   });
 
-  it("cubre comparar, cardinalidad y quitar sin exigir lectura", () => {
+  it("cubre matemáticas de Infantil y no mezcla lectura", () => {
     expect(content.tipoMundo).toBe("lectura");
     expect(content.leerEnVozAlta).toBe(true);
     expect(content.curso).toBe(0);
-    expect(content.fases.length).toBe(6);
-    expect(content.bancoLectura.length).toBeGreaterThanOrEqual(50);
+    expect(content.fases.length).toBe(9);
+    expect(content.bancoLectura.length).toBeGreaterThanOrEqual(80);
 
     const tags = new Set(content.bancoLectura.flatMap((p) => p.etiquetas || []));
-    for (const t of ["comparar-mas", "comparar-menos", "comparar-igual", "cardinalidad", "resta"]) {
+    for (const t of ["conteo-5", "conteo-10", "suma-5", "suma-10", "comparar-mas", "comparar-menos", "resta"]) {
       expect(tags.has(t), t).toBe(true);
+    }
+    for (const t of ["vocales", "silabas", "palabras"]) {
+      expect(tags.has(t), t).toBe(false);
     }
 
     expect(content.bancoLectura.every((p) => p.textoVoz && p.textoVoz.length > 8)).toBe(true);
