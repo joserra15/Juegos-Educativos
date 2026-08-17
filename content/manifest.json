@@ -1,5 +1,5 @@
 {
-  "version": "3.6.3",
+  "version": "3.6.4",
   "appName": "Mundos Mágicos Educativos",
   "defaultMundo": "unicornios",
   "mundos": [
@@ -16,6 +16,22 @@
       "tema": {
         "colorPrimario": "#43a047",
         "colorSecundario": "#81c784",
+        "fondo": "fondo-magico.jpg"
+      }
+    },
+    {
+      "id": "granja-numeros",
+      "nombre": "La Granja de los Números",
+      "emoji": "🐷",
+      "curso": 0,
+      "area": "infantil",
+      "descripcion": "Comparar más y menos, contar y quitar, pensado para quien aún no lee",
+      "disponible": true,
+      "totalFases": 6,
+      "contentFile": "granja-numeros.json",
+      "tema": {
+        "colorPrimario": "#f9a825",
+        "colorSecundario": "#ffcc80",
         "fondo": "fondo-magico.jpg"
       }
     },

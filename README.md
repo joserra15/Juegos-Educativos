@@ -2,12 +2,13 @@
 
 Plataforma de juegos educativos para **Infantil (5 años)** y **3º y 4º de Primaria** (España), alineada con LOMLOE.
 
-## Mundos disponibles (v3.6.3)
+## Mundos disponibles (v3.6.4)
 
 ### Infantil (último curso)
 | Mundo | Área | Contenido | Fases |
 |-------|------|-----------|-------|
 | 🌙 El Bosque de Luna | Infantil | Contar 1–10, sumar y leer desde cero (vocales, sílabas, palabras) | 8 |
+| 🐷 La Granja de los Números | Infantil | Comparar más/menos/igual, contar y quitar (con voz) | 6 |
 
 ### 3º de Primaria
 | Mundo | Área | Contenido | Fases |

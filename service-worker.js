@@ -20,6 +20,7 @@ const VERSIONED_FILES = [
   "./manifest.json",
   "./content/manifest.json",
   "./content/bosque-luna.json",
+  "./content/granja-numeros.json",
   "./content/unicornios.json",
   "./content/dinosaurios.json",
   "./content/fracciones.json",
@@ -46,6 +47,7 @@ const VERSIONED_FILES = [
   "./engine/PhaseProgress.js",
   "./engine/SessionEngine.js",
   "./engine/PanelStats.js",
+  "./engine/Speech.js",
   "./service-worker.js",
 ].map(withVersion);
 

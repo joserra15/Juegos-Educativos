@@ -15,6 +15,7 @@ export default defineConfig({
       "@engine/PhaseProgress": fromRoot("./engine/PhaseProgress.js"),
       "@engine/SessionEngine": fromRoot("./engine/SessionEngine.js"),
       "@engine/PanelStats": fromRoot("./engine/PanelStats.js"),
+      "@engine/Speech": fromRoot("./engine/Speech.js"),
       "@ui/Onboarding": fromRoot("./js/ui/Onboarding.js"),
       "@ui/SelectorMundos": fromRoot("./js/ui/SelectorMundos.js"),
       "@ui/PwaInstall": fromRoot("./js/ui/PwaInstall.js"),

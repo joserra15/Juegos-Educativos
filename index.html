@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mundos Mágicos Educativos</title>
 <link rel="icon" type="image/png" href="icon-192.png">
-<meta name="app-version" content="3.6.3">
+<meta name="app-version" content="3.6.4">
 <meta name="theme-color" content="#ff80ab">
 <meta name="description" content="Juegos educativos para primaria: tablas de multiplicar y más. Instálala como app en tu dispositivo.">
 <meta name="mobile-web-app-capable" content="yes">
@@ -51,6 +51,7 @@
         "@engine/PhaseProgress": withVersion("./engine/PhaseProgress.js"),
         "@engine/SessionEngine": withVersion("./engine/SessionEngine.js"),
         "@engine/PanelStats": withVersion("./engine/PanelStats.js"),
+        "@engine/Speech": withVersion("./engine/Speech.js"),
         "@ui/Onboarding": withVersion("./js/ui/Onboarding.js"),
         "@ui/SelectorMundos": withVersion("./js/ui/SelectorMundos.js"),
         "@ui/PwaInstall": withVersion("./js/ui/PwaInstall.js"),
@@ -141,6 +142,7 @@
       <h3>👀 Accesibilidad y lectura</h3>
       <div class="controles-accesibilidad">
         <label><input id="toggleContraste" type="checkbox"> Alto contraste</label>
+        <label><input id="toggleVozAlta" type="checkbox"> Leer en voz alta</label>
         <label for="selectorFuente">Tamaño de texto</label>
         <select id="selectorFuente" class="select-fuente" aria-label="Tamaño del texto">
           <option value="normal">Normal</option>
@@ -174,7 +176,10 @@
   </div>
 
   <div class="juego-panel">
-   <p id="problema"></p>
+   <div class="problema-con-voz">
+     <p id="problema"></p>
+     <button type="button" id="btnLeerVoz" class="boton-leer-voz" hidden onclick="leerPreguntaActual()" aria-label="Escuchar la pregunta">🔊 Escuchar</button>
+   </div>
    <p id="indicadorDificultad" style="font-weight:bold"></p>
    <div id="opcionesLectura" class="opciones-lectura"></div>
    <input type="number" id="respuesta" aria-label="Escribe la respuesta"><br><br>

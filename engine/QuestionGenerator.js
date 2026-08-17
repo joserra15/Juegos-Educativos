@@ -216,6 +216,7 @@ function crearOperacionLectura(pregunta) {
   return {
     tipo: "lectura",
     texto: pregunta.texto,
+    textoVoz: pregunta.textoVoz || null,
     opciones,
     r,
     textoCorrecto,
