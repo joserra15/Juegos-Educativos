@@ -97,7 +97,7 @@ Este documento recoge el análisis de la interfaz actual y un plan por fases par
 | Bottom nav con etiquetas | Texto bajo icono en pantallas ≥ 400px |
 | Modo dislexia | Fuente OpenDyslexic opcional |
 | Tamaños táctiles | Mínimo 44×44 px en todos los controles |
-| Lectura en voz alta | Web Speech API para enunciados de lectura |
+| Lectura en voz alta | Web Speech API para enunciados (Infantil por defecto) |
 
 ### ✅ Fase F — Panel familias y ranking (v3.3.0)
 

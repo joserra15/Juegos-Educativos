@@ -5,6 +5,7 @@
   "tipoMundo": "lectura",
   "curso": 0,
   "area": "infantil",
+  "leerEnVozAlta": true,
   "competencias": [
     "STEM1",
     "CCL1",

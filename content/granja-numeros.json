@@ -1,0 +1,1139 @@
+{
+  "id": "granja-numeros",
+  "version": "1.0.0",
+  "nombre": "La Granja de los Números",
+  "tipoMundo": "lectura",
+  "curso": 0,
+  "area": "infantil",
+  "leerEnVozAlta": true,
+  "competencias": [
+    "STEM1",
+    "CCL1",
+    "CPSAA5"
+  ],
+  "saberes": [
+    "comparar cantidades",
+    "más, menos e igual",
+    "cardinalidad 1-10",
+    "quitar y restar"
+  ],
+  "tema": {
+    "colorPrimario": "#f9a825",
+    "colorSecundario": "#ffcc80",
+    "fondo": "fondo-magico.jpg",
+    "criatura": "granjero",
+    "recompensaLabel": "animalito"
+  },
+  "etiquetaCurricular": "Infantil (5 años) · Comparar · Contar · Quitar",
+  "textoCurricular": "Mundo visual para el último curso de Infantil: comparar cantidades, asociar número y cantidad, y quitar objetos. Pensado para quienes aún no leen, con apoyo de voz.",
+  "fases": [
+    {
+      "id": "corral-mas",
+      "nombre": "Corral de los Más",
+      "emoji": "🐷",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "comparar-mas"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🐷",
+        "nombre": "Cerdito"
+      },
+      "objetivo": "Comparar grupos y decir dónde hay más.",
+      "tags": [
+        "Más",
+        "Comparar",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "establo-menos",
+      "nombre": "Establo de los Menos",
+      "emoji": "🐴",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "comparar-menos"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🐴",
+        "nombre": "Poni"
+      },
+      "objetivo": "Comparar grupos y decir dónde hay menos.",
+      "tags": [
+        "Menos",
+        "Comparar",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "gallinero-igual",
+      "nombre": "Gallinero de los Iguales",
+      "emoji": "🐔",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "comparar-igual"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🐔",
+        "nombre": "Gallinita"
+      },
+      "objetivo": "Reconocer cantidades iguales o distintas.",
+      "tags": [
+        "Igual",
+        "Comparar",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "huerto-numeros",
+      "nombre": "Huerto de los Números",
+      "emoji": "🥕",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "cardinalidad"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🥕",
+        "nombre": "Zanahoria"
+      },
+      "objetivo": "Asociar una cantidad con su número.",
+      "tags": [
+        "Contar",
+        "Números",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "granero-resta",
+      "nombre": "Granero de Quitar",
+      "emoji": "🌽",
+      "mecanica": "lectura",
+      "etiquetasLectura": [
+        "resta"
+      ],
+      "total": 6,
+      "recompensa": {
+        "emoji": "🌽",
+        "nombre": "Mazorca"
+      },
+      "objetivo": "Quitar objetos y decir cuántos quedan.",
+      "tags": [
+        "Quitar",
+        "Restar",
+        "Infantil"
+      ]
+    },
+    {
+      "id": "fiesta-granja",
+      "nombre": "Fiesta de la Granja",
+      "emoji": "🎉",
+      "mecanica": "lectura",
+      "total": 8,
+      "tipo": "avanzada",
+      "siempreActiva": true,
+      "recompensa": {
+        "emoji": "🎉",
+        "nombre": "Granjero"
+      },
+      "objetivo": "Repasar comparar, contar y quitar en la granja.",
+      "tags": [
+        "Repaso",
+        "Infantil"
+      ]
+    }
+  ],
+  "bancoLectura": [
+    {
+      "id": "mas-1",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🐷🐷🐷\nB: 🐔🐔\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 3 cerdos. Grupo B: 2 gallinas. ¿Dónde hay más?",
+      "opciones": [
+        "Cerdos",
+        "Gallinas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-2",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🐄🐄🐄🐄\nB: 🐑🐑\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 4 vacas. Grupo B: 2 ovejas. ¿Dónde hay más?",
+      "opciones": [
+        "Vacas",
+        "Ovejas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-3",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🐰🐰\nB: 🐣🐣🐣🐣🐣\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 2 conejos. Grupo B: 5 pollitos. ¿Dónde hay más?",
+      "opciones": [
+        "Conejos",
+        "Pollitos",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-4",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🍎🍎🍎🍎🍎\nB: 🥕🥕🥕\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 5 manzanas. Grupo B: 3 zanahorias. ¿Dónde hay más?",
+      "opciones": [
+        "Manzanas",
+        "Zanahorias",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-5",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🐶🐶🐶\nB: 🐱\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 3 perros. Grupo B: 1 gatos. ¿Dónde hay más?",
+      "opciones": [
+        "Perros",
+        "Gatos",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-6",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🦆🦆🦆🦆\nB: 🐸🐸🐸🐸🐸🐸\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 4 patos. Grupo B: 6 ranas. ¿Dónde hay más?",
+      "opciones": [
+        "Patos",
+        "Ranas",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-7",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🌻🌻\nB: 🌷🌷🌷🌷\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 2 girasoles. Grupo B: 4 tulipanes. ¿Dónde hay más?",
+      "opciones": [
+        "Girasoles",
+        "Tulipanes",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-8",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: ⭐⭐⭐⭐⭐⭐\nB: 🌙🌙\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 6 estrellas. Grupo B: 2 lunas. ¿Dónde hay más?",
+      "opciones": [
+        "Estrellas",
+        "Lunas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-9",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🧀🧀🧀\nB: 🍞🍞🍞🍞🍞\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 3 quesos. Grupo B: 5 panes. ¿Dónde hay más?",
+      "opciones": [
+        "Quesos",
+        "Panes",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-10",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🐴\nB: 🐄🐄🐄\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 1 caballos. Grupo B: 3 vacas. ¿Dónde hay más?",
+      "opciones": [
+        "Caballos",
+        "Vacas",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-11",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🐛🐛🐛🐛\nB: 🦋🦋\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 4 gusanos. Grupo B: 2 mariposas. ¿Dónde hay más?",
+      "opciones": [
+        "Gusanos",
+        "Mariposas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "mas-12",
+      "etiquetas": [
+        "comparar-mas",
+        "comparar"
+      ],
+      "texto": "A: 🌽🌽🌽🌽🌽🌽\nB: 🍅🍅🍅\n¿Dónde hay más?",
+      "textoVoz": "Grupo A: 6 mazorcas. Grupo B: 3 tomates. ¿Dónde hay más?",
+      "opciones": [
+        "Mazorcas",
+        "Tomates",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta cada grupo despacio."
+    },
+    {
+      "id": "menos-1",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🐑🐑🐑🐑🐑\nB: 🐔🐔\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 5 ovejas. Grupo B: 2 gallinas. ¿Dónde hay menos?",
+      "opciones": [
+        "Ovejas",
+        "Gallinas",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-2",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🐷\nB: 🐄🐄🐄🐄\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 1 cerdos. Grupo B: 4 vacas. ¿Dónde hay menos?",
+      "opciones": [
+        "Cerdos",
+        "Vacas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-3",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🍎🍎🍎\nB: 🥕🥕🥕🥕🥕🥕\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 3 manzanas. Grupo B: 6 zanahorias. ¿Dónde hay menos?",
+      "opciones": [
+        "Manzanas",
+        "Zanahorias",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-4",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🦆🦆\nB: 🐸🐸🐸🐸🐸\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 2 patos. Grupo B: 5 ranas. ¿Dónde hay menos?",
+      "opciones": [
+        "Patos",
+        "Ranas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-5",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🌻🌻🌻🌻🌻🌻\nB: 🌷\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 6 girasoles. Grupo B: 1 tulipanes. ¿Dónde hay menos?",
+      "opciones": [
+        "Girasoles",
+        "Tulipanes",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-6",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: ⭐⭐⭐\nB: 🌙🌙🌙🌙🌙🌙🌙\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 3 estrellas. Grupo B: 7 lunas. ¿Dónde hay menos?",
+      "opciones": [
+        "Estrellas",
+        "Lunas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-7",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🧀🧀\nB: 🍞🍞🍞\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 2 quesos. Grupo B: 3 panes. ¿Dónde hay menos?",
+      "opciones": [
+        "Quesos",
+        "Panes",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-8",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🐴🐴🐴🐴🐴\nB: 🐄🐄\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 5 caballos. Grupo B: 2 vacas. ¿Dónde hay menos?",
+      "opciones": [
+        "Caballos",
+        "Vacas",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-9",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🐛\nB: 🦋🦋🦋\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 1 gusanos. Grupo B: 3 mariposas. ¿Dónde hay menos?",
+      "opciones": [
+        "Gusanos",
+        "Mariposas",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-10",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🌽🌽🌽🌽\nB: 🍅🍅🍅🍅🍅🍅🍅🍅\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 4 mazorcas. Grupo B: 8 tomates. ¿Dónde hay menos?",
+      "opciones": [
+        "Mazorcas",
+        "Tomates",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-11",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🐰🐰🐰🐰🐰🐰🐰\nB: 🐣🐣🐣\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 7 conejos. Grupo B: 3 pollitos. ¿Dónde hay menos?",
+      "opciones": [
+        "Conejos",
+        "Pollitos",
+        "Igual"
+      ],
+      "correcta": 1,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "menos-12",
+      "etiquetas": [
+        "comparar-menos",
+        "comparar"
+      ],
+      "texto": "A: 🐮🐮\nB: 🐖🐖🐖🐖🐖🐖\n¿Dónde hay menos?",
+      "textoVoz": "Grupo A: 2 toros. Grupo B: 6 cerditos. ¿Dónde hay menos?",
+      "opciones": [
+        "Toros",
+        "Cerditos",
+        "Igual"
+      ],
+      "correcta": 0,
+      "pista": "El grupo más pequeño gana."
+    },
+    {
+      "id": "igual-1",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🦆🦆🦆\nB: 🐸🐸🐸\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 3 patos. Grupo B: 3 ranas. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-2",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🐷🐷\nB: 🐔🐔🐔🐔\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 2 cerdos. Grupo B: 4 gallinas. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 2,
+      "pista": "A tiene 2 y B tiene 4."
+    },
+    {
+      "id": "igual-3",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🍎🍎🍎🍎🍎\nB: 🥕🥕🥕🥕🥕\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 5 manzanas. Grupo B: 5 zanahorias. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-4",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: ⭐\nB: 🌙\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 1 estrellas. Grupo B: 1 lunas. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-5",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🐶🐶🐶🐶\nB: 🐱🐱🐱\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 4 perros. Grupo B: 3 gatos. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 1,
+      "pista": "A tiene 4 y B tiene 3."
+    },
+    {
+      "id": "igual-6",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🌻🌻🌻🌻🌻🌻\nB: 🌷🌷🌷🌷🌷🌷\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 6 flores. Grupo B: 6 flores. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-7",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🧀🧀\nB: 🍞🍞🍞🍞🍞\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 2 quesos. Grupo B: 5 panes. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 2,
+      "pista": "A tiene 2 y B tiene 5."
+    },
+    {
+      "id": "igual-8",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🐰🐰🐰🐰\nB: 🐣🐣🐣🐣\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 4 conejos. Grupo B: 4 pollitos. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-9",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🐛🐛🐛\nB: 🦋🦋\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 3 bichos. Grupo B: 2 mariposas. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 1,
+      "pista": "A tiene 3 y B tiene 2."
+    },
+    {
+      "id": "igual-10",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🌽🌽🌽🌽🌽🌽🌽\nB: 🍅🍅🍅🍅🍅🍅🍅\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 7 mazorcas. Grupo B: 7 tomates. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-11",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🐴🐴\nB: 🐄🐄\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 2 caballos. Grupo B: 2 vacas. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 0,
+      "pista": "Cuenta los dos grupos: son iguales."
+    },
+    {
+      "id": "igual-12",
+      "etiquetas": [
+        "comparar-igual",
+        "comparar"
+      ],
+      "texto": "A: 🐑🐑🐑🐑🐑\nB: 🐔\n¿Hay el mismo número?",
+      "textoVoz": "Grupo A: 5 ovejas. Grupo B: 1 gallinas. ¿Hay el mismo número?",
+      "opciones": [
+        "Sí, hay igual",
+        "No, hay más en A",
+        "No, hay más en B"
+      ],
+      "correcta": 1,
+      "pista": "A tiene 5 y B tiene 1."
+    },
+    {
+      "id": "num-1",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐰\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de conejos. ¿Cuántos hay?",
+      "opciones": [
+        "1",
+        "2",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-2",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐔🐔\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de gallinas. ¿Cuántos hay?",
+      "opciones": [
+        "2",
+        "3",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-3",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐷🐷🐷\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de cerdos. ¿Cuántos hay?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-4",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐄🐄🐄🐄\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de vacas. ¿Cuántos hay?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-5",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐑🐑🐑🐑🐑\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de ovejas. ¿Cuántos hay?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-6",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🍎🍎🍎🍎🍎🍎\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de manzanas. ¿Cuántos hay?",
+      "opciones": [
+        "6",
+        "7",
+        "5"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-7",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🥕🥕🥕🥕🥕🥕🥕\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de zanahorias. ¿Cuántos hay?",
+      "opciones": [
+        "7",
+        "8",
+        "6"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-8",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "⭐⭐⭐⭐⭐⭐⭐⭐\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de estrellas. ¿Cuántos hay?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-9",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🦆🦆🦆🦆🦆🦆🦆🦆🦆\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de patos. ¿Cuántos hay?",
+      "opciones": [
+        "9",
+        "10",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-10",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de flores. ¿Cuántos hay?",
+      "opciones": [
+        "10",
+        "9",
+        "8"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-11",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐶🐶🐶\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de perros. ¿Cuántos hay?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "num-12",
+      "etiquetas": [
+        "cardinalidad",
+        "contar"
+      ],
+      "texto": "🐱🐱🐱🐱🐱\n¿Cuántos hay?",
+      "textoVoz": "Mira el grupo de gatos. ¿Cuántos hay?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Señala cada uno con el dedo."
+    },
+    {
+      "id": "resta-1",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 5 🍎 y se van 2.\n🍎🍎🍎🍎🍎 − 🍎🍎\n¿Cuántas quedan?",
+      "textoVoz": "Hay 5 manzanas y se van 2. ¿Cuántas quedan?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Quita 2 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-2",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 4 🥕 y se van 1.\n🥕🥕🥕🥕 − 🥕\n¿Cuántas quedan?",
+      "textoVoz": "Hay 4 zanahorias y se van 1. ¿Cuántas quedan?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Quita 1 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-3",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 6 🐣 y se van 3.\n🐣🐣🐣🐣🐣🐣 − 🐣🐣🐣\n¿Cuántas quedan?",
+      "textoVoz": "Hay 6 pollitos y se van 3. ¿Cuántas quedan?",
+      "opciones": [
+        "3",
+        "4",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Quita 3 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-4",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 3 🧀 y se van 2.\n🧀🧀🧀 − 🧀🧀\n¿Cuántas quedan?",
+      "textoVoz": "Hay 3 quesos y se van 2. ¿Cuántas quedan?",
+      "opciones": [
+        "1",
+        "2",
+        "0"
+      ],
+      "correcta": 0,
+      "pista": "Quita 2 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-5",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 7 🐑 y se van 2.\n🐑🐑🐑🐑🐑🐑🐑 − 🐑🐑\n¿Cuántas quedan?",
+      "textoVoz": "Hay 7 ovejas y se van 2. ¿Cuántas quedan?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Quita 2 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-6",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 5 🐶 y se van 4.\n🐶🐶🐶🐶🐶 − 🐶🐶🐶🐶\n¿Cuántas quedan?",
+      "textoVoz": "Hay 5 perros y se van 4. ¿Cuántas quedan?",
+      "opciones": [
+        "1",
+        "2",
+        "0"
+      ],
+      "correcta": 0,
+      "pista": "Quita 4 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-7",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 8 ⭐ y se van 3.\n⭐⭐⭐⭐⭐⭐⭐⭐ − ⭐⭐⭐\n¿Cuántas quedan?",
+      "textoVoz": "Hay 8 estrellas y se van 3. ¿Cuántas quedan?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Quita 3 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-8",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 4 🐷 y se van 4.\n🐷🐷🐷🐷 − 🐷🐷🐷🐷\n¿Cuántas quedan?",
+      "textoVoz": "Hay 4 cerdos y se van 4. ¿Cuántas quedan?",
+      "opciones": [
+        "0",
+        "1",
+        "2"
+      ],
+      "correcta": 0,
+      "pista": "Quita 4 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-9",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 6 🦆 y se van 1.\n🦆🦆🦆🦆🦆🦆 − 🦆\n¿Cuántas quedan?",
+      "textoVoz": "Hay 6 patos y se van 1. ¿Cuántas quedan?",
+      "opciones": [
+        "5",
+        "6",
+        "4"
+      ],
+      "correcta": 0,
+      "pista": "Quita 1 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-10",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 9 🌻 y se van 5.\n🌻🌻🌻🌻🌻🌻🌻🌻🌻 − 🌻🌻🌻🌻🌻\n¿Cuántas quedan?",
+      "textoVoz": "Hay 9 flores y se van 5. ¿Cuántas quedan?",
+      "opciones": [
+        "4",
+        "5",
+        "3"
+      ],
+      "correcta": 0,
+      "pista": "Quita 5 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-11",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 3 🐱 y se van 1.\n🐱🐱🐱 − 🐱\n¿Cuántas quedan?",
+      "textoVoz": "Hay 3 gatos y se van 1. ¿Cuántas quedan?",
+      "opciones": [
+        "2",
+        "3",
+        "1"
+      ],
+      "correcta": 0,
+      "pista": "Quita 1 y cuenta las que quedan."
+    },
+    {
+      "id": "resta-12",
+      "etiquetas": [
+        "resta",
+        "resta-10"
+      ],
+      "texto": "Hay 10 🌽 y se van 2.\n🌽🌽🌽🌽🌽🌽🌽🌽🌽🌽 − 🌽🌽\n¿Cuántas quedan?",
+      "textoVoz": "Hay 10 mazorcas y se van 2. ¿Cuántas quedan?",
+      "opciones": [
+        "8",
+        "9",
+        "7"
+      ],
+      "correcta": 0,
+      "pista": "Quita 2 y cuenta las que quedan."
+    }
+  ],
+  "puntosPorFase": {
+    "corral-mas": 10,
+    "establo-menos": 10,
+    "gallinero-igual": 12,
+    "huerto-numeros": 12,
+    "granero-resta": 14,
+    "fiesta-granja": 20
+  },
+  "mensajes": {
+    "acierto": [
+      "¡Muy bien!",
+      "¡Lo has visto!",
+      "¡Cuenta genial!"
+    ],
+    "error": [
+      "Cuenta otra vez despacio",
+      "Mira los dos grupos",
+      "Puedes escuchar la pregunta"
+    ],
+    "ultima": [
+      "¡Última pregunta de la granja!"
+    ]
+  },
+  "mensajesPredefinidos": {},
+  "configMural": {
+    "maxMensajesDia": 10,
+    "puntosPorMensaje": 250
+  }
+}

@@ -97,6 +97,16 @@ import {
   mostrarVistaMochila,
 } from "@ui/MochilaView";
 import { setImagenConLazy, aplicarLazyEnContenedor, prefetchAsset } from "@ui/LazyAssets";
+import {
+  vozDisponible,
+  leerVozAltaActivada,
+  cargarPreferenciaVoz,
+  guardarPreferenciaVoz,
+  desbloquearVoz,
+  detenerLectura,
+  leerEnVozAlta,
+  textoPreguntaParaVoz,
+} from "@engine/Speech";
 
 const APP_VERSION =
   globalThis.MM_APP_VERSION
@@ -136,6 +146,7 @@ let erroresEnSesion = 0;
 let tablaSeleccionada = Number(localStorage.getItem("tablaSeleccionada")) || 2;
 let altoContraste = localStorage.getItem("altoContraste") === "true";
 let fuenteGrande = localStorage.getItem("fuenteGrande") === "true";
+let leerVozAlta = cargarPreferenciaVoz();
 let opcionSeleccionada = null;
 let modoSesionExtendida = false;
 let bancoSesion = [];
@@ -249,6 +260,34 @@ async function cargarMundoContenido(id){
   const state = loadMundoState(id);
   aplicarEstadoMundo(state);
   recalcularPuntosGlobales();
+  applyAccessibilitySettings();
+}
+
+function cursoMundoActivo(){
+  const entry = getMundoEntry(manifestCatalog, mundoId);
+  return entry?.curso ?? contenidoMundo?.curso;
+}
+
+function vozAltaEfectiva(){
+  return leerVozAltaActivada({
+    curso: cursoMundoActivo(),
+    mundo: contenidoMundo,
+    stored: leerVozAlta,
+  });
+}
+
+function actualizarBotonVoz(){
+  const btn = document.getElementById("btnLeerVoz");
+  if(!btn) return;
+  const visible = vozDisponible() && vozAltaEfectiva();
+  btn.hidden = !visible;
+}
+
+function leerPreguntaActual(){
+  desbloquearVoz();
+  const op = obtenerOperacionActual();
+  if(!op || !vozAltaEfectiva()) return;
+  leerEnVozAlta(textoPreguntaParaVoz(op));
 }
 
 function actualizarTextosRecompensa(){
@@ -321,13 +360,21 @@ function applyAccessibilitySettings(){
 
   const contraste = document.getElementById("toggleContraste");
   const fuente = document.getElementById("selectorFuente");
+  const voz = document.getElementById("toggleVozAlta");
   if(contraste) contraste.checked = altoContraste;
   if(fuente) fuente.value = fuenteGrande ? "large" : "normal";
+  if(voz){
+    voz.checked = vozAltaEfectiva();
+    voz.disabled = !vozDisponible();
+  }
+  actualizarBotonVoz();
+  if(!vozAltaEfectiva()) detenerLectura();
 }
 
 function bindAccessibilityControls(){
   const contraste = document.getElementById("toggleContraste");
   const fuente = document.getElementById("selectorFuente");
+  const voz = document.getElementById("toggleVozAlta");
   if(contraste){
     contraste.onchange = () => {
       altoContraste = contraste.checked;
@@ -340,6 +387,15 @@ function bindAccessibilityControls(){
       fuenteGrande = fuente.value === "large";
       localStorage.setItem("fuenteGrande", String(fuenteGrande));
       applyAccessibilitySettings();
+    };
+  }
+  if(voz){
+    voz.onchange = () => {
+      desbloquearVoz();
+      leerVozAlta = voz.checked;
+      guardarPreferenciaVoz(voz.checked);
+      applyAccessibilitySettings();
+      if(voz.checked) leerPreguntaActual();
     };
   }
 }
@@ -844,6 +900,7 @@ function reiniciarSesionExtendida(){
    INICIAR FASE (orden creciente de dificultad)
 ===================================================== */
 function iniciarFase(i){
+desbloquearVoz();
 
 const estadoInicio = evaluarEstadoFase(fases[i], i, liberadas, puntosClase);
 if(!estadoInicio.disponible){
@@ -999,6 +1056,7 @@ actualizarIndicadorDificultad(op);
  renderVisualRectangular(op);
  pintarOpcionesSeleccion(op);
  document.getElementById("respuesta").value="";
+ actualizarBotonVoz();
 
 setTimeout(() => {
   const input = document.getElementById("respuesta");
@@ -1006,6 +1064,7 @@ setTimeout(() => {
     input.focus();
     input.select();
   }
+  if(vozAltaEfectiva()) leerPreguntaActual();
 }, 100);
  
 }
@@ -1038,6 +1097,7 @@ function completarFaseConCelebracion(){
 }
 
 function responder(){
+ detenerLectura();
  const op = obtenerOperacionActual();
  if(!op) return;
  const val = +document.getElementById("respuesta").value;
@@ -1679,6 +1739,7 @@ function guardarEstado(){
    INICIO
 ===================================================== */
 function mostrarMapa(){
+  detenerLectura();
   return new Promise((resolve) => {
     try{
       cargarPuntosClase(() => {
@@ -2694,9 +2755,12 @@ async function initApp(){
       responder, responderOpcion, cerrarPopup, cerrarHistoria, guardarNombre, resetearTodo,
       iniciarRepasoErrores, iniciarPracticaTabla, toggleLike, enviarMensajePredefinido,
       avanzarTutorialUI, saltarTutorialUI, reiniciarTutorial, exportarResumenFamilia,
+      leerPreguntaActual,
       abrirInstalarPwa: () => pwaInstall.showModal(true),
     };
     Object.entries(globalFns).forEach(([name, fn]) => { window[name] = fn; });
+
+    document.addEventListener("pointerdown", () => desbloquearVoz(), { once: true, passive: true });
 
     actualizarVisibilidadNavegacion();
 
